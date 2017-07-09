@@ -1,0 +1,12 @@
+{
+  "name": "lynx",
+  "version": "0.1.0",
+  "main": "main.js",
+  "devDependencies": {
+    "devtron": "^1.4.0",
+    "electron": "^1.6.11"
+  },
+  "dependencies": {
+    "electron-debug": "^1.2.0"
+  }
+}
