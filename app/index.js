@@ -29,7 +29,7 @@ function updateLinks() {
 }
 
 function updateView(links) {
-  document.querySelector('.js-summary').textContent = "Your Subscriptions"
+  document.querySelector('.js-summary').textContent = "Your Friends' Links"
 }
 
 // Update links when loaded
