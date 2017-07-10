@@ -51,9 +51,7 @@
 
 .link-row {
   width: 90%;
-  float: left;
   margin: auto;
-  margin-top: 16px;
 }
 
 .username {
@@ -64,7 +62,7 @@
   font-weight: 300;
 }
 
-.link a {
+.media-body a {
   display:block;
   overflow: hidden;
   white-space: nowrap;
