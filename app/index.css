@@ -59,16 +59,16 @@
 .username {
 }
 
-.link {
+.link-container {
   font-size: var(--font-size);
   font-weight: 300;
-}
-
-.link a {
   display:block;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+}
+
+.link-container a {
   text-decoration: none;
   color: #0074D9;
 }
