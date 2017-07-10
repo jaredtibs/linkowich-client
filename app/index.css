@@ -51,6 +51,7 @@
 
 .link-row {
   width: 90%;
+  float: left;
   margin: auto;
 }
 
@@ -60,9 +61,11 @@
 .link {
   font-size: var(--font-size);
   font-weight: 300;
+  text-decoration: none;
+  color: #0074D9;
 }
 
-.media-body a {
+.link-row a {
   display:block;
   overflow: hidden;
   white-space: nowrap;
