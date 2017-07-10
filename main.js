@@ -1,53 +1,23 @@
 'use strict';
 
-const { app, BrowserWindow, Menu, Tray } = require('electron')
+const { app, BrowserWindow, Menu, Tray, ipcMain } = require('electron')
 const path = require('path')
 const url = require('url')
-const iconActive = path.join(__dirname, '/app/assets/tmp_icon.png');
+const assetsDirectory = path.join(__dirname, '/app/assets');
 
 require('electron-debug')();
 
-let win
-//let appWindow;
-let appIcon = null;
-//let isQuitting = false;
+let tray
+let window
 
-function createWindow () {
-  // Create the browser window.
-  win = new BrowserWindow({width: 800, height: 600})
-
-  // and load the index.html of the app.
-  win.loadURL(url.format({
-    pathname: path.join(__dirname, '/app/index.html'),
-    protocol: 'file:',
-    slashes: true
-  }))
-
-  // Open the DevTools.
-  win.webContents.openDevTools()
-
-  // Emitted when the window is closed.
-  win.on('closed', () => {
-    // Dereference the window object, usually you would store windows
-    // in an array if your app supports multi windows, this is the time
-    // when you should delete the corresponding element.
-    win = null
-  })
-}
+// Don't show the app in the doc
+app.dock.hide()
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.on('ready', () => {
-  appIcon = new Tray(iconActive)
-  const contextMenu = Menu.buildFromTemplate([
-    {label: 'Item1', type: 'radio'},
-    {label: 'Item2', type: 'radio'},
-    {label: 'Item3', type: 'radio', checked: true},
-    {label: 'Item4', type: 'radio'}
-  ])
-  appIcon.setToolTip('This is my application.')
-  appIcon.setContextMenu(contextMenu)
+  createTray()
   createWindow()
 })
 
@@ -60,10 +30,73 @@ app.on('window-all-closed', () => {
   }
 })
 
-app.on('activate', () => {
-  // On macOS it's common to re-create a window in the app when the
-  // dock icon is clicked and there are no other windows open.
-  if (win === null) {
-    createWindow()
+function createWindow () {
+  window = new BrowserWindow({
+    width: 300,
+    height: 450,
+    show: false,
+    frame: false,
+    fullscreenable: false,
+    resizable: false,
+    transparent: true,
+    webPreferences: {
+      // Prevents renderer process code from not running when window is
+      // hidden
+      backgroundThrottling: false
+    }
+  })
+  window.loadURL(`file://${path.join(__dirname, 'app/index.html')}`)
+
+  // Hide the window when it loses focus
+  window.on('blur', () => {
+    if (!window.webContents.isDevToolsOpened()) {
+      window.hide()
+    }
+  })
+}
+
+function createTray() {
+  tray = new Tray(path.join(assetsDirectory, 'tmp_icon.png'))
+  tray.on('right-click', toggleWindow)
+  tray.on('double-click', toggleWindow)
+  tray.on('click', function (event) {
+    toggleWindow()
+
+    // Show devtools when command clicked
+    if (window.isVisible() && process.defaultApp && event.metaKey) {
+      window.openDevTools({mode: 'detach'})
+    }
+  })
+}
+
+function toggleWindow() {
+  if (window.isVisible()) {
+    window.hide()
+  } else {
+    showWindow()
   }
+}
+
+function showWindow() {
+  const position = getWindowPosition()
+  window.setPosition(position.x, position.y, false)
+  window.show()
+  window.focus()
+}
+
+function getWindowPosition () {
+  const windowBounds = window.getBounds()
+  const trayBounds = tray.getBounds()
+
+  // Center window horizontally below the tray icon
+  const x = Math.round(trayBounds.x + (trayBounds.width / 2) - (windowBounds.width / 2))
+
+  // Position window 4 pixels vertically below the tray icon
+  const y = Math.round(trayBounds.y + trayBounds.height + 4)
+
+  return {x: x, y: y}
+}
+
+ipcMain.on('show-window', () => {
+  showWindow()
 })
