@@ -29,7 +29,7 @@ function updateLinks() {
 }
 
 function updateView(links) {
-  document.querySelector('.js-summary').textContent = "your lynx"
+  document.querySelector('.js-summary').textContent = "Your Subscriptions"
 }
 
 // Update links when loaded
