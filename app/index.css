@@ -67,6 +67,10 @@
   margin-top: 16px;
 }
 
+.link-list-container:last-child {
+  padding-bottom: 5px;
+}
+
 .username {
 }
 
