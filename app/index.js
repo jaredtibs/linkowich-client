@@ -1,4 +1,5 @@
 const {ipcRenderer, shell} = require('electron')
+const submitLinkForm = document.getElementById('submitLinkForm');
 
 document.addEventListener('click', (event) => {
   if (event.target.href) {
@@ -18,6 +19,10 @@ function addSubscription() {
   alert("adding subscription!")
 }
 
+function submitLink(event) {
+  alert("submitting link!")
+}
+
 function updateLinks() {
  // fetch to api here to get list of links
   links = []
@@ -25,7 +30,7 @@ function updateLinks() {
   // which can do things like display an icon with a nofitication by adjusting the tray (possible do different color for when a link has been updated, see weather example
   ipcRenderer.send('links-updated', links)
   updateView(links)
-  sendNotification(links)
+  //sendNotification(links)
 }
 
 function updateView(links) {

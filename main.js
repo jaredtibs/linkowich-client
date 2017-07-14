@@ -46,6 +46,7 @@ function createWindow () {
     }
   })
   window.loadURL(`file://${path.join(__dirname, 'app/index.html')}`)
+  //window.webContents.openDevTools()
 
   // Hide the window when it loses focus
   window.on('blur', () => {
