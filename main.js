@@ -56,7 +56,7 @@ function createWindow () {
 }
 
 function createTray() {
-  tray = new Tray(path.join(assetsDirectory, 'tmp_icon.png'))
+  tray = new Tray(path.join(assetsDirectory, 'unreadLinkIcon.png'))
   tray.on('right-click', toggleWindow)
   tray.on('double-click', toggleWindow)
   tray.on('click', function (event) {
@@ -77,11 +77,16 @@ function toggleWindow() {
   }
 }
 
+function toggleTrayIcon() {
+  tray.setImage(path.join(assetsDirectory, 'tmp_icon.png'))
+}
+
 function showWindow() {
   const position = getWindowPosition()
   window.setPosition(position.x, position.y, false)
   window.show()
   window.focus()
+  toggleTrayIcon()
 }
 
 function getWindowPosition () {
@@ -99,4 +104,8 @@ function getWindowPosition () {
 
 ipcMain.on('show-window', () => {
   showWindow()
+})
+
+ipcMain.on('links-updated', (event, links) => {
+  tray.setImage(path.join(assetsDirectory, 'unreadLinkIcon.png'))
 })

@@ -27,8 +27,6 @@ function getLinks() {
 
 function updateLinks() {
   getLinks().then((links) => {
-    console.log(links['data'])
-
     ipcRenderer.send('links-updated', links['data'])
     updateView(links['data'])
     //sendNotification(links)
@@ -38,13 +36,16 @@ function updateLinks() {
 function updateView(links) {
   document.querySelector('.js-summary').textContent = "Your Subscriptions"
   let container = document.getElementById('links-container')
+  let html = ""
 
   links.forEach(function(link) {
-    container.innerHTML += generateLinksListHtml(link)
+    html += generateLinkHtml(link)
   })
+
+  container.innerHTML = html
 }
 
-function generateLinksListHtml(link) {
+function generateLinkHtml(link) {
   let url = link.attributes.url
   let user = link.attributes.user.data.attributes
   let avatar = user.avatar.url || "./assets/default_avatar.jpeg"
@@ -57,6 +58,13 @@ function generateLinksListHtml(link) {
   html += "</div></div>"
   return html
 }
+
+//you'll probably want to add a new endpoint that checks for only unread links
+//and appends that link in and hits the main process to trigger the notification
+
+// Refresh links every minute
+const oneMinute = 60 * 1000
+setInterval(updateLinks, oneMinute)
 
 // Update links when loaded
 document.addEventListener('DOMContentLoaded', updateLinks)
