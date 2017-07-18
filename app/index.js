@@ -18,18 +18,39 @@ function addSubscription() {
   alert("adding subscription!")
 }
 
+function getLinks() {
+  return fetch('http://localhost:3001/api/v1/links')
+    .then((response) => {
+      return response.json()
+  })
+}
+
 function updateLinks() {
- // fetch to api here to get list of links
-  links = []
-  // this communicates to the main process
-  // which can do things like display an icon with a nofitication by adjusting the tray (possible do different color for when a link has been updated, see weather example
-  ipcRenderer.send('links-updated', links)
-  updateView(links)
-  sendNotification(links)
+  getLinks().then((links) => {
+    console.log(links['data'])
+
+    ipcRenderer.send('links-updated', links['data'])
+    updateView(links['data'])
+    //sendNotification(links)
+  })
 }
 
 function updateView(links) {
   document.querySelector('.js-summary').textContent = "Your Subscriptions"
+  let container = document.getElementById('links-container')
+
+  links.forEach(function(link) {
+    let url = link.attributes.url
+    let user = link.attributes.user.data.attributes
+    let avatar = user.avatar.url || "./assets/default_avatar.jpeg"
+    let html = "<div class='link-row padded-horizontally'>"
+    html += "<img class='img-circle media-object pull-left' src=" + avatar + " width='32' heigh='32'>"
+    html += "<div class='username'>" + user.username + "</div>"
+    html += "<div class='link-container'>"
+    html += "<a href=" + url + ">" + url + "</a>"
+    html += "</div></div>"
+    container.innerHTML += html
+  })
 }
 
 // Update links when loaded
