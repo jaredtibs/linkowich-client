@@ -40,17 +40,22 @@ function updateView(links) {
   let container = document.getElementById('links-container')
 
   links.forEach(function(link) {
-    let url = link.attributes.url
-    let user = link.attributes.user.data.attributes
-    let avatar = user.avatar.url || "./assets/default_avatar.jpeg"
-    let html = "<div class='link-row padded-horizontally'>"
-    html += "<img class='img-circle media-object pull-left' src=" + avatar + " width='32' heigh='32'>"
-    html += "<div class='username'>" + user.username + "</div>"
-    html += "<div class='link-container'>"
-    html += "<a href=" + url + ">" + url + "</a>"
-    html += "</div></div>"
-    container.innerHTML += html
+    container.innerHTML += generateLinksListHtml(link)
   })
+}
+
+function generateLinksListHtml(link) {
+  let url = link.attributes.url
+  let user = link.attributes.user.data.attributes
+  let avatar = user.avatar.url || "./assets/default_avatar.jpeg"
+
+  let html = "<div class='link-row padded-horizontally'>"
+  html += "<img class='img-circle media-object pull-left' src=" + avatar + " width='32' heigh='32'>"
+  html += "<div class='username'>" + user.username + "</div>"
+  html += "<div class='link-container'>"
+  html += "<a href=" + url + ">" + url + "</a>"
+  html += "</div></div>"
+  return html
 }
 
 // Update links when loaded
