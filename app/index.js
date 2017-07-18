@@ -43,6 +43,11 @@ function updateView(links) {
   })
 
   container.innerHTML = html
+  /*
+    if (link.attributes.seen == false) {
+      container.insertAdjacentHTML("afterbegin", generateLinkHtml(link));
+    }
+  */
 }
 
 function generateLinkHtml(link) {
