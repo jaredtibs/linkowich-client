@@ -7,9 +7,12 @@ const assetsDirectory = path.join(__dirname, '/app/assets');
 
 require('electron-debug')();
 
+//if logged out, login window displays, otherwise tray
 let tray
+let loginWindow
+//let prefsWindow
 let mainWindow
-let folWindow
+let followersWindow
 
 // Don't show the app in the doc
 app.dock.hide()
@@ -58,21 +61,26 @@ function createMainWindow() {
 }
 
 function createFollowersWindow() {
-  folWindow = new BrowserWindow({
-    width: 500,
-    height: 500,
+  followersWindow = new BrowserWindow({
+    width: 200,
+    height: 200,
     show: false,
     frame: true,
     fullscreenable: false,
     resizable: false,
-    transparent: true,
     webPreferences: {
       // Prevents renderer process code from not running when window is
       // hidden
       backgroundThrottling: false
     }
   })
-  folWindow.loadURL(`file://${path.join(__dirname, 'app/login.html')}`)
+  followersWindow.loadURL(`file://${path.join(__dirname, 'app/followers.html')}`)
+
+  //dont destroy the window when they exit out so they can reopen
+  followersWindow.on('close', function (event) {
+    followersWindow.hide();
+    event.preventDefault();
+  })
 }
 
 function createTray() {
@@ -110,8 +118,7 @@ function showMainWindow() {
 }
 
 function showFollowersWindow() {
-  folWindow.show()
-  folWindow.focus()
+  followersWindow.show()
 }
 
 function getWindowPosition () {
