@@ -8,7 +8,8 @@ const assetsDirectory = path.join(__dirname, '/app/assets');
 require('electron-debug')();
 
 let tray
-let window
+let mainWindow
+let folWindow
 
 // Don't show the app in the doc
 app.dock.hide()
@@ -18,7 +19,8 @@ app.dock.hide()
 // Some APIs can only be used after this event occurs.
 app.on('ready', () => {
   createTray()
-  createWindow()
+  createMainWindow()
+  createFollowersWindow()
 })
 
 // Quit when all windows are closed.
@@ -30,8 +32,8 @@ app.on('window-all-closed', () => {
   }
 })
 
-function createWindow () {
-  window = new BrowserWindow({
+function createMainWindow() {
+  mainWindow = new BrowserWindow({
     width: 300,
     height: 450,
     show: false,
@@ -45,14 +47,32 @@ function createWindow () {
       backgroundThrottling: false
     }
   })
-  window.loadURL(`file://${path.join(__dirname, 'app/index.html')}`)
+  mainWindow.loadURL(`file://${path.join(__dirname, 'app/index.html')}`)
 
   // Hide the window when it loses focus
-  window.on('blur', () => {
-    if (!window.webContents.isDevToolsOpened()) {
-      window.hide()
+  mainWindow.on('blur', () => {
+    if (!mainWindow.webContents.isDevToolsOpened()) {
+      mainWindow.hide()
     }
   })
+}
+
+function createFollowersWindow() {
+  folWindow = new BrowserWindow({
+    width: 500,
+    height: 500,
+    show: false,
+    frame: true,
+    fullscreenable: false,
+    resizable: false,
+    transparent: true,
+    webPreferences: {
+      // Prevents renderer process code from not running when window is
+      // hidden
+      backgroundThrottling: false
+    }
+  })
+  folWindow.loadURL(`file://${path.join(__dirname, 'app/login.html')}`)
 }
 
 function createTray() {
@@ -63,17 +83,17 @@ function createTray() {
     toggleWindow()
 
     // Show devtools when command clicked
-    if (window.isVisible() && process.defaultApp && event.metaKey) {
-      window.openDevTools({mode: 'detach'})
+    if (mainWindow.isVisible() && process.defaultApp && event.metaKey) {
+      mainWindow.openDevTools({mode: 'detach'})
     }
   })
 }
 
 function toggleWindow() {
-  if (window.isVisible()) {
-    window.hide()
+  if (mainWindow.isVisible()) {
+    mainWindow.hide()
   } else {
-    showWindow()
+    showMainWindow()
   }
 }
 
@@ -81,16 +101,21 @@ function toggleTrayIcon() {
   tray.setImage(path.join(assetsDirectory, 'tmp_icon.png'))
 }
 
-function showWindow() {
+function showMainWindow() {
   const position = getWindowPosition()
-  window.setPosition(position.x, position.y, false)
-  window.show()
-  window.focus()
+  mainWindow.setPosition(position.x, position.y, false)
+  mainWindow.show()
+  mainWindow.focus()
   toggleTrayIcon()
 }
 
+function showFollowersWindow() {
+  folWindow.show()
+  folWindow.focus()
+}
+
 function getWindowPosition () {
-  const windowBounds = window.getBounds()
+  const windowBounds = mainWindow.getBounds()
   const trayBounds = tray.getBounds()
 
   // Center window horizontally below the tray icon
@@ -103,8 +128,13 @@ function getWindowPosition () {
 }
 
 ipcMain.on('show-window', () => {
-  showWindow()
+  showMainWindow()
 })
+
+ipcMain.on('open-followers', (event, arg) => {
+  //open a new window containing follow/unfollow functionality
+  showFollowersWindow()
+});
 
 ipcMain.on('links-updated', (event, links) => {
   tray.setImage(path.join(assetsDirectory, 'unreadLinkIcon.png'))
