@@ -15,7 +15,7 @@ document.addEventListener('click', (event) => {
 })
 
 function addSubscription() {
-  alert("adding subscription!")
+  ipcRenderer.send('open-followers', 'file://' + __dirname + '/login.html')
 }
 
 function getLinks() {

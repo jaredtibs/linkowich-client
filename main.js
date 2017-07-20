@@ -7,8 +7,12 @@ const assetsDirectory = path.join(__dirname, '/app/assets');
 
 require('electron-debug')();
 
+//if logged out, login window displays, otherwise tray
 let tray
-let window
+let loginWindow
+//let prefsWindow
+let mainWindow
+let followersWindow
 
 // Don't show the app in the doc
 app.dock.hide()
@@ -18,7 +22,8 @@ app.dock.hide()
 // Some APIs can only be used after this event occurs.
 app.on('ready', () => {
   createTray()
-  createWindow()
+  createMainWindow()
+  createFollowersWindow()
 })
 
 // Quit when all windows are closed.
@@ -30,8 +35,15 @@ app.on('window-all-closed', () => {
   }
 })
 
-function createWindow () {
-  window = new BrowserWindow({
+// followersWindow has an onclose listener that preventsDefault
+// and only hides the window, this ensures it closes
+app.on('before-quit', () => {
+    followersWindow.removeAllListeners('close');
+    followersWindow.close();
+});
+
+function createMainWindow() {
+  mainWindow = new BrowserWindow({
     width: 300,
     height: 450,
     show: false,
@@ -45,13 +57,36 @@ function createWindow () {
       backgroundThrottling: false
     }
   })
-  window.loadURL(`file://${path.join(__dirname, 'app/index.html')}`)
+  mainWindow.loadURL(`file://${path.join(__dirname, 'app/index.html')}`)
 
   // Hide the window when it loses focus
-  window.on('blur', () => {
-    if (!window.webContents.isDevToolsOpened()) {
-      window.hide()
+  mainWindow.on('blur', () => {
+    if (!mainWindow.webContents.isDevToolsOpened()) {
+      mainWindow.hide()
     }
+  })
+}
+
+function createFollowersWindow() {
+  followersWindow = new BrowserWindow({
+    width: 200,
+    height: 200,
+    show: false,
+    frame: true,
+    fullscreenable: false,
+    resizable: false,
+    webPreferences: {
+      // Prevents renderer process code from not running when window is
+      // hidden
+      backgroundThrottling: false
+    }
+  })
+  followersWindow.loadURL(`file://${path.join(__dirname, 'app/followers.html')}`)
+
+  //dont destroy the window when they exit out so they can reopen
+  followersWindow.on('close', function (event) {
+    followersWindow.hide();
+    event.preventDefault();
   })
 }
 
@@ -63,17 +98,17 @@ function createTray() {
     toggleWindow()
 
     // Show devtools when command clicked
-    if (window.isVisible() && process.defaultApp && event.metaKey) {
-      window.openDevTools({mode: 'detach'})
+    if (mainWindow.isVisible() && process.defaultApp && event.metaKey) {
+      mainWindow.openDevTools({mode: 'detach'})
     }
   })
 }
 
 function toggleWindow() {
-  if (window.isVisible()) {
-    window.hide()
+  if (mainWindow.isVisible()) {
+    mainWindow.hide()
   } else {
-    showWindow()
+    showMainWindow()
   }
 }
 
@@ -81,16 +116,20 @@ function toggleTrayIcon() {
   tray.setImage(path.join(assetsDirectory, 'tmp_icon.png'))
 }
 
-function showWindow() {
+function showMainWindow() {
   const position = getWindowPosition()
-  window.setPosition(position.x, position.y, false)
-  window.show()
-  window.focus()
+  mainWindow.setPosition(position.x, position.y, false)
+  mainWindow.show()
+  mainWindow.focus()
   toggleTrayIcon()
 }
 
+function showFollowersWindow() {
+  followersWindow.show()
+}
+
 function getWindowPosition () {
-  const windowBounds = window.getBounds()
+  const windowBounds = mainWindow.getBounds()
   const trayBounds = tray.getBounds()
 
   // Center window horizontally below the tray icon
@@ -103,8 +142,13 @@ function getWindowPosition () {
 }
 
 ipcMain.on('show-window', () => {
-  showWindow()
+  showMainWindow()
 })
+
+ipcMain.on('open-followers', (event, arg) => {
+  //open a new window containing follow/unfollow functionality
+  showFollowersWindow()
+});
 
 ipcMain.on('links-updated', (event, links) => {
   tray.setImage(path.join(assetsDirectory, 'unreadLinkIcon.png'))
