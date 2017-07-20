@@ -33,7 +33,7 @@ app.on('window-all-closed', () => {
 function createWindow () {
   window = new BrowserWindow({
     width: 300,
-    height: 450,
+    height: 500,
     show: false,
     frame: false,
     fullscreenable: false,
@@ -104,6 +104,10 @@ function getWindowPosition () {
 
 ipcMain.on('show-window', () => {
   showWindow()
+})
+
+ipcMain.on('show-followers', () => {
+  window.loadURL(`file://${path.join(__dirname, 'app/followers.html')}`)
 })
 
 ipcMain.on('links-updated', (event, links) => {
