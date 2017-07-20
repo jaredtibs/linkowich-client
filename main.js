@@ -35,6 +35,13 @@ app.on('window-all-closed', () => {
   }
 })
 
+// followersWindow has an onclose listener that preventsDefault
+// and only hides the window, this ensures it closes
+app.on('before-quit', () => {
+    followersWindow.removeAllListeners('close');
+    followersWindow.close();
+});
+
 function createMainWindow() {
   mainWindow = new BrowserWindow({
     width: 300,
