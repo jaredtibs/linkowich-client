@@ -20,8 +20,12 @@ function addSubscription() {
 
 function getLinks() {
   return fetch('http://localhost:3001/api/v1/links')
-    .then((response) => {
-      return response.json()
+    .then(response => {
+      return response.json().then(json => {
+        return response.ok ? json : Promise.reject(json)
+    }).catch(err => {
+      updateErrorStateView()
+    })
   })
 }
 
@@ -30,7 +34,9 @@ function updateLinks() {
     ipcRenderer.send('links-updated', links['data'])
     updateView(links['data'])
     //sendNotification(links)
-  })
+  }).catch(err => {
+    updateErrorStateView()
+  });
 }
 
 function updateView(links) {
@@ -43,11 +49,12 @@ function updateView(links) {
   })
 
   container.innerHTML = html
-  /*
-    if (link.attributes.seen == false) {
-      container.insertAdjacentHTML("afterbegin", generateLinkHtml(link));
-    }
-  */
+}
+
+function updateErrorStateView() {
+  let container = document.getElementById('links-container')
+  let html = "<div><p> oops something went wrong </p></div>"
+  container.innerHTML = html
 }
 
 function generateLinkHtml(link) {
