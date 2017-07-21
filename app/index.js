@@ -19,7 +19,7 @@ function addSubscription() {
 }
 
 function getLinks() {
-  return fetch('http://localhost:3001/api/v1/links')
+  return fetch('http://localhost:3000/api/v1/links')
     .then(response => {
       return response.json().then(json => {
         return response.ok ? json : Promise.reject(json)
@@ -31,9 +31,12 @@ function getLinks() {
 
 function updateLinks() {
   getLinks().then((links) => {
-    ipcRenderer.send('links-updated', links['data'])
-    updateView(links['data'])
-    //sendNotification(links)
+    if (links.meta.count === 0) {
+      updateEmptyStateView()
+    } else {
+      ipcRenderer.send('links-updated', links.data)
+      updateView(links.data)
+    }
   }).catch(err => {
     updateErrorStateView()
   });
@@ -53,7 +56,14 @@ function updateView(links) {
 
 function updateErrorStateView() {
   let container = document.getElementById('links-container')
-  let html = "<div><p> oops something went wrong </p></div>"
+  let html = "<div class='padded-horizontally emptyContainer'><p> oops something went wrong </p></div>"
+  container.innerHTML = html
+}
+
+function updateEmptyStateView() {
+  document.querySelector('.js-summary').textContent = "Your Subscriptions"
+  let container = document.getElementById('links-container')
+  let html = "<div class='padded-horizontally emptyContainer'>Follow your friends and their links will appear here</div>"
   container.innerHTML = html
 }
 

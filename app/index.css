@@ -56,6 +56,13 @@
   margin-top: 16px;
 }
 
+.emptyContainer {
+  font-size: var(--font-size);
+  font-weight: 300;
+  text-align:center;
+  margin-top: 100px;
+}
+
 .username {
 }
 
