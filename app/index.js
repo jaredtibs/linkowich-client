@@ -1,4 +1,7 @@
 const {ipcRenderer, shell} = require('electron')
+const Store = require('electron-store');
+const store = new Store();
+const auth_token = store.get('auth_token')
 
 document.addEventListener('click', (event) => {
   if (event.target.href) {
@@ -19,8 +22,9 @@ function addSubscription() {
 }
 
 function getLinks() {
-  return fetch('http://localhost:3000/api/v1/links')
-    .then(response => {
+  return fetch('http://localhost:3000/api/v1/links', {
+    headers: apiRequestHeaders()
+  }).then(response => {
       return response.json().then(json => {
         return response.ok ? json : Promise.reject(json)
     }).catch(err => {
@@ -40,6 +44,14 @@ function updateLinks() {
   }).catch(err => {
     updateErrorStateView()
   });
+}
+
+function apiRequestHeaders() {
+  return({
+    'Accept': 'application/json',
+    'Content-Type': 'application/json',
+    'Authorization': 'Token ' + auth_token
+  })
 }
 
 function updateView(links) {
