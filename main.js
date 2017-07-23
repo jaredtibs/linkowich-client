@@ -5,6 +5,9 @@ const path = require('path')
 const url = require('url')
 const assetsDirectory = path.join(__dirname, '/app/assets');
 
+const Store = require('electron-store');
+const store = new Store();
+
 require('electron-debug')();
 
 let tray
@@ -45,7 +48,12 @@ function createWindow () {
       backgroundThrottling: false
     }
   })
-  window.loadURL(`file://${path.join(__dirname, 'app/index.html')}`)
+
+  if (store.get('auth_token')) {
+    window.loadURL(`file://${path.join(__dirname, 'app/index.html')}`)
+  } else {
+    window.loadURL(`file://${path.join(__dirname, 'app/login.html')}`)
+  }
 
   // Hide the window when it loses focus
   window.on('blur', () => {
@@ -112,4 +120,9 @@ ipcMain.on('show-followers', () => {
 
 ipcMain.on('links-updated', (event, links) => {
   tray.setImage(path.join(assetsDirectory, 'unreadLinkIcon.png'))
+})
+
+ipcMain.on('login-success', (event, sessionData) => {
+  store.set('auth_token', sessionData['token']);
+  window.loadURL(`file://${path.join(__dirname, 'app/index.html')}`)
 })
