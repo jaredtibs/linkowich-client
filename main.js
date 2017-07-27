@@ -9,6 +9,9 @@ const Store = require('electron-store');
 const store = new Store();
 
 require('electron-debug')();
+require('electron-reload')(__dirname, {
+  electron: require('${__dirname}/../../node_modules/electron')
+})
 
 let tray
 let window
@@ -49,11 +52,14 @@ function createWindow () {
     }
   })
 
-  if (store.get('auth_token')) {
-    window.loadURL(`file://${path.join(__dirname, 'app/index.html')}`)
-  } else {
-    window.loadURL(`file://${path.join(__dirname, 'app/login.html')}`)
-  }
+  //TODO login logic needs to be moved to react
+  //this now just loads parent
+  //if (store.get('auth_token')) {
+  //window.loadURL(`file://${path.join(__dirname, 'app/index.html')}`)
+  //} else {
+  // window.loadURL(`file://${path.join(__dirname, 'app/login.html')}`)
+  //}
+  window.loadURL(`file://${path.join(__dirname, '/index.html')}`)
 
   // Hide the window when it loses focus
   window.on('blur', () => {
