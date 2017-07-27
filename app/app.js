@@ -1,11 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// Search component created as a class
-class App extends React.Component {
 
+class App extends React.Component {
     render() {
         return (
-          <div> the app content! </div>
+          <div>
+            <div className="header-arrow"></div>
+            <div className="window">
+              <h1> hello </h1>
+            </div>
+          </div>
         );
     }
 }
