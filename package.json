@@ -18,11 +18,13 @@
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-redux": "^5.0.5",
+    "react-router": "^4.1.2",
+    "react-router-dom": "^4.1.2",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0"
   },
   "scripts": {
     "start": "./node_modules/.bin/electron .",
-    "watch": "watchify app/app.js -t babelify -o public/js/bundle.js --debug --verbose"
+    "watch": "watchify app/root.js -t babelify -o public/js/bundle.js --debug --verbose"
   }
 }

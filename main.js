@@ -52,13 +52,6 @@ function createWindow () {
     }
   })
 
-  //TODO login logic needs to be moved to react
-  //this now just loads parent
-  //if (store.get('auth_token')) {
-  //window.loadURL(`file://${path.join(__dirname, 'app/index.html')}`)
-  //} else {
-  // window.loadURL(`file://${path.join(__dirname, 'app/login.html')}`)
-  //}
   window.loadURL(`file://${path.join(__dirname, '/index.html')}`)
 
   // Hide the window when it loses focus
