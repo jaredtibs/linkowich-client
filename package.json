@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "main": "main.js",
   "devDependencies": {
+    "babel-plugin-transform-es2015-destructuring": "^6.23.0",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "devtron": "^1.4.0",
     "electron": "^1.6.11",
     "watchify": "^3.9.0"
