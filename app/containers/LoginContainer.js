@@ -12,10 +12,9 @@ class LoginContainer extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const { user, feed} = state;
+  const { user } = state;
   return {
-    user,
-    feed
+    user
   }
 };
 

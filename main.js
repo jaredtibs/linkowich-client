@@ -122,6 +122,5 @@ ipcMain.on('links-updated', (event, links) => {
 })
 
 ipcMain.on('login-success', (event, sessionData) => {
-  store.set('auth_token', sessionData['token']);
   window.loadURL(`file://${path.join(__dirname, 'app/index.html')}`)
 })
