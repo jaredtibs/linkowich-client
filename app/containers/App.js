@@ -17,7 +17,17 @@ class App extends Component {
   render() {
     return(
       <Router>
-        <Route path='/' component={FeedContainer} />
+        <Switch>
+          <Route exact path="/" render={() => (
+            false ? (
+              <Redirect to="/feed"/>
+            ) : (
+              <Redirect to="/login"/>
+            )
+          )}/>
+          <Route path='/login' component={LoginContainer} />
+          <Route path='/feed' component={FeedContainer} />
+        </Switch>
       </Router>
     )
   }
