@@ -5,9 +5,19 @@ import Footer from './Footer'
 class Login extends Component {
   constructor(props) {
     super(props)
+
+    this.state = {
+      email: '',
+      password: ''
+    }
+  }
+
+  handleChange(e) {
+    this.setState({[e.target.name]: e.target.value});
   }
 
   render() {
+    console.log(this.state)
     return(
       <div>
         <div className="header-arrow"></div>
@@ -15,14 +25,26 @@ class Login extends Component {
           <Header />
           <div className="window-content">
             <div className="pane">
-              <form>
+              <form onSubmit={this.handleSubmit}>
                 <div className="form-group">
                   <label>Email address</label>
-                  <input type="email" id="email" className="form-control" placeholder="Email" />
+                  <input type="email"
+                    name="email"
+                    className="form-control"
+                    placeholder="email"
+                    value={this.state.email}
+                    onChange={this.handleChange.bind(this)}
+                  />
                 </div>
                 <div className="form-group">
                   <label>Password</label>
-                  <input type="password" id="password" className="form-control" placeholder="Password" />
+                  <input type="password"
+                    name="password"
+                    className="form-control"
+                    placeholder="Password"
+                    value={this.state.password}
+                    onChange={this.handleChange.bind(this)}
+                  />
                 </div>
                 <div className="form-actions">
                   <button type="submit" className="btn btn-form btn-primary">OK</button>
