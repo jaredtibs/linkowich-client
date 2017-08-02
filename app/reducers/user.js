@@ -2,7 +2,8 @@ const initialState = {
   loggedIn: false,
   username: '',
   email: '',
-  avatar: null
+  avatar: null,
+  errors: {}
 };
 
 export default function user(state=initialState, action) {
@@ -18,6 +19,11 @@ export default function user(state=initialState, action) {
       };
     case 'LOGGED_OUT':
       return initialState;
+    case 'LOGIN_ERROR':
+      return {
+        ...state,
+        errors: action.errors
+      };
     case 'LOADING':
       return {
         ...state,

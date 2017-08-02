@@ -12,12 +12,19 @@ class Login extends Component {
     }
   }
 
-  handleChange(e) {
-    this.setState({[e.target.name]: e.target.value});
+  handleChange(event) {
+    this.setState({[event.target.name]: event.target.value});
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    this.props.requestLogin(
+      this.state.email,
+      this.state.password
+    )
   }
 
   render() {
-    console.log(this.state)
     return(
       <div>
         <div className="header-arrow"></div>
@@ -25,7 +32,7 @@ class Login extends Component {
           <Header />
           <div className="window-content">
             <div className="pane">
-              <form onSubmit={this.handleSubmit}>
+              <form onSubmit={this.handleSubmit.bind(this)}>
                 <div className="form-group">
                   <label>Email address</label>
                   <input type="email"

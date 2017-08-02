@@ -1,4 +1,4 @@
-export function requestLogin (username, password) {
+export function requestLogin (email, password) {
   return dispatch => {
     dispatch(loading());
     return fetch("http://localhost:3000/api/v1/sessions", {
@@ -8,7 +8,7 @@ export function requestLogin (username, password) {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        username: username,
+        email: email,
         password: password
       })
     })
@@ -37,6 +37,13 @@ export function receiveSession(sessionData) {
   return {
     type: "LOGGED_IN",
     data: sessionData.user.data.attributes
+  }
+}
+
+export function handleError(errors) {
+  return {
+    type: "LOGIN_ERROR",
+    errors: errors
   }
 }
 
