@@ -3,7 +3,7 @@ import {
   Redirect,
   HashRouter as Router,
   Route,
-  Switch,
+  Switch
 } from 'react-router-dom';
 
 import FeedContainer from './FeedContainer'
@@ -14,12 +14,24 @@ class App extends Component {
     super(props)
   }
 
+  componentDidMount() {
+    //localStorage.removeItem('userToken')
+  }
+
+  authenticated() {
+    if (localStorage.getItem('userToken') !== null){
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   render() {
     return(
       <Router>
         <Switch>
           <Route exact path="/" render={() => (
-            false ? (
+            this.authenticated() ? (
               <Redirect to="/feed"/>
             ) : (
               <Redirect to="/login"/>
