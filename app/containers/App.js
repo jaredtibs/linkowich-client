@@ -5,7 +5,7 @@ import {
   Switch
 } from 'react-router-dom';
 import { ConnectedRouter } from 'react-router-redux';
-import {history} from '../store/configure_store';
+import { history } from '../store/configure_store';
 
 import FeedContainer from './FeedContainer'
 import LoginContainer from './LoginContainer'
@@ -16,7 +16,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    //localStorage.removeItem('userToken')
+    // localStorage.removeItem('userToken')
   }
 
   authenticated() {

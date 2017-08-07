@@ -1,5 +1,4 @@
-import { routeActions } from 'react-router-redux'
-
+import { push } from 'react-router-redux';
 export function requestLogin (email, password) {
   return dispatch => {
     dispatch(loading());
@@ -29,7 +28,7 @@ export function requestLogin (email, password) {
 export function finishLogin(sessionData) {
   return dispatch => {
     dispatch(receiveSession(sessionData));
-    dispatch(routeActions.push("/feed"));
+    dispatch(push("/feed"));
   }
 }
 
