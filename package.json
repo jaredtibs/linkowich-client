@@ -27,6 +27,6 @@
   },
   "scripts": {
     "start": "./node_modules/.bin/electron .",
-    "watch": "watchify app/root.js -t babelify -o public/js/bundle.js --debug --verbose"
+    "watch": "watchify app/index.js -t babelify -o public/js/bundle.js --debug --verbose"
   }
 }
