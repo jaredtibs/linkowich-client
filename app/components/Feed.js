@@ -21,9 +21,10 @@ class Feed extends Component {
   }
 
   renderLinks(links) {
-    let linkList = links.map(function(link){
-      return <Link data={link} />
+    let linkList = links.map(function(link, i){
+      return <Link data={link} key={i} />
     })
+
     return(
       <div> {linkList} </div>
     )
