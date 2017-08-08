@@ -1,5 +1,5 @@
 const initialState = {
-  loggedIn: false,
+  isLoggedIn: false,
   username: '',
   email: '',
   avatar: null,
@@ -24,10 +24,18 @@ export default function user(state=initialState, action) {
         ...state,
         errors: action.errors
       };
-    case 'LOADING':
+    case 'LOGIN_LOADING':
       return {
         ...state,
         loading: true
+      };
+    case 'SESSION_FETCHED':
+      return {
+        ...state,
+        username: action.data.username,
+        email: action.data.email,
+        avatar: action.data.avatar.url,
+        isLoggedIn: true
       };
     default:
       return state;

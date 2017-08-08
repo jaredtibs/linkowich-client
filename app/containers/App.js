@@ -1,13 +1,17 @@
 import React, { Component, PropTypes } from 'react';
 import {
   Redirect,
-  HashRouter as Router,
   Route,
   Switch
 } from 'react-router-dom';
+import { ConnectedRouter } from 'react-router-redux';
+import configureStore, { history } from '../store/configure_store';
+const store = configureStore();
 
-import FeedContainer from './FeedContainer'
-import LoginContainer from './LoginContainer'
+import { fetchUserSession } from '../actions/user';
+
+import FeedContainer from './FeedContainer';
+import LoginContainer from './LoginContainer';
 
 class App extends Component {
   constructor(props) {
@@ -15,11 +19,13 @@ class App extends Component {
   }
 
   componentDidMount() {
-    //localStorage.removeItem('userToken')
+    // localStorage.removeItem('userToken')
   }
 
   authenticated() {
-    if (localStorage.getItem('userToken') !== null){
+    let token = localStorage.getItem('userToken');
+    if (token !== null){
+      store.dispatch(fetchUserSession(token))
       return true;
     } else {
       return false;
@@ -28,11 +34,11 @@ class App extends Component {
 
   render() {
     return(
-      <Router>
+      <ConnectedRouter history={history}>
         <Switch>
           <Route exact path="/" render={() => (
             this.authenticated() ? (
-              <Redirect to="/feed"/>
+              <Redirect to="/feed" />
             ) : (
               <Redirect to="/login"/>
             )
@@ -40,7 +46,7 @@ class App extends Component {
           <Route path='/login' component={LoginContainer} />
           <Route path='/feed' component={FeedContainer} />
         </Switch>
-      </Router>
+      </ConnectedRouter>
     )
   }
 }
