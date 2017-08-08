@@ -13,11 +13,7 @@ class FeedContainer extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const { user, feed} = state;
-  return {
-    user,
-    feed
-  }
+  return state
 };
 
 const mapDispatchToProps = (dispatch) => {

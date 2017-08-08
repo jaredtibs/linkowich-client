@@ -1,4 +1,5 @@
 import { push } from 'react-router-redux';
+
 export function requestLogin (email, password) {
   return dispatch => {
     dispatch(loading());
@@ -50,19 +51,7 @@ export function handleError(errors) {
 
 export function loading() {
   return {
-    type: "LOADING"
-  }
-}
-
-export function checkUserSession() {
-  return dispatch => {
-    let token = localStorage.getItem('userToken');
-    if (token) {
-      dispatch(fetchUserSession(token));
-      //Actions.main({type: 'reset'});
-    } else {
-      //Actions.landing({type: 'reset'});
-    }
+    type: "LOGIN_LOADING"
   }
 }
 

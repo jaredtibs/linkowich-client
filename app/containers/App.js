@@ -5,10 +5,13 @@ import {
   Switch
 } from 'react-router-dom';
 import { ConnectedRouter } from 'react-router-redux';
-import { history } from '../store/configure_store';
+import configureStore, { history } from '../store/configure_store';
+const store = configureStore();
 
-import FeedContainer from './FeedContainer'
-import LoginContainer from './LoginContainer'
+import { fetchUserSession } from '../actions/user';
+
+import FeedContainer from './FeedContainer';
+import LoginContainer from './LoginContainer';
 
 class App extends Component {
   constructor(props) {
@@ -20,7 +23,9 @@ class App extends Component {
   }
 
   authenticated() {
-    if (localStorage.getItem('userToken') !== null){
+    let token = localStorage.getItem('userToken');
+    if (token !== null){
+      store.dispatch(fetchUserSession(token))
       return true;
     } else {
       return false;
@@ -33,7 +38,7 @@ class App extends Component {
         <Switch>
           <Route exact path="/" render={() => (
             this.authenticated() ? (
-              <Redirect to="/feed"/>
+              <Redirect to="/feed" />
             ) : (
               <Redirect to="/login"/>
             )

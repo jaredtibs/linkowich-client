@@ -4,7 +4,7 @@ const initialState = {
   isFetching: false
 };
 
-export default function user(state=initialState, action) {
+export default function feed(state=initialState, action) {
   switch (action.type) {
     case 'LINKS_FETCHED':
       return {
