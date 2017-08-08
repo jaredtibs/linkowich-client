@@ -15,7 +15,7 @@ export default function user(state=initialState, action) {
         email: action.data.email,
         avatar: action.data.avatar.url,
         loading: false,
-        isLoggedIn: true
+        loggedIn: true
       };
     case 'LOGGED_OUT':
       return initialState;
@@ -28,6 +28,12 @@ export default function user(state=initialState, action) {
       return {
         ...state,
         loading: true
+      };
+    case 'SESSION_FETCHED':
+      return {
+        ...state,
+        loggedIn: true,
+        email: action.data.email
       };
     default:
       return state;

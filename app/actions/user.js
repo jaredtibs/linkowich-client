@@ -53,20 +53,9 @@ export function loading() {
   }
 }
 
-export function checkUserSession() {
+export function fetchUserSession() {
   return dispatch => {
     let token = localStorage.getItem('userToken');
-    if (token) {
-      dispatch(fetchUserSession(token));
-      //Actions.main({type: 'reset'});
-    } else {
-      //Actions.landing({type: 'reset'});
-    }
-  }
-}
-
-export function fetchUserSession(token) {
-  return dispatch => {
     return fetch("http://localhost:3000/api/v1/sessions", {
       method: "GET",
       headers: {

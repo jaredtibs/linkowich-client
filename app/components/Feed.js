@@ -10,6 +10,7 @@ class Feed extends Component {
 
   componentDidMount() {
     this.props.fetchLinks();
+    this.props.fetchUserSession();
   }
 
   renderLoadingState() {
@@ -21,8 +22,8 @@ class Feed extends Component {
   }
 
   renderLinks(links) {
-    let linkList = links.map(function(link){
-      return <Link data={link} />
+    let linkList = links.map(function(link, i){
+      return <Link data={link} key={i} />
     })
     return(
       <div> {linkList} </div>
@@ -31,6 +32,7 @@ class Feed extends Component {
 
   render() {
     const { links, isFetching } = this.props.feed
+    console.log(this.props.user)
 
     return(
       <div>
