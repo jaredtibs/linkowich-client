@@ -1,3 +1,4 @@
+const { shell } = window.require('electron');
 import React, { Component, PropTypes } from 'react';
 
 class Link extends Component {
@@ -17,7 +18,9 @@ class Link extends Component {
         />
         <div className='username'> {user.username} </div>
         <div className='link-container'>
-          <a href={link.url}> {link.attributes.url} </a>
+          <a href="#" onClick={() => this.props.onClick(link)}>
+            {link.attributes.url}
+          </a>
         </div>
       </div>
     )

@@ -1,3 +1,5 @@
+const { shell } = window.require('electron');
+
 import React, { Component, PropTypes } from 'react';
 import Link from './Link'
 import Header from './Header'
@@ -12,6 +14,10 @@ class Feed extends Component {
     this.props.fetchLinks();
   }
 
+  handleLinkClick(link) {
+    shell.openExternal(link.attributes.url);
+  }
+
   renderLoadingState() {
     return(
       <div className="summary js-summary">
@@ -21,9 +27,12 @@ class Feed extends Component {
   }
 
   renderLinks(links) {
-    let linkList = links.map(function(link, i){
-      return <Link data={link} key={i} />
-    })
+    let onClick = this.handleLinkClick.bind(this);
+
+    let linkList = links.map(function(link, i) {
+      return <Link key={i} data={link} onClick={onClick} />
+    });
+
     return(
       <div> {linkList} </div>
     )
