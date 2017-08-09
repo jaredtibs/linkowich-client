@@ -2,10 +2,10 @@ import React, { Component, PropTypes } from 'react'
 import { Provider } from 'react-redux'
 import {
   Redirect,
-  HashRouter as Router,
   Route,
   Switch
 } from 'react-router-dom';
+import { ConnectedRouter } from 'react-router-redux';
 
 import App from './App'
 import FeedContainer from './FeedContainer'
@@ -32,7 +32,7 @@ class Root extends Component {
   render() {
     return(
       <Provider store={this.props.store}>
-        <Router>
+        <ConnectedRouter history={this.props.history}>
 
           <App>
             <Switch>
@@ -48,7 +48,7 @@ class Root extends Component {
             </Switch>
           </App>
 
-        </Router>
+        </ConnectedRouter>
       </Provider>
     )
   }
