@@ -10,7 +10,6 @@ class Feed extends Component {
 
   componentDidMount() {
     this.props.fetchLinks();
-    this.props.fetchUserSession();
   }
 
   renderLoadingState() {
