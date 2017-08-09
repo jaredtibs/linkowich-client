@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 
 import Feed from '../components/Feed';
 import {fetchLinks} from '../actions/feed';
-import {fetchUserSession} from '../actions/user';
 
 class FeedContainer extends Component {
   render() {
@@ -25,10 +24,6 @@ const mapDispatchToProps = (dispatch) => {
   return {
     fetchLinks: () => {
       dispatch(fetchLinks())
-    },
-
-    fetchUserSession: () => {
-      dispatch(fetchUserSession())
     }
   }
 };

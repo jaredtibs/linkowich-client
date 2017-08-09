@@ -2,11 +2,12 @@ import React, { Component, PropTypes } from 'react'
 import { Provider } from 'react-redux'
 import {
   Redirect,
-  HashRouter as Router,
   Route,
   Switch
 } from 'react-router-dom';
+import { ConnectedRouter } from 'react-router-redux';
 
+import {fetchUserSession} from '../actions/user';
 import App from './App'
 import FeedContainer from './FeedContainer'
 import LoginContainer from './LoginContainer'
@@ -21,8 +22,11 @@ class Root extends Component {
   }
 
   authenticated() {
-    let token = localStorage.getItem('userToken')
+    let token = localStorage.getItem('userToken');
+    let store = this.props.store;
+
     if (token !== null){
+      store.dispatch(fetchUserSession());
       return true;
     } else {
       return false;
@@ -32,7 +36,7 @@ class Root extends Component {
   render() {
     return(
       <Provider store={this.props.store}>
-        <Router>
+        <ConnectedRouter history={this.props.history}>
 
           <App>
             <Switch>
@@ -48,7 +52,7 @@ class Root extends Component {
             </Switch>
           </App>
 
-        </Router>
+        </ConnectedRouter>
       </Provider>
     )
   }
