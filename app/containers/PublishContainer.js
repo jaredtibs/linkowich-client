@@ -1,6 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import {connect} from 'react-redux';
 import Publish from '../components/Publish';
+import {publishLink} from '../actions/feed';
+
 
 class PublishContainer extends Component {
   render() {
@@ -20,6 +22,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    publishLink: (url) => {
+      dispatch(publishLink(url))
+    }
   }
 };
 

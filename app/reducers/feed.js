@@ -1,6 +1,7 @@
 const initialState = {
+  userLink: [],
   links: [],
-  linkPublishing: false,
+  isPublishing: false,
   isFetching: false
 };
 
@@ -16,6 +17,17 @@ export default function feed(state=initialState, action) {
       return {
         ...state,
         isFetching: true
+      }
+    case 'LINK_PUBLISHING':
+      return {
+        ...state,
+        isPublishing: true
+      }
+    case 'LINK_PUBLISHED':
+      return {
+        ...state,
+        isPublishing: false,
+        userLink: action.data
       }
     default:
       return state;
