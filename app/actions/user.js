@@ -29,7 +29,7 @@ export function requestLogin (email, password) {
 export function finishLogin(sessionData) {
   return dispatch => {
     dispatch(receiveSession(sessionData));
-    dispatch(push("/feed"));
+    dispatch(push("/home"));
   }
 }
 

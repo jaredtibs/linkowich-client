@@ -8,6 +8,7 @@ class Publish extends Component {
   render() {
     return(
       <div>
+        <p> this is where you publish </p>
       </div>
     )
   }

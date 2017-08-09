@@ -40,10 +40,8 @@ class Feed extends Component {
     const { links, isFetching } = this.props.feed
 
     return(
-      <div className="window-content">
-        <div className="pane">
-          { isFetching ? this.renderLoadingState() : this.renderLinks(links) }
-        </div>
+      <div>
+        { isFetching ? this.renderLoadingState() : this.renderLinks(links) }
       </div>
     )
   }

@@ -9,7 +9,7 @@ import { ConnectedRouter } from 'react-router-redux';
 
 import {fetchUserSession} from '../actions/user';
 import App from './App'
-import FeedContainer from './FeedContainer'
+import HomeContainer from './HomeContainer'
 import LoginContainer from './LoginContainer'
 
 class Root extends Component {
@@ -42,13 +42,13 @@ class Root extends Component {
             <Switch>
               <Route exact path="/" render={() => (
                 this.authenticated() ? (
-                  <Redirect to="/feed"/>
+                  <Redirect to="/home"/>
                 ) : (
                   <Redirect to="/login"/>
                 )
               )}/>
               <Route path='/login' component={LoginContainer} />
-              <Route path='/feed' component={FeedContainer} />
+              <Route path='/home'  component={HomeContainer} />
             </Switch>
           </App>
 
