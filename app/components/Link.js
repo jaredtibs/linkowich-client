@@ -9,6 +9,7 @@ class Link extends Component {
   render() {
     const link = this.props.data
     const user = link.attributes.user.data.attributes
+
     return(
       <div className='link-row padded-horizontally'>
         <img className='img-circle media-object pull-left'
@@ -17,7 +18,7 @@ class Link extends Component {
         />
         <div className='username'> {user.username} </div>
         <div className='link-container'>
-          <a href="#" onClick={this.props.handleClick()}>
+          <a href="#" onClick={() => this.props.onClick(link)}>
             {link.attributes.url}
           </a>
         </div>
