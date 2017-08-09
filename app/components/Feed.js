@@ -2,8 +2,6 @@ const { shell } = window.require('electron');
 
 import React, { Component, PropTypes } from 'react';
 import Link from './Link'
-import Header from './Header'
-import Footer from './Footer'
 
 class Feed extends Component {
   constructor(props) {
@@ -42,18 +40,9 @@ class Feed extends Component {
     const { links, isFetching } = this.props.feed
 
     return(
-      <div>
-        <div className="header-arrow"></div>
-        <div className="window">
-          <Header />
-
-          <div className="window-content">
-            <div className="pane">
-              { isFetching ? this.renderLoadingState() : this.renderLinks(links) }
-            </div>
-          </div>
-
-          <Footer />
+      <div className="window-content">
+        <div className="pane">
+          { isFetching ? this.renderLoadingState() : this.renderLinks(links) }
         </div>
       </div>
     )
