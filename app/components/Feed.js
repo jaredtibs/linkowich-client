@@ -12,6 +12,12 @@ class Feed extends Component {
     this.props.fetchLinks();
   }
 
+  handleClick(url) {
+    //let link = this.props.data
+    //shell.openExternal(link.attributes.url);
+    console.log(url)
+  }
+
   renderLoadingState() {
     return(
       <div className="summary js-summary">
@@ -22,8 +28,13 @@ class Feed extends Component {
 
   renderLinks(links) {
     let linkList = links.map(function(link, i){
-      return <Link data={link} key={i} />
-    })
+      return <Link
+                data={link}
+                key={i}
+                handleClick={() => this.handleClick(link.attributes.url)}
+              />
+    }.bind(this))
+
     return(
       <div> {linkList} </div>
     )
