@@ -1,8 +1,7 @@
 const initialState = {
-  userLink: [],
   links: [],
-  isPublishing: false,
-  isFetching: false
+  isFetching: false,
+  linkCount: 0
 };
 
 export default function feed(state=initialState, action) {
@@ -11,23 +10,13 @@ export default function feed(state=initialState, action) {
       return {
         ...state,
         isFetching: false,
-        links: action.data
+        links: action.links.data,
+        linkCount: action.links.meta.count
       }
     case 'FETCHING_LINKS':
       return {
         ...state,
         isFetching: true
-      }
-    case 'LINK_PUBLISHING':
-      return {
-        ...state,
-        isPublishing: true
-      }
-    case 'LINK_PUBLISHED':
-      return {
-        ...state,
-        isPublishing: false,
-        userLink: action.data
       }
     default:
       return state;

@@ -1,13 +1,12 @@
 import React, { Component, PropTypes } from 'react';
 import {connect} from 'react-redux';
-import Publish from '../components/Publish';
-import {publishLink} from '../actions/feed';
+import Share from '../components/Share';
+import {publishLink, fetchCurrentLink} from '../actions/share';
 
-
-class PublishContainer extends Component {
+class ShareContainer extends Component {
   render() {
     return(
-      <Publish {...this.props} />
+      <Share {...this.props} />
     )
   }
 }
@@ -24,8 +23,12 @@ const mapDispatchToProps = (dispatch) => {
   return {
     publishLink: (url) => {
       dispatch(publishLink(url))
+    },
+
+    fetchCurrentLink: () => {
+      dispatch(fetchCurrentLink())
     }
   }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(PublishContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(ShareContainer);

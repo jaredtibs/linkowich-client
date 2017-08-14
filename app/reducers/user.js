@@ -2,12 +2,32 @@ const initialState = {
   loggedIn: false,
   username: '',
   email: '',
-  avatar: null,
-  errors: {}
+  avatar: '',
+  currentLink: {},
+  publishingLink: false,
+  fetchingLink: false,
+  loginErrors: {},
+  registerErrors: {}
 };
 
 export default function user(state=initialState, action) {
   switch (action.type) {
+    case 'FETCHING_CURRENT_LINK':
+      return {
+        ...state,
+        fetchingLink: true
+      };
+    case 'CURRENT_LINK_FETCHED':
+      return {
+        ...state,
+        fetchingLink: false,
+        currentLink: action.data
+      };
+    case 'LOADING':
+      return {
+        ...state,
+        loading: true
+      };
     case 'LOGGED_IN':
       return {
         ...state,
@@ -22,12 +42,18 @@ export default function user(state=initialState, action) {
     case 'LOGIN_ERROR':
       return {
         ...state,
-        errors: action.errors
+        loginErrors: action.errors
       };
-    case 'LOADING':
+    case 'PUBLISHING_LINK':
       return {
         ...state,
-        loading: true
+        publishingLink: true
+      };
+    case 'LINK_PUBLISHED':
+      return {
+        ...state,
+        linkPublishing: false,
+        currentLink: action.data
       };
     case 'SESSION_FETCHED':
       return {

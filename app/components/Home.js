@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 
-import PublishContainer from '../containers/PublishContainer'
+import ShareContainer from '../containers/ShareContainer'
 import FeedContainer from '../containers/FeedContainer'
 
 
@@ -13,7 +13,7 @@ class Home extends Component {
     return(
       <div className="window-content">
         <div className="pane">
-          <PublishContainer />
+          <ShareContainer />
           <FeedContainer />
         </div>
       </div>

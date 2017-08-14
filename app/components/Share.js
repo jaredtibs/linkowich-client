@@ -1,12 +1,16 @@
 import React, { Component, PropTypes } from 'react';
 
-class Publish extends Component {
+class Share extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
       url: ''
     }
+  }
+
+  componentDidMount() {
+    this.props.fetchCurrentLink();
   }
 
   handleChange(event) {
@@ -18,7 +22,16 @@ class Publish extends Component {
     this.props.publishLink(this.state.url);
   }
 
+  renderLoadingState() {
+    return(
+      <div className="summary">
+        Publishing&hellip;
+      </div>
+    )
+  }
+
   render() {
+    let { publishingLink, currentLink } = this.props.user;
 
     return(
       <div className="publish-container">
@@ -36,9 +49,11 @@ class Publish extends Component {
             <button type="submit" className="btn btn-form btn-primary"> Publish </button>
           </div>
         </form>
+
+        { publishingLink ? this.renderLoadingState() : null }
       </div>
     )
   }
 }
 
-export default Publish
+export default Share

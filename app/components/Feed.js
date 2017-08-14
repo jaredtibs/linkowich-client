@@ -18,7 +18,7 @@ class Feed extends Component {
 
   renderLoadingState() {
     return(
-      <div className="summary js-summary">
+      <div className="summary">
         Loading&hellip;
       </div>
     )
