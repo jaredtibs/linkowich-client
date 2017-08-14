@@ -3,7 +3,7 @@ const initialState = {
   username: '',
   email: '',
   avatar: '',
-  currentLink: {},
+  currentLink: null,
   publishingLink: false,
   fetchingLink: false,
   loginErrors: {},
@@ -52,7 +52,7 @@ export default function user(state=initialState, action) {
     case 'LINK_PUBLISHED':
       return {
         ...state,
-        linkPublishing: false,
+        publishingLink: false,
         currentLink: action.data
       };
     case 'SESSION_FETCHED':

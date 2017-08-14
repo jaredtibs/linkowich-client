@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import Link from './Link'
 
 class Share extends Component {
   constructor(props) {
@@ -19,7 +20,8 @@ class Share extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    this.props.publishLink(this.state.url);
+    this.props.publishLink(this.state.url)
+    this.setState({url: ''})
   }
 
   renderLoadingState() {
@@ -30,16 +32,24 @@ class Share extends Component {
     )
   }
 
+  renderMyLink(link) {
+    return(
+      <div className="my-link">
+        <span> My link </span>
+        <a href="#"> {link.attributes.url}</a>
+      </div>
+    )
+  }
+
   render() {
     let { publishingLink, currentLink } = this.props.user;
 
     return(
-      <div className="publish-container">
+      <div className="share-container">
         <form onSubmit={this.handleSubmit.bind(this)}>
           <div className="form-group">
             <input
               type="url"
-              name="url"
               placeholder="publish a link"
               value={this.state.url}
               onChange={this.handleChange.bind(this)}
@@ -51,6 +61,7 @@ class Share extends Component {
         </form>
 
         { publishingLink ? this.renderLoadingState() : null }
+        { currentLink ? this.renderMyLink(currentLink) : null }
       </div>
     )
   }
