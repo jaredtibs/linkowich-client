@@ -18,7 +18,7 @@ class Feed extends Component {
 
   renderLoadingState() {
     return(
-      <div className="summary js-summary">
+      <div className="summary">
         Loading&hellip;
       </div>
     )
@@ -38,7 +38,6 @@ class Feed extends Component {
 
   render() {
     const { links, isFetching } = this.props.feed
-    console.log(this.props)
 
     return(
       <div>
