@@ -38,6 +38,7 @@ class Feed extends Component {
 
   render() {
     const { links, isFetching } = this.props.feed
+    console.log(this.props)
 
     return(
       <div>
