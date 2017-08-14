@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 
-class Publish extends Component {
+class Share extends Component {
   constructor(props) {
     super(props)
 
@@ -31,9 +31,7 @@ class Publish extends Component {
   }
 
   render() {
-    let { publishingLink } = this.props.user;
-    let { currentLink } = this.props.user
-    console.log(this.props);
+    let { publishingLink, currentLink } = this.props.user;
 
     return(
       <div className="publish-container">
@@ -58,4 +56,4 @@ class Publish extends Component {
   }
 }
 
-export default Publish
+export default Share
