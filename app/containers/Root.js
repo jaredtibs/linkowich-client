@@ -41,14 +41,14 @@ class Root extends Component {
           <App>
             <Switch>
               <Route exact path="/" render={() => (
-                this.authenticated() ? (
+                localStorage.getItem('userToken') ? (
                   <Redirect to="/home"/>
                 ) : (
                   <Redirect to="/login"/>
                 )
               )}/>
-              <Route path='/login' component={LoginContainer} />
-              <Route path='/home'  component={HomeContainer} />
+              <Route path='/login' component={LoginContainer} onEnter={this.authenticated()} />
+              <Route path='/home'  component={HomeContainer} onEnter={this.authenticated()} />
             </Switch>
           </App>
 
