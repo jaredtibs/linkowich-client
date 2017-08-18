@@ -1,4 +1,4 @@
-import { push } from 'react-router-redux';
+import { push, replace } from 'react-router-redux';
 
 export function requestLogin (email, password) {
   return dispatch => {
@@ -46,6 +46,16 @@ export function handleError(errors) {
   return {
     type: "LOGIN_ERROR",
     errors: errors
+  }
+}
+
+export function logout() {
+  return dispatch => {
+    localStorage.removeItem('userToken');
+    dispatch(replace("/login"))
+    return {
+      type: "LOGGED_OUT"
+    }
   }
 }
 

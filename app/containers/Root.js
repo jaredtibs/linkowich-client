@@ -17,10 +17,6 @@ class Root extends Component {
     super(props)
   }
 
-  componentDidMount() {
-    //localStorage.removeItem('userToken')
-  }
-
   authenticated() {
     let token = localStorage.getItem('userToken');
     let store = this.props.store;

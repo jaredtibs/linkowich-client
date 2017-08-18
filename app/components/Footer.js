@@ -9,14 +9,20 @@ class Footer extends Component {
     return(
       <footer className="toolbar toolbar-footer">
         <div className="toolbar-actions pull-left">
-          <button className="btn btn-default js-refresh-action">
-            <span className="icon icon-arrows-ccw js-refresh-action" title="Refresh"></span>
+          <button className="btn btn-default">
+            <span className="icon icon-arrows-ccw" title="Refresh"></span>
+          </button>
+        </div>
+
+        <div className="toolbar-actions pull-left">
+          <button className="btn btn-default" onClick={() => this.props.logout() }>
+            <span> Logout </span>
           </button>
         </div>
 
         <div className="toolbar-actions pull-right">
-          <button className="btn btn-default js-add-subscription-action">
-            <span className="icon icon-user-add js-add-subscription-action" title="Add Subscription"></span>
+          <button className="btn btn-default">
+            <span className="icon icon-user-add" title="Add Subscription"></span>
           </button>
         </div>
       </footer>
