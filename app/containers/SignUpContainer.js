@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import {connect} from 'react-redux';
-import {} from '../actions/user';
+import {register} from '../actions/user';
 import SignUp from '../components/SignUp';
 
 class SignUpContainer extends Component {
@@ -20,6 +20,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    signUp: (email, username, password) => {
+      dispatch(register(email, username, password))
+    }
   }
 };
 

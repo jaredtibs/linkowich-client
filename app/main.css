@@ -18,7 +18,8 @@
 }
 
 .title {
-  padding: 5px
+  padding: 5px;
+  font-weight: bold;
 }
 
 .window {

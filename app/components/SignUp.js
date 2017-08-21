@@ -18,6 +18,9 @@ class SignUp extends Component {
       passwordValidationError: "",
       serverErrorReceived: false
     }
+
+    //TODO remove for real validation
+    this.state.formValid = true;
   }
 
   handleChange(event) {
@@ -28,10 +31,10 @@ class SignUp extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const {email, username, password} = this.state.formData;
+    const {email, username, password} = this.state;
 
     if ((email && username && password) && this.state.formValid) {
-      //this.props.signUp(email, username, password);
+      this.props.signUp(email, username, password);
     }
   }
 
@@ -42,7 +45,7 @@ class SignUp extends Component {
           <h1 className="title">Sign Up</h1>
           <form onSubmit={this.handleSubmit.bind(this)}>
             <div className="form-group">
-              <label>Email</label>
+              <label>Enter your email</label>
               <input type="email"
                 name="email"
                 className="form-control"
@@ -52,7 +55,7 @@ class SignUp extends Component {
               />
             </div>
             <div className="form-group">
-              <label>Username</label>
+              <label>Create a username</label>
               <input type="text"
                 name="username"
                 className="form-control"
@@ -62,7 +65,7 @@ class SignUp extends Component {
               />
             </div>
             <div className="form-group">
-              <label>Password</label>
+              <label>Create a password</label>
               <input type="password"
                 name="password"
                 className="form-control"
@@ -73,8 +76,9 @@ class SignUp extends Component {
             </div>
             <div className="form-actions">
               <button type="submit" className="btn btn-form btn-primary">Sign Up</button>
-              <span> or <Link to="/login">login</Link></span>
             </div>
+            <br />
+            <span>Already have an account? <Link to="/login">login</Link></span>
           </form>
         </div>
       </div>

@@ -59,7 +59,8 @@ export default function user(state=initialState, action) {
       return {
         ...state,
         loggedIn: true,
-        email: action.data.email
+        email: action.data.email,
+        username: action.data.username
       };
     default:
       return state;
