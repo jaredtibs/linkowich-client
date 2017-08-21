@@ -40,3 +40,11 @@
   color: #0074D9;
   cursor: inherit;
 }
+
+.empty-feed-container {
+}
+
+.empty-feed-text {
+  text-align: center;
+  color: grey;
+}
