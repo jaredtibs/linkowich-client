@@ -33,6 +33,40 @@ export function finishLogin(sessionData) {
   }
 }
 
+export function register (email, username, password) {
+  return dispatch => {
+    dispatch(loading());
+    return fetch("http://localhost:3000/api/v1/registrations", {
+      method: "POST",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        email: email,
+        username: username,
+        password: password
+      })
+    })
+    .then((response) => response.json())
+    .then((responseData) => {
+      if (responseData.errors) {
+        dispatch(handleError(responseData.errors))
+      } else {
+        dispatch(finishRegister(responseData))
+      }
+    })
+    .catch(error => console.log(error))
+  }
+}
+
+export function finishRegister(sessionData) {
+  return dispatch => {
+    dispatch(receiveSession(sessionData));
+    dispatch(push("/home"));
+  }
+}
+
 export function receiveSession(sessionData) {
   localStorage.setItem('userToken', sessionData.token);
 

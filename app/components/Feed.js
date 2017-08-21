@@ -24,16 +24,24 @@ class Feed extends Component {
     )
   }
 
-  renderLinks(links) {
+  renderFeedContent(links) {
     let onClick = this.handleLinkClick.bind(this);
 
-    let linkList = links.map(function(link, i) {
-      return <Link key={i} data={link} onClick={onClick} />
-    });
+    if (links.length > 0) {
+      let linkList = links.map(function(link, i) {
+        return <Link key={i} data={link} onClick={onClick} />
+      });
 
-    return(
-      <div> {linkList} </div>
-    )
+      return(
+        <div> {linkList} </div>
+      )
+    } else {
+      return(
+        <div className="empty-feed-container">
+          <div className="empty-feed-text"> follow people and what they share will appear here </div>
+        </div>
+      )
+    }
   }
 
   render() {
@@ -41,7 +49,7 @@ class Feed extends Component {
 
     return(
       <div>
-        { isFetching ? this.renderLoadingState() : this.renderLinks(links) }
+        { isFetching ? this.renderLoadingState() : this.renderFeedContent(links) }
       </div>
     )
   }

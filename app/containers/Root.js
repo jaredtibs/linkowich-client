@@ -11,6 +11,7 @@ import {fetchUserSession} from '../actions/user';
 import App from './App'
 import HomeContainer from './HomeContainer'
 import LoginContainer from './LoginContainer'
+import SignUpContainer from './SignUpContainer'
 
 class Root extends Component {
   constructor(props) {
@@ -40,10 +41,11 @@ class Root extends Component {
                 localStorage.getItem('userToken') ? (
                   <Redirect to="/home"/>
                 ) : (
-                  <Redirect to="/login"/>
+                  <Redirect to="/signup"/>
                 )
               )}/>
-              <Route path='/login' component={LoginContainer} onEnter={this.authenticated()} />
+              <Route path='/signup' component={SignUpContainer} />
+              <Route path='/login' component={LoginContainer} />
               <Route path='/home'  component={HomeContainer} onEnter={this.authenticated()} />
             </Switch>
           </App>

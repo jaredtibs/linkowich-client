@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import Header from './Header'
-import Footer from './Footer'
+import { Link } from 'react-router-dom';
 
 class Login extends Component {
   constructor(props) {
@@ -28,9 +27,10 @@ class Login extends Component {
     return(
       <div className="window-content">
         <div className="pane">
+          <h1 className="title">Login</h1>
           <form onSubmit={this.handleSubmit.bind(this)}>
             <div className="form-group">
-              <label>Email address</label>
+              <label>Email</label>
               <input type="email"
                 name="email"
                 className="form-control"
@@ -50,7 +50,8 @@ class Login extends Component {
               />
             </div>
             <div className="form-actions">
-              <button type="submit" className="btn btn-form btn-primary">OK</button>
+              <button type="submit" className="btn btn-form btn-primary">Login</button>
+              <span>or <Link to="/signup">signup</Link></span>
             </div>
           </form>
         </div>
