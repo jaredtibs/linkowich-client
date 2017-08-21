@@ -1,33 +1,45 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router-dom';
 
-class Login extends Component {
+class SignUp extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
       email: '',
-      password: ''
+      password: '',
+      username: '',
+      formValid: false,
+      emailValid: true,
+      emailValidationError: "",
+      usernameValid: true,
+      usernameValidationError: "",
+      passwordValid: true,
+      passwordValidationError: "",
+      serverErrorReceived: false
     }
   }
 
   handleChange(event) {
-    this.setState({[event.target.name]: event.target.value});
+    this.setState({
+      [event.target.name]: event.target.value
+    });
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    this.props.requestLogin(
-      this.state.email,
-      this.state.password
-    )
+    const {email, username, password} = this.state.formData;
+
+    if ((email && username && password) && this.state.formValid) {
+      //this.props.signUp(email, username, password);
+    }
   }
 
   render() {
     return(
       <div className="window-content">
         <div className="pane">
-          <h1 className="title">Login</h1>
+          <h1 className="title">Sign Up</h1>
           <form onSubmit={this.handleSubmit.bind(this)}>
             <div className="form-group">
               <label>Email</label>
@@ -40,18 +52,28 @@ class Login extends Component {
               />
             </div>
             <div className="form-group">
+              <label>Username</label>
+              <input type="text"
+                name="username"
+                className="form-control"
+                placeholder="username"
+                value={this.state.username}
+                onChange={this.handleChange.bind(this)}
+              />
+            </div>
+            <div className="form-group">
               <label>Password</label>
               <input type="password"
                 name="password"
                 className="form-control"
-                placeholder="Password"
+                placeholder="password"
                 value={this.state.password}
                 onChange={this.handleChange.bind(this)}
               />
             </div>
             <div className="form-actions">
-              <button type="submit" className="btn btn-form btn-primary">Login</button>
-              <span>or <Link to="/signup">signup</Link></span>
+              <button type="submit" className="btn btn-form btn-primary">Sign Up</button>
+              <span> or <Link to="/login">login</Link></span>
             </div>
           </form>
         </div>
@@ -61,4 +83,4 @@ class Login extends Component {
 
 }
 
-export default Login
+export default SignUp;
