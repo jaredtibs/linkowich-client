@@ -1,0 +1,23 @@
+.link-container {
+  font-size: var(--font-size);
+  font-weight: 300;
+  display:block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+
+.link-container a {
+  text-decoration: none;
+  color: #0074D9;
+  cursor: inherit;
+}
+
+.link-row {
+  width: 90%;
+  float: left;
+  margin: auto;
+  margin-top: 16px;
+}
+

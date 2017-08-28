@@ -12,6 +12,8 @@ class Link extends Component {
 
     return(
       <div className='link-row padded-horizontally'>
+        <div className='link-row-header-container'>
+        </div>
         <img className='img-circle media-object pull-left'
           src='app/assets/default_avatar.jpeg'
           width='32' height='32'
