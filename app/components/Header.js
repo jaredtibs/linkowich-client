@@ -8,8 +8,8 @@ class Header extends Component {
   render() {
     return(
       <div>
-        <header className="toolbar toolbar-header">
-          <h1 className="title">Lynx</h1>
+        <header className="header">
+          <h4 className="app-title">linkowich</h4>
         </header>
       </div>
     )
