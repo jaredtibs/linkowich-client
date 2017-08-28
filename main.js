@@ -38,8 +38,8 @@ app.on('window-all-closed', () => {
 
 function createWindow () {
   window = new BrowserWindow({
-    width: 300,
-    height: 500,
+    width: 360,
+    height: 620,
     show: false,
     frame: false,
     fullscreenable: false,
