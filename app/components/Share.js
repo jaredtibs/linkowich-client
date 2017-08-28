@@ -69,7 +69,7 @@ class Share extends Component {
           <span className="link-timestamp"> 2d ago </span>
         </div>
 
-        { false ?
+        { currentLink ?
           this.renderMyLink(currentLink) :
           this.renderInputForm()
         }
@@ -79,12 +79,3 @@ class Share extends Component {
 }
 
 export default Share
-
-/*
- *
- *  <div className="form-actions">
-            <button type="submit" className="btn btn-form btn-primary"> Publish </button>
-          </div>
-*/
-
-//{ publishingLink ? this.renderLoadingState() : null }
