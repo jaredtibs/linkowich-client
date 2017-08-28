@@ -1,5 +1,5 @@
 .share-container {
-  height: 85px;
+  height: 100px;
   background-color: #ffffff;
 }
 
@@ -7,6 +7,8 @@
   display: flex;
   flex-direction: 'row';
   justify-content: space-between;
+  padding-top: 10px;
+  padding-bottom: 3px;
 }
 
 .input-label {

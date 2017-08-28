@@ -13,16 +13,25 @@ class Link extends Component {
     return(
       <div className='link-row padded-horizontally'>
         <div className='link-row-header-container'>
+          <div>
+            <span className='username'>{user.username}</span>
+            <span className='link-timestamp'>1h ago</span>
+          </div>
+
+          <div>
+            <span className='link-history'> + 3 links </span>
+          </div>
         </div>
-        <img className='img-circle media-object pull-left'
-          src='app/assets/default_avatar.jpeg'
-          width='32' height='32'
-        />
-        <div className='username'> {user.username} </div>
+
         <div className='link-container'>
-          <a href="#" onClick={() => this.props.onClick(link)}>
-            {link.attributes.url}
-          </a>
+          <div className="emoji-container">
+          </div>
+
+          <div className="url-text-container">
+            <a href="#" onClick={() => this.props.onClick(link)}>
+              {link.attributes.url}
+            </a>
+          </div>
         </div>
       </div>
     )
