@@ -48,7 +48,12 @@ class Feed extends Component {
     const { links, isFetching } = this.props.feed
 
     return(
-      <div>
+      <div className="feed-container">
+        <div className="feed-header-container">
+          <span className="feed-header"> Friendly Fire </span>
+          <span className="add-friends"> add friends </span>
+        </div>
+
         { isFetching ? this.renderLoadingState() : this.renderFeedContent(links) }
       </div>
     )

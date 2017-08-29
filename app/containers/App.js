@@ -11,6 +11,7 @@ class App extends Component {
     super(props)
   }
 
+  //TODO temporary - remove
   _logoutUser() {
     store.dispatch(logout());
   }

@@ -34,10 +34,27 @@ class Share extends Component {
 
   renderMyLink(link) {
     return(
-      <div className="my-link">
-        <span> My link </span>
-        <a href="#"> {link.attributes.url}</a>
+      <div className="my-link-container">
+        <div className="my-link">
+          <span className="my-link-url"> { link.attributes.url } </span>
+        </div>
       </div>
+    )
+  }
+
+  renderInputForm() {
+    return(
+      <form id="link-form" onSubmit={this.handleSubmit.bind(this)}>
+        <div className="form-group my-link-input-container">
+          <input
+            className="link-input"
+            type="url"
+            placeholder="share a link"
+            value={this.state.url}
+            onChange={this.handleChange.bind(this)}
+          />
+        </div>
+      </form>
     )
   }
 
@@ -46,22 +63,16 @@ class Share extends Component {
 
     return(
       <div className="share-container">
-        <form onSubmit={this.handleSubmit.bind(this)}>
-          <div className="form-group">
-            <input
-              type="url"
-              placeholder="publish a link"
-              value={this.state.url}
-              onChange={this.handleChange.bind(this)}
-            />
-          </div>
-          <div className="form-actions">
-            <button type="submit" className="btn btn-form btn-primary"> Publish </button>
-          </div>
-        </form>
 
-        { publishingLink ? this.renderLoadingState() : null }
-        { currentLink ? this.renderMyLink(currentLink) : null }
+        <div className="input-header">
+          <span className="input-label"> My Link </span>
+          <span className="link-timestamp"> 2d ago </span>
+        </div>
+
+        { currentLink ?
+          this.renderMyLink(currentLink) :
+          this.renderInputForm()
+        }
       </div>
     )
   }

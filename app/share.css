@@ -1,3 +1,56 @@
 .share-container {
-  padding: 10px;
+  height: 100px;
+  background-color: #ffffff;
+}
+
+.input-header {
+  display: flex;
+  flex-direction: 'row';
+  justify-content: space-between;
+  padding-top: 10px;
+  padding-bottom: 3px;
+}
+
+.input-label {
+  margin-left: 14px;
+}
+
+.link-timestamp {
+  margin-right: 14px;
+}
+
+.my-link-input-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.link-input {
+  flex: 1;
+  height: 50px;
+  margin-left: 12px;
+  margin-right: 12px;
+}
+
+.my-link-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.my-link {
+  flex: 1;
+  height: 50px;
+  padding: 5px;
+  margin-left: 12px;
+  margin-right: 12px;
+  border-style: solid;
+  border-width: 0.5px;
+  border-color: #e1e1e0;
+}
+
+.my-link-url {
+  color: #474747;
+  line-height: 8px;
+  letter-spacing: 0.1px;
 }

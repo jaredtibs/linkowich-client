@@ -1,0 +1,37 @@
+.feed-container {
+  background-color: #F2F2F2;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #CECECE;
+}
+
+.emptyContainer {
+  font-size: var(--font-size);
+  font-weight: 300;
+  text-align:center;
+  margin-top: 100px;
+}
+
+.empty-feed-text {
+  text-align: center;
+  color: grey;
+}
+
+.feed-header-container {
+  padding: 15px;
+  display: flex;
+  flex-direction: 'row';
+  justify-content: space-between;
+}
+
+.feed-header {
+  color: #474747;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.add-friends {
+  color: #474747;
+  font-size: 12px;
+  padding-top: 5px;
+}
