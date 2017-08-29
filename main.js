@@ -16,6 +16,11 @@ require('electron-reload')(__dirname, {
 let tray
 let window
 
+let dev = false;
+if ( process.defaultApp || /[\\/]electron-prebuilt[\\/]/.test(process.execPath) || /[\\/]electron[\\/]/.test(process.execPath) ) {
+  dev = true;
+}
+
 // Don't show the app in the doc
 app.dock.hide()
 
@@ -38,7 +43,7 @@ app.on('window-all-closed', () => {
 
 function createWindow () {
   window = new BrowserWindow({
-    width: 360,
+    width: 960,
     height: 620,
     show: false,
     frame: false,
@@ -52,7 +57,22 @@ function createWindow () {
     }
   })
 
-  window.loadURL(`file://${path.join(__dirname, '/index.html')}`)
+  let indexPath;
+  if ( dev && process.argv.indexOf('--noDevServer') === -1 ) {
+    indexPath = url.format({
+      protocol: 'http:',
+      host: 'localhost:8080',
+      pathname: 'index.html',
+      slashes: true
+    });
+  } else {
+    indexPath = url.format({
+      protocol: 'file:',
+      pathname: path.join(__dirname, 'dist', 'index.html'),
+      slashes: true
+    });
+  }
+  window.loadURL( indexPath );
 
   // Hide the window when it loses focus
   window.on('blur', () => {
