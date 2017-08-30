@@ -9,9 +9,13 @@ class Header extends Component {
   render() {
     return(
       <div>
-        <header className="header">
-          <h4 className="app-title">linkowich</h4>
-        </header>
+        <div className="header">
+          <div className="app-title">
+            <span className="title-link">link</span>
+            <span className="title-o">o</span>
+            <span className="title-wich">wich</span>
+          </div>
+        </div>
       </div>
     )
   }

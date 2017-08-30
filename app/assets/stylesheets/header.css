@@ -3,8 +3,27 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: 'row';
   height: 40px;
+  padding-top: 10px;
 }
 
 .app-title {
+  font-family: 'Colfax-Medium';
+  letter-spacing: 1px;
+}
+
+.title-link {
+  color: #00d6d6;
+  font-size: 16px;
+}
+
+.title-o {
+  color: #440036;
+  font-size: 16px;
+}
+
+.title-wich {
+  color: #ff5e38;
+  font-size: 16px;
 }

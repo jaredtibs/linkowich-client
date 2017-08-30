@@ -25,12 +25,14 @@
 }
 
 .feed-header {
+  font-family: 'Colfax-Bold';
   color: #474747;
   font-size: 18px;
   font-weight: bold;
 }
 
 .add-friends {
+  font-family: 'Colfax-Medium';
   color: #474747;
   font-size: 12px;
   padding-top: 5px;
