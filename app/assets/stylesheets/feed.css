@@ -18,7 +18,10 @@
 }
 
 .feed-header-container {
-  padding: 15px;
+  padding-top: 25px;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-bottom: 25px;
   display: flex;
   flex-direction: 'row';
   justify-content: space-between;
@@ -28,7 +31,6 @@
   font-family: 'Colfax-Bold';
   color: #474747;
   font-size: 18px;
-  font-weight: bold;
 }
 
 .add-friends {

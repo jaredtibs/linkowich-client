@@ -12,7 +12,7 @@ class Link extends Component {
     const user = link.attributes.user.data.attributes
 
     return(
-      <div className='link-row padded-horizontally'>
+      <div className='link-row'>
         <div className='link-row-header-container'>
           <div>
             <span className='username'>{user.username}</span>

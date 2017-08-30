@@ -1,6 +1,8 @@
 .share-container {
   height: 100px;
   background-color: #ffffff;
+  padding-left: 25px;
+  padding-right: 25px;
 }
 
 .input-header {
@@ -12,12 +14,10 @@
 }
 
 .input-label {
-  margin-left: 14px;
   font-family: 'Colfax-Medium';
 }
 
 .link-timestamp {
-  margin-right: 14px;
   font-family: 'Colfax-Regular';
   font-size: 11px;
 }
@@ -31,8 +31,6 @@
 .link-input {
   flex: 1;
   height: 30px;
-  margin-left: 12px;
-  margin-right: 12px;
 }
 
 .my-link-container {
@@ -45,8 +43,6 @@
   flex: 1;
   height: 30px;
   padding: 5px;
-  margin-left: 12px;
-  margin-right: 12px;
   border-style: solid;
   border-width: 0.5px;
   border-color: #e1e1e0;
