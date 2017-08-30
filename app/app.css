@@ -266,7 +266,7 @@ label {
   height: 10px;
   width: 10px;
   transform: rotate(45deg);
-  background-color: #e8e6e8;
+  background-color: #ffffff;
 }
 
 .summary {
@@ -308,4 +308,15 @@ label {
   overflow-y: auto;
   display: flex;
   flex: 1;
+}
+
+.pane {
+  position: relative;
+  overflow-y: auto;
+  flex: 1;
+  border-left: 1px solid #ddd;
+}
+
+.pane:first-child {
+  border-left: 0;
 }

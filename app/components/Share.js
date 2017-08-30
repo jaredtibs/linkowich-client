@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import Link from './Link'
+import styles from '../share.css';
 
 class Share extends Component {
   constructor(props) {

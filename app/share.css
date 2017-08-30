@@ -27,7 +27,7 @@
 
 .link-input {
   flex: 1;
-  height: 50px;
+  height: 30px;
   margin-left: 12px;
   margin-right: 12px;
 }
@@ -40,7 +40,7 @@
 
 .my-link {
   flex: 1;
-  height: 50px;
+  height: 30px;
   padding: 5px;
   margin-left: 12px;
   margin-right: 12px;

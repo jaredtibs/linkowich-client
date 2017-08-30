@@ -1,5 +1,6 @@
 const { shell } = window.require('electron');
 import React, { Component, PropTypes } from 'react';
+import styles from '../link.css';
 
 class Link extends Component {
   constructor(props) {

@@ -1,8 +1,6 @@
 import React, { Component, PropTypes } from 'react';
-
 import ShareContainer from '../containers/ShareContainer'
 import FeedContainer from '../containers/FeedContainer'
-
 
 class Home extends Component {
   constructor(props) {
