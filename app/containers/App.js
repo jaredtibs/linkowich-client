@@ -3,7 +3,7 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 import {logout} from '../actions/user';
 import configureStore from '../store/configure_store';
-import styles from '../app.css';
+import styles from '../assets/stylesheets/app.css';
 
 const store = configureStore()
 

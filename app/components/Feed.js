@@ -2,7 +2,7 @@ const { shell } = window.require('electron');
 
 import React, { Component, PropTypes } from 'react';
 import Link from './Link'
-import styles from '../feed.css';
+import styles from '../assets/stylesheets/feed.css'
 
 class Feed extends Component {
   constructor(props) {
