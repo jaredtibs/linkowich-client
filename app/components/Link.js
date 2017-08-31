@@ -1,6 +1,7 @@
 const { shell } = window.require('electron');
 import React, { Component, PropTypes } from 'react';
 import styles from '../assets/stylesheets/link.css';
+import { Emoji } from 'emoji-mart';
 
 class Link extends Component {
   constructor(props) {
@@ -26,6 +27,7 @@ class Link extends Component {
 
         <div className='link-container'>
           <div className="emoji-container">
+            <Emoji emoji=':stuck_out_tongue_winking_eye:' size={24} />
           </div>
 
           <div className="url-text-container">
