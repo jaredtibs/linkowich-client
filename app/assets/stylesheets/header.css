@@ -1,9 +1,9 @@
 .header {
   background-color: #ffffff;
   display: flex;
-  justify-content: center;
+  flex-direction: row;
   align-items: center;
-  flex-direction: 'row';
+  justify-content: space-between;
   height: 40px;
   padding-top: 10px;
 }
@@ -13,17 +13,29 @@
   letter-spacing: 1px;
 }
 
+.header-section {
+  display: flex;
+}
+
+.settings {
+  margin-left: 22px;
+}
+
+.user {
+  margin-right: 22px;
+}
+
 .title-link {
   color: #00d6d6;
-  font-size: 16px;
+  font-size: 18px;
 }
 
 .title-o {
   color: #440036;
-  font-size: 16px;
+  font-size: 18px;
 }
 
 .title-wich {
   color: #ff5e38;
-  font-size: 16px;
+  font-size: 18px;
 }

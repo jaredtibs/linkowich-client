@@ -8,13 +8,17 @@ class Header extends Component {
 
   render() {
     return(
-      <div>
-        <div className="header">
-          <div className="app-title">
-            <span className="title-link">link</span>
-            <span className="title-o">o</span>
-            <span className="title-wich">wich</span>
-          </div>
+      <div className="header">
+        <div className="header-section">
+          <i className="material-icons settings">settings</i>
+        </div>
+        <div className="app-title header-section">
+          <span className="title-link">link</span>
+          <span className="title-o">o</span>
+          <span className="title-wich">wich</span>
+        </div>
+        <div className="header-section">
+          <i className="material-icons user">face</i>
         </div>
       </div>
     )

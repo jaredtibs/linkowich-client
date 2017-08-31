@@ -1,17 +1,51 @@
 @font-face {
-    font-family: Colfax-Medium;
-    src: url("../fonts/Colfax-Medium.otf") format("opentype");
+  font-family: Colfax-Medium;
+  src: url("../fonts/Colfax-Medium.otf") format("opentype");
 }
 
 @font-face {
-    font-family: Colfax-Bold;
-    font-weight: bold;
-    src: url("../fonts/Colfax-Bold.otf") format("opentype");
+  font-family: Colfax-Bold;
+  font-weight: bold;
+  src: url("../fonts/Colfax-Bold.otf") format("opentype");
 }
 
 @font-face {
-    font-family: Colfax-Regular;
-    src: url("../fonts/Colfax-Regular.otf") format("opentype");
+  font-family: Colfax-Regular;
+  src: url("../fonts/Colfax-Regular.otf") format("opentype");
+}
+
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Material Icons'),
+    local('MaterialIcons-Regular'),
+    url("../fonts/MaterialIcons-Regular.woff2") format('woff2'),
+    url("../fonts/MaterialIcons-Regular.woff") format('woff'),
+    url("../fonts/MaterialIcons-Regular.ttf") format('truetype');
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 20px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  color: #474747;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
 }
 
 html {
@@ -63,6 +97,14 @@ label {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+/*
+[class^='icon-']::before, [class*=' icon-']::before {
+  font-family: 'SSAir';
+  font-style: normal;
+  font-weight: normal;
+}
+*/
 
 .text-center {
   text-align: center;
