@@ -51,7 +51,12 @@
 .my-link-url {
   font-family: 'Colfax-Medium';
   font-size: 12px;
-  color: #e1e1e0;
+  color: rgba(71, 71, 71, .50);
   line-height: 8px;
   letter-spacing: 0.1px;
+}
+
+.seen-by {
+  font-family: 'Colfax-Regular';
+  font-size: 11px;
 }

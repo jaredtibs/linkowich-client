@@ -36,6 +36,10 @@ class Link extends Component {
             </a>
           </div>
         </div>
+
+        <div className="link-stats-container">
+          <span className="seen-by"> seen by JaredTibs, SeanCrebbs, Gambrumbumm </span>
+        </div>
       </div>
     )
   }
