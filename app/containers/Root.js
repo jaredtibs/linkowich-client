@@ -53,21 +53,7 @@ class Root extends Component {
               <Route path='/signup' component={SignUpContainer} />
               <Route path='/login' component={LoginContainer} />
               <Route path='/home' component={HomeContainer} onEnter={this.authenticated()} />
-              <TransitionGroup>
-                <CSSTransition
-                  key={this.props.history.location.pathname}
-                  timeout={{enter: 500, exit: 500}}
-                  classNames={{
-                    enter: styles['slide-enter'],
-                    enterActive: styles['slide-enter-active'],
-                    exit: styles['slide-exit'],
-                    exitActive: styles['slide-exit-active']
-                  }}
-                  mountOnEnter={true} unmountOnExit={true}
-                >
-                  <Route path='/profile' component={ProfileContainer} onEnter={this.authenticated()}/>
-                </CSSTransition>
-              </TransitionGroup>
+              <Route path='/profile' component={ProfileContainer} onEnter={this.authenticated()}/>
               <Route path='/settings' component={SettingsContainer} onEnter={this.authenticated()} />
             </Switch>
           </App>

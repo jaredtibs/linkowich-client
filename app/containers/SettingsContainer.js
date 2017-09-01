@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import {connect} from 'react-redux';
 import Settings from '../components/Settings';
+import {logout} from '../actions/user';
 
 class SettingsContainer extends Component {
   render() {
@@ -19,6 +20,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    logout: () => {
+      dispatch(logout())
+    }
   }
 };
 

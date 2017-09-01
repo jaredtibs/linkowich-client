@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import Header from '../components/Header'
 import Footer from '../components/Footer'
-import {logout} from '../actions/user';
 import configureStore from '../store/configure_store';
 import styles from '../assets/stylesheets/app.css';
 
@@ -12,22 +11,15 @@ class App extends Component {
     super(props)
   }
 
-  //TODO temporary - remove
-  _logoutUser() {
-    store.dispatch(logout());
-  }
-
   render() {
     return(
       <div>
         <div className="header-arrow"></div>
-
         <div className="window">
           <Header />
           {this.props.children}
-          <Footer logout={this._logoutUser} />
+          <Footer />
         </div>
-
       </div>
     )
   }

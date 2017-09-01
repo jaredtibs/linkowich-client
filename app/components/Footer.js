@@ -5,11 +5,6 @@ class Footer extends Component {
     super(props)
   }
 
-  //TODO hacky - improve
-  _loggedIn() {
-    return(localStorage.getItem('userToken') !== null)
-  }
-
   render() {
     return(
       <footer className="toolbar toolbar-footer">
@@ -18,14 +13,6 @@ class Footer extends Component {
             <span className="icon icon-arrows-ccw" title="Refresh"></span>
           </button>
         </div>
-
-        { this._loggedIn() ?
-          <div className="toolbar-actions pull-left">
-            <button className="btn btn-default" onClick={() => this.props.logout() }>
-              <span> Logout </span>
-            </button>
-          </div>
-        : null }
 
         <div className="toolbar-actions pull-right">
           <button className="btn btn-default">

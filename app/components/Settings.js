@@ -9,7 +9,11 @@ class Settings extends Component {
     return(
       <div className="window-content">
         <div className="pane">
-          <span> Your Settings </span>
+          <div className="settings-container">
+            <button className="btn btn-default" onClick={() => this.props.logout() }>
+              <span> Logout </span>
+            </button>
+          </div>
         </div>
       </div>
     )
