@@ -7,19 +7,7 @@ class Footer extends Component {
 
   render() {
     return(
-      <footer className="toolbar toolbar-footer">
-        <div className="toolbar-actions pull-left">
-          <button className="btn btn-default">
-            <span className="icon icon-arrows-ccw" title="Refresh"></span>
-          </button>
-        </div>
-
-        <div className="toolbar-actions pull-right">
-          <button className="btn btn-default">
-            <span className="icon icon-user-add" title="Add Subscription"></span>
-          </button>
-        </div>
-      </footer>
+      <div> </div>
     )
   }
 }

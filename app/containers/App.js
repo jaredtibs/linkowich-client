@@ -12,6 +12,7 @@ class App extends Component {
   }
 
   render() {
+    console.log(store.getState())
     return(
       <div>
         <div className="header-arrow"></div>
