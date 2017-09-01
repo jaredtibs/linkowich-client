@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import { Link } from 'react-router-dom';
 import styles from '../assets/stylesheets/header.css';
 
 class Header extends Component {
@@ -10,15 +11,21 @@ class Header extends Component {
     return(
       <div className="header">
         <div className="header-section">
-          <i className="material-icons settings">settings</i>
+          <Link to={'/settings'}>
+            <i className="material-icons settings">settings</i>
+          </Link>
         </div>
         <div className="app-title header-section">
-          <span className="title-link">link</span>
-          <span className="title-o">o</span>
-          <span className="title-wich">wich</span>
+          <Link to={'/home'}>
+            <span className="title-link">link</span>
+            <span className="title-o">o</span>
+            <span className="title-wich">wich</span>
+          </Link>
         </div>
         <div className="header-section">
-          <i className="material-icons user">face</i>
+          <Link to={'/profile'}>
+            <i className="material-icons user">face</i>
+          </Link>
         </div>
       </div>
     )

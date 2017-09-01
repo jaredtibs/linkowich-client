@@ -13,6 +13,10 @@
   letter-spacing: 1px;
 }
 
+.app-title a {
+  text-decoration: none;
+}
+
 .header-section {
   display: flex;
 }
