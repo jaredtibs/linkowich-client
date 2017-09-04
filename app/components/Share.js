@@ -7,7 +7,8 @@ class Share extends Component {
     super(props)
 
     this.state = {
-      url: ''
+      url: '',
+      isEditing: false
     }
   }
 
@@ -22,7 +23,15 @@ class Share extends Component {
   handleSubmit(event) {
     event.preventDefault();
     this.props.publishLink(this.state.url)
-    this.setState({url: ''})
+    this.setState({url: '', isEditing: false})
+  }
+
+  handleBlur() {
+    this.setState({isEditing: false})
+  }
+
+  toggleEditing() {
+    this.setState({isEditing: true})
   }
 
   renderLoadingState() {
@@ -33,11 +42,16 @@ class Share extends Component {
     )
   }
 
-  renderMyLink(link) {
+  renderMyLink() {
+    let { currentLink } = this.props.user;
+
     return(
-      <div className="my-link-container">
+      <div className="my-link-container" onClick={this.toggleEditing.bind(this)}>
         <div className="my-link">
-          <span className="my-link-url"> { link.attributes.url } </span>
+          { (currentLink && currentLink.attributes.url) ?
+            <span className="my-link-url"> { currentLink.attributes.url } </span>
+          : <span className="my-link-empty-url"> Submit a link! </span>
+          }
         </div>
       </div>
     )
@@ -50,17 +64,28 @@ class Share extends Component {
           <input
             className="link-input"
             type="url"
-            placeholder="share a link"
+            placeholder="press enter to share"
             value={this.state.url}
+            autoFocus={true}
             onChange={this.handleChange.bind(this)}
+            onBlur={this.handleBlur.bind(this)}
           />
         </div>
       </form>
     )
   }
 
+  renderLinkOrEditField() {
+    if (this.state.isEditing) {
+      return this.renderInputForm()
+    } else {
+      return this.renderMyLink()
+    }
+  }
+
   render() {
     let { publishingLink, currentLink } = this.props.user;
+    console.log(this.state);
 
     return(
       <div className="share-container">
@@ -70,10 +95,8 @@ class Share extends Component {
           <span className="link-timestamp"> 2d ago </span>
         </div>
 
-        { currentLink ?
-          this.renderMyLink(currentLink) :
-          this.renderInputForm()
-        }
+        { this.renderLinkOrEditField() }
+
       </div>
     )
   }
