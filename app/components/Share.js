@@ -43,14 +43,15 @@ class Share extends Component {
   }
 
   renderMyLink() {
-    let { currentLink } = this.props.user;
+    let { currentLink, fetchingLink } = this.props.user;
+    let displayLink = (currentLink && currentLink.attributes.url) && !fetchingLink
 
     return(
       <div className="my-link-container" onClick={this.toggleEditing.bind(this)}>
         <div className="my-link">
-          { (currentLink && currentLink.attributes.url) ?
+          { displayLink ?
             <span className="my-link-url"> { currentLink.attributes.url } </span>
-          : <span className="my-link-empty-url"> Submit a link! </span>
+          : <span className="my-link-url"> nothing published. click to share a link... </span>
           }
         </div>
       </div>
@@ -84,16 +85,17 @@ class Share extends Component {
   }
 
   render() {
-    let { publishingLink, currentLink } = this.props.user;
-    console.log(this.state);
+    let { fetchingLink, currentLink } = this.props.user;
 
     return(
       <div className="share-container">
 
-        <div className="input-header">
-          <span className="input-label"> My Link </span>
-          <span className="link-timestamp"> 2d ago </span>
-        </div>
+        { !fetchingLink && currentLink ?
+          <div className="input-header">
+            <span className="input-label">My Link</span>
+            <span className="link-timestamp">{currentLink.attributes['published-at']} ago</span>
+          </div>
+          : null }
 
         { this.renderLinkOrEditField() }
 
