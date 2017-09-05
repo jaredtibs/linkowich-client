@@ -10,12 +10,13 @@ import TransitionGroup from 'react-transition-group/TransitionGroup';
 import CSSTransition from 'react-transition-group/CSSTransition';
 
 import {fetchUserSession} from '../actions/user';
-import App from './App'
-import LoginContainer from './LoginContainer'
-import SignUpContainer from './SignUpContainer'
-import HomeContainer from './HomeContainer'
-import ProfileContainer from './ProfileContainer'
-import SettingsContainer from './SettingsContainer'
+import App                from './App'
+import LoginContainer     from './LoginContainer'
+import SignUpContainer    from './SignUpContainer'
+import HomeContainer      from './HomeContainer'
+import ProfileContainer   from './ProfileContainer'
+import SettingsContainer  from './SettingsContainer'
+import FriendsContainer   from './FriendsContainer'
 
 import styles from '../assets/stylesheets/animations.css';
 
@@ -55,6 +56,7 @@ class Root extends Component {
               <Route path='/home' component={HomeContainer} onEnter={this.authenticated()} />
               <Route path='/profile' component={ProfileContainer} onEnter={this.authenticated()} />
               <Route path='/settings' component={SettingsContainer} onEnter={this.authenticated()} />
+              <Route path='/friends' component={FriendsContainer} onEnter={this.authenticated()} />
             </Switch>
           </App>
 

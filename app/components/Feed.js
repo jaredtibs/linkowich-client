@@ -1,7 +1,8 @@
 const { shell } = window.require('electron');
 
 import React, { Component, PropTypes } from 'react';
-import Link from './Link'
+import FeedLink from './Link'
+import { Link } from 'react-router-dom'
 import styles from '../assets/stylesheets/feed.css'
 
 class Feed extends Component {
@@ -30,7 +31,7 @@ class Feed extends Component {
 
     if (links.length > 0) {
       let linkList = links.map(function(link, i) {
-        return <Link key={i} data={link} onClick={onClick} />
+        return <FeedLink key={i} data={link} onClick={onClick} />
       });
 
       return(
@@ -52,7 +53,9 @@ class Feed extends Component {
       <div className="feed-container">
         <div className="feed-header-container">
           <span className="feed-header"> Friendly Fire </span>
-          <span className="add-friends"> add friends </span>
+          <Link to={'/friends'}>
+            <span className="add-friends"> add friends </span>
+          </Link>
         </div>
 
         { isFetching ? this.renderLoadingState() : this.renderFeedContent(links) }
