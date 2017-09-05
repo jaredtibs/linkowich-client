@@ -11,10 +11,9 @@ class FriendsContainer extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const { user, friends } = state;
+  const { user } = state;
   return {
-    user,
-    friends
+    user
   }
 };
 

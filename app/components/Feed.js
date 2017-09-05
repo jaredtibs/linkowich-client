@@ -1,7 +1,8 @@
 const { shell } = window.require('electron');
 
 import React, { Component, PropTypes } from 'react';
-import Link from './Link'
+import FeedLink from './Link'
+import { Link } from 'react-router-dom'
 import styles from '../assets/stylesheets/feed.css'
 
 class Feed extends Component {
@@ -30,7 +31,7 @@ class Feed extends Component {
 
     if (links.length > 0) {
       let linkList = links.map(function(link, i) {
-        return <Link key={i} data={link} onClick={onClick} />
+        return <FeedLink key={i} data={link} onClick={onClick} />
       });
 
       return(
