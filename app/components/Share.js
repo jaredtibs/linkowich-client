@@ -8,7 +8,8 @@ class Share extends Component {
 
     this.state = {
       url: '',
-      isEditing: false
+      isEditing: false,
+      awaitingClearConfirmation: false
     }
   }
 
@@ -35,7 +36,11 @@ class Share extends Component {
   }
 
   clearLink() {
-    this.props.clearLink();
+    this.promptConfirmation();
+  }
+
+  promptConfirmation() {
+    this.setState({awaitingClearConfirmation: true})
   }
 
   renderLoadingState() {
@@ -88,9 +93,39 @@ class Share extends Component {
     }
   }
 
+  renderClearButton() {
+    let { currentLink } = this.props.share;
+
+    if (currentLink && !this.state.isEditing) {
+      if (this.state.awaitingClearConfirmation) {
+        return(
+          <div className="clear-link-confirmation">
+            <div>Are you sure? </div>
+            <div className="clear-yes"
+              onClick={() => this.props.clearLink()}
+            >
+              yes
+            </div>
+            <div className="clear-no"
+              onClick={() => this.setState({awaitingClearConfirmation: false})}>
+              no
+            </div>
+          </div>
+        )
+      } else {
+        return(
+          <div className="clear-link" onClick={this.promptConfirmation.bind(this)}>
+            clear link
+          </div>
+        )
+      }
+    } else {
+      return null;
+    }
+  }
+
   render() {
     let { fetchingLink, currentLink } = this.props.share;
-    console.log(currentLink)
 
     return(
       <div className="share-container">
@@ -105,9 +140,7 @@ class Share extends Component {
         { this.renderLinkOrEditField() }
 
         <div className="share-footer">
-          { (currentLink && !this.state.isEditing) ?
-            <div className="clear-link" onClick={this.clearLink.bind(this)}>clear link</div>
-            : null }
+          { this.renderClearButton() }
         </div>
       </div>
     )

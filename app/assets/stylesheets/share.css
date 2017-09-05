@@ -23,12 +23,25 @@
   font-family: 'Colfax-Medium';
 }
 
-.clear-link {
+.clear-link, .clear-link-confirmation {
   display: flex;
   font-family: 'Colfax-Regular';
   font-size: 10px;
   color: #8b8a8a;
   cursor: pointer;
+}
+
+.clear-link-confirmation div {
+  display: flex;
+  padding-left: 3px;
+}
+
+.clear-yes {
+  color: #00d6d6
+}
+
+.clear-no {
+  color: #ff5e38;
 }
 
 .link-timestamp {
