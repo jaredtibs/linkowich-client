@@ -1,23 +1,33 @@
 import React, { Component, PropTypes } from 'react';
+import {connect} from 'react-redux'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
-import configureStore from '../store/configure_store';
 import styles from '../assets/stylesheets/app.css';
-
-const store = configureStore()
 
 class App extends Component {
   constructor(props) {
     super(props)
   }
 
+  hasHeader(location) {
+    switch(location) {
+      case '/home':
+      case '/profile':
+      case '/settings':
+        return true;
+      default:
+        return false;
+    }
+  }
+
   render() {
-    console.log(store.getState())
+    let { location } = this.props.router;
+
     return(
       <div>
         <div className="header-arrow"></div>
         <div className="window">
-          <Header />
+          { this.hasHeader(location.pathname) ? <Header /> : null}
           {this.props.children}
           <Footer />
         </div>
@@ -26,4 +36,8 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return state
+}
+
+export default connect(mapStateToProps)(App);

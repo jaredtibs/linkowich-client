@@ -1,3 +1,15 @@
 .friends-container {
-
+  display: flex;
+  flex-direction: column
 }
+
+.friends-header-container: {
+  display: flex;
+  flex: 1
+}
+
+.following-container: {
+  display: flex;
+  flex: 3
+}
+
