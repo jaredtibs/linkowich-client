@@ -90,15 +90,14 @@ class Share extends Component {
     return(
       <div className="share-container">
 
-        { !fetchingLink && currentLink ?
           <div className="input-header">
             <span className="input-label">My Link</span>
-            <span className="link-timestamp">{currentLink.attributes['published-at']} ago</span>
+            <span className="link-timestamp">
+              {currentLink ? `${currentLink.attributes['published-at']} ago` : null}
+            </span>
           </div>
-          : null }
 
         { this.renderLinkOrEditField() }
-
       </div>
     )
   }
