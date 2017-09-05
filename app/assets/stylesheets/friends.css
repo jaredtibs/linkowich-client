@@ -1,3 +1,31 @@
+.header-nav {
+  height: 40px;
+  padding-top: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-section {
+  display: flex;
+}
+
+.header-title {
+  font-family: 'Colfax-Bold';
+  color: #474747;
+  font-size: 18px;
+}
+
+.close {
+  margin-left: 22px;
+  cursor: pointer;
+}
+
+.invite {
+  margin-right: 22px;
+}
+
 .friends-container {
   display: flex;
   flex-direction: column
@@ -11,5 +39,16 @@
 .following-container: {
   display: flex;
   flex: 3
+}
+
+.following-header-container {
+  display: flex;
+  flex-direction: row
+}
+
+.following-header-container span {
+  font-family: 'Colfax-Medium';
+  color: #474747;
+  font-size: 12px;
 }
 
