@@ -44,7 +44,7 @@ app.on('window-all-closed', () => {
 function createWindow () {
   // 360 x 620
   window = new BrowserWindow({
-    width: 960,
+    width: 360,
     height: 620,
     show: false,
     frame: false,
