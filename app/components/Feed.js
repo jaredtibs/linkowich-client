@@ -52,7 +52,9 @@ class Feed extends Component {
       <div className="feed-container">
         <div className="feed-header-container">
           <span className="feed-header"> Friendly Fire </span>
-          <span className="add-friends"> add friends </span>
+          <Link to={'/friends'}>
+            <span className="add-friends"> add friends </span>
+          </Link>
         </div>
 
         { isFetching ? this.renderLoadingState() : this.renderFeedContent(links) }
