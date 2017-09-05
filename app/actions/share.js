@@ -69,3 +69,45 @@ export function linkPublished(link) {
     data: link.data
   }
 }
+
+export function clearLink() {
+  return dispatch => {
+    dispatch(clearingLink());
+    return fetch("http://localhost:3000/api/v1/links/me", {
+      method: "DELETE",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Token ' + authToken()
+      }
+    })
+    .then((response) => response.json())
+    .then((responseData) => {
+      if (responseData.errors) {
+        dispatch(handleError(responseData.errors))
+      } else {
+        dispatch(linkCleared())
+      }
+    })
+    .catch(error => console.log(error))
+  }
+}
+
+export function clearingLink() {
+  return {
+    type: "CLEARING_LINK"
+  }
+}
+
+export function linkCleared() {
+  return {
+    type: "LINK_CLEARED"
+  }
+}
+
+export function handleError(errors) {
+  return {
+    type: "SHARE_ERROR",
+    errors: errors
+  }
+}

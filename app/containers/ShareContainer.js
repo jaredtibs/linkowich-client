@@ -1,7 +1,10 @@
 import React, { Component, PropTypes } from 'react';
 import {connect} from 'react-redux';
 import Share from '../components/Share';
-import {publishLink, fetchCurrentLink} from '../actions/share';
+import {
+  publishLink,
+  fetchCurrentLink,
+  clearLink } from '../actions/share';
 
 class ShareContainer extends Component {
   render() {
@@ -12,10 +15,10 @@ class ShareContainer extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const { user, feed } = state;
+  const { share, user } = state;
   return {
-    user,
-    feed
+    share,
+    user
   }
 };
 
@@ -27,6 +30,10 @@ const mapDispatchToProps = (dispatch) => {
 
     fetchCurrentLink: () => {
       dispatch(fetchCurrentLink())
+    },
+
+    clearLink: () => {
+      dispatch(clearLink())
     }
   }
 };

@@ -34,6 +34,10 @@ class Share extends Component {
     this.setState({isEditing: true})
   }
 
+  clearLink() {
+    this.props.clearLink();
+  }
+
   renderLoadingState() {
     return(
       <div className="summary">
@@ -43,7 +47,7 @@ class Share extends Component {
   }
 
   renderMyLink() {
-    let { currentLink, fetchingLink } = this.props.user;
+    let { currentLink, fetchingLink } = this.props.share;
     let displayLink = (currentLink && currentLink.attributes.url) && !fetchingLink
 
     return(
@@ -85,19 +89,26 @@ class Share extends Component {
   }
 
   render() {
-    let { fetchingLink, currentLink } = this.props.user;
+    let { fetchingLink, currentLink } = this.props.share;
+    console.log(currentLink)
 
     return(
       <div className="share-container">
 
-          <div className="input-header">
-            <span className="input-label">My Link</span>
-            <span className="link-timestamp">
-              {currentLink ? `${currentLink.attributes['published-at']} ago` : null}
-            </span>
-          </div>
+        <div className="share-header">
+          <span className="share-label">My Link</span>
+          <span className="link-timestamp">
+            {currentLink ? `${currentLink.attributes['published-at']} ago` : null}
+          </span>
+        </div>
 
         { this.renderLinkOrEditField() }
+
+        <div className="share-footer">
+          { (currentLink && !this.state.isEditing) ?
+            <div className="clear-link" onClick={this.clearLink.bind(this)}>clear link</div>
+            : null }
+        </div>
       </div>
     )
   }

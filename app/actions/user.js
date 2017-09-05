@@ -16,7 +16,7 @@ export function requestLogin (email, password) {
     })
     .then((response) => response.json())
     .then((responseData) => {
-      if(responseData.errors) {
+      if (responseData.errors) {
         dispatch(handleError(responseData.errors))
       } else {
         dispatch(finishLogin(responseData))

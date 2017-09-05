@@ -5,16 +5,30 @@
   padding-right: 25px;
 }
 
-.input-header {
+.share-header {
   display: flex;
-  flex-direction: 'row';
+  flex-direction: row;
   justify-content: space-between;
   padding-top: 10px;
   padding-bottom: 3px;
 }
 
-.input-label {
+.share-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.share-label {
   font-family: 'Colfax-Medium';
+}
+
+.clear-link {
+  display: flex;
+  font-family: 'Colfax-Regular';
+  font-size: 10px;
+  color: #8b8a8a;
+  cursor: pointer;
 }
 
 .link-timestamp {
