@@ -17,11 +17,11 @@ class Link extends Component {
         <div className='link-row-header-container'>
           <div>
             <span className='username'>{user.username}</span>
-            <span className='link-timestamp'>1h ago</span>
+            <span className='link-timestamp'>{link.attributes['published-at']} ago</span>
           </div>
 
           <div>
-            <span className='link-history'> + 3 links </span>
+            <span className='link-history'>+ 3 links</span>
           </div>
         </div>
 
@@ -38,7 +38,7 @@ class Link extends Component {
         </div>
 
         <div className="link-stats-container">
-          <span className="seen-by"> seen by JaredTibs, SeanCrebbs, Gambrumbumm </span>
+          <span className="seen-by">seen by JaredTibs, SeanCrebbs</span>
         </div>
       </div>
     )

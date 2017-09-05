@@ -8,9 +8,13 @@
   margin-top: 0px;
 }
 
+.link-row:last-child {
+  padding-bottom: 25px;
+}
+
 .link-row-header-container {
   display: flex;
-  flex-direction: 'row';
+  flex-direction: row;
   justify-content: space-between;
   padding-bottom: 3px;
 }
@@ -18,7 +22,7 @@
 .link-container {
   display: flex;
   height: 50px;
-  flex-direction: 'row';
+  flex-direction: row;
   background-color: #ffffff;
   border-style: solid;
   border-width: 2px;
@@ -36,7 +40,7 @@
 
 .link-timestamp {
   font-family: 'Colfax-Regular';
-  color: #474747;
+  color: #8b8a8a;
   font-size: 10px;
   padding-left: 5px;
 }
@@ -63,6 +67,8 @@
 .emoji-container:nth-of-type(n+2) {background-color: #ffffff;}
 
 .url-text-container {
+  display: flex;
+  flex: 1;
   padding-top: 15px;
   padding-left: 10px;
   cursor: pointer;
@@ -75,4 +81,15 @@
   font-size: 12px;
   line-height: 8px;
   cursor: pointer;
+}
+
+.link-stats-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.seen-by {
+  font-family: 'Colfax-Regular';
+  font-size: 8px;
+  color: #8b8a8a;
 }
