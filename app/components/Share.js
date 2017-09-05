@@ -28,7 +28,7 @@ class Share extends Component {
   }
 
   handleBlur() {
-    this.setState({isEditing: false})
+    this.setState({isEditing: false, awaitingClearConfirmation: false})
   }
 
   toggleEditing() {

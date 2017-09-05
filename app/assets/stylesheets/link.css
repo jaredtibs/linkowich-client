@@ -60,9 +60,9 @@
   border-right-color: #450037;
 }
 
-.emoji-container:nth-of-type(3n+1) {background-color: #ff5e39;}
-.emoji-container:nth-of-type(3n+2) {background-color: #00d2d1;}
-.emoji-container:nth-of-type(3n+3) {background-color: #ffffff;}
+.link-row:nth-of-type(3n+1) .emoji-container {background-color: #ff5e39;}
+.link-row:nth-of-type(3n+2) .emoji-container {background-color: #00d2d1;}
+.link-row:nth-of-type(3n+3) .emoji-container {background-color: #ffffff;}
 
 .url-text-container {
   display: flex;
