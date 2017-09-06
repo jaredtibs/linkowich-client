@@ -50,5 +50,13 @@
   font-family: 'Colfax-Medium';
   color: #474747;
   font-size: 12px;
+  padding-left: 10px;
 }
 
+.user-row {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  justify-content: space-around;
+  align-items: center;
+}

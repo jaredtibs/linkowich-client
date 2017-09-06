@@ -37,5 +37,9 @@
   font-family: 'Colfax-Medium';
   color: #474747;
   font-size: 12px;
-  padding-top: 5px;
+}
+
+.add-friends-link {
+  padding-top: 3px;
+  text-decoration: none;
 }

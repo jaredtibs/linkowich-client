@@ -53,7 +53,7 @@ class Feed extends Component {
       <div className="feed-container">
         <div className="feed-header-container">
           <span className="feed-header"> Friendly Fire </span>
-          <Link to={'/friends'}>
+          <Link to={'/friends'} className="add-friends-link">
             <span className="add-friends"> add friends </span>
           </Link>
         </div>

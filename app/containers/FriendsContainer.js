@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import {connect} from 'react-redux';
+import {fetchFollowing, fetchFollowers} from '../actions/friends';
 import Friends from '../components/Friends';
 
 class FriendsContainer extends Component {
@@ -11,14 +12,22 @@ class FriendsContainer extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const { user } = state;
+  const { user, friends } = state;
   return {
-    user
+    user,
+    friends
   }
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    fetchFollowing: () => {
+      dispatch(fetchFollowing())
+    },
+
+    fetchFollowers: () => {
+      dispatch(fetchFollowers())
+    }
   }
 };
 

@@ -12,10 +12,17 @@ class UserList extends Component {
     let { users } = this.props;
 
     if (users.length > 0) {
+      let userList = users.map((user, index) => {
+        return(
+          <div key={user.id} className="user-row">
+            <div className="user-avatar"> avatar </div>
+            <div className="user-username"> {user.attributes.username} </div>
+          </div>
+        )
+      })
+
       return(
-        users.map((user, index) => (
-          <div key={item.id}> </div>
-        ))
+        <div> {userList} </div>
       )
     } else {
       return(

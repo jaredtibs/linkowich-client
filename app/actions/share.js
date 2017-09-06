@@ -1,3 +1,4 @@
+//TODO move to own file and import where needed
 function authToken() {
   let token = localStorage.getItem('userToken');
   return token;

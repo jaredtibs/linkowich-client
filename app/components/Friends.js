@@ -7,7 +7,14 @@ class Friends extends Component {
     super(props)
   }
 
+  componentDidMount() {
+    //TODO change to match default tab
+    this.props.fetchFollowing()
+  }
+
   render() {
+    let { following } = this.props.friends;
+
     return(
       <div className="window-content">
         <div className="pane">
@@ -33,8 +40,9 @@ class Friends extends Component {
               <div className="following-header-container">
                 <span> Following </span>
               </div>
+
               <div className="users-container">
-                <UserList users={[]}/>
+                <UserList users={following}/>
               </div>
             </div>
 
