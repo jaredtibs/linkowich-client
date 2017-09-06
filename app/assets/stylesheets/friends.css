@@ -134,3 +134,35 @@ img {
   font-size: 24px;
   margin-right: 15px;
 }
+
+.tabs {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 5px;
+  margin-top: 0;
+  padding-left: 0;
+  list-style: none;
+  font-family: 'Colfax-Bold';
+  font-size: 14px;
+}
+
+.tabs a {
+  text-decoration: none;
+}
+
+.tabs li {
+  padding: 10px;
+}
+
+.tabs li a {
+  font-weight: 400;
+  color: #474747;
+}
+
+.tabs li.active {
+  border-bottom: 2px solid #00d6d6;
+}
+
+.tabs li.active a{
+  font-weight: 700;
+}

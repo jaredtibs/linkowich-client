@@ -48,7 +48,22 @@ class Friends extends Component {
 
             <div className="following-container">
               <div className="following-header-container">
-                <span> Following </span>
+                <ul className="tabs">
+                  <li className="active">
+                    <a href="#" onClick={(e) => {
+                      e.preventDefault();
+                      //this.props.toggleReviewContext('pending');
+                      //return this.props.requestReviewItems();
+                    }}> Following </a>
+                  </li>
+                  <li>
+                    <a href="#" onClick={(e) => {
+                      e.preventDefault();
+                      //this.props.toggleReviewContext('pending');
+                      //return this.props.requestReviewItems();
+                    }}> Followers </a>
+                  </li>
+                </ul>
               </div>
 
               { !isFetching ?
