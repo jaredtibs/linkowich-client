@@ -12,8 +12,20 @@ class Friends extends Component {
     this.props.fetchFollowing()
   }
 
+  openInviteDrawer() {
+    console.log("opening drawer!")
+  }
+
+  renderLoadingState() {
+    return(
+      <div className="loading-container">
+        <span className="loading-text"> Loading... </span>
+      </div>
+    )
+  }
+
   render() {
-    let { following } = this.props.friends;
+    let { following, isFetching } = this.props.friends;
 
     return(
       <div className="window-content">
@@ -28,22 +40,20 @@ class Friends extends Component {
               <span className="header-title"> Friends </span>
             </div>
             <div className="header-section invite">
-              <span> Invite </span>
+              <div onClick={() => this.openInviteDrawer()}>Invite</div>
             </div>
           </div>
 
           <div className="friends-container">
-            <div className="friends-header-container">
-            </div>
 
             <div className="following-container">
               <div className="following-header-container">
                 <span> Following </span>
               </div>
 
-              <div className="users-container">
+              { !isFetching ?
                 <UserList users={following}/>
-              </div>
+                : this.renderLoadingState() }
             </div>
 
           </div>
