@@ -1,0 +1,92 @@
+.link-row {
+  margin-top: 25px;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+.link-row:first-child {
+  margin-top: 0px;
+}
+
+.link-row:last-child {
+  padding-bottom: 25px;
+}
+
+.link-row-header-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-bottom: 3px;
+}
+
+.link-container {
+  display: flex;
+  height: 50px;
+  flex-direction: row;
+  background-color: #ffffff;
+  border-style: solid;
+  border-width: 2px;
+  border-color: #450037;
+  overflow: hidden;
+}
+
+.username {
+  font-family: 'Colfax-Medium';
+  color: #474747;
+  font-size: 14px;
+}
+
+.link-timestamp {
+  font-family: 'Colfax-Regular';
+  color: #8b8a8a;
+  font-size: 10px;
+  padding-left: 5px;
+}
+
+.link-history {
+  color: #ff5e38;
+  font-family: 'Colfax-Medium';
+  font-size: 12px;
+}
+
+.emoji-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #450037;
+}
+
+.link-row:nth-of-type(3n+1) .emoji-container {background-color: #ff5e39;}
+.link-row:nth-of-type(3n+2) .emoji-container {background-color: #00d2d1;}
+.link-row:nth-of-type(3n+3) .emoji-container {background-color: #ffffff;}
+
+.url-text-container {
+  display: flex;
+  flex: 1;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.url-text-container a {
+  font-family: 'Colfax-Medium';
+  text-decoration: none;
+  color: #474747;
+  font-size: 12px;
+  line-height: 16px;
+  cursor: pointer;
+}
+
+.link-stats-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.seen-by {
+  font-family: 'Colfax-Regular';
+  font-size: 8px;
+  color: #8b8a8a;
+}
