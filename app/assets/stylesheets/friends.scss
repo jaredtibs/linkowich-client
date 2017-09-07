@@ -142,23 +142,21 @@ img {
   font-size: 14px;
 }
 
-.tabs a {
-  text-decoration: none;
-}
+.tabs {
+  a {
+    text-decoration: none;
+    font-weight: 400;
+    color: #474747;
+  }
 
-.tabs li {
-  padding: 10px;
-}
+  li {
+    padding: 10px;
+  }
 
-.tabs li a {
-  font-weight: 400;
-  color: #474747;
-}
-
-.tabs li.active {
-  border-bottom: 2px solid #00d6d6;
-}
-
-.tabs li.active a{
-  font-weight: 700;
+  li.active {
+    border-bottom: 2px solid #00d6d6;
+    a {
+      font-weight: 700;
+    }
+  }
 }
