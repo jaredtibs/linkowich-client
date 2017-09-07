@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import styles from '../assets/stylesheets/friends.css';
+import styles from '../assets/stylesheets/friends.scss';
 import UserList from './UserList';
 
 class Friends extends Component {

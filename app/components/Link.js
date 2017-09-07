@@ -1,6 +1,6 @@
 const { shell } = window.require('electron');
 import React, { Component, PropTypes } from 'react';
-import styles from '../assets/stylesheets/link.css';
+import styles from '../assets/stylesheets/link.scss';
 import { Emoji } from 'emoji-mart';
 
 class Link extends Component {

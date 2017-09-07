@@ -3,7 +3,7 @@ const { shell } = window.require('electron');
 import React, { Component, PropTypes } from 'react';
 import FeedLink from './Link'
 import { Link } from 'react-router-dom'
-import styles from '../assets/stylesheets/feed.css'
+import styles from '../assets/stylesheets/feed.scss'
 
 class Feed extends Component {
   constructor(props) {
