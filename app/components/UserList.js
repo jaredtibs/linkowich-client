@@ -10,7 +10,7 @@ class UserList extends Component {
   }
 
   render() {
-    let { users } = this.props;
+    let { users, context } = this.props;
 
     if (users.length > 0) {
       let userList = users.map((user, index) => {
@@ -43,9 +43,19 @@ class UserList extends Component {
         <div> {userList} </div>
       )
     } else {
-      return(
-        <div> you're not following anyone </div>
-      )
+      if (context === "following") {
+        return(
+          <div className="empty-list-container">
+            <span> Bummer. You're not following anyone </span>
+          </div>
+        )
+      } else {
+        return(
+          <div className="empty-list-container">
+            <span>Shoot. You don't have any followers. Invite some friends above! </span>
+          </div>
+        )
+      }
     }
   }
 }

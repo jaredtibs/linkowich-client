@@ -4,14 +4,12 @@ function authToken() {
   return token;
 }
 
-export function fetchFollowers() {
-
-}
-
-export function fetchFollowing() {
+export function fetchFriends(context) {
+  console.log(context)
   return dispatch => {
     dispatch(isFetching());
-    return fetch("http://localhost:3000/api/v1/user/following", {
+    let url = `http://localhost:3000/api/v1/user/${context}`
+    return fetch(url, {
       method: "GET",
       headers: {
         'Accept': 'application/json',
@@ -21,7 +19,7 @@ export function fetchFollowing() {
     })
     .then((response) => response.json())
     .then((responseData) => {
-      dispatch(followingFetched(responseData));
+      dispatch(friendsFetched(responseData));
     })
     .catch(error => console.log(error))
   }
@@ -29,13 +27,27 @@ export function fetchFollowing() {
 
 export function isFetching() {
   return {
-    type: "FETCHING_USERS"
+    type: "FETCHING_FRIENDS"
   }
 }
 
-export function followingFetched(data) {
+export function friendsFetched(data) {
   return {
-    type: "FOLLOWING_FETCHED",
+    type: "FRIENDS_FETCHED",
     data: data
+  }
+}
+
+export function toggleFollowContext(context) {
+  return dispatch => {
+    dispatch(changeFollowContext(context));
+    dispatch(fetchFriends(context));
+  }
+}
+
+export function changeFollowContext(context) {
+  return {
+    type: 'FOLLOW_CONTEXT_TOGGLED',
+    data: context
   }
 }

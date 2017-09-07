@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import {connect} from 'react-redux';
-import {fetchFollowing, fetchFollowers} from '../actions/friends';
+import { fetchFriends, toggleFollowContext } from '../actions/friends';
 import Friends from '../components/Friends';
 
 class FriendsContainer extends Component {
@@ -21,12 +21,12 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchFollowing: () => {
-      dispatch(fetchFollowing())
+    fetchFriends: (context) => {
+      dispatch(fetchFriends(context))
     },
 
-    fetchFollowers: () => {
-      dispatch(fetchFollowers())
+    toggleFollowContext: (context) => {
+      dispatch(toggleFollowContext(context))
     }
   }
 };

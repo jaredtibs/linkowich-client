@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import styles from '../assets/stylesheets/friends.scss';
+import cx from 'classnames';
 import UserList from './UserList';
 
 class Friends extends Component {
@@ -8,11 +9,11 @@ class Friends extends Component {
   }
 
   componentDidMount() {
-    //TODO change to match default tab
-    this.props.fetchFollowing()
+    let { followContext } = this.props.friends;
+    this.props.fetchFriends(followContext);
   }
 
-  openInviteDrawer() {
+  _openInviteDrawer() {
     console.log("opening drawer!")
   }
 
@@ -25,7 +26,9 @@ class Friends extends Component {
   }
 
   render() {
-    let { following, isFetching } = this.props.friends;
+    let { friends,
+          isFetching,
+          followContext } = this.props.friends;
 
     return(
       <div className="window-content">
@@ -39,7 +42,7 @@ class Friends extends Component {
               <span className="header-title"> Friends </span>
             </div>
             <div className="header-section invite">
-              <div onClick={() => this.openInviteDrawer()}>Invite</div>
+              <div onClick={() => this._openInviteDrawer()}>Invite</div>
             </div>
           </div>
 
@@ -48,25 +51,23 @@ class Friends extends Component {
             <div className="following-container">
               <div className="following-header-container">
                 <ul className="tabs">
-                  <li className="active">
+                  <li className={cx({"active" : followContext === 'following'})}>
                     <a href="#" onClick={(e) => {
                       e.preventDefault();
-                      //this.props.toggleReviewContext('pending');
-                      //return this.props.requestReviewItems();
+                      this.props.toggleFollowContext("following");
                     }}> Following </a>
                   </li>
-                  <li>
+                  <li className={cx({"active" : followContext === 'followers'})}>
                     <a href="#" onClick={(e) => {
                       e.preventDefault();
-                      //this.props.toggleReviewContext('pending');
-                      //return this.props.requestReviewItems();
+                      this.props.toggleFollowContext("followers");
                     }}> Followers </a>
                   </li>
                 </ul>
               </div>
 
               { !isFetching ?
-                <UserList users={following}/>
+                <UserList users={friends} context={followContext}/>
                 : this.renderLoadingState() }
             </div>
 

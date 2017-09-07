@@ -81,6 +81,7 @@ img {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  flex: 1;
 }
 
 .user-info-container, .user-action-container {
@@ -158,5 +159,21 @@ img {
     a {
       font-weight: 700;
     }
+  }
+}
+
+.empty-list-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  span {
+    padding-left: 15px;
+    padding-right: 15px;
+    text-align: center;
+    font-family: 'Colfax-Regular';
+    font-size: 12px;
+    color: #8b8a8a;
   }
 }

@@ -1,21 +1,26 @@
 const initialState = {
-  followers: [],
-  following: [],
-  isFetching: false
+  friends: [],
+  isFetching: false,
+  followContext: 'following'
 }
 
 export default function friends(state=initialState, action) {
   switch(action.type) {
-    case 'FETCHING_USERS':
+    case 'FETCHING_FRIENDS':
       return {
         ...state,
         isFetching: true
       };
-    case 'FOLLOWING_FETCHED':
+    case 'FRIENDS_FETCHED':
       return {
         ...state,
         isFetching: false,
-        following: action.data.data
+        friends: action.data.data
+      };
+    case 'FOLLOW_CONTEXT_TOGGLED':
+      return {
+        ...state,
+        followContext: action.data
       };
     default:
       return state;
