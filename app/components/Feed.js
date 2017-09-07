@@ -3,7 +3,7 @@ const { shell } = window.require('electron');
 import React, { Component, PropTypes } from 'react';
 import FeedLink from './Link'
 import { Link } from 'react-router-dom'
-import styles from '../assets/stylesheets/feed.css'
+import styles from '../assets/stylesheets/feed.scss'
 
 class Feed extends Component {
   constructor(props) {
@@ -53,7 +53,7 @@ class Feed extends Component {
       <div className="feed-container">
         <div className="feed-header-container">
           <span className="feed-header"> Friendly Fire </span>
-          <Link to={'/friends'}>
+          <Link to={'/friends'} className="add-friends-link">
             <span className="add-friends"> add friends </span>
           </Link>
         </div>

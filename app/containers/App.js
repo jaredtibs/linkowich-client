@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import ConnectedHeader from '../components/Header'
 import Footer from '../components/Footer'
-import styles from '../assets/stylesheets/app.css';
+import styles from '../assets/stylesheets/app.scss';
 
 class App extends Component {
   constructor(props) {

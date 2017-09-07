@@ -7,6 +7,8 @@ const store = configureStore()
 let root = document.createElement('div');
 root.id = "root";
 document.body.appendChild( root );
+require('!style-loader!css-loader!./assets/vendor/material.min.css')
+require('./assets/vendor/material.min.js')
 
 render(
   <Root store={store} history={history} />,

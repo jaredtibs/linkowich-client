@@ -18,7 +18,7 @@ import ProfileContainer   from './ProfileContainer'
 import SettingsContainer  from './SettingsContainer'
 import FriendsContainer   from './FriendsContainer'
 
-import styles from '../assets/stylesheets/animations.css';
+import styles from '../assets/stylesheets/animations.scss';
 
 class Root extends Component {
   constructor(props) {
