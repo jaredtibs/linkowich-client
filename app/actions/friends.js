@@ -5,7 +5,6 @@ function authToken() {
 }
 
 export function fetchFriends(context) {
-  console.log(context)
   return dispatch => {
     dispatch(isFetching());
     let url = `http://localhost:3000/api/v1/user/${context}`

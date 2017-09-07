@@ -18,7 +18,7 @@ class UserList extends Component {
         let avatar_src = avatar.url ? avatar.url : defaultAvatar;
 
         return(
-          <div className="users-container">
+          <div key={index} className="users-container">
             <div key={user.id} className="user-row">
               <div className="user-info-container">
                 <div className="user-avatar">
