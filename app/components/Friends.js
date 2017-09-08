@@ -64,8 +64,9 @@ class Friends extends Component {
           </div>
 
           <Collapse
+            className="collapsed-container"
             isOpened={this.state.inviteOpened}
-            fixedHeight={80}
+            fixedHeight={100}
           >
             <div className="friend-actions-container">
               <div className="inner-container">
@@ -77,6 +78,7 @@ class Friends extends Component {
                 </form>
                 <span className="input-subheader">invite a friend by email</span>
               </div>
+              <div className="inner-divider-container">- or -</div>
               <div className="inner-container">
                 <form id="code-form" onSubmit={this.handleSubmit}>
                   <input
@@ -84,7 +86,7 @@ class Friends extends Component {
                     onChange={this.handleChange}
                   />
                 </form>
-                <span className="input-subheader">Enter a friend's code</span>
+                <span className="input-subheader">enter a friend's code</span>
               </div>
             </div>
           </Collapse>

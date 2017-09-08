@@ -178,6 +178,10 @@ img {
   }
 }
 
+.collapsed-container {
+  background-color: #E8E8E8;
+}
+
 .friend-actions-container {
   display: flex;
   flex-direction: row;
@@ -199,6 +203,13 @@ img {
       font-size: 14px;
       padding-left: 5px;
     }
+  }
+
+  .inner-divider-container {
+    align-self: center;
+    font-family: 'Colfax-Regular';
+    color: #3d3d3d;
+    font-size: 12px;
   }
 }
 
