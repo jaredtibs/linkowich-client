@@ -2,10 +2,17 @@ import React, { Component, PropTypes } from 'react';
 import styles from '../assets/stylesheets/friends.scss';
 import cx from 'classnames';
 import UserList from './UserList';
+import {Collapse} from 'react-collapse';
 
 class Friends extends Component {
   constructor(props) {
     super(props)
+    this.state = {
+      inviteOpened: false
+    }
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -13,8 +20,18 @@ class Friends extends Component {
     this.props.fetchFriends(followContext);
   }
 
-  _openInviteDrawer() {
-    console.log("opening drawer!")
+  _toggleInviteDrawer() {
+    this.setState({inviteOpened: !this.state.inviteOpened})
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    console.log('submitting!')
+  }
+
+  handleChange(event) {
+    event.preventDefault();
+    console.log(event.target.value)
   }
 
   renderLoadingState() {
@@ -42,9 +59,35 @@ class Friends extends Component {
               <span className="header-title"> Friends </span>
             </div>
             <div className="header-section invite">
-              <div onClick={() => this._openInviteDrawer()}>Invite</div>
+              <div onClick={() => this._toggleInviteDrawer()}>Invite</div>
             </div>
           </div>
+
+          <Collapse
+            isOpened={this.state.inviteOpened}
+            fixedHeight={80}
+          >
+            <div className="friend-actions-container">
+              <div className="inner-container">
+                <form id="invite-form" onSubmit={this.handleSubmit}>
+                  <input
+                    className="invite-input"
+                    onChange={this.handleChange}
+                  />
+                </form>
+                <span className="friend-action-header"> Invite by email </span>
+              </div>
+              <div className="inner-container">
+                <form id="code-form" onSubmit={this.handleSubmit}>
+                  <input
+                    className="code-input"
+                    onChange={this.handleChange}
+                  />
+                </form>
+                <span className="friend-action-header"> Add by code </span>
+              </div>
+            </div>
+          </Collapse>
 
           <div className="friends-container">
 
