@@ -71,20 +71,20 @@ class Friends extends Component {
               <div className="inner-container">
                 <form id="invite-form" onSubmit={this.handleSubmit}>
                   <input
-                    className="invite-input"
+                    placeholder="invite by email"
                     onChange={this.handleChange}
                   />
                 </form>
-                <span className="friend-action-header"> Invite by email </span>
+                <span className="input-subheader">invite a friend by email</span>
               </div>
               <div className="inner-container">
                 <form id="code-form" onSubmit={this.handleSubmit}>
                   <input
-                    className="code-input"
+                    placeholder="add by code"
                     onChange={this.handleChange}
                   />
                 </form>
-                <span className="friend-action-header"> Add by code </span>
+                <span className="input-subheader">Enter a friend's code</span>
               </div>
             </div>
           </Collapse>
