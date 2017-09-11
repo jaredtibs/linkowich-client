@@ -125,11 +125,14 @@ class Friends extends Component {
                     }}> Followers </a>
                   </li>
                 </ul>
+                <div className="header-inner-div"></div>
               </div>
 
-              { !isFetching ?
-                <UserList users={friends} context={followContext}/>
-                : this.renderLoadingState() }
+              <div className="users-container">
+                { !isFetching ?
+                  <UserList users={friends} context={followContext}/>
+                  : this.renderLoadingState() }
+              </div>
             </div>
 
           </div>

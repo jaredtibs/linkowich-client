@@ -6,9 +6,7 @@
   justify-content: space-between;
   align-items: center;
   background-color: #ffffff;
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
-  border-bottom-color: #CECECE;
+  box-shadow: 0 1px 2px -2px grey;
 }
 
 .header-section {
@@ -28,7 +26,7 @@
 }
 
 .invite {
-  color: #00d6d6;
+  color: #ff5e38;
   cursor: pointer;
   margin-right: 15px;
   font-size: 14px;
@@ -47,7 +45,7 @@
 .following-header-container {
   display: flex;
   flex-direction: row;
-  margin-bottom: 10px;
+  padding-top: 10px;
 }
 
 .following-header-container {
@@ -118,15 +116,6 @@ img {
   color: #8b8a8a;
 }
 
-.divider {
-  height: 1px;
-  background-color: #CECECE;
-  margin-left: 15px;
-  margin-right: 15px;
-  margin-top: 5px;
-  margin-bottom: 10px;
-}
-
 .unfollow {
   font-size: 24px;
   margin-right: 15px;
@@ -135,7 +124,7 @@ img {
 .tabs {
   display: flex;
   flex-direction: row;
-  margin-bottom: 5px;
+  margin-bottom: 0px;
   margin-top: 0;
   padding-left: 0;
   list-style: none;
@@ -152,6 +141,7 @@ img {
 
   li {
     padding: 10px;
+    border-bottom: 1px solid #CECECE;
   }
 
   li.active {
@@ -160,6 +150,16 @@ img {
       font-weight: 700;
     }
   }
+}
+
+.header-inner-div {
+  display: flex;
+  flex: 1;
+  border-bottom: 1px solid #CECECE;
+}
+
+.users-container {
+  padding-top: 20px;
 }
 
 .empty-list-container {
