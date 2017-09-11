@@ -25,7 +25,7 @@ class UserList extends Component {
               </div>
               <div className="user-username-container">
                 <div className="user-username">{username}</div>
-                <div className="user-subtext">following you</div>
+                <div className="user-subtext">additional info here</div>
               </div>
             </div>
             <div className="user-action-container">

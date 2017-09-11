@@ -112,17 +112,17 @@ class Friends extends Component {
             <div className="following-container">
               <div className="following-header-container">
                 <ul className="tabs">
-                  <li className={cx({"active" : followContext === 'following'})}>
-                    <a href="#" onClick={(e) => {
-                      e.preventDefault();
-                      this.props.toggleFollowContext("following");
-                    }}> Following </a>
-                  </li>
                   <li className={cx({"active" : followContext === 'followers'})}>
                     <a href="#" onClick={(e) => {
                       e.preventDefault();
                       this.props.toggleFollowContext("followers");
                     }}> Followers </a>
+                  </li>
+                  <li className={cx({"active" : followContext === 'following'})}>
+                    <a href="#" onClick={(e) => {
+                      e.preventDefault();
+                      this.props.toggleFollowContext("following");
+                    }}> Following </a>
                   </li>
                 </ul>
                 <div className="header-inner-div"></div>
