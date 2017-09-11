@@ -7,12 +7,13 @@ import {Collapse} from 'react-collapse';
 class Friends extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      inviteOpened: false
+    this.defaultState = {
+      inviteEmail: '',
+      friendCode: '',
+      drawerOpened: false
     }
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.state = this.defaultState;
   }
 
   componentDidMount() {
@@ -21,18 +22,27 @@ class Friends extends Component {
   }
 
   _toggleInviteDrawer() {
-    this.setState({inviteOpened: !this.state.inviteOpened})
+    this.setState({drawerOpened: !this.state.drawerOpened})
   }
 
-  handleSubmit(event) {
+  handleSubmit(type, event) {
     event.preventDefault();
-    console.log('submitting!')
+    let { followContext } = this.props.friends;
+
+    if (type === 'invite') {
+      //this.props.inviteByEmail(this.state.inviteEmail);
+    } else {
+      this.props.addByCode(this.state.friendCode, followContext);
+    }
+
+    this.setState(this.defaultState);
   }
 
   handleChange(event) {
-    event.preventDefault();
-    console.log(event.target.value)
+    const name = event.target.name;
+    this.setState({[name]: event.target.value})
   }
+
 
   renderLoadingState() {
     return(
@@ -65,25 +75,31 @@ class Friends extends Component {
 
           <Collapse
             className="collapsed-container"
-            isOpened={this.state.inviteOpened}
+            isOpened={this.state.drawerOpened}
             fixedHeight={100}
           >
             <div className="friend-actions-container">
               <div className="inner-container">
-                <form id="invite-form" onSubmit={this.handleSubmit}>
+                <form id="invite-form" onSubmit={this.handleSubmit.bind(this, 'invite')}>
                   <input
+                    name="inviteEmail"
                     placeholder="invite by email"
-                    onChange={this.handleChange}
+                    type="text"
+                    value={this.state.inviteEmail}
+                    onChange={this.handleChange.bind(this)}
                   />
                 </form>
                 <span className="input-subheader">invite a friend by email</span>
               </div>
               <div className="inner-divider-container">- or -</div>
               <div className="inner-container">
-                <form id="code-form" onSubmit={this.handleSubmit}>
+                <form id="code-form" onSubmit={this.handleSubmit.bind(this, 'code')}>
                   <input
+                    name="friendCode"
                     placeholder="add by code"
-                    onChange={this.handleChange}
+                    type="text"
+                    value={this.state.friendCode}
+                    onChange={this.handleChange.bind(this)}
                   />
                 </form>
                 <span className="input-subheader">enter a friend's code</span>
