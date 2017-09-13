@@ -59,7 +59,7 @@ class Friends extends Component {
 
     return(
       <div className="window-content">
-        <div className="pane">
+        <div className="main-container">
           <div className="header-nav">
             <div className="header-section"
                  onClick={() => this.props.history.goBack()}>

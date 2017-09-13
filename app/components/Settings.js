@@ -8,12 +8,10 @@ class Settings extends Component {
   render() {
     return(
       <div className="window-content">
-        <div className="pane">
-          <div className="settings-container">
-            <button className="btn btn-default" onClick={() => this.props.logout() }>
-              <span> Logout </span>
-            </button>
-          </div>
+        <div className="settings-container">
+          <button className="btn btn-default" onClick={() => this.props.logout() }>
+            <span> Logout </span>
+          </button>
         </div>
       </div>
     )
