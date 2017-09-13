@@ -30,6 +30,9 @@ class Profile extends Component {
   }
 
   render() {
+    const { user } = this.props;
+    const avatar_src = user.avatar.url ? user.avatar.url : defaultAvatar;
+
     return(
       <div className="window-content">
         <div className="profile-container">
@@ -38,7 +41,7 @@ class Profile extends Component {
               <img className="profile-avatar" src={defaultAvatar} />
             </div>
             <div className="profile-info-container">
-              <span className="profile-username">jaredtibs</span>
+              <span className="profile-username">{user.username}</span>
             </div>
           </div>
           <div className="lower-container">

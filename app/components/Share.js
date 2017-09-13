@@ -52,8 +52,8 @@ class Share extends Component {
   }
 
   renderMyLink() {
-    let { currentLink, fetchingLink } = this.props.share;
-    let displayLink = (currentLink && currentLink.attributes.url) && !fetchingLink
+    const { currentLink, fetchingLink } = this.props.share;
+    const displayLink = (currentLink && currentLink.attributes.url) && !fetchingLink
 
     return(
       <div className="my-link-container" onClick={this.toggleEditing.bind(this)}>

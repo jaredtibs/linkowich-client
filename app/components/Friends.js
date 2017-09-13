@@ -17,7 +17,7 @@ class Friends extends Component {
   }
 
   componentDidMount() {
-    let { followContext } = this.props.friends;
+    const { followContext } = this.props.friends;
     this.props.fetchFriends(followContext);
   }
 
@@ -27,7 +27,7 @@ class Friends extends Component {
 
   handleSubmit(type, event) {
     event.preventDefault();
-    let { followContext } = this.props.friends;
+    const { followContext } = this.props.friends;
 
     if (type === 'invite') {
       //this.props.inviteByEmail(this.state.inviteEmail);
@@ -53,9 +53,9 @@ class Friends extends Component {
   }
 
   render() {
-    let { friends,
-          isFetching,
-          followContext } = this.props.friends;
+    const { friends,
+            isFetching,
+            followContext } = this.props.friends;
 
     return(
       <div className="window-content">

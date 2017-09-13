@@ -27,10 +27,10 @@ class Feed extends Component {
   }
 
   renderFeedContent(links) {
-    let onClick = this.handleLinkClick.bind(this);
+    const onClick = this.handleLinkClick.bind(this);
 
     if (links.length > 0) {
-      let linkList = links.map(function(link, i) {
+      const linkList = links.map(function(link, i) {
         return <FeedLink key={i} data={link} onClick={onClick} />
       });
 

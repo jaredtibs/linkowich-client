@@ -26,8 +26,8 @@ class Root extends Component {
   }
 
   authenticated() {
-    let token = localStorage.getItem('userToken');
-    let store = this.props.store;
+    const token = localStorage.getItem('userToken');
+    const store = this.props.store;
 
     if (token !== null){
       store.dispatch(fetchUserSession());

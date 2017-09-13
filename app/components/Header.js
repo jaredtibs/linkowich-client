@@ -21,7 +21,7 @@ class Header extends Component {
 
 
   render() {
-    let { location } = this.props.router;
+    const { location } = this.props.router;
 
     if (this.hasHeader(location.pathname)) {
       return(
