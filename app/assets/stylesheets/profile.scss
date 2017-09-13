@@ -1,0 +1,49 @@
+.profile-container {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.upper-container {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.lower-container {
+  display: flex;
+  flex: 1.5;
+  border-top: solid 1px #CECECE;
+  background-color: #F2F2F2;
+  span {
+    font-family: 'Colfax-Regular';
+    color: #474747;
+    padding-left: 10px;
+    padding-top: 10px
+  }
+}
+
+.profile-avatar-container {
+  padding-top: 10px;
+}
+
+.profile-avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 75px;
+  border: solid 1px #CECECE;
+}
+
+.profile-info-container {
+  margin-top: 5px;
+}
+
+.past-links-container {
+}
+
+.profile-username {
+  font-family: 'Colfax-Regular';
+  color: #474747;
+}
