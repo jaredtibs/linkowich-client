@@ -1,7 +1,8 @@
 const initialState = {
   friends: [],
   isFetching: false,
-  followContext: 'following'
+  isSubmitting: false,
+  followContext: 'followers'
 }
 
 export default function friends(state=initialState, action) {
@@ -21,6 +22,16 @@ export default function friends(state=initialState, action) {
       return {
         ...state,
         followContext: action.data
+      };
+    case 'FRIEND_ADDED':
+      return {
+        ...state,
+        isSubmitting: false
+      };
+    case 'SUBMITTING':
+      return {
+        ...state,
+        isSubmitting: true
       };
     default:
       return state;

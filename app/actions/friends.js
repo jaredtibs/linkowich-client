@@ -50,3 +50,36 @@ export function changeFollowContext(context) {
     data: context
   }
 }
+
+export function addByCode(code, context) {
+  return dispatch => {
+    dispatch(isSubmitting());
+    let url = `http://localhost:3000/api/v1/user/follow/${code}`
+    return fetch(url, {
+      method: "POST",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Token ' + authToken()
+      }
+    })
+    .then((response) => response.json())
+    .then((responseData) => {
+      dispatch(friendAdded());
+      dispatch(fetchFriends(context));
+    })
+    .catch(error => console.log(error))
+  }
+}
+
+export function isSubmitting() {
+  return {
+    type: 'SUBMITTING'
+  }
+}
+
+export function friendAdded() {
+  return {
+    type: 'FRIEND_ADDED',
+  }
+}
