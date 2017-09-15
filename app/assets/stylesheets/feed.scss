@@ -1,15 +1,19 @@
 .feed-container {
+  flex-direction: column;
+  flex: 1;
   background-color: #F2F2F2;
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: #CECECE;
 }
 
-.emptyContainer {
+.empty-feed-container {
+  background-color: #F2F2F2;
   font-size: var(--font-size);
   font-weight: 300;
   text-align:center;
   margin-top: 100px;
+  flex: 1;
 }
 
 .empty-feed-text {
@@ -24,6 +28,7 @@
   padding-bottom: 25px;
   display: flex;
   flex-direction: row;
+  align-items: center;
   justify-content: space-between;
 }
 

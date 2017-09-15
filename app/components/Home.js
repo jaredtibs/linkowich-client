@@ -10,7 +10,7 @@ class Home extends Component {
   render() {
     return(
       <div className="window-content">
-        <div className="pane">
+        <div className="home-container">
           <ShareContainer />
           <FeedContainer />
         </div>

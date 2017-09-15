@@ -1,3 +1,9 @@
+.main-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
 .header-nav {
   height: 45px;
   padding-top: 10px;
@@ -35,6 +41,7 @@
 .friends-container {
   display: flex;
   flex-direction: column;
+  flex: 1;
 }
 
 .friends-header-container {

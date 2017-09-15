@@ -365,3 +365,9 @@ label {
 .pane:first-child {
   border-left: 0;
 }
+
+.home-container {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
