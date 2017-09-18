@@ -10,7 +10,9 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: #ffffff;
 }
 
 .lower-container {
@@ -19,7 +21,6 @@
   flex-direction: column;
   border-top: solid 1px #CECECE;
   background-color: #F2F2F2;
-  margin-top: 20px;
 }
 
 .lower-container-header {
