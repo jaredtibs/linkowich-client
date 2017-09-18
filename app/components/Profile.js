@@ -1,4 +1,4 @@
-const { shell } = window.require('electron');
+const { shell, ipcRenderer } = window.require('electron');
 
 import React, { Component, PropTypes } from 'react';
 import styles from '../assets/stylesheets/profile.scss';
@@ -8,6 +8,10 @@ import PastLink from './PastLink'
 class Profile extends Component {
   constructor(props) {
     super(props)
+
+    ipcRenderer.on('open-finder-reply', (event, fileData) => {
+      this.props.updateAvatar(fileData)
+    });
   }
 
   componentDidMount() {
@@ -17,6 +21,10 @@ class Profile extends Component {
 
   handleLinkClick(link) {
     shell.openExternal(link.attributes.url);
+  }
+
+  handleAvatarClick() {
+    ipcRenderer.send('open-finder');
   }
 
   renderPastLinks() {
@@ -42,16 +50,19 @@ class Profile extends Component {
 
   render() {
     const { user } = this.props;
-    const avatar_src = user.avatar.url ? user.avatar.url : defaultAvatar;
+    const avatarSrc = user.avatar ? user.avatar.large.url : defaultAvatar;
 
     return(
       <div className="window-content">
         <div className="pane">
           <div className="upper-container">
-            <div className="profile-avatar-container">
+            <div className="profile-avatar-container"
+                 onClick={this.handleAvatarClick.bind(this)}
+            >
               <div className="img__overlay">Edit</div>
-              <img className="profile-avatar" src={defaultAvatar} />
+              <img className="profile-avatar" src={avatarSrc} />
             </div>
+            <input type="file" id="file" ref="fileUploader" style={{display: "none"}}/>
             <div className="profile-info-container">
               <span className="profile-username">{user.username}</span>
             </div>
@@ -71,3 +82,6 @@ class Profile extends Component {
 }
 
 export default Profile;
+
+//SPINNER
+//<div className="mdl-spinner mdl-spinner--single-color mdl-js-spinner is-active spinner"></div>

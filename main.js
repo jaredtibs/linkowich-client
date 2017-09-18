@@ -1,8 +1,8 @@
 'use strict';
 
-const { app, BrowserWindow, Menu, Tray, ipcMain } = require('electron')
-const path = require('path')
-const url = require('url')
+const { app, BrowserWindow, Menu, Tray, ipcMain, dialog } = require('electron');
+const path = require('path');
+const url = require('url');
 const assetsDirectory = path.join(__dirname, '/app/assets');
 
 const Store = require('electron-store');
@@ -13,8 +13,10 @@ require('electron-reload')(__dirname, {
   electron: require('${__dirname}/../../node_modules/electron')
 })
 
-let tray
-let window
+let tray;
+let window;
+
+const fs = require('fs');
 
 let dev = false;
 if ( process.defaultApp || /[\\/]electron-prebuilt[\\/]/.test(process.execPath) || /[\\/]electron[\\/]/.test(process.execPath) ) {
@@ -81,6 +83,13 @@ function createWindow () {
       window.hide()
     }
   })
+
+  ipcMain.on('open-finder', function(event, arg) {
+    let properties = { properties: ['openFile'], filters: [{name: 'Images', extensions: ['jpg', 'png']}] }
+    let filePath = dialog.showOpenDialog(window, properties);
+    let fileData = filePath ? getBase64(filePath[0]) : null
+    event.sender.send('open-finder-reply', fileData);
+  });
 }
 
 function createTray() {
@@ -130,18 +139,15 @@ function getWindowPosition () {
   return {x: x, y: y}
 }
 
+function getBase64(file) {
+  const data = fs.readFileSync(file);
+  return data.toString('base64');
+}
+
 ipcMain.on('show-window', () => {
   showWindow()
 })
 
-ipcMain.on('show-followers', () => {
-  window.loadURL(`file://${path.join(__dirname, 'app/followers.html')}`)
-})
-
 ipcMain.on('links-updated', (event, links) => {
   tray.setImage(path.join(assetsDirectory, 'unreadLinkIcon.png'))
-})
-
-ipcMain.on('login-success', (event, sessionData) => {
-  window.loadURL(`file://${path.join(__dirname, 'app/index.html')}`)
 })
