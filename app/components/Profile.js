@@ -50,7 +50,7 @@ class Profile extends Component {
 
   render() {
     const { user } = this.props;
-    const avatarSrc = user.avatar ? user.avatar : defaultAvatar;
+    const avatarSrc = user.avatar ? user.avatar.large.url : defaultAvatar;
 
     return(
       <div className="window-content">
@@ -82,3 +82,6 @@ class Profile extends Component {
 }
 
 export default Profile;
+
+//SPINNER
+//<div className="mdl-spinner mdl-spinner--single-color mdl-js-spinner is-active spinner"></div>

@@ -168,7 +168,7 @@ export function updateAvatar(fileData) {
 }
 
 export function userAvatarUpdated(data) {
-  const avatar = data.data.attributes.avatar.url;
+  const avatar = data.data.attributes.avatar;
   return {
     type: "AVATAR_UPDATED",
     avatar: avatar

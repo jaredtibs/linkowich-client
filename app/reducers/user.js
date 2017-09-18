@@ -2,7 +2,7 @@ const initialState = {
   loggedIn: false,
   username: '',
   email: '',
-  avatar: '',
+  avatar: null,
   pastLinks: [],
   loginErrors: {},
   registerErrors: {}
@@ -20,7 +20,7 @@ export default function user(state=initialState, action) {
         ...state,
         username: action.data.username,
         email: action.data.email,
-        avatar: action.data.avatar.url,
+        avatar: action.data.avatar,
         loading: false,
         loggedIn: true
       };
@@ -37,7 +37,7 @@ export default function user(state=initialState, action) {
         loggedIn: true,
         email: action.data.email,
         username: action.data.username,
-        avatar: action.data.avatar.url,
+        avatar: action.data.avatar,
       };
     case 'HISTORICAL_LINKS_FETCHED':
       return {
