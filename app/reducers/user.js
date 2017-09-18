@@ -36,7 +36,8 @@ export default function user(state=initialState, action) {
         ...state,
         loggedIn: true,
         email: action.data.email,
-        username: action.data.username
+        username: action.data.username,
+        avatar: action.data.avatar.url,
       };
     case 'HISTORICAL_LINKS_FETCHED':
       return {

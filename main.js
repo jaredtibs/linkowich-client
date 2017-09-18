@@ -13,8 +13,10 @@ require('electron-reload')(__dirname, {
   electron: require('${__dirname}/../../node_modules/electron')
 })
 
-let tray
-let window
+let tray;
+let window;
+
+const fs = require('fs');
 
 let dev = false;
 if ( process.defaultApp || /[\\/]electron-prebuilt[\\/]/.test(process.execPath) || /[\\/]electron[\\/]/.test(process.execPath) ) {
@@ -84,8 +86,9 @@ function createWindow () {
 
   ipcMain.on('open-finder', function(event, arg) {
     let properties = { properties: ['openFile'], filters: [{name: 'Images', extensions: ['jpg', 'png']}] }
-    let filePath = dialog.showOpenDialog(window, properties)
-    event.sender.send('open-finder-reply', filePath);
+    let filePath = dialog.showOpenDialog(window, properties);
+    let fileData = filePath ? getBase64(filePath[0]) : null
+    event.sender.send('open-finder-reply', fileData);
   });
 }
 
@@ -136,15 +139,10 @@ function getWindowPosition () {
   return {x: x, y: y}
 }
 
-function openFinder() {
-  dialog.showOpenDialog(window, {
-    properties: ['openDirectory']
-  })
+function getBase64(file) {
+  const data = fs.readFileSync(file);
+  return data.toString('base64');
 }
-
-//ipcMain.on('open-finder', () => {
-//  openFinder()
-//})
 
 ipcMain.on('show-window', () => {
   showWindow()

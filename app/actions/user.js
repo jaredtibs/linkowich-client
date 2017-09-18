@@ -147,7 +147,7 @@ export function historicalLinksFetched(data) {
   }
 }
 
-export function updateAvatar(data) {
+export function updateAvatar(fileData) {
   return dispatch => {
     dispatch(loading());
     return fetch("http://localhost:3000/api/v1/user/avatar", {
@@ -158,7 +158,7 @@ export function updateAvatar(data) {
         'Authorization': 'Token ' + authToken()
       },
       body: JSON.stringify({
-        file: data["file"]
+        file: fileData
       })
     })
     .then((response) => response.json())

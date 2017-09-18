@@ -9,9 +9,8 @@ class Profile extends Component {
   constructor(props) {
     super(props)
 
-    ipcRenderer.on('open-finder-reply', (event, filePath) => {
-      console.log("in reply")
-      console.log(filePath)
+    ipcRenderer.on('open-finder-reply', (event, fileData) => {
+      this.props.updateAvatar(fileData)
     });
   }
 
@@ -51,7 +50,7 @@ class Profile extends Component {
 
   render() {
     const { user } = this.props;
-    const avatar_src = user.avatar.url ? user.avatar.url : defaultAvatar;
+    const avatarSrc = user.avatar ? user.avatar : defaultAvatar;
 
     return(
       <div className="window-content">
@@ -61,7 +60,7 @@ class Profile extends Component {
                  onClick={this.handleAvatarClick.bind(this)}
             >
               <div className="img__overlay">Edit</div>
-              <img className="profile-avatar" src={defaultAvatar} />
+              <img className="profile-avatar" src={avatarSrc} />
             </div>
             <input type="file" id="file" ref="fileUploader" style={{display: "none"}}/>
             <div className="profile-info-container">

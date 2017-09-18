@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import {connect} from 'react-redux';
-import {fetchHistoricalLinkData} from '../actions/user';
+import {fetchHistoricalLinkData, updateAvatar} from '../actions/user';
 import Profile from '../components/Profile';
 
 class ProfileContainer extends Component {
@@ -22,6 +22,10 @@ const mapDispatchToProps = (dispatch) => {
   return {
     fetchHistoricalLinkData: () => {
       dispatch(fetchHistoricalLinkData())
+    },
+
+    updateAvatar: (fileData) => {
+      dispatch(updateAvatar(fileData))
     }
   }
 };
