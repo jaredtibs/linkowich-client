@@ -43,6 +43,12 @@ export default function user(state=initialState, action) {
         ...state,
         pastLinks: action.data
       };
+    case 'AVATAR_UPDATED':
+      return {
+        ...state,
+        loading: false,
+        avatar: action.avatar
+      }
     default:
       return state;
   }

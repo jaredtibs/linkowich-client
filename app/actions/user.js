@@ -146,3 +146,31 @@ export function historicalLinksFetched(data) {
     data: data
   }
 }
+
+export function updateAvatar(data) {
+  return dispatch => {
+    dispatch(loading());
+    return fetch("http://localhost:3000/api/v1/user/avatar", {
+      method: "POST",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Token ' + authToken()
+      },
+      body: JSON.stringify({
+        file: data["file"]
+      })
+    })
+    .then((response) => response.json())
+    .then((responseData) => dispatch(userAvatarUpdated(responseData)))
+    .catch(error => console.error(error))
+  }
+}
+
+export function userAvatarUpdated(data) {
+  const avatar = data.data.attributes.avatar.url;
+  return {
+    type: "AVATAR_UPDATED",
+    avatar: avatar
+  }
+}
