@@ -5,16 +5,14 @@
   border-top-color: #CECECE;
 }
 
-.emptyContainer {
-  font-size: var(--font-size);
-  font-weight: 300;
-  text-align:center;
-  margin-top: 100px;
-}
-
-.empty-feed-text {
-  text-align: center;
-  color: grey;
+//TODO change this to flex once .pane is restyled/removed
+.empty-feed-container {
+  margin-top: 50px;
+  div {
+    font-family: 'Colfax-Regular';
+    text-align: center;
+    color: grey;
+  }
 }
 
 .feed-header-container {

@@ -58,3 +58,13 @@
   font-family: 'Colfax-Regular';
   color: #474747;
 }
+
+//TODO change this to flex once .pane is restyled/removed
+.empty-past-links-container {
+  margin-top: 50px;
+  div {
+    font-family: 'Colfax-Regular';
+    text-align: center;
+    color: grey;
+  }
+}

@@ -40,7 +40,7 @@ class Feed extends Component {
     } else {
       return(
         <div className="empty-feed-container">
-          <div className="empty-feed-text"> follow people and what they share will appear here </div>
+          <div> follow people and what they share will appear here </div>
         </div>
       )
     }
