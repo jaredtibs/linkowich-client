@@ -1,4 +1,6 @@
 .feed-container {
+  flex-direction: column;
+  flex: 1;
   background-color: #F2F2F2;
   border-top-style: solid;
   border-top-width: 1px;
@@ -22,6 +24,7 @@
   padding-bottom: 25px;
   display: flex;
   flex-direction: row;
+  align-items: center;
   justify-content: space-between;
 }
 
