@@ -37,14 +37,43 @@
 }
 
 .profile-avatar-container {
-  padding-top: 10px;
+  border-radius: 100%;
+  display: flex;
+  flex: 0 0 150px;
+  height: 150px;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  width: 150px;
+  border: solid 1px #CECECE;
+  cursor: pointer;
+
+  img {
+    height: 100%;
+  }
 }
 
-.profile-avatar {
-  width: 150px;
-  height: 150px;
-  border-radius: 75px;
-  border: solid 1px #CECECE;
+.img__overlay {
+  align-items: center;
+  border-radius: 100%;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: opacity 0.25s;
+  z-index: 1;
+  background-color: rgba(179, 178, 182, 0.5);
+  color: #fafafa;
+  font-size: 18px;
+  font-family: 'Colfax-Bold'
+}
+
+.img__overlay:hover {
+  opacity: 1;
 }
 
 .profile-info-container {
@@ -68,15 +97,4 @@
     text-align: center;
     color: grey;
   }
-}
-
-.edit-avatar-container {
-  background-color: rgba(179, 178, 182, 0.5);
-}
-
-.edit-avatar {
-  text-align: 'center';
-  font-color: #ffffff;
-  font-family: 'Colfax-Regular';
-  font-size: 12px;
 }

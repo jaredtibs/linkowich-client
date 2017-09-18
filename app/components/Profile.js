@@ -49,6 +49,7 @@ class Profile extends Component {
         <div className="pane">
           <div className="upper-container">
             <div className="profile-avatar-container">
+              <div className="img__overlay">Edit</div>
               <img className="profile-avatar" src={defaultAvatar} />
             </div>
             <div className="profile-info-container">
