@@ -10,15 +10,25 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 20px;
 }
 
 .lower-container {
   display: flex;
   flex: 1.5;
+  flex-direction: column;
   border-top: solid 1px #CECECE;
   background-color: #F2F2F2;
+  margin-top: 20px;
+}
+
+.lower-container-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
   span {
-    font-family: 'Colfax-Regular';
+    font-family: 'Colfax-Bold';
     color: #474747;
     padding-left: 10px;
     padding-top: 10px
@@ -41,6 +51,7 @@
 }
 
 .past-links-container {
+  margin-top: 20px;
 }
 
 .profile-username {

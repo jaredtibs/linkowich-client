@@ -3,6 +3,7 @@ const initialState = {
   username: '',
   email: '',
   avatar: '',
+  pastLinks: [],
   loginErrors: {},
   registerErrors: {}
 };
@@ -36,6 +37,11 @@ export default function user(state=initialState, action) {
         loggedIn: true,
         email: action.data.email,
         username: action.data.username
+      };
+    case 'HISTORICAL_LINKS_FETCHED':
+      return {
+        ...state,
+        pastLinks: action.data
       };
     default:
       return state;

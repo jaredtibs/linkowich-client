@@ -27,7 +27,6 @@
   border-style: solid;
   border-width: 2px;
   border-color: #450037;
-  overflow: hidden;
 }
 
 .username {
@@ -69,6 +68,7 @@
   flex: 1;
   padding: 10px;
   cursor: pointer;
+  overflow: hidden;
 }
 
 .url-text-container a {
@@ -78,6 +78,7 @@
   font-size: 12px;
   line-height: 16px;
   cursor: pointer;
+  overflow: hidden;
 }
 
 .link-stats-container {
@@ -89,4 +90,10 @@
   font-family: 'Colfax-Regular';
   font-size: 8px;
   color: #8b8a8a;
+}
+
+.past-link-footer-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }

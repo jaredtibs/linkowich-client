@@ -344,6 +344,7 @@ label {
   position: relative;
   overflow-y: auto;
   display: flex;
+  flex-direction: column;
   flex: 1;
 }
 

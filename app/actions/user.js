@@ -1,4 +1,5 @@
 import { push, replace } from 'react-router-redux';
+import { authToken } from './auth';
 
 export function requestLogin (email, password) {
   return dispatch => {
@@ -101,13 +102,12 @@ export function loading() {
 
 export function fetchUserSession() {
   return dispatch => {
-    let token = localStorage.getItem('userToken');
     return fetch("http://localhost:3000/api/v1/sessions", {
       method: "GET",
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'Authorization': 'Token ' + token
+        'Authorization': 'Token ' + authToken()
       }
     })
     .then((response) => response.json())
@@ -120,5 +120,29 @@ export function sessionFetched(data) {
   return {
     type: "SESSION_FETCHED",
     data: data.attributes
+  }
+}
+
+export function fetchHistoricalLinkData() {
+  return dispatch => {
+    const url = `http://localhost:3000/api/v1/user/links`
+    return fetch(url, {
+      method: "GET",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Token ' + authToken()
+      }
+    })
+    .then((response) => response.json())
+    .then((responseData) => dispatch(historicalLinksFetched(responseData.data)))
+    .catch(error => console.log(error))
+  }
+}
+
+export function historicalLinksFetched(data) {
+  return {
+    type: "HISTORICAL_LINKS_FETCHED",
+    data: data
   }
 }

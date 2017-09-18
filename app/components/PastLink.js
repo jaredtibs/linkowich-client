@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import styles from '../assets/stylesheets/link.scss';
 import { Emoji } from 'emoji-mart';
 
-class Link extends Component {
+class PastLink extends Component {
   constructor(props) {
     super(props)
   }
@@ -13,17 +13,6 @@ class Link extends Component {
 
     return(
       <div className='link-row'>
-        <div className='link-row-header-container'>
-          <div>
-            <span className='username'>{user.username}</span>
-            <span className='link-timestamp'>{link.attributes['published-at']} ago</span>
-          </div>
-
-          <div>
-            <span className='link-history'>+ 3 links</span>
-          </div>
-        </div>
-
         <div className='link-container'>
           <div className="emoji-container">
             <Emoji emoji=':stuck_out_tongue_winking_eye:' size={24} />
@@ -36,12 +25,13 @@ class Link extends Component {
           </div>
         </div>
 
-        <div className="link-stats-container">
+        <div className="past-link-footer-container">
           <span className="seen-by">seen by JaredTibs, SeanCrebbs</span>
+          <span className='link-timestamp'>{link.attributes['published-at']} ago</span>
         </div>
       </div>
     )
   }
 }
 
-export default Link
+export default PastLink

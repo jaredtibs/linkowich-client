@@ -1,7 +1,4 @@
-function authToken() {
-  let token = localStorage.getItem('userToken');
-  return token;
-}
+import { authToken } from './auth';
 
 export function fetchLinks() {
   return dispatch => {

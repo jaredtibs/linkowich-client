@@ -1,19 +1,29 @@
 import React, { Component, PropTypes } from 'react';
 import styles from '../assets/stylesheets/profile.scss';
 import defaultAvatar from '../assets/default_avatar.jpeg';
+import PastLink from './PastLink'
 
 class Profile extends Component {
   constructor(props) {
     super(props)
   }
 
-  renderPastLinks() {
-      /*
-    let { links } = this.props.user;
+  componentDidMount() {
+    const { username } = this.props.user;
+    this.props.fetchHistoricalLinkData();
+  }
 
-    if (links.length > 0) {
-      let linkList = links.map(function(link, i) {
-        return <FeedLink key={i} data={link} onClick={onClick} />
+  handleLinkClick(link) {
+    shell.openExternal(link.attributes.url);
+  }
+
+  renderPastLinks() {
+    const onClick = this.handleLinkClick.bind(this);
+    const { pastLinks } = this.props.user;
+
+    if (pastLinks.length > 0) {
+      let linkList = pastLinks.map(function(link, i) {
+        return <PastLink key={i} data={link} onClick={onClick} />
       });
 
       return(
@@ -21,12 +31,11 @@ class Profile extends Component {
       )
     } else {
       return(
-        <div className="empty-feed-container">
-          <div className="empty-feed-text"> follow people and what they share will appear here </div>
+        <div className="empty-past-links-container">
+          <div> You haven't shared any links yet! </div>
         </div>
       )
     }
-    */
   }
 
   render() {
@@ -35,7 +44,7 @@ class Profile extends Component {
 
     return(
       <div className="window-content">
-        <div className="profile-container">
+        <div className="pane">
           <div className="upper-container">
             <div className="profile-avatar-container">
               <img className="profile-avatar" src={defaultAvatar} />
@@ -45,7 +54,9 @@ class Profile extends Component {
             </div>
           </div>
           <div className="lower-container">
-            <span>Your Links</span>
+            <div className="lower-container-header">
+              <span>Your Links</span>
+            </div>
             <div className="past-links-container">
               {this.renderPastLinks()}
             </div>
