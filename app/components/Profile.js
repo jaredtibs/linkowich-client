@@ -1,4 +1,4 @@
-const { shell } = window.require('electron');
+const { shell, ipcRenderer } = window.require('electron');
 
 import React, { Component, PropTypes } from 'react';
 import styles from '../assets/stylesheets/profile.scss';
@@ -8,6 +8,11 @@ import PastLink from './PastLink'
 class Profile extends Component {
   constructor(props) {
     super(props)
+
+    ipcRenderer.on('open-finder-reply', (event, filePath) => {
+      console.log("in reply")
+      console.log(filePath)
+    });
   }
 
   componentDidMount() {
@@ -17,6 +22,10 @@ class Profile extends Component {
 
   handleLinkClick(link) {
     shell.openExternal(link.attributes.url);
+  }
+
+  handleAvatarClick() {
+    ipcRenderer.send('open-finder');
   }
 
   renderPastLinks() {
@@ -48,10 +57,13 @@ class Profile extends Component {
       <div className="window-content">
         <div className="pane">
           <div className="upper-container">
-            <div className="profile-avatar-container">
+            <div className="profile-avatar-container"
+                 onClick={this.handleAvatarClick.bind(this)}
+            >
               <div className="img__overlay">Edit</div>
               <img className="profile-avatar" src={defaultAvatar} />
             </div>
+            <input type="file" id="file" ref="fileUploader" style={{display: "none"}}/>
             <div className="profile-info-container">
               <span className="profile-username">{user.username}</span>
             </div>
