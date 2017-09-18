@@ -1,3 +1,5 @@
+const { shell } = window.require('electron');
+
 import React, { Component, PropTypes } from 'react';
 import styles from '../assets/stylesheets/profile.scss';
 import defaultAvatar from '../assets/default_avatar.jpeg';
