@@ -21,7 +21,9 @@ class Link extends Component {
           </div>
 
           <div>
-            <span className='link-history'>+ 3 links</span>
+            { user['link-count'] > 1 ?
+              <span className='link-history'>+ {user['link-count'] - 1} links</span>
+              : null }
           </div>
         </div>
 
