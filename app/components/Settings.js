@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import styles from '../assets/stylesheets/settings.scss';
 
 class Settings extends Component {
   constructor(props) {
@@ -9,9 +10,15 @@ class Settings extends Component {
     return(
       <div className="window-content">
         <div className="settings-container">
-          <button className="btn btn-default" onClick={() => this.props.logout() }>
-            <span> Logout </span>
-          </button>
+          <div className="settings-invite-container">
+            <span> invite </span>
+          </div>
+          <div className="settings-follow-container">
+            <span> follow </span>
+          </div>
+          <div className="settings-account-container">
+            <span> account </span>
+          </div>
         </div>
       </div>
     )
@@ -19,3 +26,8 @@ class Settings extends Component {
 }
 
 export default Settings;
+  /*
+          <button className="btn btn-default" onClick={() => this.props.logout() }>
+            <span> Logout </span>
+          </button>
+          */

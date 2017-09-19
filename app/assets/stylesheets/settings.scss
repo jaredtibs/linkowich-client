@@ -1,7 +1,28 @@
 .settings-container {
-  background-color: #F2F2F2;
+  background-color: #FFFFFF;
   display: flex;
+  flex: 1;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+}
+
+.settings-invite-container {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  background-color: red;
+}
+
+.settings-follow-container {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  background-color: blue;
+}
+
+.settings-account-container {
+  display: flex;
+  flex: 3;
+  flex-direction: column;
+  background-color: green;
 }
