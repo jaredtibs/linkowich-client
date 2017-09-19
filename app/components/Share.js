@@ -6,11 +6,13 @@ class Share extends Component {
   constructor(props) {
     super(props)
 
-    this.state = {
+    this.defaultState = {
       url: '',
       isEditing: false,
       awaitingClearConfirmation: false
     }
+
+    this.state = this.defaultState;
   }
 
   componentDidMount() {
@@ -22,9 +24,9 @@ class Share extends Component {
   }
 
   handleSubmit(event) {
-    event.preventDefault();
+    event.preventDefault()
     this.props.publishLink(this.state.url)
-    this.setState({url: '', isEditing: false})
+    this.setState(this.defaultState)
   }
 
   handleBlur() {
