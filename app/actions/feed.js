@@ -29,3 +29,17 @@ export function linksFetched(links) {
     links: links
   }
 }
+
+export function markLinkSeen(linkId) {
+  return dispatch => {
+    return fetch(`http://localhost:3000/api/v1/links/${linkId}/seen`, {
+      method: "POST",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Token ' + authToken()
+      }
+    })
+    .catch(error => console.log(error))
+  }
+}

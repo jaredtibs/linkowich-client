@@ -9,6 +9,7 @@ class Link extends Component {
 
   render() {
     const link = this.props.data
+    const seenBy = link.attributes['seen-by']
     const user = link.attributes.user.data.attributes
 
     return(
@@ -37,7 +38,9 @@ class Link extends Component {
         </div>
 
         <div className="link-stats-container">
-          <span className="seen-by">seen by JaredTibs, SeanCrebbs</span>
+          { seenBy.length > 0 ?
+            <span className="seen-by">seen by {seenBy.join(',')}</span>
+          : null }
         </div>
       </div>
     )
