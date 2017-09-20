@@ -9,17 +9,22 @@
 .settings-inner-container {
   display: flex;
   flex-direction: column;
-  flex: 1;
   border-top: solid 1px #CECECE;
 
-  &.settings-invite {
-  }
-
-  &.settings-follow {
-  }
-
   &.settings-account {
-    flex: 3;
+    flex: 2;
+  }
+
+  &.settings-support {
+    flex: 1;
+  }
+
+  &.settings-about {
+    flex: 1;
+  }
+
+  &.settings-logout {
+    height: 80px;
   }
 }
 
