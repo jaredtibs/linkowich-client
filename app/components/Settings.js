@@ -10,14 +10,20 @@ class Settings extends Component {
     return(
       <div className="window-content">
         <div className="settings-container">
-          <div className="settings-invite-container">
-            <span> invite </span>
+          <div className="settings-inner-container settings-invite">
+            <div className="settings-subheader">
+              <span>invite</span>
+            </div>
           </div>
-          <div className="settings-follow-container">
-            <span> follow </span>
+          <div className="settings-inner-container settings-follow">
+            <div className="settings-subheader">
+              <span>follow</span>
+            </div>
           </div>
-          <div className="settings-account-container">
-            <span> account </span>
+          <div className="settings-inner-container settings-account">
+            <div className="settings-subheader">
+              <span>account</span>
+            </div>
           </div>
         </div>
       </div>
