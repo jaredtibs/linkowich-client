@@ -17,17 +17,17 @@ class Settings extends Component {
             <div className="options-container">
               <div className="settings-option">
                 <a className="section-btn" href="#">
-                  upgrade to premium
+                  Upgrade to premium
                 </a>
               </div>
               <div className="settings-option">
                 <a className="section-btn" href="#">
-                  change password
+                  Change password
                 </a>
               </div>
               <div className="settings-option">
                 <a className="section-btn" href="#">
-                  blocked users
+                  Blocked users
                 </a>
               </div>
             </div>
@@ -44,7 +44,7 @@ class Settings extends Component {
               </div>
               <div className="settings-option">
                 <a className="section-btn" href="#">
-                  report a problem
+                  Report a problem
                 </a>
               </div>
             </div>
@@ -56,17 +56,17 @@ class Settings extends Component {
             <div className="options-container">
               <div className="settings-option">
                 <a className="section-btn" href="#">
-                  website
+                  Website
                 </a>
               </div>
               <div className="settings-option">
                 <a className="section-btn" href="#">
-                  privacy policy
+                  Privacy policy
                 </a>
               </div>
               <div className="settings-option">
                 <a className="section-btn" href="#">
-                  terms
+                  Terms
                 </a>
               </div>
             </div>
@@ -74,10 +74,10 @@ class Settings extends Component {
           <div className="settings-section settings-logout">
             <div className="options-container bottom">
               <div className="settings-option">
-                <a className="bottom-btn" href="#">clear link history</a>
+                <a className="bottom-btn" href="#">Clear link history</a>
               </div>
               <div className="settings-option">
-                <a className="bottom-btn" href="#" onClick={() => this.props.logout() }>logout</a>
+                <a className="bottom-btn" href="#" onClick={() => this.props.logout() }>Logout</a>
               </div>
             </div>
           </div>
