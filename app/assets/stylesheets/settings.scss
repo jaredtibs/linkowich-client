@@ -16,11 +16,11 @@
   }
 
   &.settings-support {
-    flex: 1;
+    flex: .75;
   }
 
   &.settings-about {
-    flex: 1;
+    flex: .85;
   }
 
   &.settings-logout {
@@ -56,12 +56,12 @@
   align-items: center;
   justify-content: space-between;
   padding-left: 10px;
-  padding-top: 5px;
+  padding-top: 10px;
 
   .section-btn {
     text-decoration: none;
     font-family: 'Colfax-Regular';
-    font-size: 12px;
+    font-size: 13px;
     color: #474747;
   }
 
@@ -71,4 +71,8 @@
     font-size: 12px;
     color: #0667D0;
   }
+}
+
+.settings-option:first-child {
+  padding-top: 0px;
 }
