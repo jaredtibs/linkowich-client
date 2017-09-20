@@ -16,7 +16,7 @@
   }
 
   &.settings-support {
-    flex: .5;
+    flex: 1;
   }
 
   &.settings-about {
@@ -41,23 +41,33 @@
   }
 }
 
+.options-container {
+
+  &.bottom {
+    padding-top: 10px;
+  }
+
+}
+
 .settings-option {
   display: flex;
+  flex: 1;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   padding-left: 10px;
+  padding-top: 5px;
 
   .section-btn {
     text-decoration: none;
-    font-family: 'Colfax-Medium';
+    font-family: 'Colfax-Regular';
     font-size: 12px;
     color: #474747;
   }
 
   .bottom-btn {
     text-decoration: none;
-    font-family: 'Colfax-Medium';
+    font-family: 'Colfax-Regular';
     font-size: 12px;
     color: #0667D0;
   }
