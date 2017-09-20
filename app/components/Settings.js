@@ -10,30 +10,67 @@ class Settings extends Component {
     return(
       <div className="window-content">
         <div className="settings-container">
-          <div className="settings-inner-container settings-account">
-            <div className="settings-subheader">
-              <span>account</span>
+          <div className="settings-section settings-account">
+            <div className="section-subheader">
+              <span>Account</span>
             </div>
-            <div className="settings-options">
+            <div className="settings-option">
+              <a className="section-btn" href="#">
+                upgrade to premium
+              </a>
+            </div>
+            <div className="settings-option">
+              <a className="section-btn" href="#">
+                change password
+              </a>
+            </div>
+            <div className="settings-option">
+              <a className="section-btn" href="#">
+                blocked users
+              </a>
             </div>
           </div>
-          <div className="settings-inner-container settings-support">
-            <div className="settings-subheader">
-              <span>support</span>
+          <div className="settings-section settings-support">
+            <div className="section-subheader">
+              <span>Support</span>
             </div>
-            <div className="settings-options">
+            <div className="settings-option">
+              <a className="section-btn" href="#">
+                FAQ
+              </a>
+            </div>
+            <div className="settings-option">
+              <a className="section-btn" href="#">
+                report a problem
+              </a>
             </div>
           </div>
-          <div className="settings-inner-container settings-about">
-            <div className="settings-subheader">
-              <span>about</span>
+          <div className="settings-section settings-about">
+            <div className="section-subheader">
+              <span>About</span>
             </div>
-            <div className="settings-options">
+            <div className="settings-option">
+              <a className="section-btn" href="#">
+                website
+              </a>
+            </div>
+            <div className="settings-option">
+              <a className="section-btn" href="#">
+                privacy policy
+              </a>
+            </div>
+            <div className="settings-option">
+              <a className="section-btn" href="#">
+                terms
+              </a>
             </div>
           </div>
-          <div className="settings-inner-container settings-logout">
-            <div className="settings-options">
-              <span> logout </span>
+          <div className="settings-section settings-logout">
+            <div className="settings-option">
+              <a className="bottom-btn" href="#">clear link history</a>
+            </div>
+            <div className="settings-option">
+              <a className="bottom-btn" href="#" onClick={() => this.props.logout() }>logout</a>
             </div>
           </div>
         </div>
@@ -43,8 +80,16 @@ class Settings extends Component {
 }
 
 export default Settings;
-  /*
-          <button className="btn btn-default" onClick={() => this.props.logout() }>
-            <span> Logout </span>
-          </button>
-          */
+/*
+ upgrade to premium
+ change password
+ blocked users
+
+ FAQ
+ Report a problem
+
+ website
+ Privacy Policy
+ Terms
+
+*/
