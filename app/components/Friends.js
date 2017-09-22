@@ -65,7 +65,7 @@ class Friends extends Component {
                  onClick={() => this.props.history.goBack()}>
               <i className="material-icons arrow-back">arrow_back</i>
             </div>
-            <div className="header-section">
+            <div className="header-section title">
               <span className="header-title"> Friends </span>
             </div>
             <div className="header-section invite">

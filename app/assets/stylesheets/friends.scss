@@ -119,6 +119,9 @@
   flex-direction: row;
 }
 
+.user-info-container {
+  align-items: center;
+}
 .user-action-container {
   justify-content: flex-end;
 }
@@ -130,21 +133,12 @@
   justiy-content: center;
 }
 
-.user-username-container {
-  display: flex;
-  flex-direction: column;
-}
-
 .user-username {
-  font-family: 'Colfax-Regular';
-  color: #3d3d3d;
+  font-family: 'Colfax-Bold';
+  color: #595959;
   font-size: 14px;
-}
-
-.user-subtext {
-  font-family: 'Colfax-Regular';
-  font-size: 12px;
-  color: #8b8a8a;
+  padding-bottom: 10px;
+  padding-left:10px;
 }
 
 .unfollow {
@@ -189,6 +183,8 @@
 
 .users-container {
   padding-top: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .empty-list-container {
@@ -248,3 +244,22 @@
   font-size: 10px;
 }
 
+.follow-btn {
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  width: 74px;
+  height: 26px;
+  border-radius: 4px;
+  background-color: white;
+  border: solid 1px #ff5f36;
+  cursor: pointer;
+
+  span {
+    font-family: 'Colfax-Medium';
+    font-size: 12px;
+    font-weight: 500;
+    text-align: center;
+    color: #ff5f36;
+  }
+}

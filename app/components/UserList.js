@@ -23,14 +23,12 @@ class UserList extends Component {
               <div className="user-avatar">
                 <img src={avatar_src} width={40} height={40} />
               </div>
-              <div className="user-username-container">
-                <div className="user-username">{username}</div>
-                <div className="user-subtext">additional info here</div>
-              </div>
+              <div className="user-username">{username}</div>
             </div>
             <div className="user-action-container">
-              <span className="minus">-</span>
-              <i className="material-icons unfollow">perm_identity</i>
+              <div className="follow-btn">
+                <span>Follow</span>
+              </div>
             </div>
           </div>
         )
