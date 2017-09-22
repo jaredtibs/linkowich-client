@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom';
 import styles from '../assets/stylesheets/header.scss';
+var logo = require('../assets/logo.svg');
 
 class Header extends Component {
   constructor(props) {
@@ -33,9 +34,7 @@ class Header extends Component {
           </div>
           <div className="app-title header-section">
             <Link to={'/home'}>
-              <span className="title-link">link</span>
-              <span className="title-o">o</span>
-              <span className="title-wich">wich</span>
+              <img src={logo} width={90} height={30} />
             </Link>
           </div>
           <div className="header-section">
@@ -56,3 +55,8 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps)(Header);
+/*
+ * <span className="title-link">link</span>
+              <span className="title-o">o</span>
+              <span className="title-wich">wich</span>
+              */

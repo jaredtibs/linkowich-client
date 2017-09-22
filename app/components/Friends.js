@@ -61,15 +61,18 @@ class Friends extends Component {
       <div className="window-content">
         <div className="main-container">
           <div className="header-nav">
-            <div className="header-section"
+            <div className="header-section back"
                  onClick={() => this.props.history.goBack()}>
-              <i className="material-icons close">close</i>
+              <i className="material-icons arrow-back">arrow_back</i>
             </div>
             <div className="header-section">
               <span className="header-title"> Friends </span>
             </div>
             <div className="header-section invite">
-              <div onClick={() => this._toggleInviteDrawer()}>Invite</div>
+              <div className="invite-container" onClick={() => this._toggleInviteDrawer()}>
+                <i className="material-icons invite-icon">group_add</i>
+                <span>Invite</span>
+              </div>
             </div>
           </div>
 
@@ -125,7 +128,6 @@ class Friends extends Component {
                     }}> Following </a>
                   </li>
                 </ul>
-                <div className="header-inner-div"></div>
               </div>
 
               <div className="users-container">
