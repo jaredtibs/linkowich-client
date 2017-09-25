@@ -16,52 +16,57 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding-bottom: 3px;
+  align-items: center;
+}
+
+.link-meta-container {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  align-items: center;
+  padding-bottom: 6px;
+
+  .avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-right: 10px;
+
+    img {
+      border-radius: 15px;
+    }
+  }
+
+  .username {
+    font-family: 'Colfax-Medium';
+    color: #474747;
+    font-size: 14px;
+  }
+
+  .timestamp {
+    font-family: 'Colfax-Regular';
+    color: #8b8a8a;
+    font-size: 10px;
+    padding-left: 5px;
+  }
+}
+
+.vote-icon {
+  color: #595959;
+  font-size: 16px !important;
+  vertical-align: middle;
+  padding-right: 3px;
 }
 
 .link-container {
   display: flex;
-  height: 50px;
   flex-direction: row;
-  background-color: #ffffff;
-  border-style: solid;
-  border-width: 2px;
-  border-color: #450037;
-}
-
-.username {
-  font-family: 'Colfax-Medium';
-  color: #474747;
-  font-size: 14px;
-}
-
-.link-timestamp {
-  font-family: 'Colfax-Regular';
-  color: #8b8a8a;
-  font-size: 10px;
-  padding-left: 5px;
-}
-
-.link-history {
-  color: #ff5e38;
-  font-family: 'Colfax-Medium';
-  font-size: 12px;
-}
-
-.emoji-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 50px;
   height: 50px;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #450037;
+  border-radius: 4px;
+  background-color: #ffffff;
+  box-shadow: inset 0 0 0 0 var(--white-two);
+  border: solid 0.5px #d6d6d6;
 }
-
-.link-row:nth-of-type(3n+1) .emoji-container {background-color: #ff5e39;}
-.link-row:nth-of-type(3n+2) .emoji-container {background-color: #00d2d1;}
-.link-row:nth-of-type(3n+3) .emoji-container {background-color: #ffffff;}
 
 .url-text-container {
   display: flex;
@@ -72,13 +77,14 @@
 }
 
 .url-text-container a {
-  font-family: 'Colfax-Medium';
   text-decoration: none;
-  color: #474747;
-  font-size: 12px;
   line-height: 16px;
   cursor: pointer;
   overflow: hidden;
+  font-family: 'Colfax-Regular';
+  font-size: 13px;
+  text-align: left;
+  color: #595959;
 }
 
 .link-stats-container {
@@ -90,10 +96,4 @@
   font-family: 'Colfax-Regular';
   font-size: 8px;
   color: #8b8a8a;
-}
-
-.past-link-footer-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
 }

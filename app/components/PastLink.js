@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import styles from '../assets/stylesheets/link.scss';
-import { Emoji } from 'emoji-mart';
 
 class PastLink extends Component {
   constructor(props) {
@@ -14,10 +13,6 @@ class PastLink extends Component {
     return(
       <div className='link-row'>
         <div className='link-container'>
-          <div className="emoji-container">
-            <Emoji emoji=':stuck_out_tongue_winking_eye:' size={24} />
-          </div>
-
           <div className="url-text-container">
             <a href="#" onClick={() => this.props.onClick(link)}>
               {link.attributes.url}
