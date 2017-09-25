@@ -5,6 +5,17 @@ import defaultAvatar from "../assets/default_avatar.jpeg"
 class Link extends Component {
   constructor(props) {
     super(props)
+    this.state = {
+      hovering: null
+    }
+  }
+
+  mouseOver(linkId) {
+    this.setState({hovering: linkId})
+  }
+
+  mouseOut() {
+    this.setState({hovering: null})
   }
 
   render() {
@@ -33,8 +44,9 @@ class Link extends Component {
           </div>
         </div>
 
-        <div className='link-container'>
-
+        <div className='link-container'
+             onMouseOver={this.mouseOver.bind(this, link.id)}
+             onMouseOut={this.mouseOut.bind(this)}>
           <div className="url-text-container">
             <a href="#" onClick={() => this.props.onClick(link)}>
               {link.attributes.url}
@@ -42,10 +54,23 @@ class Link extends Component {
           </div>
         </div>
 
-        <div className="link-stats-container">
-          { seenBy.length > 0 ?
-            <span className="seen-by">seen by {seenBy.join(',')}</span>
-          : null }
+
+        <div className="link-footer-container">
+          <div className="seen-by">
+            { seenBy.length > 0 ?
+              <span className="seen-by">seen by {seenBy.join(',')}</span>
+            : null }
+          </div>
+          { this.state.hovering === link.id ?
+            <div className="action-btns-container">
+              <div className="link-action-btn">
+                <i className="material-icons">whatshot</i>
+              </div>
+              <div className="link-action-btn">
+                <i className="material-icons">link</i>
+              </div>
+            </div>
+            : null }
         </div>
       </div>
     )

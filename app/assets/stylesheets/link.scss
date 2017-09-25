@@ -61,7 +61,7 @@
 .link-container {
   display: flex;
   flex-direction: row;
-  height: 50px;
+  height: 60px;
   border-radius: 4px;
   background-color: #ffffff;
   box-shadow: inset 0 0 0 0 var(--white-two);
@@ -91,13 +91,44 @@
   color: #595959;
 }
 
-.link-stats-container {
+.link-footer-container {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  flex: 1;
+
+  .seen-by {
+    font-family: 'Colfax-Regular';
+    font-size: 10px;
+    color: #8b8a8a;
+  }
+
+  .action-btns-container {
+    display: flex;
+    flex-direction: row;
+    margin-top: -15px;
+    margin-right: 10px;
+  }
+
 }
 
-.seen-by {
-  font-family: 'Colfax-Regular';
-  font-size: 8px;
-  color: #8b8a8a;
+.link-action-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 5px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2);
+  border: solid 1px #ff5f36; 
+  cursor: pointer;
+
+  i {
+    object-fit: contain;
+    transform: rotate(45deg);
+    font-size: 20px !important;
+    color: #ff5f36;
+  }
 }
