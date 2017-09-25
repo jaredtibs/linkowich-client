@@ -10,12 +10,13 @@ class UserList extends Component {
   }
 
   render() {
-    let { users, context } = this.props;
+    const { users, context } = this.props;
+    console.log(users)
 
     if (users.length > 0) {
-      let userList = users.map((user, index) => {
-        let { avatar, username } = user.attributes;
-        let avatar_src = avatar.url ? avatar.url : defaultAvatar;
+      const userList = users.map((user, index) => {
+        const { avatar, username } = user.attributes;
+        const avatar_src = avatar.url ? avatar.url : defaultAvatar;
 
         return(
           <div key={user.id} className="user-row">
@@ -26,9 +27,14 @@ class UserList extends Component {
               <div className="user-username">{username}</div>
             </div>
             <div className="user-action-container">
-              <div className="follow-btn">
-                <span>Follow</span>
-              </div>
+              { user.attributes['is-following'] ?
+                <div className="action-btn following">
+                  <span className="following-text">Following</span>
+                </div>
+              : <div className="action-btn follow">
+                  <span className="follow-text">Follow</span>
+                </div>
+              }
             </div>
           </div>
         )
