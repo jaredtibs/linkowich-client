@@ -11,7 +11,6 @@ class UserList extends Component {
 
   render() {
     const { users, context } = this.props;
-    console.log(users)
 
     if (users.length > 0) {
       const userList = users.map((user, index) => {

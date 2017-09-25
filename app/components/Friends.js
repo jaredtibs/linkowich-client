@@ -10,7 +10,9 @@ class Friends extends Component {
     this.defaultState = {
       inviteEmail: '',
       friendCode: '',
-      drawerOpened: false
+      drawerOpened: false,
+      codePlaceholder: "WHERE'S THE CODE AT?",
+      emailPlaceholder: "SEND IT"
     }
 
     this.state = this.defaultState;
@@ -19,6 +21,22 @@ class Friends extends Component {
   componentDidMount() {
     const { followContext } = this.props.friends;
     this.props.fetchFriends(followContext);
+  }
+
+  handleFocus(type) {
+    if (type === "code") {
+      this.setState({codePlaceholder: "press enter to add friend"})
+    } else {
+      this.setState({emailPlaceholder: "press enter to invite friend"})
+    }
+  }
+
+  handleBlur(type) {
+    if (type === "code") {
+      this.setState({codePlaceholder: "WHERE'S THE CODE AT?"})
+    } else {
+      this.setState({emailPlaceholder: "SEND IT"})
+    }
   }
 
   _toggleInviteDrawer() {
@@ -79,34 +97,42 @@ class Friends extends Component {
           <Collapse
             className="collapsed-container"
             isOpened={this.state.drawerOpened}
-            fixedHeight={100}
+            fixedHeight={150}
           >
             <div className="friend-actions-container">
-              <div className="inner-container">
-                <form id="invite-form" onSubmit={this.handleSubmit.bind(this, 'invite')}>
-                  <input
-                    name="inviteEmail"
-                    placeholder="invite by email"
-                    type="text"
-                    value={this.state.inviteEmail}
-                    onChange={this.handleChange.bind(this)}
-                  />
-                </form>
-                <span className="input-subheader">invite a friend by email</span>
-              </div>
-              <div className="inner-divider-container">- or -</div>
+
               <div className="inner-container">
                 <form id="code-form" onSubmit={this.handleSubmit.bind(this, 'code')}>
                   <input
+                    className="invite-input"
                     name="friendCode"
-                    placeholder="add by code"
+                    placeholder={this.state.codePlaceholder}
                     type="text"
                     value={this.state.friendCode}
+                    onFocus={this.handleFocus.bind(this, 'code')}
+                    onBlur={this.handleBlur.bind(this, 'code')}
                     onChange={this.handleChange.bind(this)}
                   />
                 </form>
-                <span className="input-subheader">enter a friend's code</span>
+                <span className="input-subheader">Ask around</span>
               </div>
+
+              <div className="inner-container">
+                <form id="invite-form" onSubmit={this.handleSubmit.bind(this, 'invite')}>
+                  <input
+                    className="invite-input"
+                    name="inviteEmail"
+                    placeholder={this.state.emailPlaceholder}
+                    type="text"
+                    value={this.state.inviteEmail}
+                    onFocus={this.handleFocus.bind(this, 'email')}
+                    onBlur={this.handleBlur.bind(this, 'email')}
+                    onChange={this.handleChange.bind(this)}
+                  />
+                </form>
+                <span className="input-subheader">Email, duh...</span>
+              </div>
+
             </div>
           </Collapse>
 
