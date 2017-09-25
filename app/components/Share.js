@@ -62,7 +62,7 @@ class Share extends Component {
         <div className="my-link">
           { displayLink ?
             <span className="my-link-url"> { currentLink.attributes.url } </span>
-          : <span className="my-link-url"> nothing published. click to share a link... </span>
+          : <span className="my-link-url"> share some fire </span>
           }
         </div>
       </div>
@@ -72,7 +72,7 @@ class Share extends Component {
   renderInputForm() {
     return(
       <form id="link-form" onSubmit={this.handleSubmit.bind(this)}>
-        <div className="form-group my-link-input-container">
+        <div className="my-link-input-container">
           <input
             className="link-input"
             type="url"
