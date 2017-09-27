@@ -1,5 +1,5 @@
 .link-row {
-  margin-top: 25px;
+  margin-top: 20px;
   padding-left: 25px;
   padding-right: 25px;
 }
@@ -93,9 +93,10 @@
 
 .link-footer-container {
   display: flex;
+  flex: 1;
   flex-direction: row;
   justify-content: space-between;
-  flex: 1;
+  height: 20px;
 
   .seen-by {
     font-family: 'Colfax-Regular';
