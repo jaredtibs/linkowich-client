@@ -6,16 +6,12 @@ class Link extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      hovering: null
+      hovering: false
     }
   }
 
-  mouseOver(linkId) {
-    this.setState({hovering: linkId})
-  }
-
-  mouseOut() {
-    this.setState({hovering: null})
+  _handleHover() {
+    this.setState({hovering: !this.state.hovering})
   }
 
   render() {
@@ -24,6 +20,7 @@ class Link extends Component {
     const user = link.attributes.user.data.attributes
     const { avatar, username } = user;
     const avatar_src = avatar.url ? avatar.url : defaultAvatar;
+    console.log(this.state)
 
     return(
       <div className='link-row'>
@@ -45,8 +42,8 @@ class Link extends Component {
         </div>
 
         <div className='link-container'
-             onMouseOver={this.mouseOver.bind(this, link.id)}
-             onMouseOut={this.mouseOut.bind(this)}>
+             onMouseOver={this._handleHover.bind(this)}
+             onMouseOut={this._handleHover.bind(this)}>
           <div className="url-text-container">
             <a href="#" onClick={() => this.props.onClick(link)}>
               {link.attributes.url}
@@ -61,7 +58,7 @@ class Link extends Component {
               <span className="seen-by">seen by {seenBy.join(',')}</span>
             : null }
           </div>
-          { this.state.hovering === link.id ?
+          { this.state.hovering ?
             <div className="action-btns-container">
               <div className="link-action-btn">
                 <i className="material-icons">whatshot</i>
@@ -70,8 +67,9 @@ class Link extends Component {
                 <i className="material-icons">link</i>
               </div>
             </div>
-            : null }
+          : null }
         </div>
+
       </div>
     )
   }
