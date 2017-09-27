@@ -70,9 +70,6 @@ class Link extends Component {
           <div className={cx("action-btns-container", {"hidden": !this.state.hovering})}
                onMouseOver={this._handleHover.bind(this)}
                onMouseOut={this._handleHover.bind(this)}>
-            <div className="link-action-btn">
-              <i className="material-icons">whatshot</i>
-            </div>
             <CopyToClipboard
               text={link.attributes.url}
               onCopy={() => this.setState({copied: true})}>
