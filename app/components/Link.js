@@ -54,7 +54,7 @@ class Link extends Component {
              onMouseOver={this._handleHover.bind(this)}
              onMouseOut={this._handleHover.bind(this)}>
           <div className="url-text-container">
-            <a href="#" onClick={() => this.props.onClick(link)}>
+            <a href="#" className={cx({"active": this.state.hovering})} onClick={() => this.props.onClick(link)}>
               {link.attributes.url}
             </a>
           </div>
@@ -76,7 +76,7 @@ class Link extends Component {
             <CopyToClipboard
               text={link.attributes.url}
               onCopy={() => this.setState({copied: true})}>
-              <div className={cx("link-action-btn", {"active": this.state.copied})}>
+              <div className={cx("link-action-btn")}>
                 <i className="material-icons">link</i>
               </div>
             </CopyToClipboard>

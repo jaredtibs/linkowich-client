@@ -89,6 +89,10 @@
   font-size: 13px;
   text-align: left;
   color: #595959;
+
+  &.active {
+    color: #00d5d6;
+  }
 }
 
 .link-footer-container {
@@ -141,5 +145,15 @@
     i {
       color: #ffffff;
     }
+  }
+}
+
+.link-action-btn:hover {
+  background-color: #ff5f36;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  i {
+    color: #ffffff;
   }
 }
