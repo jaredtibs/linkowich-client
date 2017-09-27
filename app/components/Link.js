@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import styles from '../assets/stylesheets/link.scss';
 import defaultAvatar from "../assets/default_avatar.jpeg"
+import cx from 'classnames';
 
 class Link extends Component {
   constructor(props) {
@@ -20,7 +21,6 @@ class Link extends Component {
     const user = link.attributes.user.data.attributes
     const { avatar, username } = user;
     const avatar_src = avatar.url ? avatar.url : defaultAvatar;
-    console.log(this.state)
 
     return(
       <div className='link-row'>
@@ -58,18 +58,17 @@ class Link extends Component {
               <span className="seen-by">seen by {seenBy.join(',')}</span>
             : null }
           </div>
-          { this.state.hovering ?
-            <div className="action-btns-container">
-              <div className="link-action-btn">
-                <i className="material-icons">whatshot</i>
-              </div>
-              <div className="link-action-btn">
-                <i className="material-icons">link</i>
-              </div>
+          <div className={cx("action-btns-container", {"hidden": !this.state.hovering})}
+               onMouseOver={this._handleHover.bind(this)}
+               onMouseOut={this._handleHover.bind(this)}>
+            <div className="link-action-btn">
+              <i className="material-icons">whatshot</i>
             </div>
-          : null }
+            <div className="link-action-btn">
+              <i className="material-icons">link</i>
+            </div>
+          </div>
         </div>
-
       </div>
     )
   }
