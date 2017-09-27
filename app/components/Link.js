@@ -2,13 +2,20 @@ import React, { Component, PropTypes } from 'react';
 import styles from '../assets/stylesheets/link.scss';
 import defaultAvatar from "../assets/default_avatar.jpeg"
 import cx from 'classnames';
+import CopyToClipboard from 'react-copy-to-clipboard';
 
 class Link extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      hovering: false
+      hovering: false,
+      copied: false,
+      voted: false
     }
+  }
+
+  _handleParentHover() {
+    this.setState({copied: false})
   }
 
   _handleHover() {
@@ -23,14 +30,16 @@ class Link extends Component {
     const avatar_src = avatar.url ? avatar.url : defaultAvatar;
 
     return(
-      <div className='link-row'>
+      <div className='link-row'
+           onMouseOut={this._handleParentHover.bind(this)}
+      >
         <div className='link-row-header-container'>
 
           <div className="link-meta-container">
             <div className="avatar">
               <img src={avatar_src} width={30} height={30} />
             </div>
-            <div>
+            <div className="meta-text">
               <span className='username'>{username}</span>
               <span className='timestamp'>{link.attributes['published-at']} ago</span>
             </div>
@@ -64,9 +73,13 @@ class Link extends Component {
             <div className="link-action-btn">
               <i className="material-icons">whatshot</i>
             </div>
-            <div className="link-action-btn">
-              <i className="material-icons">link</i>
-            </div>
+            <CopyToClipboard
+              text={link.attributes.url}
+              onCopy={() => this.setState({copied: true})}>
+              <div className={cx("link-action-btn", {"active": this.state.copied})}>
+                <i className="material-icons">link</i>
+              </div>
+            </CopyToClipboard>
           </div>
         </div>
       </div>
