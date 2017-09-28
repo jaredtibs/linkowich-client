@@ -139,13 +139,6 @@
     color: #ff5f36;
   }
 
-  &.active {
-    background-color: #ff5f36;
-
-    i {
-      color: #ffffff;
-    }
-  }
 }
 
 .link-action-btn:hover {
@@ -153,7 +146,15 @@
   width: 26px;
   height: 26px;
   border-radius: 50%;
+
   i {
     color: #ffffff;
+  }
+
+  &.copied {
+    background-color: #f9f9f9;
+    i {
+      color: #ff5f36;
+    }
   }
 }

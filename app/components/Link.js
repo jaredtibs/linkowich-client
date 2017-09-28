@@ -12,6 +12,7 @@ class Link extends Component {
       copied: false,
       voted: false
     }
+    this.copiedDone = this.copiedDone.bind(this)
   }
 
   _handleParentHover() {
@@ -20,6 +21,20 @@ class Link extends Component {
 
   _handleHover() {
     this.setState({hovering: !this.state.hovering})
+  }
+
+  componentDidMount () {
+    const elm = this.copyButton
+    elm.addEventListener('animationend', this.copiedDone)
+  }
+
+  componentWillUnmount () {
+    const elm = this.copyButton
+    elm.removeEventListener('animationend', this.copiedDone)
+  }
+
+  copiedDone () {
+    this.setState({copied: false})
   }
 
   render() {
@@ -73,7 +88,8 @@ class Link extends Component {
             <CopyToClipboard
               text={link.attributes.url}
               onCopy={() => this.setState({copied: true})}>
-              <div className={cx("link-action-btn")}>
+              <div className={cx("link-action-btn", {"copied": this.state.copied})}
+                   ref={(copyButton) => {this.copyButton = copyButton}}>
                 <i className="material-icons">link</i>
               </div>
             </CopyToClipboard>
