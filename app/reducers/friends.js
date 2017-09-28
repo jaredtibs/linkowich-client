@@ -28,6 +28,16 @@ export default function friends(state=initialState, action) {
         ...state,
         isSubmitting: false
       };
+    case 'USER_UPDATED':
+      const updatedFriends = state.friends;
+      const index = updatedFriends.findIndex(
+        item => item.id === action.data.id
+      );
+      updatedFriends[index] = action.data
+      return {
+        ...state,
+        friends: updatedFriends
+      };
     case 'SUBMITTING':
       return {
         ...state,

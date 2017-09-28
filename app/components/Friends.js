@@ -50,7 +50,7 @@ class Friends extends Component {
     if (type === 'invite') {
       //this.props.inviteByEmail(this.state.inviteEmail);
     } else {
-      this.props.addByCode(this.state.friendCode, followContext);
+      this.props.addFriendByCode(this.state.friendCode, followContext);
     }
 
     this.setState(this.defaultState);
@@ -158,7 +158,12 @@ class Friends extends Component {
 
               <div className="users-container">
                 { !isFetching ?
-                  <UserList users={friends} context={followContext}/>
+                  <UserList
+                    users={friends}
+                    context={followContext}
+                    follow={this.props.followUser}
+                    unfollow={this.props.unfollowUser}
+                  />
                   : this.renderLoadingState() }
               </div>
             </div>

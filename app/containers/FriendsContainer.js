@@ -1,8 +1,12 @@
 import React, { Component, PropTypes } from 'react';
 import {connect} from 'react-redux';
-import { fetchFriends,
-         toggleFollowContext,
-         addByCode } from '../actions/friends';
+import {
+  fetchFriends,
+  toggleFollowContext,
+  followUser,
+  unfollowUser,
+  addFriendByCode,
+  inviteUser } from '../actions/friends';
 import Friends from '../components/Friends';
 
 class FriendsContainer extends Component {
@@ -31,8 +35,20 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(toggleFollowContext(context))
     },
 
-    addByCode: (code, context) => {
-      dispatch(addByCode(code, context))
+    followUser: (userId) => {
+      dispatch(followUser(userId))
+    },
+
+    unfollowUser: (userId) => {
+      dispatch(unfollowUser(userId))
+    },
+
+    inviteUser: (email) => {
+      dispatch(inviteUser(email))
+    },
+
+    addFriendByCode: (code, context) => {
+      dispatch(addFriendByCode(code, context))
     }
   }
 };

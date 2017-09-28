@@ -27,10 +27,10 @@ class UserList extends Component {
             </div>
             <div className="user-action-container">
               { user.attributes['is-following'] ?
-                <div className="action-btn following">
+                <div className="action-btn following" onClick={() => this.props.unfollow(user.id) }>
                   <span className="following-text">Following</span>
                 </div>
-              : <div className="action-btn follow">
+                : <div className="action-btn follow" onClick={() => this.props.follow(user.id) }>
                   <span className="follow-text">Follow</span>
                 </div>
               }

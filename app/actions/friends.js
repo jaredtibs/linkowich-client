@@ -47,7 +47,7 @@ export function changeFollowContext(context) {
   }
 }
 
-export function addByCode(code, context) {
+export function addFriendByCode(code, context) {
   return dispatch => {
     dispatch(isSubmitting());
     let url = `http://localhost:3000/api/v1/user/follow/${code}`
@@ -77,5 +77,50 @@ export function isSubmitting() {
 export function friendAdded() {
   return {
     type: 'FRIEND_ADDED',
+  }
+}
+
+export function followUser(userId) {
+  return dispatch => {
+    let url = `http://localhost:3000/api/v1/users/${userId}/follow`
+    return fetch(url, {
+      method: "POST",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Token ' + authToken()
+      }
+    })
+    .then((response) => response.json())
+    .then((responseData) => {
+      dispatch(userUpdated(responseData.data));
+    })
+    .catch(error => console.log(error))
+  }
+}
+
+export function unfollowUser(userId) {
+  return dispatch => {
+    let url = `http://localhost:3000/api/v1/users/${userId}/follow`
+    return fetch(url, {
+      method: "DELETE",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Token ' + authToken()
+      }
+    })
+    .then((response) => response.json())
+    .then((responseData) => {
+      dispatch(userUpdated(responseData.data));
+    })
+    .catch(error => console.log(error))
+  }
+}
+
+export function userUpdated(user) {
+  return {
+    type: "USER_UPDATED",
+    data: user
   }
 }
