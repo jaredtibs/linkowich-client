@@ -134,9 +134,11 @@ class Share extends Component {
 
         <div className="share-header">
           <span className="share-label">My Link</span>
-          <span className="link-timestamp">
-            {currentLink ? `${currentLink.attributes['published-at']} ago` : null}
-          </span>
+          { !this.state.isEditing ?
+            <span className="link-timestamp">
+              {currentLink ? `${currentLink.attributes['published-at']} ago` : null}
+            </span>
+          : null }
         </div>
 
         { this.renderLinkOrEditField() }
