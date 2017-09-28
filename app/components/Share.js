@@ -45,6 +45,11 @@ class Share extends Component {
     this.setState({awaitingClearConfirmation: true})
   }
 
+  truncate(url) {
+    if (url.length <= 40) { return url };
+    return url.slice(0, 40) + ' ...';
+  }
+
   renderLoadingState() {
     return(
       <div className="summary">
@@ -61,7 +66,7 @@ class Share extends Component {
       <div className="my-link-container" onClick={this.toggleEditing.bind(this)}>
         <div className="my-link">
           { displayLink ?
-            <span className="my-link-url"> { currentLink.attributes.url } </span>
+            <span className="my-link-url"> { this.truncate(currentLink.attributes.url) } </span>
           : <span className="my-link-url"> share some fire </span>
           }
         </div>
