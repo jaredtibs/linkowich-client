@@ -80,30 +80,12 @@ export function friendAdded() {
   }
 }
 
-export function followUser(userId) {
+export function updateFollowRelationship(userId, type) {
   return dispatch => {
     let url = `http://localhost:3000/api/v1/users/${userId}/follow`
+    let method = type === "follow" ? "POST" : "DELETE"
     return fetch(url, {
-      method: "POST",
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'Authorization': 'Token ' + authToken()
-      }
-    })
-    .then((response) => response.json())
-    .then((responseData) => {
-      dispatch(userUpdated(responseData.data));
-    })
-    .catch(error => console.log(error))
-  }
-}
-
-export function unfollowUser(userId) {
-  return dispatch => {
-    let url = `http://localhost:3000/api/v1/users/${userId}/follow`
-    return fetch(url, {
-      method: "DELETE",
+      method: method,
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',

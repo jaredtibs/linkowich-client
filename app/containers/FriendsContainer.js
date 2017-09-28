@@ -3,8 +3,7 @@ import {connect} from 'react-redux';
 import {
   fetchFriends,
   toggleFollowContext,
-  followUser,
-  unfollowUser,
+  updateFollowRelationship,
   addFriendByCode,
   inviteUser } from '../actions/friends';
 import Friends from '../components/Friends';
@@ -36,11 +35,11 @@ const mapDispatchToProps = (dispatch) => {
     },
 
     followUser: (userId) => {
-      dispatch(followUser(userId))
+      dispatch(updateFollowRelationship(userId, 'follow'))
     },
 
     unfollowUser: (userId) => {
-      dispatch(unfollowUser(userId))
+      dispatch(updateFollowRelationship(userId, 'unfollow'))
     },
 
     inviteUser: (email) => {
