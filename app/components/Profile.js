@@ -54,7 +54,7 @@ class Profile extends Component {
 
     return(
       <div className="window-content">
-        <div className="pane">
+        <div className="profile-container">
           <div className="upper-container">
             <div className="profile-avatar-container"
                  onClick={this.handleAvatarClick.bind(this)}

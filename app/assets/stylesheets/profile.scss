@@ -10,14 +10,12 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: 20px;
-  padding-bottom: 20px;
   background-color: #ffffff;
 }
 
 .lower-container {
   display: flex;
-  flex: 1.5;
+  flex: 2;
   flex-direction: column;
   border-top: solid 1px #CECECE;
   background-color: #F2F2F2;
@@ -39,9 +37,9 @@
 .profile-avatar-container {
   border-radius: 100%;
   display: flex;
-  flex: 0 0 150px;
-  width: 150px;
-  height: 150px;
+  flex: 0 0 110px;
+  width: 110px;
+  height: 110px;
   justify-content: center;
   overflow: hidden;
   position: relative;
