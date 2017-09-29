@@ -135,7 +135,7 @@
   i {
     object-fit: contain;
     transform: rotate(45deg);
-    font-size: 20px !important;
+    font-size: 18px !important;
     color: #ff5f36;
   }
 
@@ -150,11 +150,36 @@
   i {
     color: #ffffff;
   }
+}
 
-  &.copied {
-    background-color: #f9f9f9;
-    i {
-      color: #ff5f36;
-    }
+.copied {
+  animation: bounce-in-keyframes 0.2s;
+}
+
+// bounce effect
+/*
+@keyframes bounce-in-keyframes {
+  from {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%
+  }
+
+  to {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%
   }
 }
+*/
+
+// fade effect
+.copied {
+  animation: fade-in-keyframes 0.5s;
+}
+
+@keyframes fade-in-keyframes {
+  from {opacity: 0.25}
+  to {opacity: 1}
+}
+
