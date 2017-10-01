@@ -7,13 +7,17 @@
   border-top-color: #CECECE;
 }
 
-//TODO change this to flex once .pane is restyled/removed
-.empty-feed-container {
-  margin-top: 50px;
-  div {
+.empty-feed {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 80px;
+
+  .empty-text {
     font-family: 'Colfax-Regular';
-    text-align: center;
-    color: grey;
+    color: rgba(71, 71, 71, .50);
   }
 }
 

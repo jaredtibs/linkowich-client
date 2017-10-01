@@ -41,8 +41,8 @@ class Profile extends Component {
       )
     } else {
       return(
-        <div className="empty-past-links-container">
-          <div> You haven't shared any links yet! </div>
+        <div className="empty-profile-links">
+          <div className="empty-text"> You haven't shared any links yet! </div>
         </div>
       )
     }

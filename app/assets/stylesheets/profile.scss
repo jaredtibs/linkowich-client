@@ -106,13 +106,17 @@
   }
 }
 
-
-//TODO change this to flex once .pane is restyled/removed
-.empty-past-links-container {
+.empty-profile-links {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   margin-top: 50px;
-  div {
+
+  .empty-text {
     font-family: 'Colfax-Regular';
-    text-align: center;
-    color: grey;
+    color: rgba(71, 71, 71, .50);
   }
 }
+
