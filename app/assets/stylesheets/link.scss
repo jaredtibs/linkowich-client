@@ -1,7 +1,11 @@
 .link-row {
   margin-top: 20px;
-  padding-left: 25px;
-  padding-right: 25px;
+  padding-left: 20px;
+  padding-right: 20px;
+
+  &.profile {
+    margin-top: 10px;
+  }
 }
 
 .link-row:first-child {
@@ -43,11 +47,25 @@
     font-size: 14px;
   }
 
-  .timestamp {
+  .published-ago {
     font-family: 'Colfax-Regular';
     color: #8b8a8a;
     font-size: 10px;
     padding-left: 5px;
+  }
+
+  .published-at {
+    font-family: 'Colfax-Bold';
+    color: #595959;
+    font-size: 11px;
+    padding-left: 5px;
+  }
+
+  .time {
+    font-family: 'Colfax-Regular';
+    color: #496160;
+    font-size: 11px;
+    padding-left: 10px;
   }
 }
 
@@ -103,6 +121,10 @@
   flex-direction: row;
   justify-content: space-between;
   height: 20px;
+
+  &.profile {
+    height: 0px;
+  }
 
   .seen-by {
     font-family: 'Colfax-Regular';

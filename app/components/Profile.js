@@ -3,7 +3,7 @@ const { shell, ipcRenderer } = window.require('electron');
 import React, { Component, PropTypes } from 'react';
 import styles from '../assets/stylesheets/profile.scss';
 import defaultAvatar from '../assets/default_avatar.jpeg';
-import ProfileLink from './Link'
+import PastLink from './PastLink';
 
 class Profile extends Component {
   constructor(props) {
@@ -33,7 +33,7 @@ class Profile extends Component {
 
     if (pastLinks.length > 0) {
       let linkList = pastLinks.map(function(link, i) {
-        return <ProfileLink key={i} data={link} onClick={onClick} profile={true}/>
+        return <PastLink key={i} data={link} onClick={onClick} />
       });
 
       return(

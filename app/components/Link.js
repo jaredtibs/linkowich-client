@@ -9,8 +9,7 @@ class Link extends Component {
     super(props)
     this.state = {
       hovering: false,
-      copied: false,
-      voted: false
+      copied: false
     }
     this.copiedDone = this.copiedDone.bind(this)
   }
@@ -55,8 +54,8 @@ class Link extends Component {
               <img src={avatar_src} width={30} height={30} />
             </div>
             <div className="meta-text">
-              <span className='username'>{username}</span>
-              <span className='timestamp'>{link.attributes['published-at']} ago</span>
+              <span className="username">{username}</span>
+              <span className="published-ago">{link.attributes['published-ago']} ago</span>
             </div>
           </div>
 
