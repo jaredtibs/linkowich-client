@@ -64,7 +64,11 @@ class Profile extends Component {
             </div>
             <input type="file" id="file" ref="fileUploader" style={{display: "none"}}/>
             <div className="profile-info-container">
-              <span className="profile-username">{user.username}</span>
+              <div className="profile-username">{user.username}</div>
+              <div className="profile-score">
+                <span className="vote-count">+4</span>
+                <i className="material-icons vote-icon">whatshot</i>
+              </div>
             </div>
           </div>
           <div className="lower-container">
