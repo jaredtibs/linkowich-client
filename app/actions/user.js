@@ -125,6 +125,7 @@ export function sessionFetched(data) {
 
 export function fetchHistoricalLinkData() {
   return dispatch => {
+    dispatch(fetchingHistoricalLinks());
     const url = `http://localhost:3000/api/v1/user/links`
     return fetch(url, {
       method: "GET",
@@ -137,6 +138,12 @@ export function fetchHistoricalLinkData() {
     .then((response) => response.json())
     .then((responseData) => dispatch(historicalLinksFetched(responseData.data)))
     .catch(error => console.log(error))
+  }
+}
+
+export function fetchingHistoricalLinks() {
+  return {
+    type: "FETCHING_HISTORICAL_LINKS"
   }
 }
 

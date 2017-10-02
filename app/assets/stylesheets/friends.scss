@@ -66,6 +66,12 @@
   flex: 1;
 }
 
+.following-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .friends-header-container {
   display: flex;
   flex: 1;
@@ -105,12 +111,12 @@
   }
 }
 
-.loading-container {
+.friends-loading-container {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   flex: 1;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 80px;
 }
 
 .user-info-container, .user-action-container {

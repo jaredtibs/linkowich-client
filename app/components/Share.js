@@ -52,7 +52,7 @@ class Share extends Component {
 
   renderLoadingState() {
     return(
-      <div className="summary">
+      <div>
         Publishing&hellip;
       </div>
     )

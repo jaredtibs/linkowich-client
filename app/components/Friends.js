@@ -3,6 +3,7 @@ import styles from '../assets/stylesheets/friends.scss';
 import cx from 'classnames';
 import UserList from './UserList';
 import {Collapse} from 'react-collapse';
+import MDSpinner from "react-md-spinner";
 
 class Friends extends Component {
   constructor(props) {
@@ -64,8 +65,15 @@ class Friends extends Component {
 
   renderLoadingState() {
     return(
-      <div className="loading-container">
-        <span className="loading-text"> Loading... </span>
+      <div className="friends-loading-container">
+        <MDSpinner
+          className="spinner"
+          size="24"
+          color1="#00d2d1"
+          color2="#474747"
+          color3="#ff5e39"
+          color4="#d6d6d6"
+        />
       </div>
     )
   }
@@ -157,14 +165,15 @@ class Friends extends Component {
               </div>
 
               <div className="users-container">
-                { !isFetching ?
+                { isFetching ?
+                  this.renderLoadingState() :
                   <UserList
                     users={friends}
                     context={followContext}
                     follow={this.props.followUser}
                     unfollow={this.props.unfollowUser}
                   />
-                  : this.renderLoadingState() }
+                }
               </div>
             </div>
 

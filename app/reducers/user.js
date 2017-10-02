@@ -5,7 +5,8 @@ const initialState = {
   avatar: null,
   pastLinks: [],
   loginErrors: {},
-  registerErrors: {}
+  registerErrors: {},
+  isFetching: false
 };
 
 export default function user(state=initialState, action) {
@@ -39,9 +40,15 @@ export default function user(state=initialState, action) {
         username: action.data.username,
         avatar: action.data.avatar,
       };
+    case 'FETCHING_HISTORICAL_LINKS':
+      return {
+        ...state,
+        isFetching: true
+      };
     case 'HISTORICAL_LINKS_FETCHED':
       return {
         ...state,
+        isFetching: false,
         pastLinks: action.data
       };
     case 'AVATAR_UPDATED':
