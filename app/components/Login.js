@@ -91,7 +91,7 @@ class Login extends Component {
             </div>
           </div>
           <div className={cx("submit-btn-container", {"submit-ready": this.state.formValid})}>
-            <button type="submit" className="submit-btn">Signup</button>
+            <button type="submit" className="submit-btn">Login</button>
           </div>
         </form>
       </div>
