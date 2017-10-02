@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router-dom';
+import cx from 'classnames';
 
 class SignUp extends Component {
   constructor(props) {
@@ -81,7 +82,7 @@ class SignUp extends Component {
       <div className="form-container">
         <form id="signup-form" onSubmit={this.handleSubmit.bind(this)}>
           <div className="input-container">
-            { this.state.emailFocused ? <span>Email</span> : null}
+            <label className={cx("label-helper", {"active": this.state.emailFocused})}>Email</label>
             <input type="email" name="email"
               className="input-field"
               placeholder={this.state.emailPlaceholder}
@@ -92,7 +93,7 @@ class SignUp extends Component {
             />
           </div>
           <div className="input-container">
-            { this.state.usernameFocused ? <span>Create Username</span> : null }
+            <label className={cx("label-helper", {"active": this.state.usernameFocused})}>Create Username</label>
             <input type="text" name="username"
               name="username"
               className="input-field"
@@ -104,7 +105,7 @@ class SignUp extends Component {
             />
           </div>
           <div className="input-container">
-            { this.state.passwordFocused ? <span>Create Password</span> : null }
+            <label className={cx("label-helper", {"active": this.state.passwordFocused})}>Create Password</label>
             <input type="password" name="password"
               name="password"
               className="input-field"
