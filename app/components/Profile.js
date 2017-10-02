@@ -4,6 +4,7 @@ import React, { Component, PropTypes } from 'react';
 import styles from '../assets/stylesheets/profile.scss';
 import defaultAvatar from '../assets/default_avatar.jpeg';
 import PastLink from './PastLink';
+import ListLoader from './ListLoader';
 
 class Profile extends Component {
   constructor(props) {
@@ -50,6 +51,7 @@ class Profile extends Component {
 
   render() {
     const { user } = this.props;
+    const { isFetching } = user;
     const avatarSrc = user.avatar ? user.avatar.large.url : defaultAvatar;
 
     return(
@@ -75,9 +77,8 @@ class Profile extends Component {
             <div className="lower-container-header">
               <span>Your Links</span>
             </div>
-            <div className="past-links-container">
-              {this.renderPastLinks()}
-            </div>
+
+            { isFetching ? <ListLoader /> : this.renderPastLinks() }
           </div>
         </div>
       </div>
@@ -86,6 +87,3 @@ class Profile extends Component {
 }
 
 export default Profile;
-
-//SPINNER
-//<div className="mdl-spinner mdl-spinner--single-color mdl-js-spinner is-active spinner"></div>

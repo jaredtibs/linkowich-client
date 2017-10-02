@@ -66,6 +66,12 @@
   flex: 1;
 }
 
+.following-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .friends-header-container {
   display: flex;
   flex: 1;
@@ -103,14 +109,6 @@
     margin-right: 10px;
     margin-bottom: 10px;
   }
-}
-
-.loading-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  flex: 1;
 }
 
 .user-info-container, .user-action-container {

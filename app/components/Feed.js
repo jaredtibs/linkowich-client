@@ -4,6 +4,7 @@ import React, { Component, PropTypes } from 'react';
 import FeedLink from './Link'
 import { Link } from 'react-router-dom'
 import styles from '../assets/stylesheets/feed.scss'
+import ListLoader from './ListLoader';
 
 class Feed extends Component {
   constructor(props) {
@@ -17,14 +18,6 @@ class Feed extends Component {
   handleLinkClick(link) {
     shell.openExternal(link.attributes.url);
     this.props.markLinkSeen(link.id)
-  }
-
-  renderLoadingState() {
-    return(
-      <div className="summary">
-        Loading&hellip;
-      </div>
-    )
   }
 
   renderFeedContent(links) {
@@ -59,7 +52,7 @@ class Feed extends Component {
           </Link>
         </div>
 
-        { isFetching ? this.renderLoadingState() : this.renderFeedContent(links) }
+        { isFetching ? <ListLoader /> : this.renderFeedContent(links) }
       </div>
     )
   }

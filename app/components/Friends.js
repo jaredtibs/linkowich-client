@@ -3,6 +3,7 @@ import styles from '../assets/stylesheets/friends.scss';
 import cx from 'classnames';
 import UserList from './UserList';
 import {Collapse} from 'react-collapse';
+import ListLoader from './ListLoader';
 
 class Friends extends Component {
   constructor(props) {
@@ -59,15 +60,6 @@ class Friends extends Component {
   handleChange(event) {
     const name = event.target.name;
     this.setState({[name]: event.target.value})
-  }
-
-
-  renderLoadingState() {
-    return(
-      <div className="loading-container">
-        <span className="loading-text"> Loading... </span>
-      </div>
-    )
   }
 
   render() {
@@ -157,14 +149,15 @@ class Friends extends Component {
               </div>
 
               <div className="users-container">
-                { !isFetching ?
+                { isFetching ?
+                  <ListLoader /> :
                   <UserList
                     users={friends}
                     context={followContext}
                     follow={this.props.followUser}
                     unfollow={this.props.unfollowUser}
                   />
-                  : this.renderLoadingState() }
+                }
               </div>
             </div>
 
