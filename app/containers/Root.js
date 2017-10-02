@@ -9,10 +9,11 @@ import { ConnectedRouter } from 'react-router-redux';
 import TransitionGroup from 'react-transition-group/TransitionGroup';
 import CSSTransition from 'react-transition-group/CSSTransition';
 
-import {fetchUserSession} from '../actions/user';
+import {fetchUserSession} from '../actions/user'
 import App                from './App'
-import LoginContainer     from './LoginContainer'
-import SignUpContainer    from './SignUpContainer'
+import Landing            from './Landing'
+//import LoginContainer     from './LoginContainer'
+//import SignUpContainer    from './SignUpContainer'
 import HomeContainer      from './HomeContainer'
 import ProfileContainer   from './ProfileContainer'
 import SettingsContainer  from './SettingsContainer'
@@ -48,11 +49,10 @@ class Root extends Component {
                 localStorage.getItem('userToken') ? (
                   <Redirect to="/home"/>
                 ) : (
-                  <Redirect to="/signup"/>
+                  <Redirect to="/landing"/>
                 )
               )}/>
-              <Route path='/signup' component={SignUpContainer} />
-              <Route path='/login' component={LoginContainer} />
+              <Route path='/landing' component={Landing} />
               <Route path='/home' component={HomeContainer} onEnter={this.authenticated()} />
               <Route path='/profile' component={ProfileContainer} onEnter={this.authenticated()} />
               <Route path='/settings' component={SettingsContainer} onEnter={this.authenticated()} />
