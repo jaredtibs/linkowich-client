@@ -51,6 +51,7 @@ class SignUp extends Component {
       case 'email':
         this.setState({emailPlaceholder: ''})
         this.setState({emailFocused: true})
+        this.setState({formready: true})
         break;
       case 'username':
         this.setState({usernamePlaceholder: ''})
@@ -78,6 +79,7 @@ class SignUp extends Component {
   }
 
   render() {
+    console.log(this.state)
     return(
       <div className="form-container">
         <form id="signup-form" onSubmit={this.handleSubmit.bind(this)}>
@@ -119,7 +121,7 @@ class SignUp extends Component {
             </div>
           </div>
 
-          <div className="submit-btn-container">
+          <div className={cx("submit-btn-container", {"submit-ready": this.state.formValid})}>
             <button type="submit" className="submit-btn">Signup</button>
           </div>
         </form>
