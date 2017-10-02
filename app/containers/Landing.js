@@ -1,8 +1,10 @@
 import React, { Component, PropTypes } from 'react';
 import styles from '../assets/stylesheets/landing.scss';
+import formStyles from '../assets/stylesheets/landing_forms.scss';
 import cx from 'classnames';
 import LoginContainer from './LoginContainer'
 import SignUpContainer from './SignUpContainer'
+
 const imageLogo = require('../assets/image_logo.svg');
 const textLogo = require('../assets/text_logo.svg');
 

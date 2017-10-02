@@ -25,36 +25,27 @@ class Login extends Component {
 
   render() {
     return(
-      <div className="window-content">
-        <div className="pane">
-          <h1 className="title">Login</h1>
-          <form onSubmit={this.handleSubmit.bind(this)}>
-            <div className="form-group">
-              <label>Email</label>
-              <input type="email"
-                name="email"
-                className="form-control"
-                placeholder="email"
-                value={this.state.email}
-                onChange={this.handleChange.bind(this)}
-              />
-            </div>
-            <div className="form-group">
-              <label>Password</label>
-              <input type="password"
-                name="password"
-                className="form-control"
-                placeholder="Password"
-                value={this.state.password}
-                onChange={this.handleChange.bind(this)}
-              />
-            </div>
-            <div className="form-actions">
-              <button type="submit" className="btn btn-form btn-primary">Login</button>
-              <span>or <Link to="/signup">signup</Link></span>
-            </div>
-          </form>
-        </div>
+      <div className="form-container">
+        <form id="login-form" onSubmit={this.handleSubmit.bind(this)}>
+          <div className="form-input">
+            <input type="email"
+              name="email"
+              className="form-control"
+              placeholder="email"
+              value={this.state.email}
+              onChange={this.handleChange.bind(this)}
+            />
+          </div>
+          <div className="form-input">
+            <input type="password"
+              name="password"
+              className="form-control"
+              placeholder="Password"
+              value={this.state.password}
+              onChange={this.handleChange.bind(this)}
+            />
+          </div>
+        </form>
       </div>
     )
   }

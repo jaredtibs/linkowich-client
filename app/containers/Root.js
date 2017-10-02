@@ -12,8 +12,6 @@ import CSSTransition from 'react-transition-group/CSSTransition';
 import {fetchUserSession} from '../actions/user'
 import App                from './App'
 import Landing            from './Landing'
-//import LoginContainer     from './LoginContainer'
-//import SignUpContainer    from './SignUpContainer'
 import HomeContainer      from './HomeContainer'
 import ProfileContainer   from './ProfileContainer'
 import SettingsContainer  from './SettingsContainer'
