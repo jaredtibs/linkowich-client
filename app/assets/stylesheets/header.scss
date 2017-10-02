@@ -9,8 +9,6 @@
 }
 
 .app-title {
-  //font-family: 'Colfax-Medium';
-  //letter-spacing: 1px;
   padding-bottom: 5px
 }
 
@@ -20,28 +18,16 @@
 
 .header-section {
   display: flex;
+
+  &.left {
+    padding-left: 20px;
+  }
+
+  &.right {
+    padding-right: 20px;
+  }
 }
 
-.settings {
-  margin-left: 22px;
+.disabled {
+  opacity: 0.5;
 }
-
-.user {
-  margin-right: 22px;
-}
-/*
-.title-link {
-  color: #00d6d6;
-  font-size: 18px;
-}
-
-.title-o {
-  color: #440036;
-  font-size: 18px;
-}
-
-.title-wich {
-  color: #ff5e38;
-  font-size: 18px;
-}
-*/

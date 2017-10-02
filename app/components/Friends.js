@@ -73,7 +73,7 @@ class Friends extends Component {
           <div className="header-nav">
             <div className="header-section back"
                  onClick={() => this.props.history.goBack()}>
-              <i className="material-icons arrow-back">arrow_back</i>
+              <i className="material-icons arrow">arrow_back</i>
             </div>
             <div className="header-section title">
               <span className="header-title"> Friends </span>

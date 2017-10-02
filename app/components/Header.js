@@ -2,7 +2,8 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom';
 import styles from '../assets/stylesheets/header.scss';
-var logo = require('../assets/logo.svg');
+import cx from 'classnames';
+const logo = require('../assets/logo.svg');
 
 class Header extends Component {
   constructor(props) {
@@ -27,20 +28,32 @@ class Header extends Component {
     if (this.hasHeader(location.pathname)) {
       return(
         <div className="header">
-          <div className="header-section">
-            <Link to={'/settings'}>
-              <i className="material-icons settings">settings</i>
-            </Link>
+          <div className="header-section left">
+            { location.pathname !== '/profile' ?
+              <Link to={'/settings'}>
+                <i className={cx("material-icons settings", {"disabled": location.pathname === '/settings'})}>settings</i>
+              </Link>
+              :
+              <Link to={'/home'}>
+                <i className="material-icons arrow">arrow_back</i>
+              </Link>
+            }
           </div>
           <div className="app-title header-section">
             <Link to={'/home'}>
               <img src={logo} width={90} height={30} />
             </Link>
           </div>
-          <div className="header-section">
-            <Link to={'/profile'}>
-              <i className="material-icons user">face</i>
-            </Link>
+          <div className="header-section right">
+            { location.pathname !== '/settings' ?
+              <Link to={'/profile'}>
+                <i className={cx("material-icons user", {"disabled": location.pathname === '/profile'})}>face</i>
+              </Link>
+            :
+              <Link to={'/home'}>
+                <i className="material-icons arrow">arrow_forward</i>
+              </Link>
+            }
           </div>
         </div>
       )
