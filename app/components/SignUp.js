@@ -81,44 +81,46 @@ class SignUp extends Component {
     return(
       <div className="form-container">
         <form id="signup-form" onSubmit={this.handleSubmit.bind(this)}>
-          <div className="input-container">
-            <label className={cx("label-helper", {"active": this.state.emailFocused})}>Email</label>
-            <input type="email" name="email"
-              className="input-field"
-              placeholder={this.state.emailPlaceholder}
-              value={this.state.email}
-              onChange={this.handleChange.bind(this)}
-              onFocus={this.onFocus.bind(this)}
-              onBlur={this.onBlur.bind(this)}
-            />
-          </div>
-          <div className="input-container">
-            <label className={cx("label-helper", {"active": this.state.usernameFocused})}>Create Username</label>
-            <input type="text" name="username"
-              name="username"
-              className="input-field"
-              placeholder={this.state.usernamePlaceholder}
-              value={this.state.username}
-              onChange={this.handleChange.bind(this)}
-              onFocus={this.onFocus.bind(this)}
-              onBlur={this.onBlur.bind(this)}
-            />
-          </div>
-          <div className="input-container">
-            <label className={cx("label-helper", {"active": this.state.passwordFocused})}>Create Password</label>
-            <input type="password" name="password"
-              name="password"
-              className="input-field"
-              placeholder={this.state.passwordPlaceholder}
-              value={this.state.password}
-              onChange={this.handleChange.bind(this)}
-              onFocus={this.onFocus.bind(this)}
-              onBlur={this.onBlur.bind(this)}
-            />
+          <div className="form-inputs">
+            <div className="input-container">
+              <label className={cx("label-helper", {"active": this.state.emailFocused})}>Email</label>
+              <input type="email" name="email"
+                className="input-field"
+                placeholder={this.state.emailPlaceholder}
+                value={this.state.email}
+                onChange={this.handleChange.bind(this)}
+                onFocus={this.onFocus.bind(this)}
+                onBlur={this.onBlur.bind(this)}
+              />
+            </div>
+            <div className="input-container">
+              <label className={cx("label-helper", {"active": this.state.usernameFocused})}>Create Username</label>
+              <input type="text" name="username"
+                name="username"
+                className="input-field"
+                placeholder={this.state.usernamePlaceholder}
+                value={this.state.username}
+                onChange={this.handleChange.bind(this)}
+                onFocus={this.onFocus.bind(this)}
+                onBlur={this.onBlur.bind(this)}
+              />
+            </div>
+            <div className="input-container">
+              <label className={cx("label-helper", {"active": this.state.passwordFocused})}>Create Password</label>
+              <input type="password" name="password"
+                name="password"
+                className="input-field"
+                placeholder={this.state.passwordPlaceholder}
+                value={this.state.password}
+                onChange={this.handleChange.bind(this)}
+                onFocus={this.onFocus.bind(this)}
+                onBlur={this.onBlur.bind(this)}
+              />
+            </div>
           </div>
 
           <div className="submit-btn-container">
-            <button type="submit">Signup</button>
+            <button type="submit" className="submit-btn">Signup</button>
           </div>
         </form>
 

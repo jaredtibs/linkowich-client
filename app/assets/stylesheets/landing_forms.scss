@@ -1,6 +1,17 @@
 .form-container {
   display: flex;
   flex-direction: column;
+  flex:1;
+}
+
+#signup-form {
+  display: flex;
+  flex-direction:column;
+  flex: 1;
+}
+
+.form-inputs {
+  flex: 1;
 }
 
 .input-container {
@@ -52,5 +63,26 @@
 
 *:focus {
   outline: none;
+}
+
+.submit-btn-container {
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  margin-bottom: -1px;
+}
+
+.submit-btn {
+  flex: 1;
+  -webkit-appearance: none;
+  border: 0;
+  outline: none;
+  height: 50px;
+  background-color: #ff5f36;
+  box-shadow: inset 0 -0.5px 0 0 #e4e4e4;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: 'Colfax-Medium';
+  font-size: 14px;
 }
 
