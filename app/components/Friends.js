@@ -3,7 +3,7 @@ import styles from '../assets/stylesheets/friends.scss';
 import cx from 'classnames';
 import UserList from './UserList';
 import {Collapse} from 'react-collapse';
-import MDSpinner from "react-md-spinner";
+import ListLoader from './ListLoader';
 
 class Friends extends Component {
   constructor(props) {
@@ -60,22 +60,6 @@ class Friends extends Component {
   handleChange(event) {
     const name = event.target.name;
     this.setState({[name]: event.target.value})
-  }
-
-
-  renderLoadingState() {
-    return(
-      <div className="friends-loading-container">
-        <MDSpinner
-          className="spinner"
-          size="24"
-          color1="#00d2d1"
-          color2="#474747"
-          color3="#ff5e39"
-          color4="#d6d6d6"
-        />
-      </div>
-    )
   }
 
   render() {
@@ -166,7 +150,7 @@ class Friends extends Component {
 
               <div className="users-container">
                 { isFetching ?
-                  this.renderLoadingState() :
+                  <ListLoader /> :
                   <UserList
                     users={friends}
                     context={followContext}

@@ -4,7 +4,7 @@ import React, { Component, PropTypes } from 'react';
 import styles from '../assets/stylesheets/profile.scss';
 import defaultAvatar from '../assets/default_avatar.jpeg';
 import PastLink from './PastLink';
-import MDSpinner from "react-md-spinner";
+import ListLoader from './ListLoader';
 
 class Profile extends Component {
   constructor(props) {
@@ -26,21 +26,6 @@ class Profile extends Component {
 
   handleAvatarClick() {
     ipcRenderer.send('open-finder');
-  }
-
-  renderLoadingState() {
-    return(
-      <div className="profile-loading-container">
-        <MDSpinner
-          className="spinner"
-          size="24"
-          color1="#00d2d1"
-          color2="#474747"
-          color3="#ff5e39"
-          color4="#d6d6d6"
-        />
-      </div>
-    )
   }
 
   renderPastLinks() {
@@ -93,7 +78,7 @@ class Profile extends Component {
               <span>Your Links</span>
             </div>
 
-            { isFetching ? this.renderLoadingState() : this.renderPastLinks() }
+            { isFetching ? <ListLoader /> : this.renderPastLinks() }
           </div>
         </div>
       </div>
