@@ -12,15 +12,22 @@ class SignUp extends Component {
       formValid: false,
       emailValid: true,
       emailValidationError: "",
+      emailPlaceholder: "Email",
+      emailFocused: false,
       usernameValid: true,
       usernameValidationError: "",
+      usernamePlaceholder: "Create Username",
+      usernameFocused: false,
       passwordValid: true,
       passwordValidationError: "",
+      passwordPlaceholder: "Create Password",
+      passwordFocused: false,
       serverErrorReceived: false
     }
 
     //TODO remove for real validation
     this.state.formValid = true;
+
   }
 
   handleChange(event) {
@@ -38,37 +45,82 @@ class SignUp extends Component {
     }
   }
 
+  onFocus(event) {
+    switch(event.target.name) {
+      case 'email':
+        this.setState({emailPlaceholder: ''})
+        this.setState({emailFocused: true})
+        break;
+      case 'username':
+        this.setState({usernamePlaceholder: ''})
+        this.setState({usernameFocused: true})
+        break;
+      case 'password':
+        this.setState({passwordPlaceholder: ''})
+        this.setState({passwordFocused: true})
+        break;
+    }
+  }
+
+  onBlur(event) {
+    switch(event.target.name) {
+      case 'email':
+        this.setState({emailPlaceholder: 'Email'})
+        this.setState({emailFocused: false})
+      case 'username':
+        this.setState({usernamePlaceholder: 'Create Username'})
+        this.setState({usernameFocused: false})
+      case 'password':
+        this.setState({passwordPlaceholder: 'Create Password'})
+        this.setState({passwordFocused: false})
+    }
+  }
+
   render() {
     return(
       <div className="form-container">
         <form id="signup-form" onSubmit={this.handleSubmit.bind(this)}>
           <div className="input-container">
-            <input type="email"
+            { this.state.emailFocused ? <span>Email</span> : null}
+            <input type="email" name="email"
               className="input-field"
-              placeholder="Email"
+              placeholder={this.state.emailPlaceholder}
               value={this.state.email}
               onChange={this.handleChange.bind(this)}
+              onFocus={this.onFocus.bind(this)}
+              onBlur={this.onBlur.bind(this)}
             />
           </div>
           <div className="input-container">
-            <input type="text"
+            { this.state.usernameFocused ? <span>Create Username</span> : null }
+            <input type="text" name="username"
               name="username"
               className="input-field"
-              placeholder="Create Username"
+              placeholder={this.state.usernamePlaceholder}
               value={this.state.username}
               onChange={this.handleChange.bind(this)}
+              onFocus={this.onFocus.bind(this)}
+              onBlur={this.onBlur.bind(this)}
             />
           </div>
           <div className="input-container">
-            <input type="password"
+            { this.state.passwordFocused ? <span>Create Password</span> : null }
+            <input type="password" name="password"
               name="password"
               className="input-field"
-              placeholder="Create Password"
+              placeholder={this.state.passwordPlaceholder}
               value={this.state.password}
               onChange={this.handleChange.bind(this)}
+              onFocus={this.onFocus.bind(this)}
+              onBlur={this.onBlur.bind(this)}
             />
           </div>
+
+          <div className="submit-btn-container">
+            <button type="submit">Signup</button>
+          </div>
         </form>
+
       </div>
     )
   }
