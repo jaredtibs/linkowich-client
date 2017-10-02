@@ -69,17 +69,19 @@ class SignUp extends Component {
       case 'email':
         this.setState({emailPlaceholder: 'Email'})
         this.setState({emailFocused: false})
+        break;
       case 'username':
         this.setState({usernamePlaceholder: 'Create Username'})
         this.setState({usernameFocused: false})
+        break;
       case 'password':
         this.setState({passwordPlaceholder: 'Create Password'})
         this.setState({passwordFocused: false})
+        break;
     }
   }
 
   render() {
-    console.log(this.state)
     return(
       <div className="form-container">
         <form id="signup-form" onSubmit={this.handleSubmit.bind(this)}>
