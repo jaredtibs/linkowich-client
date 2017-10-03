@@ -49,14 +49,48 @@ class SignUp extends Component {
   validateInput(event) {
     switch(event.target.name) {
       case 'email':
-        const regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        this.setState({emailValid: regex.test(event.target.value)});
+        if (!this.state.email || this.state.email === "") {
+          this.setState({emailValid: false, emailValidationError: "Required"});
+        } else if (this.validateEmail(this.state.email) === false) {
+          this.setState({emailValid: false, emailValidationError: "Invalid Email"})
+        } else {
+          this.setState({emailValid: true, emailValidationError: ""})
+        }
         break;
       case 'username':
+        if (!this.state.username || this.state.username === "") {
+          this.setState({usernameValid: false, usernameValidationError: "Required"});
+        } else if (this.validateUsername(this.state.username) === false) {
+          this.setState({usernameValid: false, usernameValidationError: "Invalid Username"})
+        } else {
+          this.setState({usernameValid: true, usernameValidationError: ""})
+        }
         break;
       case 'password':
+        if (!this.state.password || this.state.password === "") {
+          this.setState({passwordValid: false, passwordValidationError: "Required"});
+        } else if (this.validatePassword(this.state.password) === false) {
+          this.setState({passwordValid: false, passwordValidationError: "Password Too Weak"})
+        } else {
+          this.setState({passwordValid: true, passwordValidationError: ""})
+        }
         break;
     }
+  }
+
+  validateEmail(email) {
+    const regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return regex.test(email);
+  }
+
+  //TODO tbd
+  validateUsername(username) {
+    return true;
+  }
+
+  //TODO tbd
+  validatePassword(password) {
+    return true;
   }
 
   onFocus(event) {
@@ -106,7 +140,7 @@ class SignUp extends Component {
                 className={cx("label-helper", {
                   "active": (this.state.emailFocused || this.state.email),
                   "error": !this.state.emailValid})
-                }>Email</label>
+                }>{ this.state.emailValid ? "Email" : this.state.emailValidationError}</label>
               <input type="email" name="email"
                 className={cx("input-field", {"error": !this.state.emailValid})}
                 placeholder={this.state.emailPlaceholder}
@@ -121,10 +155,10 @@ class SignUp extends Component {
                 className={cx("label-helper", {
                   "active": (this.state.usernameFocused || this.state.username),
                   "error": !this.state.usernameValid
-                })}>Create Username</label>
+                })}>{ this.state.usernameValid ? "Create Username" : this.state.usernameValidationError }</label>
               <input type="text" name="username"
                 name="username"
-                className="input-field"
+                className={cx("input-field", {"error": !this.state.usernameValid})}
                 placeholder={this.state.usernamePlaceholder}
                 value={this.state.username}
                 onChange={this.handleChange.bind(this)}
@@ -137,10 +171,10 @@ class SignUp extends Component {
                 className={cx("label-helper", {
                   "active": (this.state.passwordFocused || this.state.password),
                   "error": !this.state.passwordValid
-                })}>Create Password</label>
+                })}>{ this.state.passwordValid ? "Create Password" : this.state.passwordValidationError }</label>
               <input type="password" name="password"
                 name="password"
-                className="input-field"
+                className={cx("input-field", {"error": !this.state.passwordValid})}
                 placeholder={this.state.passwordPlaceholder}
                 value={this.state.password}
                 onChange={this.handleChange.bind(this)}
