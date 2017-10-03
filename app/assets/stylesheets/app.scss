@@ -120,36 +120,6 @@ label {
   float: right;
 }
 
-.form-group {
-  margin-bottom: 10px;
-}
-
-.form-control {
-  display: inline-block;
-  width: 100%;
-  min-height: 25px;
-  padding: 5px 10px;
-  font-size: 13px;
-  line-height: 1.6;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  outline: none;
-}
-
-.form-control:focus {
-  border-color: #6db3fd;
-  box-shadow: 3px 3px 0 #6db3fd, -3px -3px 0 #6db3fd, -3px 3px 0 #6db3fd, 3px -3px 0 #6db3fd;
-}
-
-.form-actions .btn {
-  margin-right: 10px;
-}
-
-.form-actions .btn:last-child {
-  margin-right: 0;
-}
-
 @font-face {
   font-family: "photon-entypo";
   src: url("/app/vendor/fonts/photon-entypo.eot");

@@ -21,6 +21,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  padding-left: 1px;
 }
 
 .link-meta-container {
@@ -199,18 +200,3 @@
     background-color: #ff5f36;
   }
 }
-
-//    background-color: #C22200;
-//    background-color: #ff5f36;
-
-/*
-// fade effect
-.copied {
-  animation: fade-in-keyframes 0.5s;
-}
-
-@keyframes fade-in-keyframes {
-  from {opacity: 0.25}
-  to {opacity: 1}
-}
-*/

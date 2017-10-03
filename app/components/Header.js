@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom';
 import styles from '../assets/stylesheets/header.scss';
 import cx from 'classnames';
-const logo = require('../assets/logo.svg');
+const headerLogo = require('../assets/text_logo.svg');
 
 class Header extends Component {
   constructor(props) {
@@ -41,7 +41,7 @@ class Header extends Component {
           </div>
           <div className="app-title header-section">
             <Link to={'/home'}>
-              <img src={logo} width={90} height={30} />
+              <img src={headerLogo} width={90} height={30} />
             </Link>
           </div>
           <div className="header-section right">

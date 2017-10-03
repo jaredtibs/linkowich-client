@@ -6,7 +6,8 @@ const initialState = {
   pastLinks: [],
   loginErrors: {},
   registerErrors: {},
-  isFetching: false
+  isFetching: false,
+  loading: false
 };
 
 export default function user(state=initialState, action) {
