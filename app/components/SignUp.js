@@ -26,15 +26,21 @@ class SignUp extends Component {
       serverErrorReceived: false
     }
 
-    //TODO remove for real validation
-    this.state.formValid = true;
     this.validateInput.bind(this);
+
   }
 
   handleChange(event) {
     this.setState({
       [event.target.name]: event.target.value
     });
+
+    const {emailValid, usernameValid, passwordValid} = this.state;
+    let validInputs = (emailValid && usernameValid && passwordValid);
+    let presentInputs = (this.state.email && this.state.username && this.state.password);
+    let formValid = (validInputs && presentInputs);
+
+    this.setState({formValid: formValid});
   }
 
   handleSubmit(event) {
