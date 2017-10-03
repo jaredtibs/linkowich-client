@@ -9,9 +9,11 @@ class Login extends Component {
     this.state = {
       formValid: false,
       email: '',
+      emailValid: '',
       emailPlaceholder: "Email",
       emailFocused: false,
       password: '',
+      passwordValid: '',
       passwordPlaceholder: "Password",
       passwordFocused: false
     }

@@ -28,7 +28,7 @@ class SignUp extends Component {
 
     //TODO remove for real validation
     this.state.formValid = true;
-
+    this.validateInput.bind(this);
   }
 
   handleChange(event) {
@@ -43,6 +43,19 @@ class SignUp extends Component {
 
     if ((email && username && password) && this.state.formValid) {
       this.props.signUp(email, username, password);
+    }
+  }
+
+  validateInput(event) {
+    switch(event.target.name) {
+      case 'email':
+        const regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        this.setState({emailValid: regex.test(event.target.value)});
+        break;
+      case 'username':
+        break;
+      case 'password':
+        break;
     }
   }
 
@@ -65,6 +78,8 @@ class SignUp extends Component {
   }
 
   onBlur(event) {
+    this.validateInput(event)
+
     switch(event.target.name) {
       case 'email':
         this.setState({emailPlaceholder: 'Email'})
@@ -87,9 +102,13 @@ class SignUp extends Component {
         <form id="signup-form" onSubmit={this.handleSubmit.bind(this)}>
           <div className="form-inputs">
             <div className="input-container">
-              <label className={cx("label-helper", {"active": this.state.emailFocused})}>Email</label>
+              <label
+                className={cx("label-helper", {
+                  "active": (this.state.emailFocused || this.state.email),
+                  "error": !this.state.emailValid})
+                }>Email</label>
               <input type="email" name="email"
-                className="input-field"
+                className={cx("input-field", {"error": !this.state.emailValid})}
                 placeholder={this.state.emailPlaceholder}
                 value={this.state.email}
                 onChange={this.handleChange.bind(this)}
@@ -98,7 +117,11 @@ class SignUp extends Component {
               />
             </div>
             <div className="input-container">
-              <label className={cx("label-helper", {"active": this.state.usernameFocused})}>Create Username</label>
+              <label
+                className={cx("label-helper", {
+                  "active": (this.state.usernameFocused || this.state.username),
+                  "error": !this.state.usernameValid
+                })}>Create Username</label>
               <input type="text" name="username"
                 name="username"
                 className="input-field"
@@ -110,7 +133,11 @@ class SignUp extends Component {
               />
             </div>
             <div className="input-container">
-              <label className={cx("label-helper", {"active": this.state.passwordFocused})}>Create Password</label>
+              <label
+                className={cx("label-helper", {
+                  "active": (this.state.passwordFocused || this.state.password),
+                  "error": !this.state.passwordValid
+                })}>Create Password</label>
               <input type="password" name="password"
                 name="password"
                 className="input-field"
