@@ -27,7 +27,6 @@ class SignUp extends Component {
     }
 
     this.validateInput.bind(this);
-
   }
 
   handleChange(event) {
@@ -55,27 +54,27 @@ class SignUp extends Component {
   validateInput(event) {
     switch(event.target.name) {
       case 'email':
-        if (!this.state.email || this.state.email === "") {
-          this.setState({emailValid: false, emailValidationError: "Required"});
-        } else if (this.validateEmail(this.state.email) === false) {
+        //if (!this.state.email || this.state.email === "") {
+        //  this.setState({emailValid: false, emailValidationError: "Required"});
+        if ( this.state.email && this.validateEmail(this.state.email) === false) {
           this.setState({emailValid: false, emailValidationError: "Invalid Email"})
         } else {
           this.setState({emailValid: true, emailValidationError: ""})
         }
         break;
       case 'username':
-        if (!this.state.username || this.state.username === "") {
-          this.setState({usernameValid: false, usernameValidationError: "Required"});
-        } else if (this.validateUsername(this.state.username) === false) {
+        // if (!this.state.username || this.state.username === "") {
+        //   this.setState({usernameValid: false, usernameValidationError: "Required"});
+        if (this.state.username && this.validateUsername(this.state.username) === false) {
           this.setState({usernameValid: false, usernameValidationError: "Invalid Username"})
         } else {
           this.setState({usernameValid: true, usernameValidationError: ""})
         }
         break;
       case 'password':
-        if (!this.state.password || this.state.password === "") {
-          this.setState({passwordValid: false, passwordValidationError: "Required"});
-        } else if (this.validatePassword(this.state.password) === false) {
+        //if (!this.state.password || this.state.password === "") {
+        //  this.setState({passwordValid: false, passwordValidationError: "Required"});
+        if (this.state.password && this.validatePassword(this.state.password) === false) {
           this.setState({passwordValid: false, passwordValidationError: "Password Too Weak"})
         } else {
           this.setState({passwordValid: true, passwordValidationError: ""})
@@ -142,8 +141,7 @@ class SignUp extends Component {
         <form id="signup-form" onSubmit={this.handleSubmit.bind(this)}>
           <div className="form-inputs">
             <div className="input-container">
-              <label
-                className={cx("label-helper", {
+              <label className={cx("label-helper", {
                   "active": (this.state.emailFocused || this.state.email),
                   "error": !this.state.emailValid})
                 }>{ this.state.emailValid ? "Email" : this.state.emailValidationError}</label>
@@ -157,8 +155,7 @@ class SignUp extends Component {
               />
             </div>
             <div className="input-container">
-              <label
-                className={cx("label-helper", {
+              <label className={cx("label-helper", {
                   "active": (this.state.usernameFocused || this.state.username),
                   "error": !this.state.usernameValid
                 })}>{ this.state.usernameValid ? "Create Username" : this.state.usernameValidationError }</label>
@@ -173,8 +170,7 @@ class SignUp extends Component {
               />
             </div>
             <div className="input-container">
-              <label
-                className={cx("label-helper", {
+              <label className={cx("label-helper", {
                   "active": (this.state.passwordFocused || this.state.password),
                   "error": !this.state.passwordValid
                 })}>{ this.state.passwordValid ? "Create Password" : this.state.passwordValidationError }</label>

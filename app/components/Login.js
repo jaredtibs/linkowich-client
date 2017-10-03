@@ -9,21 +9,29 @@ class Login extends Component {
     this.state = {
       formValid: false,
       email: '',
-      emailValid: '',
+      emailValid: true,
+      emailValidationError: '',
       emailPlaceholder: "Email",
       emailFocused: false,
       password: '',
-      passwordValid: '',
+      passwordValid: true,
+      passwordValidationError: '',
       passwordPlaceholder: "Password",
       passwordFocused: false
     }
 
-    //TODO remove for real validation
-    this.state.formValid = true;
+    this.validateInput.bind(this);
   }
 
   handleChange(event) {
     this.setState({[event.target.name]: event.target.value});
+
+    const {emailValid, passwordValid} = this.state;
+    let validInputs = (emailValid && passwordValid);
+    let presentInputs = (this.state.email && this.state.password);
+    let formValid = (validInputs && presentInputs);
+
+    this.setState({formValid: formValid});
   }
 
   handleSubmit(event) {
@@ -32,6 +40,27 @@ class Login extends Component {
       this.state.email,
       this.state.password
     )
+  }
+
+  // not called as required validation is a bad pattern
+  // and you aren't doing any other validations at this point
+  validateInput(event) {
+    switch(event.target.name) {
+      case 'email':
+        if (!this.state.email || this.state.email === "") {
+          this.setState({emailValid: false, emailValidationError: "Required"});
+        } else {
+          this.setState({emailValid: true, emailValidationError: ""})
+        }
+        break;
+      case 'password':
+        if (!this.state.password || this.state.password === "") {
+          this.setState({passwordValid: false, passwordValidationError: "Required"});
+        } else {
+          this.setState({passwordValid: true, passwordValidationError: ""})
+        }
+        break;
+    }
   }
 
   onFocus(event) {
@@ -49,6 +78,8 @@ class Login extends Component {
   }
 
   onBlur(event) {
+    //this.validateInput(event)
+
     switch(event.target.name) {
       case 'email':
         this.setState({emailPlaceholder: 'Email'})
@@ -68,10 +99,13 @@ class Login extends Component {
         <form id="login-form" onSubmit={this.handleSubmit.bind(this)}>
           <div className="form-inputs">
             <div className="input-container">
-              <label className={cx("label-helper", {"active": this.state.emailFocused})}>Email</label>
+              <label className={cx("label-helper", {
+                  "active": (this.state.emailFocused || this.state.email),
+                  "error": !this.state.emailValid})
+                }>{ this.state.emailValid ? "Email" : this.state.emailValidationError}</label>
               <input type="email"
                 name="email"
-                className="input-field"
+                className={cx("input-field", {"error": !this.state.emailValid})}
                 placeholder={this.state.emailPlaceholder}
                 value={this.state.email}
                 onChange={this.handleChange.bind(this)}
@@ -80,10 +114,13 @@ class Login extends Component {
               />
             </div>
             <div className="input-container">
-              <label className={cx("label-helper", {"active": this.state.passwordFocused})}>Password</label>
+              <label className={cx("label-helper", {
+                  "active": (this.state.passwordFocused || this.state.password),
+                  "error": !this.state.passwordValid
+                })}>{ this.state.passwordValid ? "Password" : this.state.passwordValidationError }</label>
               <input type="password"
                 name="password"
-                className="input-field"
+                className={cx("input-field", {"error": !this.state.passwordValid})}
                 placeholder={this.state.passwordPlaceholder}
                 value={this.state.password}
                 onChange={this.handleChange.bind(this)}
