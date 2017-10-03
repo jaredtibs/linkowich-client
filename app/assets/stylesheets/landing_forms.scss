@@ -40,12 +40,23 @@
   z-index: 1;
 
   &.active {
-    opacity: 1;
+    animation: label-slide-up-keyframes 0.5s;
+    animation-fill-mode:forwards;
   }
 
   &.error {
     opacity: 1;
     color: #f40731;
+  }
+}
+
+@keyframes label-slide-up-keyframes {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
   }
 }
 

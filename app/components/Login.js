@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router-dom';
 import cx from 'classnames';
+import SimpleSpinner from './SimpleSpinner';
 
 class Login extends Component {
   constructor(props) {
@@ -94,6 +95,8 @@ class Login extends Component {
 
 
   render() {
+    const { loading } = this.props.user;
+
     return(
       <div className="form-container">
         <form id="login-form" onSubmit={this.handleSubmit.bind(this)}>
@@ -130,7 +133,9 @@ class Login extends Component {
             </div>
           </div>
           <div className={cx("submit-btn-container", {"submit-ready": this.state.formValid})}>
-            <button type="submit" className="submit-btn">Login</button>
+            <button type="submit" className="submit-btn">
+              { loading ? <SimpleSpinner color="white" /> : "LOGIN" }
+            </button>
           </div>
         </form>
       </div>
