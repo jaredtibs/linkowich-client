@@ -36,7 +36,6 @@
   display: flex;
   flex-direction: column;
   cursor: pointer;
-  padding-top: 8px;
 
   span {
     font-family: 'Colfax-Medium';
@@ -47,9 +46,8 @@
 
   i {
     color: #00d5d6;
-    font-size: 22px;
+    font-size: 28px;
     object-fit: contain;
-    margin-bottom: -6px;
   }
 }
 

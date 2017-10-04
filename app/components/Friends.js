@@ -81,7 +81,6 @@ class Friends extends Component {
             <div className="header-section invite">
               <div className="invite-container" onClick={() => this._toggleInviteDrawer()}>
                 <i className="material-icons invite-icon">group_add</i>
-                <span>Invite</span>
               </div>
             </div>
           </div>
@@ -122,7 +121,7 @@ class Friends extends Component {
                     onChange={this.handleChange.bind(this)}
                   />
                 </form>
-                <span className="input-subheader">Email, duh...</span>
+                <span className="input-subheader">Email a friend</span>
               </div>
 
             </div>
