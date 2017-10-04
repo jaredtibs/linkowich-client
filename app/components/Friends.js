@@ -121,7 +121,7 @@ class Friends extends Component {
                     onChange={this.handleChange.bind(this)}
                   />
                 </form>
-                <span className="input-subheader">Email a friend</span>
+                <span className="input-subheader">Invite a friend</span>
               </div>
 
             </div>
