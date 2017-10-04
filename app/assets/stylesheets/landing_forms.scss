@@ -34,14 +34,14 @@
   text-align: left;
   color: #474747;
   opacity: 0;
-  margin-bottom: -10px;
+  margin-bottom: -15px;
   padding-top: 3px;
   padding-bottom: 3px;
   z-index: 1;
 
   &.active {
-    animation: label-slide-up-keyframes 0.5s;
-    animation-fill-mode:forwards;
+    animation: label-slide-up-keyframes 0.75s;
+    animation-fill-mode: forwards;
   }
 
   &.error {
