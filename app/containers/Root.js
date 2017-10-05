@@ -9,13 +9,14 @@ import { ConnectedRouter } from 'react-router-redux';
 import TransitionGroup from 'react-transition-group/TransitionGroup';
 import CSSTransition from 'react-transition-group/CSSTransition';
 
-import {fetchUserSession} from '../actions/user'
-import App                from './App'
-import Landing            from './Landing'
-import HomeContainer      from './HomeContainer'
-import ProfileContainer   from './ProfileContainer'
-import SettingsContainer  from './SettingsContainer'
-import FriendsContainer   from './FriendsContainer'
+import {fetchUserSession} from '../actions/user';
+import App                from './App';
+import Landing            from './Landing';
+import HomeContainer      from './HomeContainer';
+import ProfileContainer   from './ProfileContainer';
+import SettingsContainer  from './SettingsContainer';
+import FriendsContainer   from './FriendsContainer';
+import Intro              from '../components/Intro';
 
 import styles from '../assets/stylesheets/animations.scss';
 
@@ -51,6 +52,7 @@ class Root extends Component {
                 )
               )}/>
               <Route path='/landing' component={Landing} />
+              <Route path='/intro' component={Intro} onEnter={this.authenticated()} />
               <Route path='/home' component={HomeContainer} onEnter={this.authenticated()} />
               <Route path='/profile' component={ProfileContainer} onEnter={this.authenticated()} />
               <Route path='/settings' component={SettingsContainer} onEnter={this.authenticated()} />
