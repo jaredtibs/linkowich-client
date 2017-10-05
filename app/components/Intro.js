@@ -3,12 +3,16 @@ import { Link } from 'react-router-dom';
 import styles from '../assets/stylesheets/intro.scss';
 const introIcon = require('../assets/intro_icon.svg');
 
+
 class Intro extends Component {
   constructor(props) {
     super(props)
   }
 
   render() {
+    const items = ["hello world"]
+    const duration = 2000;
+
     return(
       <div className="intro-container">
         <div className="content-container">
@@ -16,7 +20,7 @@ class Intro extends Component {
             <img className="icon" src={introIcon} width={36} height={46} />
           </div>
           <div className="copy-container">
-            <span className="copy">SHARE SOME MUSIC</span>
+            <span className="copy-text"> SHARE SOME MUSIC </span>
           </div>
         </div>
       </div>
