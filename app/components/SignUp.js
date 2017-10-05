@@ -94,19 +94,31 @@ class SignUp extends Component {
   }
 
   onFocus(event) {
+    this.setS
     switch(event.target.name) {
       case 'email':
-        this.setState({emailPlaceholder: ''})
-        this.setState({emailFocused: true})
-        this.setState({formready: true})
+        this.setState({
+          emailPlaceholder: '',
+          emailFocused: true,
+          emailValidationError: false,
+          emailValid: true
+        })
         break;
       case 'username':
-        this.setState({usernamePlaceholder: ''})
-        this.setState({usernameFocused: true})
+        this.setState({
+          usernamePlaceholder: '',
+          usernameFocused: true,
+          usernameValidationError: '',
+          usernameValid: true
+        })
         break;
       case 'password':
-        this.setState({passwordPlaceholder: ''})
-        this.setState({passwordFocused: true})
+        this.setState({
+          passwordPlaceholder: '',
+          passwordFocused: true,
+          passwordValidationError: '',
+          passwordValid: true
+        })
         break;
     }
   }
@@ -116,16 +128,22 @@ class SignUp extends Component {
 
     switch(event.target.name) {
       case 'email':
-        this.setState({emailPlaceholder: 'Email'})
-        this.setState({emailFocused: false})
+        this.setState({
+          emailPlaceholder: 'Email',
+          emailFocused: false
+        })
         break;
       case 'username':
-        this.setState({usernamePlaceholder: 'Create Username'})
-        this.setState({usernameFocused: false})
+        this.setState({
+          usernamePlaceholder: 'Create Username',
+          usernameFocused: false
+        })
         break;
       case 'password':
-        this.setState({passwordPlaceholder: 'Create Password'})
-        this.setState({passwordFocused: false})
+        this.setState({
+          passwordPlaceholder: 'Create Password',
+          passwordFocused: false
+        })
         break;
     }
   }

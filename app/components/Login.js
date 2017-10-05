@@ -43,8 +43,6 @@ class Login extends Component {
     )
   }
 
-  // not called as required validation is a bad pattern
-  // and you aren't doing any other validations at this point
   validateInput(event) {
     switch(event.target.name) {
       case 'email':
@@ -67,28 +65,40 @@ class Login extends Component {
   onFocus(event) {
     switch(event.target.name) {
       case 'email':
-        this.setState({emailPlaceholder: ''})
-        this.setState({emailFocused: true})
-        this.setState({formready: true})
+        this.setState({
+          emailPlaceholder: '',
+          emailFocused: true,
+          emailValidationError: '',
+          emailValid: true
+        })
         break;
       case 'password':
-        this.setState({passwordPlaceholder: ''})
-        this.setState({passwordFocused: true})
+        this.setState({
+          passwordPlaceholder: '',
+          passwordFocused: true,
+          passwordValidationError: '',
+          passwordValid: true
+        })
         break;
     }
   }
 
   onBlur(event) {
+    // currently not validating login inputs
     //this.validateInput(event)
 
     switch(event.target.name) {
       case 'email':
-        this.setState({emailPlaceholder: 'Email'})
-        this.setState({emailFocused: false})
+        this.setState({
+          emailPlaceholder: 'Email',
+          emailFocused: false
+        })
         break;
       case 'password':
-        this.setState({passwordPlaceholder: 'Create Password'})
-        this.setState({passwordFocused: false})
+        this.setState({
+          passwordPlaceholder: 'Password',
+          passwordFocused: false
+        })
         break;
     }
   }
