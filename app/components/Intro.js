@@ -19,8 +19,11 @@ class Intro extends Component {
           <img className="icon" src={introIcon} width={36} height={46} />
           <div className="copy-container">
             <TextLoop style={{width: '130px'}}>
-              <span className="copy-text">SHARE SOME MUSIC</span>
+              <span className="copy-text">SHARE MUSIC</span>
+              <span className="copy-text">SHARE MEMES</span>
+              <span className="copy-text">SHARE ARTICLES</span>
               <span className="copy-text">SHARE ANYTHING</span>
+              <span className="copy-text">SHARE SOME FIRE</span>
             </TextLoop>
           </div>
         </div>
