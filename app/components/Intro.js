@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router-dom';
 import styles from '../assets/stylesheets/intro.scss';
+import TextLoop from 'react-text-loop';
 const introIcon = require('../assets/intro_icon.svg');
-
 
 class Intro extends Component {
   constructor(props) {
@@ -11,16 +11,17 @@ class Intro extends Component {
 
   render() {
     const items = ["hello world"]
-    const duration = 2000;
+    const duration = 3000;
 
     return(
       <div className="intro-container">
         <div className="content-container">
-          <div className="icon-container">
-            <img className="icon" src={introIcon} width={36} height={46} />
-          </div>
+          <img className="icon" src={introIcon} width={36} height={46} />
           <div className="copy-container">
-            <span className="copy-text"> SHARE SOME MUSIC </span>
+            <TextLoop style={{width: '130px'}}>
+              <span className="copy-text">SHARE SOME MUSIC</span>
+              <span className="copy-text">SHARE ANYTHING</span>
+            </TextLoop>
           </div>
         </div>
       </div>
