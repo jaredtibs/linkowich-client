@@ -55,8 +55,6 @@ class SignUp extends Component {
   validateInput(event) {
     switch(event.target.name) {
       case 'email':
-        //if (!this.state.email || this.state.email === "") {
-        //  this.setState({emailValid: false, emailValidationError: "Required"});
         if ( this.state.email && this.validateEmail(this.state.email) === false) {
           this.setState({emailValid: false, emailValidationError: "Invalid Email"})
         } else {
@@ -64,8 +62,6 @@ class SignUp extends Component {
         }
         break;
       case 'username':
-        // if (!this.state.username || this.state.username === "") {
-        //   this.setState({usernameValid: false, usernameValidationError: "Required"});
         if (this.state.username && this.validateUsername(this.state.username) === false) {
           this.setState({usernameValid: false, usernameValidationError: "Invalid Username"})
         } else {
@@ -73,8 +69,6 @@ class SignUp extends Component {
         }
         break;
       case 'password':
-        //if (!this.state.password || this.state.password === "") {
-        //  this.setState({passwordValid: false, passwordValidationError: "Required"});
         if (this.state.password && this.validatePassword(this.state.password) === false) {
           this.setState({passwordValid: false, passwordValidationError: "Password Too Weak"})
         } else {
