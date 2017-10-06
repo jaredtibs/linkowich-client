@@ -10,9 +10,6 @@ class Intro extends Component {
   }
 
   render() {
-    const items = ["hello world"]
-    const duration = 3000;
-
     return(
       <div className="intro-container">
         <div className="content-container">
