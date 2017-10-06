@@ -13,8 +13,8 @@ class Intro extends Component {
     }
   }
 
-  handleAnimationLeave() {
-    console.log("animation over")
+  onAnimationRest() {
+    this.setState({headerCopy: "SHARE SOME NEWS"})
   }
 
   render() {
@@ -23,7 +23,7 @@ class Intro extends Component {
         <div className="content-container">
           <img className="icon" src={introIcon} width={46} height={56} />
           <div className="copy-container">
-            <Motion defaultStyle={{ width: 0 }} style={{width: spring(10)}} onRest={this.handleAnimationLeave.bind(this)} >
+            <Motion defaultStyle={{ width: 0 }} style={{width: spring(10)}} onRest={this.onAnimationRest.bind(this)} >
               {style => <div className="copy-text" style={style}> {this.state.headerCopy} </div>}
             </Motion>
           </div>
