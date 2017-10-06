@@ -19,6 +19,7 @@
   flex-direction: row;
   justify-content: flex-end;
   height: 15px;
+  margin-top: 3px;
 }
 
 .share-label {
@@ -60,7 +61,6 @@
 .link-input {
   flex: 1;
   height: 35px;
-  padding-left: 10px;
   padding-top: 3px;
   padding-bottom: 3px;
   font-family: 'Colfax-Medium';
@@ -86,7 +86,7 @@
   cursor: text;
   border-bottom-style: solid;
   border-bottom-width: 1px;
-  border-bottom-color: #474747;
+  border-bottom-color: #b8b8b8;
 }
 
 .my-link {
@@ -94,7 +94,6 @@
   flex: 1;
   align-items: center;
   height: 35px;
-  padding-left: 10px;
   padding-top: 3px;
   padding-bottom: 3px;
   overflow: hidden;
