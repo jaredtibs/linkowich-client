@@ -28,6 +28,14 @@
   }
 }
 
-.disabled {
+.nav-icon {
+  opacity: 0.75;
+}
+
+.nav-icon:hover {
+  opacity: 1;
+}
+
+.nav-icon.disabled {
   opacity: 0.5;
 }
