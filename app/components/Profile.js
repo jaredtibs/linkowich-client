@@ -75,7 +75,7 @@ class Profile extends Component {
           </div>
           <div className="lower-container">
             <div className="lower-container-header">
-              <span>Your Links</span>
+              <span>History</span>
             </div>
 
             { isFetching ? <ListLoader /> : this.renderPastLinks() }
