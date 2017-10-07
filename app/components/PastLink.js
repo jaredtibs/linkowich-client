@@ -32,7 +32,8 @@ class PastLink extends Component {
             </div>
           </div>
           <div className="link-vote-container">
-            <i className="material-icons vote-icon">whatshot</i>
+            <span className="past-vote-count">+ {link.attributes['upvote-count']}</span>
+            <i className="material-icons past-vote-icon">whatshot</i>
           </div>
         </div>
 

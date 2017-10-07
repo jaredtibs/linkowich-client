@@ -54,7 +54,6 @@ class Profile extends Component {
     const { isFetching } = user;
     const avatarSrc = user.avatar ? user.avatar.large.url : defaultAvatar;
 
-    console.log(user)
     return(
       <div className="window-content">
         <div className="profile-container">
