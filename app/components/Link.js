@@ -44,8 +44,6 @@ class Link extends Component {
     const { avatar, username } = user;
     const avatar_src = avatar.url ? avatar.url : defaultAvatar;
 
-    console.log(link.attributes.url, votedFor)
-
     return(
       <div className='link-row'
            onMouseOut={this._handleParentHover.bind(this)}
