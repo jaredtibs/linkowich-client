@@ -6,8 +6,6 @@ import {
   Switch
 } from 'react-router-dom';
 import { ConnectedRouter } from 'react-router-redux';
-import TransitionGroup from 'react-transition-group/TransitionGroup';
-import CSSTransition from 'react-transition-group/CSSTransition';
 
 import {fetchUserSession} from '../actions/user';
 import App                from './App';
