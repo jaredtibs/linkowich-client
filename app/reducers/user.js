@@ -7,7 +7,8 @@ const initialState = {
   loginErrors: {},
   registerErrors: {},
   isFetching: false,
-  loading: false
+  loading: false,
+  score: 0
 };
 
 export default function user(state=initialState, action) {
@@ -40,6 +41,7 @@ export default function user(state=initialState, action) {
         email: action.data.email,
         username: action.data.username,
         avatar: action.data.avatar,
+        score: action.data.upvotes
       };
     case 'FETCHING_HISTORICAL_LINKS':
       return {

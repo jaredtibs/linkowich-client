@@ -54,6 +54,7 @@ class Profile extends Component {
     const { isFetching } = user;
     const avatarSrc = user.avatar ? user.avatar.large.url : defaultAvatar;
 
+    console.log(user)
     return(
       <div className="window-content">
         <div className="profile-container">
@@ -68,7 +69,7 @@ class Profile extends Component {
             <div className="profile-info-container">
               <div className="profile-username">{user.username}</div>
               <div className="profile-score">
-                <span className="vote-count">+4</span>
+                <span className="vote-count">{user.score}</span>
                 <i className="material-icons vote-icon">whatshot</i>
               </div>
             </div>
