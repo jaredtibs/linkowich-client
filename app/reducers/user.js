@@ -24,6 +24,7 @@ export default function user(state=initialState, action) {
         username: action.data.username,
         email: action.data.email,
         avatar: action.data.avatar,
+        score: action.data.upvotes,
         loading: false,
         loggedIn: true
       };
