@@ -18,6 +18,16 @@ export default function feed(state=initialState, action) {
         ...state,
         isFetching: true
       }
+    case 'LINK_VOTED':
+      const updatedLinks = state.links;
+      const index = updatedLinks.findIndex(
+        item => item.id === action.data.id
+      );
+      updatedLinks[index] = action.data
+      return {
+        ...state,
+        links: updatedLinks
+      };
     default:
       return state;
   }

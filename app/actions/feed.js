@@ -43,3 +43,29 @@ export function markLinkSeen(linkId) {
     .catch(error => console.log(error))
   }
 }
+
+export function castVote(linkId, type) {
+  return dispatch => {
+    let action = type === "upvote" ? "POST" : "DELETE";
+    return fetch(`http://localhost:3000/api/v1/links/${linkId}/vote`, {
+      method: action,
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Token ' + authToken()
+      },
+    })
+    .then((response) => response.json())
+    .then((responseData) => {
+      dispatch(voteCasted(responseData.data))
+    })
+    .catch(error => console.log(error))
+  }
+}
+
+export function voteCasted(updatedLink) {
+  return {
+    type: "LINK_VOTED",
+    data: updatedLink
+  }
+}

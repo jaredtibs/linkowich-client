@@ -2,7 +2,10 @@ import React, { Component, PropTypes } from 'react';
 import {connect} from 'react-redux';
 
 import Feed from '../components/Feed';
-import {fetchLinks, markLinkSeen} from '../actions/feed';
+import {
+  fetchLinks,
+  markLinkSeen,
+  castVote } from '../actions/feed';
 
 class FeedContainer extends Component {
   render() {
@@ -28,6 +31,10 @@ const mapDispatchToProps = (dispatch) => {
 
     markLinkSeen: (linkId) => {
       dispatch(markLinkSeen(linkId))
+    },
+
+    castVote: (linkId, type) => {
+      dispatch(castVote(linkId, type))
     }
   }
 };

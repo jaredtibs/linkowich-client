@@ -20,12 +20,17 @@ class Feed extends Component {
     this.props.markLinkSeen(link.id)
   }
 
+  vote(postId, type) {
+    this.props.castVote(postId, type)
+  }
+
   renderFeedContent(links) {
     const onClick = this.handleLinkClick.bind(this);
+    const vote = this.vote.bind(this);
 
     if (links.length > 0) {
       const linkList = links.map(function(link, i) {
-        return <FeedLink key={i} data={link} onClick={onClick} />
+        return <FeedLink key={i} data={link} onClick={onClick} vote={vote} />
       });
 
       return(

@@ -37,9 +37,10 @@ class Link extends Component {
   }
 
   render() {
-    const link = this.props.data
-    const seenBy = link.attributes['seen-by']
-    const user = link.attributes.user.data.attributes
+    const link = this.props.data;
+    const seenBy = link.attributes['seen-by'];
+    const votedFor = link.attributes['voted-for'];
+    const user = link.attributes.user.data.attributes;
     const { avatar, username } = user;
     const avatar_src = avatar.url ? avatar.url : defaultAvatar;
 
@@ -59,8 +60,14 @@ class Link extends Component {
             </div>
           </div>
 
-          <div className="link-vote-container">
-            <i className="material-icons vote-icon">whatshot</i>
+          <div className="link-vote-container" onClick={() => {
+                if (votedFor) {
+                  this.props.vote(link.id, 'unvote')
+                } else {
+                  this.props.vote(link.id, 'upvote')
+                }
+               }}>
+            <i className={cx("material-icons vote-icon", {"voted": votedFor})}>whatshot</i>
           </div>
         </div>
 
