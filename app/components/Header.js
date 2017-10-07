@@ -29,7 +29,7 @@ class Header extends Component {
       return(
         <div className="header">
           <div className="header-section left">
-            { location.pathname !== '/profile' ?
+            { location.pathname === '/home' ?
               <Link to={'/settings'}>
                 <i className={cx("material-icons nav-icon", {"disabled": location.pathname === '/settings'})}>settings</i>
               </Link>
@@ -45,14 +45,13 @@ class Header extends Component {
             </Link>
           </div>
           <div className="header-section right">
-            { location.pathname !== '/settings' ?
+            { location.pathname ===  '/home' ?
               <Link to={'/profile'}>
                 <i className={cx("material-icons nav-icon", {"disabled": location.pathname === '/profile'})}>face</i>
               </Link>
             :
-              <Link to={'/home'}>
-                <i className="material-icons arrow">arrow_forward</i>
-              </Link>
+              <div className="empty-nav-container">
+              </div>
             }
           </div>
         </div>
