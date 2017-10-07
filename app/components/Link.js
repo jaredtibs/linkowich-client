@@ -44,6 +44,8 @@ class Link extends Component {
     const { avatar, username } = user;
     const avatar_src = avatar.url ? avatar.url : defaultAvatar;
 
+    console.log(link.attributes.url, votedFor)
+
     return(
       <div className='link-row'
            onMouseOut={this._handleParentHover.bind(this)}
@@ -61,10 +63,10 @@ class Link extends Component {
           </div>
 
           <div className="link-vote-container" onClick={() => {
-                if (votedFor) {
-                  this.props.vote(link.id, 'unvote')
-                } else {
+                if (!votedFor) {
                   this.props.vote(link.id, 'upvote')
+                } else {
+                  this.props.vote(link.id, 'unvote')
                 }
                }}>
             <i className={cx("material-icons vote-icon", {"voted": votedFor})}>whatshot</i>
