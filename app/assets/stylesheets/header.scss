@@ -36,6 +36,19 @@
   opacity: 1;
 }
 
+/* can be used to fade out nav icons but doesnt
+look good unless you are sliding new pages
 .nav-icon.disabled {
-  opacity: 0.5;
+  animation: fadeOut 150ms linear 0s 1 normal forwards running;
+}
+
+@keyframes fadeOut {
+  0% {opacity: 1;}
+  100% {opacity: 0;}
+}
+*/
+
+// must match icon width
+.empty-nav-container {
+  width: 24px;
 }
