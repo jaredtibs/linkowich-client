@@ -18,39 +18,56 @@ class Intro extends Component {
         'SHARE ANYTHING',
         'SHARE SOME FIRE'
       ],
-      introCompleted: false
+      introCompleted: false,
+      topLeftAnimationActive: false,
+      topRightAnimationActive: false,
+      bottomLeftAnimationActive: false,
+      bottomRightAnimationActive: false,
+      leftAnimationActive: false,
+      rightAnimationActive: false,
+      animationsCompleted: false
     }
-
   }
 
   componentDidMount() {
-    this.borderLeft.addEventListener('animationend', this.handleAnimationEnd)
-    this.borderRight.addEventListener('animationend', this.handleAnimationEnd)
-    this.borderTop.addEventListener('animationend', this.handleAnimationEnd)
-    this.borderBottom.addEventListener('animationend', this.handleAnimationEnd)
+    this.borderLeft.addEventListener('animationend', this.handleAnimationEnd.bind(this))
+    this.borderRight.addEventListener('animationend', this.handleAnimationEnd.bind(this))
+    this.borderTopLeft.addEventListener('animationend', this.handleAnimationEnd.bind(this))
+    this.borderTopRight.addEventListener('animationend', this.handleAnimationEnd.bind(this))
+    this.borderBottomLeft.addEventListener('animationend', this.handleAnimationEnd.bind(this))
+    this.borderBottomRight.addEventListener('animationend', this.handleAnimationEnd.bind(this))
 
     let timer = setInterval(this.flip.bind(this), 2000);
     this.setState({timer});
   }
 
   componentWillUnmount() {
-    this.borderLeft.removeListener('animationend', this.handleAnimationEnd)
-    this.borderRight.removeListener('animationend', this.handleAnimationEnd)
-    this.borderTop.removeListener('animationend', this.handleAnimationEnd)
-    this.borderBottom.removeListener('animationend', this.handleAnimationEnd)
+    this.borderLeft.removeListener('animationend', this.handleAnimationEnd.bind(this))
+    this.borderRight.removeListener('animationend', this.handleAnimationEnd.bind(this))
+    this.borderTopLeft.removeListener('animationend', this.handleAnimationEnd.bind(this))
+    this.borderTopRight.removeListener('animationend', this.handleAnimationEnd.bind(this))
+    this.borderBottomLeft.removeListener('animationend', this.handleAnimationEnd.bind(this))
+    this.borderBottomRight.removeListener('animationend', this.handleAnimationEnd.bind(this))
 
     this.clearInterval(this.state.timer);
   }
 
   handleAnimationEnd(event) {
     switch(event.animationName) {
-      case 'outlineTop':
+      case 'outlineTopLeft':
+        this.setState({leftAnimationActive: true})
         break;
-      case 'outlineBottom':
+      case 'outlineTopRight':
+        this.setState({animationsCompleted: true})
+        break;
+      case 'outlineBottomRight':
+        this.setState({rightAnimationActive: true})
         break;
       case 'outlineRight':
+        this.setState({topRightAnimationActive: true})
         break;
       case 'outlineLeft':
+        this.setState({bottomLeftAnimationActive: true})
         break;
     }
   }
@@ -58,7 +75,10 @@ class Intro extends Component {
   flip() {
     if (this.state.counter === this.state.blurbs.length) {
       clearInterval(this.state.timer);
-      this.setState({introCompleted: true})
+      this.setState({
+        introCompleted: true,
+        topLeftAnimationActive: true,
+        bottomRightAnimationActive: true})
     } else {
       this.setState({
         counter: this.state.counter + 1,
@@ -75,19 +95,24 @@ class Intro extends Component {
           <div className={cx("copy-container", {"completed": this.state.introCompleted})}>
             <div
               ref={(border) => { this.borderLeft = border; }}
-              className={cx("border-left", {"completed": this.state.introCompleted})}></div>
+              className={cx("border-left", {"active": this.state.leftAnimationActive})}></div>
             <div
               ref={(border) => { this.borderRight = border; }}
-              className={cx("border-right", {"completed": this.state.introCompleted})}></div>
+              className={cx("border-right", {"active": this.state.rightAnimationActive})}></div>
             <div
-              ref={(border) => { this.borderTop = border; }}
-              className={cx("border-top", {"completed": this.state.introCompleted})}></div>
+              ref={(border) => { this.borderTopLeft = border; }}
+              className={cx("border-top-left", {"active": this.state.topLeftAnimationActive})}></div>
             <div
-              ref={(border) => { this.borderBottom = border; }}
-              className={cx("border-bottom", {"completed": this.state.introCompleted})}></div>
-            <span
-              className={"copy-text flip-" + this.state.counter}>
-              { this.state.currentBlurb }
+              ref={(border) => { this.borderTopRight = border; }}
+              className={cx("border-top-right", {"active": this.state.topRightAnimationActive})}></div>
+            <div
+              ref={(border) => { this.borderBottomLeft = border; }}
+              className={cx("border-bottom-left", {"active": this.state.bottomLeftAnimationActive})}></div>
+            <div
+              ref={(border) => { this.borderBottomRight = border; }}
+              className={cx("border-bottom-right", {"active": this.state.bottomRightAnimationActive})}></div>
+            <span className={cx("copy-text", {[`flip-${this.state.counter}`]: !this.state.animationsCompleted}, {'animations-finished': this.state.animationsCompleted})}>
+              { this.state.animationsCompleted ? "LETS GO" : this.state.currentBlurb }
             </span>
           </div>
         </div>
