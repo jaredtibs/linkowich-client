@@ -8,25 +8,36 @@ class Intro extends Component {
   constructor(props) {
     super(props)
 
+    //TODO change from started/finished to active state names, you'll cut quantity in half
     this.state = {
       timer: null,
       counter: 0,
-      currentBlurb: "SHARE SOME MUSIC",
+      greetText: "WELCOME TO LINKOWICH",
+      greets: [
+        "A PLACE FOR YOU AND YOUR FRIENDS",
+        "FOR ALL THOSE LINKS YOU CANT STOP SHARING",
+        "KEEP EM HERE AND KEEP THE CLUTTER FREE...",
+      ],
+      blurbText: "SHARE SOME MUSIC",
       blurbs: [
         'SHARE SOME MEMES',
         'SHARE SOME NEWS',
         'SHARE ANYTHING',
         'SHARE SOME FIRE'
       ],
-      blurbsCompleted: false,
-      introCompleted: false,
+      greetsStarted: false,
+      greetsFinished: false,
+      blurbsStarted: false,
+      blurbsFinished: false,
+      introStarted: false,
+      introFinished: false,
+      borderAnimationCompleted: false,
       topLeftAnimationActive: false,
       topRightAnimationActive: false,
       bottomLeftAnimationActive: false,
       bottomRightAnimationActive: false,
       leftAnimationActive: false,
       rightAnimationActive: false,
-      animationsCompleted: false
     }
   }
 
@@ -39,8 +50,8 @@ class Intro extends Component {
     this.borderBottomRight.addEventListener('animationend', this.handleAnimationEnd.bind(this))
     this.buttonText.addEventListener('animationend', this.handleAnimationEnd.bind(this))
 
-    let timer = setInterval(this.flip.bind(this), 1500);
-    this.setState({timer});
+    let timer = setInterval(this.greet.bind(this), 3500);
+    this.setState({timer, introStarted: true, greetsStarted: true});
   }
 
   componentWillUnmount() {
@@ -61,7 +72,7 @@ class Intro extends Component {
         this.setState({leftAnimationActive: true})
         break;
       case 'outlineTopRight':
-        this.setState({animationsCompleted: true})
+        this.setState({borderAnimationCompleted: true})
         break;
       case 'outlineBottomRight':
         this.setState({rightAnimationActive: true})
@@ -72,8 +83,10 @@ class Intro extends Component {
       case 'outlineLeft':
         this.setState({bottomLeftAnimationActive: true})
         break;
+      case 'fadeInIntro':
+        break;
       case 'fadeInFinish':
-        this.setState({introCompleted: true})
+        this.setState({introFinished: true})
         break;
     }
   }
@@ -82,19 +95,38 @@ class Intro extends Component {
     if (this.state.counter === this.state.blurbs.length) {
       clearInterval(this.state.timer);
       this.setState({
-        blurbsCompleted: true,
+        blurbsFinished: true,
         topLeftAnimationActive: true,
-        bottomRightAnimationActive: true})
+        bottomRightAnimationActive: true
+      })
     } else {
       this.setState({
         counter: this.state.counter + 1,
-        currentBlurb: this.state.blurbs[this.state.counter]
+        blurbText: this.state.blurbs[this.state.counter]
       });
     }
   }
 
+  greet() {
+    if (this.state.counter === this.state.greets.length) {
+      clearInterval(this.state.timer);
+      let timer = setInterval(this.flip.bind(this), 1500);
+      this.setState({
+        timer,
+        counter: 0,
+        greetsFinished: true,
+        blurbsStarted: true
+      })
+    } else {
+      this.setState({
+        counter: this.state.counter + 1,
+        greetText: this.state.greets[this.state.counter]
+      })
+    }
+  }
+
   onClick() {
-    if (this.state.introCompleted) {
+    if (this.state.introFinished) {
       this.props.history.push("/home");
     }
   }
@@ -102,9 +134,10 @@ class Intro extends Component {
   render() {
     return(
       <div className="intro-container">
-        <div className="content-container">
+        <div className={cx("content-container", {"started": this.state.introStarted})}>
           <img className="icon" src={introIcon} width={46} height={56} />
-          <div className={cx("copy-container", {"completed": this.state.introCompleted})}
+          <div className={
+               cx("copy-container", {"completed": this.state.introFinished, "blurbs": this.state.blurbsStarted})}
                onClick={this.onClick.bind(this)}>
             <div
               ref={(border) => { this.borderLeft = border; }}
@@ -125,11 +158,17 @@ class Intro extends Component {
               ref={(border) => { this.borderBottomRight = border; }}
               className={cx("border-bottom-right", {"active": this.state.bottomRightAnimationActive})}></div>
 
-            <span
+            { this.state.blurbsStarted ?
+              <span
+                ref={(text) => { this.buttonText = text; }}
+                className={cx("copy-text", {[`flip-${this.state.counter}`]: !this.state.borderAnimationCompleted}, {'animations-finished': this.state.borderAnimationCompleted})}>
+                { this.state.borderAnimationCompleted ? "COOL. LET ME IN" : this.state.blurbText }
+              </span>
+              :
+              <span
               ref={(text) => { this.buttonText = text; }}
-              className={cx("copy-text", {[`flip-${this.state.counter}`]: !this.state.animationsCompleted}, {'animations-finished': this.state.animationsCompleted})}>
-              { this.state.animationsCompleted ? "COOL. LET ME IN" : this.state.currentBlurb }
-            </span>
+              className={cx("copy-text", `greet-${this.state.counter}`)}> { this.state.greetText } </span>
+            }
           </div>
         </div>
       </div>
