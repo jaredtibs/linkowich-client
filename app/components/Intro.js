@@ -24,12 +24,35 @@ class Intro extends Component {
   }
 
   componentDidMount() {
+    this.borderLeft.addEventListener('animationend', this.handleAnimationEnd)
+    this.borderRight.addEventListener('animationend', this.handleAnimationEnd)
+    this.borderTop.addEventListener('animationend', this.handleAnimationEnd)
+    this.borderBottom.addEventListener('animationend', this.handleAnimationEnd)
+
     let timer = setInterval(this.flip.bind(this), 2000);
     this.setState({timer});
   }
 
   componentWillUnmount() {
+    this.borderLeft.removeListener('animationend', this.handleAnimationEnd)
+    this.borderRight.removeListener('animationend', this.handleAnimationEnd)
+    this.borderTop.removeListener('animationend', this.handleAnimationEnd)
+    this.borderBottom.removeListener('animationend', this.handleAnimationEnd)
+
     this.clearInterval(this.state.timer);
+  }
+
+  handleAnimationEnd(event) {
+    switch(event.animationName) {
+      case 'outlineTop':
+        break;
+      case 'outlineBottom':
+        break;
+      case 'outlineRight':
+        break;
+      case 'outlineLeft':
+        break;
+    }
   }
 
   flip() {
@@ -45,12 +68,23 @@ class Intro extends Component {
   }
 
   render() {
-    console.log(this.state.counter)
     return(
       <div className="intro-container">
         <div className="content-container">
           <img className="icon" src={introIcon} width={46} height={56} />
           <div className={cx("copy-container", {"completed": this.state.introCompleted})}>
+            <div
+              ref={(border) => { this.borderLeft = border; }}
+              className={cx("border-left", {"completed": this.state.introCompleted})}></div>
+            <div
+              ref={(border) => { this.borderRight = border; }}
+              className={cx("border-right", {"completed": this.state.introCompleted})}></div>
+            <div
+              ref={(border) => { this.borderTop = border; }}
+              className={cx("border-top", {"completed": this.state.introCompleted})}></div>
+            <div
+              ref={(border) => { this.borderBottom = border; }}
+              className={cx("border-bottom", {"completed": this.state.introCompleted})}></div>
             <span
               className={"copy-text flip-" + this.state.counter}>
               { this.state.currentBlurb }

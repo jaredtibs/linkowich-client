@@ -21,9 +21,10 @@
   justify-content: center;
   margin-top: 40px;
   width: 200px;
-  height: 48px;
-  border: 2px solid rgba(255, 255, 255, 0);
-  border-radius: 1px;
+  height: 50px;
+  //border: 2px solid rgba(255, 255, 255, 0);
+  //border-radius: 1px;
+  position: relative;
 }
 
 .copy-text {
@@ -38,13 +39,124 @@
   }
 }
 
-.copy-container.completed {
-  cursor: pointer;
-  animation: outline-animation;
+.border-left {
+  border-left: 2px solid rgba(255, 255, 255, 1);
+  position: absolute;
+  top: 0%;
+  bottom: 100%;
+  left: 0%;
+  background-color: white;
+  border-radius: 1px;
+}
+
+.border-top {
+  border-top: 2px solid rgba(255, 255, 255, 1);
+  position: absolute;
+  top: 0%;
+  bottom: 100%;
+  left: 50%;
+  right: 50%;
+  background-color: white;
+  border-radius: 1px;
+}
+
+.border-right {
+  border-right: 2px solid rgba(255, 255, 255, 1);
+  position: absolute;
+  top: 100%;
+  bottom: 0%;
+  right: 0%;
+  background-color: white;
+  border-radius: 1px;
+}
+
+.border-bottom {
+  border-bottom: 2px solid rgba(255, 255, 255, 1);
+  position: absolute;
+  top: 100%;
+  bottom: 0%;
+  right: 50%;
+  left: 50%;
+  border-radius: 1px;
+}
+
+.border-top.completed {
+  animation: outlineTop;
   animation-duration: 2s;
   animation-fill-mode: forwards;
 }
 
+.border-bottom.completed {
+  animation: outlineBottom;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+}
+
+.border-left.completed {
+  animation: outlineLeft;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+}
+
+.border-right.completed {
+  animation: outlineRight;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes outlineTop {
+  from {
+    left: 50%;
+    right: 50%;
+  }
+
+  to {
+    left: 0%;
+    right: 0%;
+  }
+}
+
+@keyframes outlineBottom {
+  from {
+    left: 50%;
+    right: 50%;
+  }
+
+  to {
+    left: 0%;
+    right: 0%;
+  }
+}
+
+@keyframes outlineLeft {
+  from {
+    bottom: 100%;
+  }
+
+  to {
+    bottom: 0%;
+  }
+}
+
+@keyframes outlineRight {
+  from {
+    top: 100%;
+  }
+
+  to {
+    top: 0%;
+  }
+
+}
+
+.copy-container.completed {
+  cursor: pointer;
+  //animation: outline-animation;
+  //animation-duration: 2s;
+  //animation-fill-mode: forwards;
+}
+
+/*
 @keyframes outline-animation {
   from {
     border-color: rgba(255, 255, 255, 0);
@@ -54,6 +166,7 @@
     border-color: rgba(255, 255, 255, 1);
   }
 }
+*/
 
 @mixin flip-animation {
   animation-duration: .75s;
