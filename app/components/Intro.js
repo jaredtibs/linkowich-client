@@ -12,6 +12,7 @@ class Intro extends Component {
     this.state = {
       timer: null,
       counter: 0,
+      showSkip: false,
       greetText: "WELCOME TO LINKOWICH",
       greets: [
         "A PLACE FOR YOU AND YOUR FRIENDS",
@@ -49,6 +50,7 @@ class Intro extends Component {
     this.borderBottomLeft.addEventListener('animationend', this.handleAnimationEnd.bind(this))
     this.borderBottomRight.addEventListener('animationend', this.handleAnimationEnd.bind(this))
     this.buttonText.addEventListener('animationend', this.handleAnimationEnd.bind(this))
+    this.content.addEventListener('animationend', this.handleAnimationEnd.bind(this))
 
     let timer = setInterval(this.greet.bind(this), 3500);
     this.setState({timer, introStarted: true, greetsStarted: true});
@@ -62,6 +64,7 @@ class Intro extends Component {
     this.borderBottomLeft.removeEventListener('animationend', this.handleAnimationEnd.bind(this))
     this.borderBottomRight.removeEventListener('animationend', this.handleAnimationEnd.bind(this))
     this.buttonText.removeEventListener('animationend', this.handleAnimationEnd.bind(this))
+    this.content.removeEventListener('animationend', this.handleAnimationEnd.bind(this))
 
     clearInterval(this.state.timer);
   }
@@ -84,6 +87,7 @@ class Intro extends Component {
         this.setState({bottomLeftAnimationActive: true})
         break;
       case 'fadeInIntro':
+        this.setState({showSkip: true})
         break;
       case 'fadeInFinish':
         this.setState({introFinished: true})
@@ -131,10 +135,16 @@ class Intro extends Component {
     }
   }
 
+  onSkip() {
+    this.props.history.push("/home");
+  }
+
   render() {
     return(
       <div className="intro-container">
-        <div className={cx("content-container", {"started": this.state.introStarted})}>
+        <div
+          ref={(content) => { this.content = content; }}
+          className={cx("content-container", {"started": this.state.introStarted})}>
           <img className="icon" src={introIcon} width={46} height={56} />
           <div className={
                cx("copy-container", {"completed": this.state.introFinished, "blurbs": this.state.blurbsStarted})}
@@ -170,6 +180,14 @@ class Intro extends Component {
               className={cx("copy-text", `greet-${this.state.counter}`)}> { this.state.greetText } </span>
             }
           </div>
+        </div>
+
+        <div className="skip-container">
+          <a href="#"
+              className={cx("skip-text", {"active": this.state.showSkip})}
+              onClick={this.onSkip.bind(this)}>
+              skip
+          </a>
         </div>
       </div>
     )

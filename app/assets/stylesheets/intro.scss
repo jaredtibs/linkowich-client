@@ -6,6 +6,11 @@
   background-color: #ff5f36;
 }
 
+.intro-container.started {
+  animation: slideUpIntro;
+  animation-duration: 2s;
+}
+
 .content-container {
   display: flex;
   flex-direction: column;
@@ -17,6 +22,29 @@
 .content-container.started {
   animation: fadeInIntro;
   animation-duration: 3s;
+}
+
+.skip-container {
+  display: flex;
+  align-items: flex-end;
+  flex: 1;
+
+  .skip-text {
+    text-decoration: none;
+    margin-bottom: 50px;
+    cursor: pointer;
+    font-family: 'Colfax-Regular';
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.8);
+    letter-spacing: 1px;
+    opacity: 0;
+
+    &.active {
+      animation: fadeInSkip;
+      animation-duration: .75s;
+      animation-fill-mode: forwards;
+    }
+  }
 }
 
 .copy-container {
@@ -148,6 +176,17 @@
   animation-duration: 0.25s;
   animation-fill-mode: forwards;
   animation-timing-function: linear;
+}
+
+@keyframes slideUpIntro {
+  from {
+    transform: translate3d(0, 100%, 0);
+    visibility: visible;
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
 }
 
 @keyframes outlineTopRight {
@@ -413,6 +452,7 @@
   animation-duration: .75s;
 }
 
+
 .copy-text.greet-1 {
   text-align: center;
 }
@@ -466,6 +506,16 @@
 }
 
 @keyframes fadeInIntro {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInSkip {
   from {
     opacity: 0;
   }
