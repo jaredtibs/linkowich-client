@@ -1,12 +1,45 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router-dom';
 import styles from '../assets/stylesheets/intro.scss';
-import TextLoop from 'react-text-loop';
+import cx from 'classnames';
 const introIcon = require('../assets/intro_icon.svg');
 
 class Intro extends Component {
   constructor(props) {
     super(props)
+
+    this.state = {
+      timer: null,
+      counter: 0,
+      currentBlurb: "SHARE SOME MUSIC",
+      blurbs: [
+        'SHARE SOME MEMES',
+        'SHARE SOME NEWS',
+        'SHARE ANYTHING',
+        'SHARE SOME FIRE'
+      ]
+    }
+
+  }
+
+  componentDidMount() {
+    let timer = setInterval(this.flip.bind(this), 2500);
+    this.setState({timer});
+  }
+
+  componentWillUnmount() {
+    this.clearInterval(this.state.timer);
+  }
+
+  flip() {
+    if (this.state.counter > this.state.blurbs.length) {
+      clearInterval(this.state.timer);
+    } else {
+      this.setState({
+        counter: this.state.counter + 1,
+        currentBlurb: this.state.blurbs[this.state.counter]
+      });
+    }
   }
 
   render() {
@@ -15,13 +48,10 @@ class Intro extends Component {
         <div className="content-container">
           <img className="icon" src={introIcon} width={46} height={56} />
           <div className="copy-container">
-            <TextLoop style={{width: '156px'}}>
-              <span className="copy-text">SHARE SOME MUSIC</span>
-              <span className="copy-text">SHARE SOME MEMES</span>
-              <span className="copy-text">SHARE SOME NEWS</span>
-              <span className="copy-text padded">SHARE ANYTHING</span>
-              <span className="copy-text padded">SHARE SOME FIRE</span>
-            </TextLoop>
+            <span
+              className={"copy-text flip-" + this.state.counter}>
+              { this.state.currentBlurb }
+            </span>
           </div>
         </div>
       </div>

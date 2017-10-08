@@ -42,9 +42,9 @@ class Root extends Component {
 
           <App>
             <Switch>
-              <Route exact path="/" render={() => (
+              <Route exact path="/home" render={() => (
                 localStorage.getItem('userToken') ? (
-                  <Redirect to="/home"/>
+                  <Redirect to="/intro"/>
                 ) : (
                   <Redirect to="/landing"/>
                 )
