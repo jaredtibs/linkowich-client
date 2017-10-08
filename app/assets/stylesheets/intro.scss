@@ -21,6 +21,9 @@
   justify-content: center;
   margin-top: 40px;
   width: 200px;
+  height: 48px;
+  border: 2px solid rgba(255, 255, 255, 0);
+  border-radius: 1px;
 }
 
 .copy-text {
@@ -28,9 +31,27 @@
   font-size: 16px;
   color: #FFFFFF;
   letter-spacing: 1px;
+  padding: 5px;
 
   &.padded {
     padding-left: 8px;
+  }
+}
+
+.copy-container.completed {
+  cursor: pointer;
+  animation: outline-animation;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes outline-animation {
+  from {
+    border-color: rgba(255, 255, 255, 0);
+  }
+
+  to {
+    border-color: rgba(255, 255, 255, 1);
   }
 }
 

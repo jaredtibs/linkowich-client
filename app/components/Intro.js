@@ -17,13 +17,14 @@ class Intro extends Component {
         'SHARE SOME NEWS',
         'SHARE ANYTHING',
         'SHARE SOME FIRE'
-      ]
+      ],
+      introCompleted: false
     }
 
   }
 
   componentDidMount() {
-    let timer = setInterval(this.flip.bind(this), 2500);
+    let timer = setInterval(this.flip.bind(this), 2000);
     this.setState({timer});
   }
 
@@ -32,8 +33,9 @@ class Intro extends Component {
   }
 
   flip() {
-    if (this.state.counter > this.state.blurbs.length) {
+    if (this.state.counter === this.state.blurbs.length) {
       clearInterval(this.state.timer);
+      this.setState({introCompleted: true})
     } else {
       this.setState({
         counter: this.state.counter + 1,
@@ -43,11 +45,12 @@ class Intro extends Component {
   }
 
   render() {
+    console.log(this.state.counter)
     return(
       <div className="intro-container">
         <div className="content-container">
           <img className="icon" src={introIcon} width={46} height={56} />
-          <div className="copy-container">
+          <div className={cx("copy-container", {"completed": this.state.introCompleted})}>
             <span
               className={"copy-text flip-" + this.state.counter}>
               { this.state.currentBlurb }
