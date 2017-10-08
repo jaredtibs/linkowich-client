@@ -1,18 +1,19 @@
 .link-row {
-  margin-top: 20px;
+  margin-bottom: 20px;
   padding-left: 20px;
   padding-right: 20px;
 
   &.profile {
-    margin-top: 10px;
+    margin-bottom: 18px;
+
+    &.with-footer {
+      margin-bottom: 2px
+    }
   }
 }
 
-.link-row:first-child {
-  margin-top: 0px;
-}
-
 .link-row:last-child {
+  margin-bottom: 0px;
   padding-bottom: 25px;
 }
 
@@ -30,6 +31,10 @@
   flex-direction: row;
   align-items: flex-end;
   padding-bottom: 5px;
+
+  &.profile {
+    padding-bottom: 0px;
+  }
 
   .avatar {
     display: flex;
@@ -58,14 +63,14 @@
   .published-at {
     font-family: 'Colfax-Bold';
     color: #595959;
-    font-size: 11px;
+    font-size: 10px;
     padding-left: 5px;
   }
 
   .time {
     font-family: 'Colfax-Regular';
     color: #496160;
-    font-size: 11px;
+    font-size: 10px;
     padding-left: 10px;
   }
 }
@@ -95,17 +100,16 @@
   display: flex;
   flex-direction: row;
   align-items: flex-end;
-  padding-bottom: 5px;
 
   &.past-link {
     cursor: default;
-    font-size: 10px;
+    font-size: 11px;
   }
 
   .past-vote-icon {
     color: #fd7350;
     padding-bottom: 4px;
-    font-size: 12px;
+    font-size: 13px;
   }
 
   .past-vote-count {
@@ -127,12 +131,14 @@
   cursor: pointer;
   overflow: hidden;
   font-family: 'Colfax-Regular';
-  font-size: 13px;
+  letter-spacing: 0.6px;
+  font-size: 12px;
   text-align: left;
-  color: #453700;
+  color: #474747;
 
   &.active {
     color: #00d5d6;
+    font-weight: bold;
   }
 }
 
@@ -141,9 +147,9 @@
   flex: 1;
   flex-direction: row;
   justify-content: space-between;
-  height: 20px;
 
   .seen-by {
+    height: 20px;
     font-family: 'Colfax-Regular';
     font-size: 10px;
     color: #8b8a8a;
@@ -155,7 +161,7 @@
     flex-direction: row;
     margin-top: -15px;
     margin-right: 10px;
-    margin-bottom:0px;
+    margin-bottom: 0px;
   }
 
 }

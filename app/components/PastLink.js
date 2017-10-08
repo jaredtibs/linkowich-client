@@ -23,9 +23,9 @@ class PastLink extends Component {
     const time = publishedAt.split('|')[1];
 
     return(
-      <div className="link-row profile">
+      <div className={cx("link-row profile", {"with-footer": seenBy.length > 0})}>
         <div className='link-row-header-container'>
-          <div className="link-meta-container">
+          <div className="link-meta-container profile">
             <div className="meta-text">
               <span className="published-at">{date}</span>
               <span className="time">{time}</span>
@@ -43,18 +43,18 @@ class PastLink extends Component {
              onMouseOver={this._handleHover.bind(this)}
              onMouseOut={this._handleHover.bind(this)}>
           <div className="url-text-container">
-            <a className={cx({"active": this.state.hovering})} href="#" onClick={() => this.props.onClick(link)}>
+            <a className={cx("past", {"active": this.state.hovering})} href="#" onClick={() => this.props.onClick(link)}>
               {link.attributes.url}
             </a>
           </div>
         </div>
 
         <div className="link-footer-container profile">
-          <div className="seen-by">
-            { seenBy.length > 0 ?
-              <span className="seen-by">seen by {seenBy.join(',')}</span>
-            : null }
-          </div>
+          { seenBy.length > 0 ?
+            <div className="seen-by">
+                <span className="seen-by">seen by {seenBy.join(', ')}</span>
+            </div>
+          : null }
         </div>
 
 
