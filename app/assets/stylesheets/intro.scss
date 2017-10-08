@@ -21,15 +21,384 @@
   justify-content: center;
   margin-top: 40px;
   width: 200px;
+  height: 50px;
+  //below needed for more minimal fade in animation
+  //border: 2px solid rgba(255, 255, 255, 0);
+  //border-radius: 1px;
+  position: relative;
 }
 
 .copy-text {
+  cursor: default;
   font-family: 'Colfax-Regular';
   font-size: 16px;
   color: #FFFFFF;
   letter-spacing: 1px;
+  padding: 5px;
+  padding-top: 8px;
+
+  &.animations-finished {
+    cursor: pointer;
+  }
 
   &.padded {
     padding-left: 8px;
+  }
+}
+
+@mixin buttonBorder {
+  position: absolute;
+  background-color: white;
+}
+
+.border-left {
+  @include buttonBorder;
+  border-left: 2px solid rgba(255, 255, 255, 1);
+  top: 0%;
+  bottom: 100%;
+  left: 0%;
+}
+
+.border-right {
+  @include buttonBorder;
+  border-right: 2px solid rgba(255, 255, 255, 1);
+  top: 100%;
+  bottom: 0%;
+  right: 0%;
+}
+
+.border-top-right {
+  @include buttonBorder;
+  border-top: 2px solid rgba(255, 255, 255, 1);
+  top: 0%;
+  bottom: 100%;
+  left: 100%;
+  right: 0%;
+}
+
+.border-top-left {
+  @include buttonBorder;
+  border-top: 2px solid rgba(255, 255, 255, 1);
+  top: 0%;
+  bottom: 100%;
+  left: 50%;
+  right: 50%;
+}
+
+.border-bottom-right {
+  @include buttonBorder;
+  border-bottom: 2px solid rgba(255, 255, 255, 1);
+  top: 100%;
+  bottom: 0%;
+  right: 50%;
+  left: 50%;
+}
+
+.border-bottom-left {
+  @include buttonBorder;
+  border-bottom: 2px solid rgba(255, 255, 255, 1);
+  top: 100%;
+  bottom: 0%;
+  right: 100%;
+  left: 0%;
+}
+
+.border-top-left.active {
+  animation: outlineTopLeft;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-out;
+}
+
+.border-top-right.active {
+  animation: outlineTopRight;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in;
+}
+
+.border-bottom-left.active {
+  animation: outlineBottomLeft;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in;
+}
+
+.border-bottom-right.active {
+  animation: outlineBottomRight;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-out;
+}
+
+.border-left.active {
+  animation: outlineLeft;
+  animation-duration: 0.25s;
+  animation-fill-mode: forwards;
+  animation-timing-function: linear;
+}
+
+.border-right.active {
+  animation: outlineRight;
+  animation-duration: 0.25s;
+  animation-fill-mode: forwards;
+  animation-timing-function: linear;
+}
+
+@keyframes outlineTopRight {
+  from {
+    left: 100%;
+  }
+
+  to {
+    left: 50%;
+  }
+}
+
+@keyframes outlineTopLeft {
+  from {
+    left: 50%;
+  }
+
+  to {
+    left: 0%;
+  }
+}
+
+@keyframes outlineBottomRight {
+  from {
+    right: 50%;
+  }
+
+  to {
+    right: 0%;
+  }
+}
+
+@keyframes outlineBottomLeft {
+  from {
+    right: 100%;
+  }
+
+  to {
+    right: 50%;
+  }
+}
+
+@keyframes outlineLeft {
+  from {
+    bottom: 100%;
+  }
+
+  to {
+    bottom: 0%;
+  }
+}
+
+@keyframes outlineRight {
+  from {
+    top: 100%;
+  }
+
+  to {
+    top: 0%;
+  }
+}
+
+.animations-finished {
+  animation: fadeInFinish;
+  animation-duration: .75s;
+}
+
+.copy-container.completed {
+  cursor: pointer;
+  //below needed for more minimal fade in animation
+  //animation: outline-animation;
+  //animation-duration: 2s;
+  //animation-fill-mode: forwards;
+}
+
+/*
+//below needed for more minimal fade in animation
+@keyframes outline-animation {
+  from {
+    border-color: rgba(255, 255, 255, 0);
+  }
+
+  to {
+    border-color: rgba(255, 255, 255, 1);
+  }
+}
+*/
+
+@mixin flip-animation {
+  animation-duration: .75s;
+  animation-fill-mode: both;
+  -webkit-backface-visibility: visible !important;
+  backface-visibility: visible !important;
+}
+
+.flip-1 {
+  animation: flip-one;
+  @include flip-animation;
+}
+
+.flip-2 {
+  animation: flip-two;
+  @include flip-animation;
+}
+
+.flip-3 {
+  animation: flip-three;
+  @include flip-animation;
+}
+
+.flip-4 {
+  animation: flip-four;
+  @include flip-animation;
+}
+
+.flip-5 {
+  animation: flip-five;
+  @include flip-animation;
+}
+
+@keyframes flip-one {
+  from {
+    transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+    animation-timing-function: ease-in;
+    opacity: 0;
+  }
+
+  40% {
+    transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+    animation-timing-function: ease-in;
+  }
+
+  60% {
+    transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+    opacity: 1;
+  }
+
+  80% {
+    transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+  }
+
+  to {
+    transform: perspective(400px);
+  }
+}
+
+@keyframes flip-two {
+  from {
+    transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+    animation-timing-function: ease-in;
+    opacity: 0;
+  }
+
+  40% {
+    transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+    animation-timing-function: ease-in;
+  }
+
+  60% {
+    transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+    opacity: 1;
+  }
+
+  80% {
+    transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+  }
+
+  to {
+    transform: perspective(400px);
+  }
+}
+
+@keyframes flip-three {
+  from {
+    transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+    animation-timing-function: ease-in;
+    opacity: 0;
+  }
+
+  40% {
+    transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+    animation-timing-function: ease-in;
+  }
+
+  60% {
+    transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+    opacity: 1;
+  }
+
+  80% {
+    transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+  }
+
+  to {
+    transform: perspective(400px);
+  }
+}
+
+@keyframes flip-four {
+  from {
+    transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+    animation-timing-function: ease-in;
+    opacity: 0;
+  }
+
+  40% {
+    transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+    animation-timing-function: ease-in;
+  }
+
+  60% {
+    transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+    opacity: 1;
+  }
+
+  80% {
+    transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+  }
+
+  to {
+    transform: perspective(400px);
+  }
+}
+
+@keyframes flip-five {
+  from {
+    transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+    animation-timing-function: ease-in;
+    opacity: 0;
+  }
+
+  40% {
+    transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+    animation-timing-function: ease-in;
+  }
+
+  60% {
+    transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+    opacity: 1;
+  }
+
+  80% {
+    transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+  }
+
+  to {
+    transform: perspective(400px);
+  }
+}
+
+@keyframes fadeInFinish {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
   }
 }
