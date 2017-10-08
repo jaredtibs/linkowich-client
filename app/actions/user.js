@@ -64,8 +64,7 @@ export function register (email, username, password) {
 export function finishRegister(sessionData) {
   return dispatch => {
     dispatch(receiveSession(sessionData));
-    dispatch(push("/home"));
-    //dispatch(push("/intro"));
+    dispatch(push("/intro"));
   }
 }
 
