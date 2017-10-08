@@ -29,12 +29,17 @@
 }
 
 .copy-text {
+  cursor: default;
   font-family: 'Colfax-Regular';
   font-size: 16px;
   color: #FFFFFF;
   letter-spacing: 1px;
   padding: 5px;
   padding-top: 8px;
+
+  &.animations-finished {
+    cursor: pointer;
+  }
 
   &.padded {
     padding-left: 8px;
@@ -201,7 +206,7 @@
 }
 
 .animations-finished {
-  animation: pulse;
+  animation: fadeInFinish;
   animation-duration: .75s;
 }
 
@@ -388,16 +393,12 @@
   }
 }
 
-@keyframes pulse {
+@keyframes fadeInFinish {
   from {
-    transform: scale3d(1, 1, 1);
-  }
-
-  50% {
-    transform: scale3d(1.05, 1.05, 1.05);
+    opacity: 0;
   }
 
   to {
-    transform: scale3d(1, 1, 1);
+    opacity: 1;
   }
 }

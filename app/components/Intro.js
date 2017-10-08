@@ -18,6 +18,7 @@ class Intro extends Component {
         'SHARE ANYTHING',
         'SHARE SOME FIRE'
       ],
+      blurbsCompleted: false,
       introCompleted: false,
       topLeftAnimationActive: false,
       topRightAnimationActive: false,
@@ -36,20 +37,22 @@ class Intro extends Component {
     this.borderTopRight.addEventListener('animationend', this.handleAnimationEnd.bind(this))
     this.borderBottomLeft.addEventListener('animationend', this.handleAnimationEnd.bind(this))
     this.borderBottomRight.addEventListener('animationend', this.handleAnimationEnd.bind(this))
+    this.buttonText.addEventListener('animationend', this.handleAnimationEnd.bind(this))
 
-    let timer = setInterval(this.flip.bind(this), 2000);
+    let timer = setInterval(this.flip.bind(this), 1500);
     this.setState({timer});
   }
 
   componentWillUnmount() {
-    this.borderLeft.removeListener('animationend', this.handleAnimationEnd.bind(this))
-    this.borderRight.removeListener('animationend', this.handleAnimationEnd.bind(this))
-    this.borderTopLeft.removeListener('animationend', this.handleAnimationEnd.bind(this))
-    this.borderTopRight.removeListener('animationend', this.handleAnimationEnd.bind(this))
-    this.borderBottomLeft.removeListener('animationend', this.handleAnimationEnd.bind(this))
-    this.borderBottomRight.removeListener('animationend', this.handleAnimationEnd.bind(this))
+    this.borderLeft.removeEventListener('animationend', this.handleAnimationEnd.bind(this))
+    this.borderRight.removeEventListener('animationend', this.handleAnimationEnd.bind(this))
+    this.borderTopLeft.removeEventListener('animationend', this.handleAnimationEnd.bind(this))
+    this.borderTopRight.removeEventListener('animationend', this.handleAnimationEnd.bind(this))
+    this.borderBottomLeft.removeEventListener('animationend', this.handleAnimationEnd.bind(this))
+    this.borderBottomRight.removeEventListener('animationend', this.handleAnimationEnd.bind(this))
+    this.buttonText.removeEventListener('animationend', this.handleAnimationEnd.bind(this))
 
-    this.clearInterval(this.state.timer);
+    clearInterval(this.state.timer);
   }
 
   handleAnimationEnd(event) {
@@ -69,6 +72,9 @@ class Intro extends Component {
       case 'outlineLeft':
         this.setState({bottomLeftAnimationActive: true})
         break;
+      case 'fadeInFinish':
+        this.setState({introCompleted: true})
+        break;
     }
   }
 
@@ -76,7 +82,7 @@ class Intro extends Component {
     if (this.state.counter === this.state.blurbs.length) {
       clearInterval(this.state.timer);
       this.setState({
-        introCompleted: true,
+        blurbsCompleted: true,
         topLeftAnimationActive: true,
         bottomRightAnimationActive: true})
     } else {
@@ -87,12 +93,19 @@ class Intro extends Component {
     }
   }
 
+  onClick() {
+    if (this.state.introCompleted) {
+      this.props.history.push("/home");
+    }
+  }
+
   render() {
     return(
       <div className="intro-container">
         <div className="content-container">
           <img className="icon" src={introIcon} width={46} height={56} />
-          <div className={cx("copy-container", {"completed": this.state.introCompleted})}>
+          <div className={cx("copy-container", {"completed": this.state.introCompleted})}
+               onClick={this.onClick.bind(this)}>
             <div
               ref={(border) => { this.borderLeft = border; }}
               className={cx("border-left", {"active": this.state.leftAnimationActive})}></div>
@@ -111,8 +124,11 @@ class Intro extends Component {
             <div
               ref={(border) => { this.borderBottomRight = border; }}
               className={cx("border-bottom-right", {"active": this.state.bottomRightAnimationActive})}></div>
-            <span className={cx("copy-text", {[`flip-${this.state.counter}`]: !this.state.animationsCompleted}, {'animations-finished': this.state.animationsCompleted})}>
-              { this.state.animationsCompleted ? "LETS GO" : this.state.currentBlurb }
+
+            <span
+              ref={(text) => { this.buttonText = text; }}
+              className={cx("copy-text", {[`flip-${this.state.counter}`]: !this.state.animationsCompleted}, {'animations-finished': this.state.animationsCompleted})}>
+              { this.state.animationsCompleted ? "COOL. LET ME IN" : this.state.currentBlurb }
             </span>
           </div>
         </div>
