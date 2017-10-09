@@ -14,13 +14,41 @@
   margin-top: 210px;
 }
 
+.content-container.started {
+  animation: fadeInIntro;
+  animation-duration: 3s;
+}
+
+.skip-container {
+  display: flex;
+  align-items: flex-end;
+  flex: 1;
+
+  .skip-text {
+    text-decoration: none;
+    margin-bottom: 50px;
+    cursor: pointer;
+    font-family: 'Colfax-Regular';
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.8);
+    letter-spacing: 1px;
+    opacity: 0;
+
+    &.active {
+      animation: fadeInSkip;
+      animation-duration: .75s;
+      animation-fill-mode: forwards;
+    }
+  }
+}
+
 .copy-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   margin-top: 40px;
-  width: 200px;
+  width: 225px;
   height: 50px;
   //below needed for more minimal fade in animation
   //border: 2px solid rgba(255, 255, 255, 0);
@@ -393,7 +421,85 @@
   }
 }
 
+.greet-1 {
+  animation: fadeInGreetOne;
+  animation-duration: .75s;
+}
+
+.greet-2 {
+  animation: fadeInGreetTwo;
+  animation-duration: .75s;
+}
+
+.greet-3 {
+  animation: fadeInGreetThree;
+  animation-duration: .75s;
+}
+
+
+.copy-text.greet-1 {
+  text-align: center;
+}
+
+.copy-text.greet-2 {
+  text-align: center;
+}
+
+.copy-text.greet-3 {
+  text-align: center;
+}
+
+@keyframes fadeInGreetOne {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInGreetTwo {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInGreetThree {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
 @keyframes fadeInFinish {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInIntro {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInSkip {
   from {
     opacity: 0;
   }
