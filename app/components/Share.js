@@ -132,6 +132,10 @@ class Share extends Component {
     }
   }
 
+  //<span className={cx("checkmark", {"success": currentLink})}>
+  //           <i className="material-icons success-icon">done</i>
+  //          </span>
+
   render() {
     let { fetchingLink, currentLink } = this.props.share;
 
@@ -139,12 +143,16 @@ class Share extends Component {
       <div className="share-container">
 
         <div className="share-header">
-          <span className="share-label">My Link</span>
-          { !this.state.isEditing ?
-            <span className="link-timestamp">
-              {currentLink ? `${currentLink.attributes['published-ago']} ago` : null}
-            </span>
-          : null }
+          <div className="share-header-inner-container">
+            <span className="share-label">My Link</span>
+          </div>
+          <div className="share-header-inner-container">
+            { !this.state.isEditing ?
+              <span className="link-timestamp">
+                {currentLink ? `${currentLink.attributes['published-ago']} ago` : null}
+              </span>
+            : null }
+          </div>
         </div>
 
         { this.renderLinkOrEditField() }
