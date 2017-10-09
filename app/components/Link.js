@@ -66,7 +66,11 @@ class Link extends Component {
                 } else {
                   this.props.vote(link.id, 'unvote')
                 }
-               }}>
+          }}>
+
+            { link.attributes['upvote-count'] > 0 ?
+              <span className={cx("vote-count", {"voted": votedFor})}>+{link.attributes['upvote-count']}</span>
+            : null }
             <i className={cx("material-icons vote-icon", {"voted": votedFor})}>whatshot</i>
           </div>
         </div>
