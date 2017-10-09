@@ -8,7 +8,6 @@ class Intro extends Component {
   constructor(props) {
     super(props)
 
-    //TODO change from started/finished to active state names, you'll cut quantity in half
     this.state = {
       timer: null,
       counter: 0,
