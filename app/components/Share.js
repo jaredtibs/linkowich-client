@@ -67,7 +67,7 @@ class Share extends Component {
       <div className="my-link-container" onClick={this.toggleEditing.bind(this)}>
         <div className="my-link">
           { displayLink ?
-            <span className="my-link-url"> { this.truncate(currentLink.attributes.url) } </span>
+            <span className={cx("my-link-url", {"present": displayLink})}> { this.truncate(currentLink.attributes.url) } </span>
           : <span className="my-link-url"> share some fire </span>
           }
         </div>
