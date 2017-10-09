@@ -16,8 +16,8 @@ class Intro extends Component {
       greetText: "WELCOME TO LINKOWICH",
       greets: [
         "A PLACE FOR YOU AND YOUR FRIENDS",
-        "FOR ALL THOSE LINKS YOU CANT STOP SHARING",
-        "KEEP EM HERE AND KEEP THE CLUTTER FREE...",
+        "FOR ALL THOSE LINKS YOU CAN'T STOP SHARING",
+        "KEEP 'EM HERE AND KEEP THE CLUTTER FREE...",
       ],
       blurbText: "SHARE SOME MUSIC",
       blurbs: [

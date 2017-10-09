@@ -6,11 +6,6 @@
   background-color: #ff5f36;
 }
 
-.intro-container.started {
-  animation: slideUpIntro;
-  animation-duration: 2s;
-}
-
 .content-container {
   display: flex;
   flex-direction: column;
@@ -176,17 +171,6 @@
   animation-duration: 0.25s;
   animation-fill-mode: forwards;
   animation-timing-function: linear;
-}
-
-@keyframes slideUpIntro {
-  from {
-    transform: translate3d(0, 100%, 0);
-    visibility: visible;
-  }
-
-  to {
-    transform: translate3d(0, 0, 0);
-  }
 }
 
 @keyframes outlineTopRight {
