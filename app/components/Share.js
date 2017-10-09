@@ -171,7 +171,9 @@ class Share extends Component {
           </div>
         </div>
 
-        { this.renderLinkOrEditField() }
+        { !fetchingLink ?
+          this.renderLinkOrEditField()
+          : null }
 
         <div className="share-footer">
           { this.renderClearButton() }
