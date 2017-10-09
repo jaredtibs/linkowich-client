@@ -133,7 +133,7 @@
   //option 2 high spread light shadow
   //box-shadow: 0px 1px 10px 0px #c8c8c8;
   //option 3 cleaner
-  box-shadow: 0px 1px 1px 0px #b8b8b8;
+  box-shadow: 0px 2px 1px 0px #b8b8b8;
   border-top: 1px solid #f8f8f8;
   border-radius: 2px;
 }
@@ -156,14 +156,28 @@
   letter-spacing: 0.1px;
   padding-left: 5px;
 
+  animation: flashCurrentLink;
+  animation-duration: 2s;
+  animation-fill-mode: both;
+
   &.empty {
     color: rgba(71, 71, 71, .50);
   }
 
-  &.pulse {
+  &.bounce {
     animation: bounceLink;
     animation-duration: .65s;
     animation-fill-mode: both;
+  }
+}
+
+@keyframes flashCurrentLink {
+  from, 50%, to {
+    color: rgba(71, 71, 71, .50);
+  }
+
+  25%, 75% {
+    color: rgba(0, 213, 214, .60)
   }
 }
 
