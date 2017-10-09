@@ -75,21 +75,6 @@
   }
 }
 
-.link-vote-container {
-  .vote-icon {
-    color: #595959;
-    font-size: 16px !important;
-
-    &.voted {
-      color: #ff5f36;
-    }
-  }
-
-  .vote-icon:hover {
-    font-size: 18px !important;
-  }
-}
-
 .link-container {
   display: flex;
   flex-direction: row;
@@ -107,9 +92,11 @@
   cursor: pointer;
   display: flex;
   flex-direction: row;
-  align-items: flex-end;
+  justify-content: center;
+  align-items: center;
 
   &.past-link {
+    align-items: flex-end;
     cursor: default;
     font-size: 11px;
   }
@@ -122,6 +109,31 @@
 
   .past-vote-count {
     color: #fd7350;
+  }
+
+  .vote-count {
+    font-size: 11px;
+    color: #8b8a8a;
+    font-family: 'Colfax-Regular';
+    padding-top: 3px;
+
+    &.voted {
+      color: #fd7350;
+    }
+  }
+
+  .vote-icon {
+    color: #595959;
+    font-size: 16px !important;
+    padding-left: 1px;
+
+    &.voted {
+      color: #ff5f36;
+    }
+  }
+
+  .vote-icon:hover {
+    font-size: 18px !important;
   }
 }
 

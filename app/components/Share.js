@@ -10,7 +10,8 @@ class Share extends Component {
     this.defaultState = {
       url: '',
       isEditing: false,
-      awaitingClearConfirmation: false
+      awaitingClearConfirmation: false,
+      shareSuccess: false
     }
 
     this.state = this.defaultState;
@@ -18,6 +19,16 @@ class Share extends Component {
 
   componentDidMount() {
     this.props.fetchCurrentLink();
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const { currentLink } = this.props.share;
+    const { publishingLink } = this.props.share;
+    const prevPublishingLink = prevProps.share.publishingLink;
+
+    if (publishingLink === false && prevPublishingLink === true && currentLink) {
+      this.setState({ shareSuccess: true });
+    }
   }
 
   handleChange(event) {
@@ -66,7 +77,7 @@ class Share extends Component {
     return(
       <div className="my-link-container" onClick={this.toggleEditing.bind(this)}>
         <div className="my-link">
-          <span className={cx("my-link-url", {"pulse": displayLink})}>
+          <span className={cx("my-link-url", {"pulse": this.state.shareSuccess, "empty": !displayLink})}>
             { displayLink ? this.truncate(currentLink.attributes.url) : "Share some Fire" }
           </span>
         </div>
@@ -94,7 +105,7 @@ class Share extends Component {
   }
 
   renderLinkOrEditField() {
-    if (this.state.isEditing) {
+    if (this.state.isEditing || this.state.isPublishing) {
       return this.renderInputForm()
     } else {
       return this.renderMyLink()
@@ -132,21 +143,21 @@ class Share extends Component {
     }
   }
 
-  //<span className={cx("checkmark", {"success": currentLink})}>
-  //           <i className="material-icons success-icon">done</i>
-  //          </span>
 
   render() {
-    let { fetchingLink, currentLink } = this.props.share;
+    let {
+      fetchingLink,
+      publishingLink,
+      currentLink } = this.props.share;
 
     return(
       <div className="share-container">
 
         <div className="share-header">
-          <div className="share-header-inner-container">
+          <div className="share-header-inner-container left">
             <span className="share-label">My Link</span>
           </div>
-          <div className="share-header-inner-container">
+          <div className="share-header-inner-container right">
             { !this.state.isEditing ?
               <span className="link-timestamp">
                 {currentLink ? `${currentLink.attributes['published-ago']} ago` : null}
@@ -166,3 +177,42 @@ class Share extends Component {
 }
 
 export default Share
+
+/*
+//TODO share checkmark success fade in - TBD
+ *
+<span className={cx("share-outcome", {"success": this.state.shareSuccess})}>
+  <i className="material-icons success-icon">check_circle</i>
+</span>
+.share-outcome {
+  cursor: default;
+  padding-left: 5px;
+  margin-top: 2px;
+  opacity: 1;
+}
+
+.share-outcome.success {
+  animation: fadeInSuccess;
+  animation-duration: 5s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-out;
+  animation-delay: 0.5s;
+}
+
+@keyframes fadeInSuccess {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+.success-icon {
+  font-size: 13px !important;
+  color: green;
+}
+
+
+*/
+
