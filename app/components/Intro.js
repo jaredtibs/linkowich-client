@@ -52,7 +52,7 @@ class Intro extends Component {
     this.buttonText.addEventListener('animationend', this.handleAnimationEnd.bind(this))
     this.content.addEventListener('animationend', this.handleAnimationEnd.bind(this))
 
-    let timer = setInterval(this.greet.bind(this), 3500);
+    let timer = setInterval(this.greet.bind(this), 3000);
     this.setState({timer, introStarted: true, greetsStarted: true});
   }
 
@@ -90,7 +90,7 @@ class Intro extends Component {
         this.setState({showSkip: true})
         break;
       case 'fadeInFinish':
-        this.setState({introFinished: true})
+        this.setState({introFinished: true, showSkip: false})
         break;
     }
   }
