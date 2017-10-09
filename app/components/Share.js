@@ -11,24 +11,29 @@ class Share extends Component {
       url: '',
       isEditing: false,
       awaitingClearConfirmation: false,
-      shareSuccess: false
+      shareSuccess: false,
+      mounted: false
     }
 
     this.state = this.defaultState;
   }
 
   componentDidMount() {
+    this.setState({mounted: true})
     this.props.fetchCurrentLink();
   }
 
   componentDidUpdate(prevProps, prevState) {
-    const { currentLink } = this.props.share;
-    const { publishingLink } = this.props.share;
+    const { currentLink, publishingLink } = this.props.share;
     const prevPublishingLink = prevProps.share.publishingLink;
 
     if (publishingLink === false && prevPublishingLink === true && currentLink) {
       this.setState({ shareSuccess: true });
     }
+
+    //if (prevProps.share.currentLink === null && currentLink !== null) {
+    //  this.setState({ mounted: null })
+    //}
   }
 
   handleChange(event) {
@@ -151,7 +156,7 @@ class Share extends Component {
       currentLink } = this.props.share;
 
     return(
-      <div className="share-container">
+      <div className={cx("share-container", {"mounted": this.state.mounted})}>
 
         <div className="share-header">
           <div className="share-header-inner-container left">
