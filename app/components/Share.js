@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import Link from './Link';
 import styles from '../assets/stylesheets/share.scss';
+import cx from 'classnames';
 
 class Share extends Component {
   constructor(props) {
@@ -87,6 +88,7 @@ class Share extends Component {
             onChange={this.handleChange.bind(this)}
             onBlur={this.handleBlur.bind(this)}
           />
+          <div className={cx("share-edit-border", {"active": this.state.isEditing})}></div>
         </div>
       </form>
     )
