@@ -87,6 +87,10 @@ class Share extends Component {
             { displayLink ? this.truncate(currentLink.attributes.url) : "Share some Fire" }
           </span>
         </div>
+        <div className={cx("share-border-left",  {"active": false})}></div>
+        <div className={cx("share-border-top",   {"active": false})}></div>
+        <div className={cx("share-border-right", {"active": false})}></div>
+        <div className={cx("share-border-bottom",{"active": false})}></div>
       </div>
     )
   }

@@ -137,12 +137,14 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  position: relative;
+  //basic grey underline:
   //border-bottom: 2px solid #b8b8b8
-  //option 1 inset
+  //option 1 inset box:
   //box-shadow: 0px 0px 4px 0px #b8b8b8 inset;
-  //option 2 high spread light shadow
+  //option 2 high spread light shadow box:
   //box-shadow: 0px 1px 10px 0px #c8c8c8;
-  //option 3 cleaner
+  //option 3 clean minimal box:
   box-shadow: 0px 1px 1px 0px #b8b8b8;
   border-top: 1px solid #f8f8f8;
   border-radius: 2px;
@@ -181,7 +183,71 @@
   &.empty {
     color: rgba(71, 71, 71, .50);
   }
+}
 
+.seen-by {
+  font-family: 'Colfax-Regular';
+  font-size: 11px;
+}
+
+.share-border-left {
+  position: absolute;
+  box-shadow: 0px 1px 1px 0px #fd7350;
+  top: 50%;
+  bottom: 50%;
+  left: 0%;
+}
+
+.share-border-right {
+  position: absolute;
+  box-shadow: 0px 1px 1px 0px #fd7350;
+  top: 50%;
+  bottom: 50%;
+  right: 0%;
+}
+
+.share-border-top {
+  position: absolute;
+  box-shadow: 0px 1px 1px 0px #fd7350;
+  top: 0%;
+  bottom: 100%;
+  left: 50%;
+  right: 50%;
+}
+
+.share-border-bottom {
+  position: absolute;
+  box-shadow: 0px 1px 1px 0px #fd7350;
+  //for just the fire bottom
+  //box-shadow: 0px 1px 1px 1px #fd7350;
+  top: 100%;
+  bottom: 0%;
+  right: 50%;
+  left: 50%;
+}
+
+.share-border-left.active {
+  animation: shareOutlineLeft;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+}
+
+.share-border-right.active {
+  animation: shareOutlineRight;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+}
+
+.share-border-top.active {
+  animation: shareOutlineTop;
+  animation-duration: 0.25s;
+  animation-fill-mode: forwards;
+}
+
+.share-border-bottom.active {
+  animation: shareOutlineBottom;
+  animation-duration: 0.25s;
+  animation-fill-mode: forwards;
 }
 
 @keyframes flashCurrentLink {
@@ -227,7 +293,54 @@
   }
 }
 
-.seen-by {
-  font-family: 'Colfax-Regular';
-  font-size: 11px;
+@keyframes shareOutlineLeft {
+  from {
+    box-shadow: 0px 1px 1px 1px #fd7350;
+    top: 50%;
+    bottom: 50%
+  }
+  to {
+    box-shadow: 0px 1px 1px 1px #fd7350;
+    top: 0%;
+    bottom: 0%
+  }
+}
+
+@keyframes shareOutlineRight {
+  from {
+    box-shadow: 0px 1px 1px 1px #fd7350;
+    top: 50%;
+    bottom: 50%
+  }
+  to {
+    box-shadow: 0px 1px 1px 1px #fd7350;
+    top: 0%;
+    bottom: 0%
+  }
+}
+
+@keyframes shareOutlineTop {
+  from {
+    box-shadow: 0px 1px 1px 1px #fd7350;
+    right: 50%;
+    left: 50%
+  }
+  to {
+    box-shadow: 0px 1px 1px 1px #fd7350;
+    right: 0%;
+    left: 0%
+  }
+}
+
+@keyframes shareOutlineBottom {
+  from {
+    box-shadow: 0px 1px 1px 1px #fd7350;
+    right: 50%;
+    left: 50%
+  }
+  to {
+    box-shadow: 0px 1px 1px 1px #fd7350;
+    right: 0%;
+    left: 0%
+  }
 }
