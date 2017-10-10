@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import Link from './Link';
 import styles from '../assets/stylesheets/share.scss';
 import cx from 'classnames';
+import SimpleSpinner from './SimpleSpinner';
 
 class Share extends Component {
   constructor(props) {
@@ -11,25 +12,27 @@ class Share extends Component {
       url: '',
       isEditing: false,
       awaitingClearConfirmation: false,
-      shareSuccess: false
+      shared: false
     }
 
     this.state = this.defaultState;
     this.mounted = false;
+    this.successfulShare = false;
   }
 
   componentDidMount() {
     this.props.fetchCurrentLink();
     this.mounted = true;
-    setInterval(() => this.mounted = false, 2000);
+    setTimeout(() => this.mounted = false, 2000);
   }
 
   componentDidUpdate(prevProps, prevState) {
     const { currentLink, publishingLink } = this.props.share;
     const prevPublishingLink = prevProps.share.publishingLink;
 
-    if (publishingLink === false && prevPublishingLink === true && currentLink) {
-      this.setState({ shareSuccess: true });
+    if (prevPublishingLink === true && publishingLink === false && currentLink) {
+      this.setState({shared: true})
+      setTimeout(() => this.setState({shared: false}), 2000)
     }
   }
 
@@ -79,7 +82,8 @@ class Share extends Component {
     return(
       <div className="my-link-container" onClick={this.toggleEditing.bind(this)}>
         <div className="my-link">
-          <span className={cx("my-link-url", {"flash": this.mounted, "bounce": this.state.shareSuccess, "empty": !displayLink})}>
+          <span className={cx("my-link-url",
+            {"flash": this.mounted, "bounce": this.state.shared, "empty": !displayLink})}>
             { displayLink ? this.truncate(currentLink.attributes.url) : "Share some Fire" }
           </span>
         </div>
@@ -107,15 +111,36 @@ class Share extends Component {
   }
 
   renderLinkOrEditField() {
-    if (this.state.isEditing || this.state.isPublishing) {
-      return this.renderInputForm()
-    } else {
-      return this.renderMyLink()
-    }
+    const { publishingLink, currentLink } = this.props.share;
+
+    return(
+      <div>
+        <div className="share-header">
+          <div className="share-header-inner-container left">
+            <span className="share-label">My Link</span>
+          </div>
+          <div className="share-header-inner-container right">
+            { !this.state.isEditing ?
+              <span className="link-timestamp">
+                {currentLink ? `${currentLink.attributes['published-ago']} ago` : null}
+              </span>
+            : null }
+          </div>
+        </div>
+
+        { this.state.isEditing || publishingLink ?
+          this.renderInputForm() : this.renderMyLink()
+        }
+
+        <div className="share-footer">
+          { this.renderClearButton() }
+        </div>
+      </div>
+    )
   }
 
   renderClearButton() {
-    let { currentLink } = this.props.share;
+    const { currentLink } = this.props.share;
 
     if (currentLink && !this.state.isEditing) {
       if (this.state.awaitingClearConfirmation) {
@@ -147,76 +172,24 @@ class Share extends Component {
 
 
   render() {
-    let {
-      fetchingLink,
-      publishingLink,
-      currentLink } = this.props.share;
+    const { fetchingLink } = this.props.share;
 
     return(
       <div className="share-container">
-
-        <div className="share-header">
-          <div className="share-header-inner-container left">
-            <span className="share-label">My Link</span>
+        { fetchingLink ?
+          <div className="share-loading-container">
+            <SimpleSpinner
+              color1="#b8b8b8"
+              color2="#00d5d6"
+              color3="#b8b8b8"
+              color4="#00d5d6"
+            />
           </div>
-          <div className="share-header-inner-container right">
-            { !this.state.isEditing ?
-              <span className="link-timestamp">
-                {currentLink ? `${currentLink.attributes['published-ago']} ago` : null}
-              </span>
-            : null }
-          </div>
-        </div>
-
-        { !fetchingLink ?
-          this.renderLinkOrEditField()
-          : null }
-
-        <div className="share-footer">
-          { this.renderClearButton() }
-        </div>
+          : this.renderLinkOrEditField()
+        }
       </div>
     )
   }
 }
 
 export default Share
-
-/*
-//TODO share checkmark success fade in - TBD
- *
-<span className={cx("share-outcome", {"success": this.state.shareSuccess})}>
-  <i className="material-icons success-icon">check_circle</i>
-</span>
-.share-outcome {
-  cursor: default;
-  padding-left: 5px;
-  margin-top: 2px;
-  opacity: 1;
-}
-
-.share-outcome.success {
-  animation: fadeInSuccess;
-  animation-duration: 5s;
-  animation-fill-mode: forwards;
-  animation-timing-function: ease-out;
-  animation-delay: 0.5s;
-}
-
-@keyframes fadeInSuccess {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-.success-icon {
-  font-size: 13px !important;
-  color: green;
-}
-
-
-*/
-
