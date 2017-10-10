@@ -11,16 +11,17 @@ class Share extends Component {
       url: '',
       isEditing: false,
       awaitingClearConfirmation: false,
-      shareSuccess: false,
-      mounted: false
+      shareSuccess: false
     }
 
     this.state = this.defaultState;
+    this.mounted = false;
   }
 
   componentDidMount() {
-    this.setState({mounted: true})
     this.props.fetchCurrentLink();
+    this.mounted = true;
+    setInterval(() => this.mounted = false, 2000);
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -30,10 +31,6 @@ class Share extends Component {
     if (publishingLink === false && prevPublishingLink === true && currentLink) {
       this.setState({ shareSuccess: true });
     }
-
-    //if (prevProps.share.currentLink === null && currentLink !== null) {
-    //  this.setState({ mounted: null })
-    //}
   }
 
   handleChange(event) {
@@ -77,12 +74,12 @@ class Share extends Component {
 
   renderMyLink() {
     const { currentLink, fetchingLink } = this.props.share;
-    const displayLink = (currentLink && currentLink.attributes.url) && !fetchingLink
+    const displayLink = (currentLink && currentLink.attributes.url)
 
     return(
       <div className="my-link-container" onClick={this.toggleEditing.bind(this)}>
         <div className="my-link">
-          <span className={cx("my-link-url", {"bounce": this.state.shareSuccess, "empty": !displayLink})}>
+          <span className={cx("my-link-url", {"flash": this.mounted, "bounce": this.state.shareSuccess, "empty": !displayLink})}>
             { displayLink ? this.truncate(currentLink.attributes.url) : "Share some Fire" }
           </span>
         </div>
@@ -156,7 +153,7 @@ class Share extends Component {
       currentLink } = this.props.share;
 
     return(
-      <div className={cx("share-container", {"mounted": this.state.mounted})}>
+      <div className="share-container">
 
         <div className="share-header">
           <div className="share-header-inner-container left">
