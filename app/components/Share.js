@@ -10,6 +10,7 @@ class Share extends Component {
 
     this.defaultState = {
       url: '',
+      urlValid: true,
       isEditing: false,
       awaitingClearConfirmation: false,
       shared: false
@@ -37,17 +38,26 @@ class Share extends Component {
   }
 
   handleChange(event) {
-    this.setState({url: event.target.value})
+    this.setState({url: event.target.value, urlValid: true});
   }
 
   handleSubmit(event) {
     event.preventDefault()
-    this.props.publishLink(this.state.url)
-    this.setState(this.defaultState)
+    if (this.validateUrl(this.state.url) === true) {
+      this.props.publishLink(this.state.url)
+      this.setState(this.defaultState)
+    } else {
+      this.setState({urlValid: false});
+    }
   }
 
   handleBlur() {
     this.setState({isEditing: false, awaitingClearConfirmation: false})
+  }
+
+  validateUrl(url) {
+    const regex = /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/
+    return regex.test(url)
   }
 
   toggleEditing() {
@@ -82,8 +92,11 @@ class Share extends Component {
     return(
       <div className="my-link-container" onClick={this.toggleEditing.bind(this)}>
         <div className="my-link">
-          <span className={cx("my-link-url",
-            {"flash": this.mounted, "bounce": this.state.shared, "empty": !displayLink})}>
+          <span className={cx("my-link-url", {
+            "flash": this.mounted,
+            "bounce": this.state.shared,
+            "empty": !displayLink
+          })}>
             { displayLink ? this.truncate(currentLink.attributes.url) : "Share some Fire" }
           </span>
         </div>
@@ -100,15 +113,14 @@ class Share extends Component {
       <form id="link-form" onSubmit={this.handleSubmit.bind(this)}>
         <div className="my-link-input-container">
           <input
-            className="link-input"
-            type="url"
+            className={cx("link-input", {"error": !this.state.urlValid})}
             placeholder="press enter to share"
             value={this.state.url}
             autoFocus={true}
             onChange={this.handleChange.bind(this)}
             onBlur={this.handleBlur.bind(this)}
           />
-          <div className={cx("share-edit-border", {"active": this.state.isEditing})}></div>
+          <div className={cx("share-edit-border", {"active": this.state.isEditing, "error": !this.state.urlValid})}></div>
         </div>
       </form>
     )
@@ -137,6 +149,11 @@ class Share extends Component {
         }
 
         <div className="share-footer">
+          { !this.state.urlValid ?
+            <div>
+              <span className="link-error-msg"> Not a valid url </span>
+            </div>
+            : null }
           { this.renderClearButton() }
         </div>
       </div>

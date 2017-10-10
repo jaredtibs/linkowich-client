@@ -31,6 +31,12 @@
   justify-content: flex-end;
   height: 15px;
   margin-top: 3px;
+
+  .link-error-msg {
+    font-family: 'Colfax-Regular';
+    font-size: 10px;
+    color: #f40731;
+  }
 }
 
 .share-label {
@@ -92,6 +98,10 @@
   padding-bottom: 3px;
   font-family: 'Colfax-Medium';
   font-size: 12px;
+
+  &.error {
+    color: #f40731;
+  }
 }
 
 .link-input:focus {
@@ -107,13 +117,17 @@
   top: 100%;
   bottom: 0%;
   right: 50%;
-  left: 50%
-}
+  left: 50%;
 
-.share-edit-border.active {
-  animation: activeEditBorder;
-  animation-duration: 0.3s;
-  animation-fill-mode: forwards;
+  &.active {
+    animation: activeEditBorder;
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
+  }
+
+  &.error {
+    border-bottom: 2px solid #f40731;
+  }
 }
 
 @keyframes activeEditBorder {
