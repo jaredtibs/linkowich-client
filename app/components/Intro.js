@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router-dom';
 import styles from '../assets/stylesheets/intro.scss';
 import cx from 'classnames';
-const introIcon = require('../assets/intro_icon.svg');
+const introIcon = require('../assets/images/intro_icon.svg');
 
 class Intro extends Component {
   constructor(props) {

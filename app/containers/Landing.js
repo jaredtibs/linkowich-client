@@ -5,8 +5,8 @@ import cx from 'classnames';
 import LoginContainer from './LoginContainer'
 import SignUpContainer from './SignUpContainer'
 
-const imageLogo = require('../assets/image_logo.svg');
-const textLogo = require('../assets/text_logo.svg');
+const imageLogo = require('../assets/images/image_logo.svg');
+const textLogo = require('../assets/images/text_logo.svg');
 
 class Landing extends Component {
   constructor(props) {

@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import styles from '../assets/stylesheets/link.scss';
-import defaultAvatar from "../assets/default_avatar.jpeg"
+import defaultAvatar from "../assets/images/default_avatar.jpeg"
 import cx from 'classnames';
 import CopyToClipboard from 'react-copy-to-clipboard';
 

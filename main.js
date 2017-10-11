@@ -93,7 +93,7 @@ function createWindow () {
 }
 
 function createTray() {
-  tray = new Tray(path.join(assetsDirectory, 'active_tray_icon.png'))
+  tray = new Tray(path.join(assetsDirectory, '/images/active_tray_icon.png'))
   tray.on('right-click', toggleWindow)
   tray.on('double-click', toggleWindow)
   tray.on('click', function (event) {
@@ -115,7 +115,7 @@ function toggleWindow() {
 }
 
 function toggleTrayIcon() {
-  tray.setImage(path.join(assetsDirectory, 'inactive_tray_icon.png'))
+  tray.setImage(path.join(assetsDirectory, '/images/inactive_tray_icon.png'))
 }
 
 function showWindow() {
@@ -149,5 +149,5 @@ ipcMain.on('show-window', () => {
 })
 
 ipcMain.on('links-updated', (event, links) => {
-  tray.setImage(path.join(assetsDirectory, 'active_tray_icon.png'))
+  tray.setImage(path.join(assetsDirectory, '/images/active_tray_icon.png'))
 })
