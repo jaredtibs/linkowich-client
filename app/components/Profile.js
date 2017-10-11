@@ -16,7 +16,6 @@ class Profile extends Component {
   }
 
   componentDidMount() {
-    const { username } = this.props.user;
     this.props.fetchHistoricalLinkData();
   }
 

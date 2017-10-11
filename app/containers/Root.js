@@ -52,7 +52,7 @@ class Root extends Component {
               <Route path='/landing' component={Landing} />
               <Route path='/intro' component={Intro} onEnter={this.authenticated()} />
               <Route path='/home' component={HomeContainer} onEnter={this.authenticated()} />
-              <Route path='/profile' component={ProfileContainer} onEnter={this.authenticated()} />
+              <Route path='/user/:id' component={ProfileContainer} onEnter={this.authenticated()} />
               <Route path='/settings' component={SettingsContainer} onEnter={this.authenticated()} />
               <Route path='/friends' component={FriendsContainer} onEnter={this.authenticated()} />
             </Switch>
