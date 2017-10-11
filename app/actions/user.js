@@ -1,7 +1,7 @@
 import { push, replace } from 'react-router-redux';
 import { authToken } from './auth';
 
-export function requestLogin (email, password) {
+export function login (email, password) {
   return dispatch => {
     dispatch(loading());
     return fetch("http://localhost:3000/api/v1/sessions", {

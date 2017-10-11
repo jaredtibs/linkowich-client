@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import {connect} from 'react-redux';
-import {requestLogin} from '../actions/user';
+import {login} from '../actions/user';
 import Login from '../components/Login';
 
 class LoginContainer extends Component {
@@ -20,8 +20,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    requestLogin: (email, password) => {
-      dispatch(requestLogin(email, password))
+    login: (email, password) => {
+      dispatch(login(email, password))
     }
   }
 };
