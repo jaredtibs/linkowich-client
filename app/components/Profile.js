@@ -52,7 +52,7 @@ class Profile extends Component {
   render() {
     const { user } = this.props;
     const { isFetching } = user;
-    const avatarSrc = user.avatar ? user.avatar.large.url : defaultAvatar;
+    const avatarSrc = (user.avatar.large && user.avatar.large.url) ? user.avatar.large.url : defaultAvatar;
 
     return(
       <div className="window-content">
