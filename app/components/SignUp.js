@@ -155,12 +155,13 @@ class SignUp extends Component {
       <div className="form-container">
         <form id="signup-form" onSubmit={this.handleSubmit.bind(this)}>
           <div className="form-inputs">
-            <div className="input-container">
+            <div className="input-container" onClick={() => {this.email.focus()}}>
               <label className={cx("label-helper", {
                   "active": (this.state.emailFocused || this.state.email),
                   "error": !this.state.emailValid})
                 }>{ this.state.emailValid ? "Email" : this.state.emailValidationError}</label>
               <input type="email" name="email"
+                ref={(email) => this.email = email}
                 className={cx("input-field", {"error": !this.state.emailValid})}
                 placeholder={this.state.emailPlaceholder}
                 value={this.state.email}
@@ -169,13 +170,13 @@ class SignUp extends Component {
                 onBlur={this.onBlur.bind(this)}
               />
             </div>
-            <div className="input-container">
+            <div className="input-container" onClick={() => {this.username.focus()}}>
               <label className={cx("label-helper", {
                   "active": (this.state.usernameFocused || this.state.username),
                   "error": !this.state.usernameValid
                 })}>{ this.state.usernameValid ? "Create Username" : this.state.usernameValidationError }</label>
               <input type="text" name="username"
-                name="username"
+                ref={(username) => this.username = username}
                 className={cx("input-field", {"error": !this.state.usernameValid})}
                 placeholder={this.state.usernamePlaceholder}
                 value={this.state.username}
@@ -184,13 +185,13 @@ class SignUp extends Component {
                 onBlur={this.onBlur.bind(this)}
               />
             </div>
-            <div className="input-container">
+            <div className="input-container" onClick={() => {this.password.focus()}}>
               <label className={cx("label-helper", {
                   "active": (this.state.passwordFocused || this.state.password),
                   "error": !this.state.passwordValid
                 })}>{ this.state.passwordValid ? "Create Password" : this.state.passwordValidationError }</label>
               <input type="password" name="password"
-                name="password"
+                ref={(password) => this.password = password}
                 className={cx("input-field", {"error": !this.state.passwordValid})}
                 placeholder={this.state.passwordPlaceholder}
                 value={this.state.password}

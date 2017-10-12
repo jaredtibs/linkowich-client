@@ -111,13 +111,13 @@ class Login extends Component {
       <div className="form-container">
         <form id="login-form" onSubmit={this.handleSubmit.bind(this)}>
           <div className="form-inputs">
-            <div className="input-container">
+            <div className="input-container" onClick={() => {this.email.focus()}}>
               <label className={cx("label-helper", {
                   "active": (this.state.emailFocused || this.state.email),
                   "error": !this.state.emailValid})
                 }>{ this.state.emailValid ? "Email" : this.state.emailValidationError}</label>
-              <input type="email"
-                name="email"
+              <input type="email" name="email"
+                ref={(email) => this.email = email}
                 className={cx("input-field", {"error": !this.state.emailValid})}
                 placeholder={this.state.emailPlaceholder}
                 value={this.state.email}
@@ -126,13 +126,13 @@ class Login extends Component {
                 onBlur={this.onBlur.bind(this)}
               />
             </div>
-            <div className="input-container">
+            <div className="input-container" onClick={() => {this.password.focus()}}>
               <label className={cx("label-helper", {
                   "active": (this.state.passwordFocused || this.state.password),
                   "error": !this.state.passwordValid
                 })}>{ this.state.passwordValid ? "Password" : this.state.passwordValidationError }</label>
-              <input type="password"
-                name="password"
+              <input type="password" name="password"
+                ref={(password) => this.password = password}
                 className={cx("input-field", {"error": !this.state.passwordValid})}
                 placeholder={this.state.passwordPlaceholder}
                 value={this.state.password}
