@@ -2,7 +2,7 @@ const initialState = {
   loggedIn: false,
   username: '',
   email: '',
-  avatar: null,
+  avatar: {},
   pastLinks: [],
   loginErrors: {},
   registerErrors: {},
@@ -36,6 +36,7 @@ export default function user(state=initialState, action) {
         loginErrors: action.errors
       };
     case 'SESSION_FETCHED':
+      console.log(action.data)
       return {
         ...state,
         loggedIn: true,
