@@ -1,10 +1,11 @@
 import React, { Component, PropTypes } from 'react';
+import { Link } from 'react-router-dom';
 import styles from '../assets/stylesheets/link.scss';
 import defaultAvatar from "../assets/images/default_avatar.jpeg"
 import cx from 'classnames';
 import CopyToClipboard from 'react-copy-to-clipboard';
 
-class Link extends Component {
+class FeedLink extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -51,9 +52,11 @@ class Link extends Component {
         <div className='link-row-header-container'>
 
           <div className="link-meta-container">
-            <div className="avatar">
-              <img src={avatar_src} width={30} height={30} />
-            </div>
+            <Link to={`/user/6`}>
+              <div className="avatar">
+                <img src={avatar_src} width={30} height={30} />
+              </div>
+            </Link>
             <div className="meta-text">
               <span className="username">{username}</span>
               <span className="published-ago">{link.attributes['published-ago']} ago</span>
@@ -110,4 +113,4 @@ class Link extends Component {
   }
 }
 
-export default Link
+export default FeedLink;

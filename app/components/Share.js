@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-import Link from './Link';
 import styles from '../assets/stylesheets/share.scss';
 import cx from 'classnames';
 import SimpleSpinner from './SimpleSpinner';
