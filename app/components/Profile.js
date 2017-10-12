@@ -77,7 +77,7 @@ class Profile extends Component {
   }
 
   render() {
-    const { profile } = this.props;
+    const { profile, mine } = this.props;
     const { isFetching } = profile;
 
     return(
@@ -88,7 +88,7 @@ class Profile extends Component {
           </div>
           <div className="lower-container">
             <div className="lower-container-header">
-              <span>History</span>
+              <span>{ mine ? "My history" : `${profile.username}'s history` }</span>
             </div>
 
             { isFetching ? <ListLoader /> : this.renderHistory() }
