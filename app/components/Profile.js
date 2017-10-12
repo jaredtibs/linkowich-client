@@ -16,7 +16,7 @@ class Profile extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchHistoricalLinkData();
+    this.props.fetchUserProfile(this.props.userId);
   }
 
   handleLinkClick(link) {
@@ -27,12 +27,12 @@ class Profile extends Component {
     ipcRenderer.send('open-finder');
   }
 
-  renderPastLinks() {
+  renderHistory() {
     const onClick = this.handleLinkClick.bind(this);
-    const { pastLinks } = this.props.user;
+    const { history } = this.props.profile;
 
-    if (pastLinks.length > 0) {
-      let linkList = pastLinks.map(function(link, i) {
+    if (history.length > 0) {
+      let linkList = history.map(function(link, i) {
         return <PastLink key={i} data={link} onClick={onClick} />
       });
 
@@ -49,9 +49,9 @@ class Profile extends Component {
   }
 
   render() {
-    const { user } = this.props;
-    const { isFetching } = user;
-    const avatarSrc = user.avatar ? user.avatar.large.url : defaultAvatar;
+    const { profile } = this.props;
+    const { isFetching } = profile;
+    const avatarSrc = profile.avatar ? profile.avatar.large.url : defaultAvatar;
 
     return(
       <div className="window-content">
@@ -65,9 +65,9 @@ class Profile extends Component {
             </div>
             <input type="file" id="file" ref="fileUploader" style={{display: "none"}}/>
             <div className="profile-info-container">
-              <div className="profile-username">{user.username}</div>
+              <div className="profile-username">{profile.username}</div>
               <div className="profile-score">
-                <span className="vote-count">{user.score}</span>
+                <span className="vote-count">{profile.score}</span>
                 <i className="material-icons vote-icon">whatshot</i>
               </div>
             </div>
@@ -77,7 +77,7 @@ class Profile extends Component {
               <span>History</span>
             </div>
 
-            { isFetching ? <ListLoader /> : this.renderPastLinks() }
+            { isFetching ? <ListLoader /> : this.renderHistory() }
           </div>
         </div>
       </div>

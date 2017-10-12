@@ -1,27 +1,29 @@
 import React, { Component, PropTypes } from 'react';
 import {connect} from 'react-redux';
-import {fetchHistoricalLinkData, updateAvatar} from '../actions/user';
+import {fetchUserProfile} from '../actions/profile';
+import {updateAvatar} from '../actions/user';
 import Profile from '../components/Profile';
 
 class ProfileContainer extends Component {
   render() {
     return(
-      <Profile {...this.props} />
+      <Profile {...this.props } userId={this.props.match.params.id} />
     )
   }
 }
 
 const mapStateToProps = (state) => {
-  const { user } = state;
+  const { user, profile } = state;
   return {
-    user
+    user,
+    profile
   }
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchHistoricalLinkData: () => {
-      dispatch(fetchHistoricalLinkData())
+    fetchUserProfile: (id) => {
+      dispatch(fetchUserProfile(id))
     },
 
     updateAvatar: (fileData) => {

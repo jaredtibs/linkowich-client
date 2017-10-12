@@ -44,17 +44,6 @@ export default function user(state=initialState, action) {
         avatar: action.data.avatar,
         score: action.data.upvotes
       };
-    case 'FETCHING_HISTORICAL_LINKS':
-      return {
-        ...state,
-        isFetching: true
-      };
-    case 'HISTORICAL_LINKS_FETCHED':
-      return {
-        ...state,
-        isFetching: false,
-        pastLinks: action.data
-      };
     case 'AVATAR_UPDATED':
       return {
         ...state,
