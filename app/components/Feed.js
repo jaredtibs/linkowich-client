@@ -34,7 +34,7 @@ class Feed extends Component {
       });
 
       return(
-        <div> {linkList} </div>
+        <div className="feed-links-container"> {linkList} </div>
       )
     } else {
       return(

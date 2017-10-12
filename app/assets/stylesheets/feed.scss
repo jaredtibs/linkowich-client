@@ -39,6 +39,12 @@
   font-size: 18px;
 }
 
+.feed-links-container {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
 .add-friends {
   font-family: 'Colfax-Medium';
   color: #00d5d6;
