@@ -78,20 +78,20 @@ class Profile extends Component {
 
   render() {
     const { profile, mine } = this.props;
-    const { isFetching } = profile;
+    const { isFetchingInfo, isFetchingHistory } = profile;
 
     return(
       <div className="window-content">
         <div className="profile-container">
           <div className="upper-container">
-            { isFetching ? <SimpleSpinner /> : this.renderProfileInfo() }
+            { isFetchingInfo ? <SimpleSpinner /> : this.renderProfileInfo() }
           </div>
           <div className="lower-container">
             <div className="lower-container-header">
               <span>{ mine ? "My history" : `${profile.username}'s history` }</span>
             </div>
 
-            { isFetching ? <ListLoader /> : this.renderHistory() }
+            { isFetchingHistory ? <ListLoader /> : this.renderHistory() }
           </div>
         </div>
       </div>

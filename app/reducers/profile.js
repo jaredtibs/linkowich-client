@@ -5,7 +5,8 @@ const initialState = {
   avatar: '',
   score: 0,
   history: [],
-  isFetching: false
+  isFetchingInfo: false,
+  isFetchingHistory: false
 }
 
 export default function profile(state=initialState, action) {
@@ -13,12 +14,12 @@ export default function profile(state=initialState, action) {
     case 'FETCHING_USER_PROFILE':
       return {
         ...state,
-        isFetching: true
+        isFetchingInfo: true
       };
     case 'PROFILE_FETCHED':
       return {
         ...state,
-        isFetching: false,
+        isFetchingInfo: false,
         username: action.data.username,
         avatar: action.data.avatar,
         score: action.data.upvotes
@@ -26,12 +27,12 @@ export default function profile(state=initialState, action) {
     case 'FETCHING_HISTORICAL_LINKS':
       return {
         ...state,
-        isFetching: true
+        isFetchingHistory: true
       };
     case 'HISTORICAL_LINKS_FETCHED':
       return {
         ...state,
-        isFetching: false,
+        isFetchingHistory: false,
         history: action.data
       };
     default:
