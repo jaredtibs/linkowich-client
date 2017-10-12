@@ -48,7 +48,10 @@
   overflow: hidden;
   position: relative;
   border: solid 1px #CECECE;
-  cursor: pointer;
+
+  &.mine {
+    cursor: pointer;
+  }
 
   img {
     height: 100%;

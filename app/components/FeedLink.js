@@ -59,7 +59,9 @@ class FeedLink extends Component {
               </div>
             </Link>
             <div className="meta-text">
-              <span className="username">{username}</span>
+              <Link to={`/user/${user.id}`} className="username-link">
+                <span className="username">{username}</span>
+              </Link>
               <span className="published-ago">{link.attributes['published-ago']} ago</span>
             </div>
           </div>

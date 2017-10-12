@@ -7,7 +7,10 @@ import Profile from '../components/Profile';
 class ProfileContainer extends Component {
   render() {
     return(
-      <Profile {...this.props } userId={this.props.match.params.id} />
+      <Profile {...this.props }
+        userId={this.props.match.params.id}
+        mine={this.props.match.params.id === "me"}
+      />
     )
   }
 }
