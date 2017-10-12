@@ -13,8 +13,9 @@ class Header extends Component {
   hasHeader(location) {
     switch(location) {
       case '/home':
-      case '/user/me':
       case '/settings':
+        return true;
+      case (location.match(/user\/*/) || {}).input:
         return true;
       default:
         return false;
@@ -24,6 +25,7 @@ class Header extends Component {
 
   render() {
     const { location } = this.props.router;
+    console.log(location)
 
     if (this.hasHeader(location.pathname)) {
       return(

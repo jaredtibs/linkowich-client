@@ -41,8 +41,9 @@ class FeedLink extends Component {
     const link = this.props.data;
     const seenBy = link.attributes['seen-by'];
     const votedFor = link.attributes['voted-for'];
-    const user = link.attributes.user.data.attributes;
-    const { avatar, username } = user;
+    const user = link.attributes.user.data;
+    const userAttributes = user.attributes;
+    const { avatar, username } = userAttributes;
     const avatar_src = avatar.url ? avatar.url : defaultAvatar;
 
     return(
@@ -52,7 +53,7 @@ class FeedLink extends Component {
         <div className='link-row-header-container'>
 
           <div className="link-meta-container">
-            <Link to={`/user/6`}>
+            <Link to={`/user/${user.id}`}>
               <div className="avatar">
                 <img src={avatar_src} width={30} height={30} />
               </div>
