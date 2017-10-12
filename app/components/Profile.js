@@ -65,7 +65,7 @@ class Profile extends Component {
       });
 
       return(
-        <div> {linkList} </div>
+        <div className="history-container"> {linkList} </div>
       )
     } else {
       return(
