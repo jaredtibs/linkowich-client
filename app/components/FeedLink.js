@@ -37,6 +37,19 @@ class FeedLink extends Component {
     this.setState({copied: false})
   }
 
+  renderSeenBy(names) {
+    const displayed = names.slice(0,3);
+    const rest = names.slice(3, -1);
+    let text = "seen by " + names.slice(0, 3).join(', ');
+    if (rest.length > 0) {
+      text += " & " + rest.length + " others";
+    }
+
+    return(
+      <span>{text}</span>
+    )
+  }
+
   render() {
     const link = this.props.data;
     const seenBy = link.attributes['seen-by'];
@@ -94,9 +107,7 @@ class FeedLink extends Component {
 
         <div className="link-footer-container">
           <div className="seen-by">
-            { seenBy.length > 0 ?
-              <span className="seen-by">seen by {seenBy.join(',')}</span>
-            : null }
+            { seenBy.length > 0 ? this.renderSeenBy(seenBy) : null }
           </div>
           <div className={cx("action-btns-container", {"hidden": !this.state.hovering})}
                onMouseOver={this._handleHover.bind(this)}

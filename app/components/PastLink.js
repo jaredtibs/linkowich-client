@@ -14,6 +14,19 @@ class PastLink extends Component {
     this.setState({hovering: !this.state.hovering})
   }
 
+  renderSeenBy(names) {
+    const displayed = names.slice(0,3);
+    const rest = names.slice(3, -1);
+    let text = "seen by " + names.slice(0, 3).join(', ');
+    if (rest.length > 0) {
+      text += " & " + rest.length + " others";
+    }
+
+    return(
+      <span>{text}</span>
+    )
+  }
+
   renderVoteContent(link) {
     const { mine } = this.props;
     const votedFor = link.attributes['voted-for'];
@@ -78,7 +91,7 @@ class PastLink extends Component {
         <div className="link-footer-container profile">
           { seenBy.length > 0 ?
             <div className="seen-by">
-                <span className="seen-by">seen by {seenBy.join(', ')}</span>
+              { this.renderSeenBy(seenBy) }
             </div>
           : null }
         </div>
