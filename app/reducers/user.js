@@ -36,7 +36,6 @@ export default function user(state=initialState, action) {
         loginErrors: action.errors
       };
     case 'SESSION_FETCHED':
-      console.log(action.data)
       return {
         ...state,
         loggedIn: true,
@@ -44,17 +43,6 @@ export default function user(state=initialState, action) {
         username: action.data.username,
         avatar: action.data.avatar,
         score: action.data.upvotes
-      };
-    case 'FETCHING_HISTORICAL_LINKS':
-      return {
-        ...state,
-        isFetching: true
-      };
-    case 'HISTORICAL_LINKS_FETCHED':
-      return {
-        ...state,
-        isFetching: false,
-        pastLinks: action.data
       };
     case 'AVATAR_UPDATED':
       return {

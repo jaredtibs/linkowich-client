@@ -44,7 +44,7 @@ export function markLinkSeen(linkId) {
   }
 }
 
-export function castVote(linkId, type) {
+export function castVote(linkId, type, context="feed") {
   return dispatch => {
     let action = type === "upvote" ? "POST" : "DELETE";
     return fetch(`http://localhost:3000/api/v1/links/${linkId}/vote`, {
@@ -57,15 +57,16 @@ export function castVote(linkId, type) {
     })
     .then((response) => response.json())
     .then((responseData) => {
-      dispatch(voteCasted(responseData.data))
+      dispatch(voteCasted(responseData.data, context))
     })
     .catch(error => console.log(error))
   }
 }
 
-export function voteCasted(updatedLink) {
+export function voteCasted(updatedLink, context) {
+  const actionType = context === "profile" ? "HISTORY_LINK_VOTED" : "LINK_VOTED";
   return {
-    type: "LINK_VOTED",
+    type: actionType,
     data: updatedLink
   }
 }

@@ -4,12 +4,14 @@ import user    from '../reducers/user'
 import share   from '../reducers/share'
 import feed    from '../reducers/feed'
 import friends from '../reducers/friends'
+import profile from '../reducers/profile'
 
 const rootReducer = combineReducers({
   user,
   feed,
   share,
   friends,
+  profile,
   router
 })
 

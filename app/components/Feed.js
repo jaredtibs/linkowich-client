@@ -1,7 +1,7 @@
 const { shell } = window.require('electron');
 
 import React, { Component, PropTypes } from 'react';
-import FeedLink from './Link'
+import FeedLink from './FeedLink'
 import { Link } from 'react-router-dom'
 import styles from '../assets/stylesheets/feed.scss'
 import ListLoader from './ListLoader';
@@ -34,7 +34,7 @@ class Feed extends Component {
       });
 
       return(
-        <div> {linkList} </div>
+        <div className="feed-links-container"> {linkList} </div>
       )
     } else {
       return(
@@ -46,7 +46,7 @@ class Feed extends Component {
   }
 
   render() {
-    const { links, isFetching } = this.props.feed
+    const { links, isFetching } = this.props.feed;
 
     return(
       <div className="feed-container">

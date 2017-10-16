@@ -5,6 +5,8 @@ import styles from '../assets/stylesheets/profile.scss';
 import defaultAvatar from '../assets/images/default_avatar.jpeg';
 import PastLink from './PastLink';
 import ListLoader from './ListLoader';
+import SimpleSpinner from './SimpleSpinner';
+import cx from 'classnames';
 
 class Profile extends Component {
   constructor(props) {
@@ -16,8 +18,7 @@ class Profile extends Component {
   }
 
   componentDidMount() {
-    const { username } = this.props.user;
-    this.props.fetchHistoricalLinkData();
+    this.props.fetchUserProfile(this.props.userId);
   }
 
   handleLinkClick(link) {
@@ -28,17 +29,49 @@ class Profile extends Component {
     ipcRenderer.send('open-finder');
   }
 
-  renderPastLinks() {
-    const onClick = this.handleLinkClick.bind(this);
-    const { pastLinks } = this.props.user;
+  vote(postId, type, context) {
+    this.props.castVote(postId, type, context)
+  }
 
-    if (pastLinks.length > 0) {
-      let linkList = pastLinks.map(function(link, i) {
-        return <PastLink key={i} data={link} onClick={onClick} />
+  renderProfileInfo() {
+    const { profile, mine } = this.props;
+    const avatarSrc = profile.avatar ? profile.avatar.large.url : defaultAvatar;
+
+    return(
+      <div>
+        <div className={cx("profile-avatar-container", {"mine": mine})}
+             onClick={mine ? this.handleAvatarClick.bind(this) : null}>
+          { mine ? <div className="img__overlay">Edit</div> : null }
+          <img className="profile-avatar" src={avatarSrc} />
+        </div>
+
+        <input type="file" id="file" ref="fileUploader" style={{display: "none"}}/>
+
+        <div className="profile-info-container">
+          <div className="profile-username">{profile.username}</div>
+          <div className="profile-score">
+            <span className="vote-count">{profile.score}</span>
+            <i className="material-icons vote-icon">whatshot</i>
+          </div>
+        </div>
+
+      </div>
+    )
+  }
+
+  renderHistory() {
+    const onClick = this.handleLinkClick.bind(this);
+    const vote = this.vote.bind(this);
+    const { history } = this.props.profile;
+    let { mine } = this.props;
+
+    if (history.length > 0) {
+      let linkList = history.map(function(link, i) {
+        return <PastLink key={i} data={link} onClick={onClick} mine={mine} vote={vote}/>
       });
 
       return(
-        <div> {linkList} </div>
+        <div className="history-container"> {linkList} </div>
       )
     } else {
       return(
@@ -50,35 +83,21 @@ class Profile extends Component {
   }
 
   render() {
-    const { user } = this.props;
-    const { isFetching } = user;
-    const avatarSrc = (user.avatar.large && user.avatar.large.url) ? user.avatar.large.url : defaultAvatar;
+    const { profile, mine } = this.props;
+    const { isFetchingInfo, isFetchingHistory } = profile;
 
     return(
       <div className="window-content">
         <div className="profile-container">
           <div className="upper-container">
-            <div className="profile-avatar-container"
-                 onClick={this.handleAvatarClick.bind(this)}
-            >
-              <div className="img__overlay">Edit</div>
-              <img className="profile-avatar" src={avatarSrc} />
-            </div>
-            <input type="file" id="file" ref="fileUploader" style={{display: "none"}}/>
-            <div className="profile-info-container">
-              <div className="profile-username">{user.username}</div>
-              <div className="profile-score">
-                <span className="vote-count">{user.score}</span>
-                <i className="material-icons vote-icon">whatshot</i>
-              </div>
-            </div>
+            { isFetchingInfo ? <SimpleSpinner /> : this.renderProfileInfo() }
           </div>
           <div className="lower-container">
             <div className="lower-container-header">
               <span>History</span>
             </div>
 
-            { isFetching ? <ListLoader /> : this.renderPastLinks() }
+            { isFetchingHistory ? <ListLoader /> : this.renderHistory() }
           </div>
         </div>
       </div>

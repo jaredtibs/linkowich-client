@@ -1,10 +1,11 @@
 import React, { Component, PropTypes } from 'react';
+import { Link } from 'react-router-dom';
 import styles from '../assets/stylesheets/link.scss';
 import defaultAvatar from "../assets/images/default_avatar.jpeg"
 import cx from 'classnames';
 import CopyToClipboard from 'react-copy-to-clipboard';
 
-class Link extends Component {
+class FeedLink extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -40,8 +41,9 @@ class Link extends Component {
     const link = this.props.data;
     const seenBy = link.attributes['seen-by'];
     const votedFor = link.attributes['voted-for'];
-    const user = link.attributes.user.data.attributes;
-    const { avatar, username } = user;
+    const user = link.attributes.user.data;
+    const userAttributes = user.attributes;
+    const { avatar, username } = userAttributes;
     const avatar_src = avatar.url ? avatar.url : defaultAvatar;
 
     return(
@@ -51,11 +53,15 @@ class Link extends Component {
         <div className='link-row-header-container'>
 
           <div className="link-meta-container">
-            <div className="avatar">
-              <img src={avatar_src} width={30} height={30} />
-            </div>
+            <Link to={`/user/${user.id}`}>
+              <div className="avatar">
+                <img src={avatar_src} width={30} height={30} />
+              </div>
+            </Link>
             <div className="meta-text">
-              <span className="username">{username}</span>
+              <Link to={`/user/${user.id}`} className="username-link">
+                <span className="username">{username}</span>
+              </Link>
               <span className="published-ago">{link.attributes['published-ago']} ago</span>
             </div>
           </div>
@@ -110,4 +116,4 @@ class Link extends Component {
   }
 }
 
-export default Link
+export default FeedLink;

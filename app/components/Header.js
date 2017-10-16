@@ -13,8 +13,9 @@ class Header extends Component {
   hasHeader(location) {
     switch(location) {
       case '/home':
-      case '/profile':
       case '/settings':
+        return true;
+      case (location.match(/user\/*/) || {}).input:
         return true;
       default:
         return false;
@@ -46,8 +47,8 @@ class Header extends Component {
           </div>
           <div className="header-section right">
             { location.pathname ===  '/home' ?
-              <Link to={'/profile'}>
-                <i className={cx("material-icons nav-icon", {"disabled": location.pathname === '/profile'})}>face</i>
+              <Link to={'/user/me'}>
+                <i className={cx("material-icons nav-icon", {"disabled": location.pathname === '/user/me'})}>face</i>
               </Link>
             :
               <div className="empty-nav-container">
@@ -67,8 +68,3 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps)(Header);
-/*
- * <span className="title-link">link</span>
-              <span className="title-o">o</span>
-              <span className="title-wich">wich</span>
-              */
