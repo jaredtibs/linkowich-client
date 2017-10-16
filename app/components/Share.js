@@ -93,7 +93,6 @@ class Share extends Component {
         <div className="my-link">
           <span className={cx("my-link-url", {
             "flash": this.mounted,
-            "bounce": this.state.shared,
             "empty": !displayLink
           })}>
             { displayLink ? this.truncate(currentLink.attributes.url) : "Share some Fire" }
