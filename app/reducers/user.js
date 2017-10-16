@@ -36,7 +36,6 @@ export default function user(state=initialState, action) {
         loginErrors: action.errors
       };
     case 'SESSION_FETCHED':
-      console.log(action.data)
       return {
         ...state,
         loggedIn: true,

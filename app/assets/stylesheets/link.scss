@@ -97,7 +97,6 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: center;
 
   &.past-link {
     align-items: flex-end;
@@ -119,7 +118,6 @@
     font-size: 11px;
     color: #8b8a8a;
     font-family: 'Colfax-Regular';
-    padding-top: 3px;
 
     &.voted {
       color: #fd7350;
@@ -139,6 +137,7 @@
   .vote-icon:hover {
     font-size: 18px !important;
   }
+
 }
 
 .url-text-container {

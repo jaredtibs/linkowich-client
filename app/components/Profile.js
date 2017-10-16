@@ -29,6 +29,10 @@ class Profile extends Component {
     ipcRenderer.send('open-finder');
   }
 
+  vote(postId, type) {
+    this.props.castVote(postId, type)
+  }
+
   renderProfileInfo() {
     const { profile, mine } = this.props;
     const avatarSrc = profile.avatar ? profile.avatar.large.url : defaultAvatar;
@@ -57,11 +61,13 @@ class Profile extends Component {
 
   renderHistory() {
     const onClick = this.handleLinkClick.bind(this);
+    const vote = this.vote.bind(this);
     const { history } = this.props.profile;
+    let { mine } = this.props;
 
     if (history.length > 0) {
       let linkList = history.map(function(link, i) {
-        return <PastLink key={i} data={link} onClick={onClick} />
+        return <PastLink key={i} data={link} onClick={onClick} mine={mine} vote={vote}/>
       });
 
       return(
@@ -88,7 +94,7 @@ class Profile extends Component {
           </div>
           <div className="lower-container">
             <div className="lower-container-header">
-              <span>{ mine ? "My history" : `${profile.username}'s history` }</span>
+              <span>History</span>
             </div>
 
             { isFetchingHistory ? <ListLoader /> : this.renderHistory() }

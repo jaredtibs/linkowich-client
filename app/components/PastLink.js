@@ -14,6 +14,37 @@ class PastLink extends Component {
     this.setState({hovering: !this.state.hovering})
   }
 
+  renderVoteContent(link) {
+    const { mine } = this.props;
+    const votedFor = link.attributes['voted-for'];
+
+    if (!mine) {
+      return(
+        <div className="link-vote-container" onClick={() => {
+                if (!votedFor) {
+                  this.props.vote(link.id, 'upvote')
+                } else {
+                  this.props.vote(link.id, 'unvote')
+                }
+          }}>
+            { link.attributes['upvote-count'] > 0 ?
+              <span className={cx("vote-count", {"voted": votedFor})}>+{link.attributes['upvote-count']}</span>
+            : null }
+            <i className={cx("material-icons vote-icon", {"voted": votedFor})}>whatshot</i>
+          </div>
+      )
+    } else if (link.attributes['upvote-count'] > 0) {
+        return(
+          <div className="link-vote-container past-link">
+            <span className="past-vote-count">+{link.attributes['upvote-count']}</span>
+            <i className="material-icons past-vote-icon">whatshot</i>
+          </div>
+        )
+    } else {
+      return null;
+    }
+  }
+
   render() {
     const link = this.props.data;
     const seenBy = link.attributes['seen-by'];
@@ -31,12 +62,7 @@ class PastLink extends Component {
               <span className="time">{time}</span>
             </div>
           </div>
-          { link.attributes['upvote-count'] > 0 ?
-            <div className="link-vote-container past-link">
-              <span className="past-vote-count">+{link.attributes['upvote-count']}</span>
-              <i className="material-icons past-vote-icon">whatshot</i>
-            </div>
-            : null }
+          {this.renderVoteContent(link)}
         </div>
 
         <div className='link-container'

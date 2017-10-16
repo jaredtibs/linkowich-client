@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import {connect} from 'react-redux';
 import {fetchUserProfile} from '../actions/profile';
 import {updateAvatar} from '../actions/user';
+import {castVote} from '../actions/feed';
 import Profile from '../components/Profile';
 
 class ProfileContainer extends Component {
@@ -31,6 +32,10 @@ const mapDispatchToProps = (dispatch) => {
 
     updateAvatar: (fileData) => {
       dispatch(updateAvatar(fileData))
+    },
+
+    castVote: (linkId, type) => {
+      dispatch(castVote(linkId, type))
     }
   }
 };

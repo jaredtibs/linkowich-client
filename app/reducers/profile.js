@@ -35,6 +35,16 @@ export default function profile(state=initialState, action) {
         isFetchingHistory: false,
         history: action.data
       };
+    case 'LINK_VOTED':
+      const updatedLinks = state.history;
+      const index = updatedLinks.findIndex(
+        item => item.id === action.data.id
+      );
+      updatedLinks[index] = action.data
+      return {
+        ...state,
+        history: updatedLinks
+      };
     default:
       return state;
   }
