@@ -10,8 +10,15 @@ class ForgotPassword extends Component {
 
   render() {
     return(
-      <div className="forgot-pswd-container">
-        Forgot your password, eh?
+      <div className="window-content">
+        <div className="forgot-pswd-container">
+          <div className="forgot-pswd-header-nav">
+            <div className="forgot-pswd-header-section back"
+                  onClick={() => this.props.history.goBack()}>
+              <i className="material-icons arrow">arrow_back</i>
+            </div>
+          </div>
+        </div>
       </div>
     )
   }
