@@ -29,8 +29,8 @@ class Profile extends Component {
     ipcRenderer.send('open-finder');
   }
 
-  vote(postId, type) {
-    this.props.castVote(postId, type)
+  vote(postId, type, context) {
+    this.props.castVote(postId, type, context)
   }
 
   renderProfileInfo() {

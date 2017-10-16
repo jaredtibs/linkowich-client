@@ -22,9 +22,9 @@ class PastLink extends Component {
       return(
         <div className="link-vote-container" onClick={() => {
                 if (!votedFor) {
-                  this.props.vote(link.id, 'upvote')
+                  this.props.vote(link.id, 'upvote', 'profile')
                 } else {
-                  this.props.vote(link.id, 'unvote')
+                  this.props.vote(link.id, 'unvote', 'profile')
                 }
           }}>
             { link.attributes['upvote-count'] > 0 ?

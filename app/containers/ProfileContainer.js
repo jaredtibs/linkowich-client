@@ -34,8 +34,8 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(updateAvatar(fileData))
     },
 
-    castVote: (linkId, type) => {
-      dispatch(castVote(linkId, type))
+    castVote: (linkId, type, context) => {
+      dispatch(castVote(linkId, type, context))
     }
   }
 };
