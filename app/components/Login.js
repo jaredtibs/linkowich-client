@@ -12,7 +12,7 @@ class Login extends Component {
       email: '',
       emailValid: true,
       emailValidationError: '',
-      emailPlaceholder: "Email",
+      emailPlaceholder: "Username or Email",
       emailFocused: false,
       password: '',
       passwordValid: true,
@@ -20,8 +20,27 @@ class Login extends Component {
       passwordPlaceholder: "Password",
       passwordFocused: false
     }
+  }
 
-    this.validateInput.bind(this);
+  componentDidUpdate(prevProps, prevState) {
+    const { user } = this.props;
+    const { fieldErrors } = user;
+
+    if (!prevProps.user.hasError && user.hasError && Object.keys(fieldErrors).length > 0) {
+      if (fieldErrors.email) {
+        this.setState({
+          emailValid: false,
+          emailValidationError: fieldErrors.email.message
+        })
+      }
+
+      if (fieldErrors.username) {
+        this.setState({
+          usernameValid: false,
+          usernameValidationError: fieldErrors.username.message
+        })
+      }
+    }
   }
 
   handleChange(event) {
@@ -75,7 +94,7 @@ class Login extends Component {
     switch(event.target.name) {
       case 'email':
         this.setState({
-          emailPlaceholder: 'Email',
+          emailPlaceholder: 'Username or Email',
           emailFocused: false
         })
         break;
@@ -100,8 +119,8 @@ class Login extends Component {
               <label className={cx("label-helper", {
                   "active": (this.state.emailFocused || this.state.email),
                   "error": !this.state.emailValid})
-                }>{ this.state.emailValid ? "Email" : this.state.emailValidationError}</label>
-              <input type="email" name="email"
+                }>{ this.state.emailValid ? "Username or Email" : this.state.emailValidationError}</label>
+              <input name="email"
                 ref={(email) => this.email = email}
                 className={cx("input-field", {"error": !this.state.emailValid})}
                 placeholder={this.state.emailPlaceholder}

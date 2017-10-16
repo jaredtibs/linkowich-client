@@ -4,7 +4,6 @@ import { authToken } from './auth';
 export function login (email, password) {
   return dispatch => {
     dispatch(submitting());
-    dispatch(resetErrors());
     return fetch("http://localhost:3000/api/v1/sessions", {
       method: "POST",
       headers: {

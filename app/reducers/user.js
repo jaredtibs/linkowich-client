@@ -78,6 +78,10 @@ function constructErrorObject(errors) {
         errorObj['username'] = {
           message: "Username taken."
         }
+      } else if (error.match(/account not found/i)) {
+          errorObj['email'] = {
+            message: "No account found with that email or username."
+          }
       }
     }
     errorObj['count'] = errors.length
