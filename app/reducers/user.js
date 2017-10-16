@@ -4,8 +4,8 @@ const initialState = {
   email: '',
   avatar: {},
   pastLinks: [],
-  loginErrors: {},
-  registerErrors: {},
+  hasError: false,
+  fieldErrors: {count: 0},
   isFetching: false,
   loading: false,
   score: 0
@@ -13,10 +13,11 @@ const initialState = {
 
 export default function user(state=initialState, action) {
   switch (action.type) {
-    case 'LOADING':
+    case 'SUBMITTING':
       return {
         ...state,
-        loading: true
+        loading: true,
+        hasError: false
       };
     case 'LOGGED_IN':
       return {
@@ -26,6 +27,7 @@ export default function user(state=initialState, action) {
         avatar: action.data.avatar,
         score: action.data.upvotes,
         loading: false,
+        hasError: false,
         loggedIn: true
       };
     case 'LOGGED_OUT':
@@ -50,7 +52,37 @@ export default function user(state=initialState, action) {
         loading: false,
         avatar: action.avatar
       }
+    case 'SERVER_FIELD_ERROR':
+      return {
+        ...state,
+        loading: false,
+        hasError: true,
+        fieldErrors: constructErrorObject(action.errors)
+      };
     default:
       return state;
+  }
+}
+
+function constructErrorObject(errors) {
+  if (errors.length > 0) {
+    let errorObj = {};
+    let i;
+    for(i=0; i < errors.length; i++) {
+      let error = errors[i];
+      if (error.match(/email/i)) {
+        errorObj['email'] = {
+          message: "Email already in use."
+        }
+      } else if (error.match(/username/i)) {
+        errorObj['username'] = {
+          message: "Username taken."
+        }
+      }
+    }
+    errorObj['count'] = errors.length
+    return errorObj
+  } else {
+    return {};
   }
 }

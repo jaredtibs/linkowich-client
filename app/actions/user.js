@@ -3,7 +3,8 @@ import { authToken } from './auth';
 
 export function login (email, password) {
   return dispatch => {
-    dispatch(loading());
+    dispatch(submitting());
+    dispatch(resetErrors());
     return fetch("http://localhost:3000/api/v1/sessions", {
       method: "POST",
       headers: {
@@ -36,7 +37,7 @@ export function finishLogin(sessionData) {
 
 export function register (email, username, password) {
   return dispatch => {
-    dispatch(loading());
+    dispatch(submitting());
     return fetch("http://localhost:3000/api/v1/registrations", {
       method: "POST",
       headers: {
@@ -79,7 +80,7 @@ export function receiveSession(sessionData) {
 
 export function handleError(errors) {
   return {
-    type: "LOGIN_ERROR",
+    type: "SERVER_FIELD_ERROR",
     errors: errors
   }
 }
@@ -94,9 +95,9 @@ export function logout() {
   }
 }
 
-export function loading() {
+export function submitting() {
   return {
-    type: "LOADING"
+    type: "SUBMITTING"
   }
 }
 
@@ -125,7 +126,7 @@ export function sessionFetched(data) {
 
 export function updateAvatar(fileData) {
   return dispatch => {
-    dispatch(loading());
+    dispatch(submitting());
     return fetch("http://localhost:3000/api/v1/user/avatar", {
       method: "POST",
       headers: {

@@ -23,11 +23,31 @@ class SignUp extends Component {
       passwordValid: true,
       passwordValidationError: "",
       passwordPlaceholder: "Create Password",
-      passwordFocused: false,
-      serverErrorReceived: false
+      passwordFocused: false
     }
 
     this.validateInput.bind(this);
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const { user } = this.props;
+    const { fieldErrors } = user;
+
+    if (!prevProps.user.hasError && user.hasError && Object.keys(fieldErrors).length > 0) {
+      if (fieldErrors.email) {
+        this.setState({
+          emailValid: false,
+          emailValidationError: fieldErrors.email.message
+        })
+      }
+
+      if (fieldErrors.username) {
+        this.setState({
+          usernameValid: false,
+          usernameValidationError: fieldErrors.username.message
+        })
+      }
+    }
   }
 
   handleChange(event) {
@@ -35,8 +55,8 @@ class SignUp extends Component {
       [event.target.name]: event.target.value
     });
 
-    const {emailValid, usernameValid, passwordValid} = this.state;
-    let validInputs = (emailValid && usernameValid && passwordValid);
+    const {emailValid, usernameValid, passwordValid, password} = this.state;
+    let validInputs = (emailValid && usernameValid && passwordValid && password.length >= 7);
     let presentInputs = (this.state.email && this.state.username && this.state.password);
     let formValid = (validInputs && presentInputs);
 
@@ -46,6 +66,22 @@ class SignUp extends Component {
   handleSubmit(event) {
     event.preventDefault();
     const {email, username, password} = this.state;
+
+    if (!email) {
+      this.setState({emailValid: false, emailValidationError: "Required"})
+    }
+
+    if (!username) {
+      this.setState({usernameValid: false, usernameValidationError: "Required"})
+    }
+
+    if (!password) {
+      this.setState({passwordValid: false, passwordValidationError: "Required"})
+    }
+
+    if (password && password.length < 8) {
+      this.setState({passwordValid: false, passwordValidationError: "Password too weak"})
+    }
 
     if ((email && username && password) && this.state.formValid) {
       this.props.signUp(email, username, password);
@@ -88,19 +124,17 @@ class SignUp extends Component {
     return true;
   }
 
-  //TODO tbd
   validatePassword(password) {
-    return true;
+    return (password && password.length >= 8);
   }
 
   onFocus(event) {
-    this.setS
     switch(event.target.name) {
       case 'email':
         this.setState({
           emailPlaceholder: '',
           emailFocused: true,
-          emailValidationError: false,
+          emailValidationError: '',
           emailValid: true
         })
         break;

@@ -37,29 +37,17 @@ class Login extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    this.props.login(
-      this.state.email,
-      this.state.password
-    )
-  }
+    const {email, password} = this.state;
 
-  validateInput(event) {
-    switch(event.target.name) {
-      case 'email':
-        if (!this.state.email || this.state.email === "") {
-          this.setState({emailValid: false, emailValidationError: "Required"});
-        } else {
-          this.setState({emailValid: true, emailValidationError: ""})
-        }
-        break;
-      case 'password':
-        if (!this.state.password || this.state.password === "") {
-          this.setState({passwordValid: false, passwordValidationError: "Required"});
-        } else {
-          this.setState({passwordValid: true, passwordValidationError: ""})
-        }
-        break;
+    if (!email) {
+      this.setState({emailValid: false, emailValidationError: "Required"});
     }
+
+    if (!password) {
+      this.setState({passwordValid: false, passwordValidationError: "Required"});
+    }
+
+    this.props.login(email, password);
   }
 
   onFocus(event) {
@@ -84,9 +72,6 @@ class Login extends Component {
   }
 
   onBlur(event) {
-    // currently not validating login inputs
-    //this.validateInput(event)
-
     switch(event.target.name) {
       case 'email':
         this.setState({
