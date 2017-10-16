@@ -125,9 +125,14 @@
   }
 
   .vote-icon {
-    color: #595959;
+    color: #737373;
     font-size: 16px !important;
     padding-left: 1px;
+
+    &.profile {
+      padding-top: 2px;
+      font-size: 14px !important;
+    }
 
     &.voted {
       color: #ff5f36;
@@ -135,7 +140,23 @@
   }
 
   .vote-icon:hover {
+    color: #595959;
     font-size: 18px !important;
+  }
+
+  .vote-icon.voted:hover {
+    color: #ff5f36;
+    font-size: 18px !important;
+  }
+
+  .vote-icon.profile:hover {
+    color: #595959;
+    font-size: 16px !important;
+  }
+
+  .vote-icon.profile.voted:hover {
+    color: #ff5f36;
+    font-size: 16px !important;
   }
 
 }

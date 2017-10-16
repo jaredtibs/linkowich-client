@@ -30,7 +30,7 @@ class PastLink extends Component {
             { link.attributes['upvote-count'] > 0 ?
               <span className={cx("vote-count", {"voted": votedFor})}>+{link.attributes['upvote-count']}</span>
             : null }
-            <i className={cx("material-icons vote-icon", {"voted": votedFor})}>whatshot</i>
+            <i className={cx("material-icons vote-icon profile", {"voted": votedFor})}>whatshot</i>
           </div>
       )
     } else if (link.attributes['upvote-count'] > 0) {
