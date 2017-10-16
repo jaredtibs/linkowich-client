@@ -15,14 +15,14 @@ class Intro extends Component {
       greetText: "WELCOME TO LINKOWICH",
       greets: [
         "A PLACE FOR YOU AND YOUR FRIENDS",
-        "FOR ALL THOSE LINKS YOU CAN'T STOP SHARING",
-        "KEEP 'EM HERE AND KEEP THE CLUTTER FREE...",
+        "A NEW WAY TO MANAGE THE LINKS YOU SHARE",
+        "KEEP THEM HERE AND KEEP THE CLUTTER FREE..."
       ],
       blurbText: "SHARE SOME MUSIC",
       blurbs: [
         'SHARE SOME MEMES',
         'SHARE SOME NEWS',
-        'SHARE ANYTHING',
+        'SHARE WHATEVER',
         'SHARE SOME FIRE'
       ],
       greetsStarted: false,
