@@ -52,7 +52,7 @@ function createWindow () {
     frame: false,
     fullscreenable: false,
     resizable: false,
-    transparent: true,
+    //transparent: true,
     webPreferences: {
       // Prevents renderer process code from not running when window is
       // hidden
