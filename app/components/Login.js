@@ -145,7 +145,14 @@ class Login extends Component {
                 onBlur={this.onBlur.bind(this)}
               />
             </div>
+
+            <div className="forgot-pswd-link">
+              <Link to={"/forgot-password"}>
+                <span>Forgot your Password?</span>
+              </Link>
+            </div>
           </div>
+
           <div className={cx("submit-btn-container", {"submit-ready": this.state.formValid})}>
             <button type="submit" className="submit-btn">
               { loading ? <SimpleSpinner color="white" /> : "LOGIN" }
