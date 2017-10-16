@@ -75,12 +75,16 @@ function constructErrorObject(errors) {
           message: "Email already in use."
         }
       } else if (error.match(/username/i)) {
-        errorObj['username'] = {
-          message: "Username taken."
-        }
+          errorObj['username'] = {
+            message: "Username taken."
+          }
       } else if (error.match(/account not found/i)) {
           errorObj['email'] = {
             message: "No account found with that email or username."
+          }
+      } else if (error.match(/unauthorized/i)) {
+          errorObj['password'] = {
+            message: "Password incorrect."
           }
       }
     }

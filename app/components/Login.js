@@ -34,10 +34,10 @@ class Login extends Component {
         })
       }
 
-      if (fieldErrors.username) {
+      if (fieldErrors.password) {
         this.setState({
-          usernameValid: false,
-          usernameValidationError: fieldErrors.username.message
+          passwordValid: false,
+          passwordValidationError: fieldErrors.password.message
         })
       }
     }
