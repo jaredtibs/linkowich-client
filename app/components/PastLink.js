@@ -19,7 +19,8 @@ class PastLink extends Component {
     const rest = names.slice(3, -1);
     let text = "seen by " + names.slice(0, 3).join(', ');
     if (rest.length > 0) {
-      text += " & " + rest.length + " others";
+      let otherText = rest.length === 1 ? "other" : "others"
+      text += " & " + rest.length + " " + otherText;
     }
 
     return(
