@@ -76,6 +76,20 @@ class Share extends Component {
     return url.slice(0, 40) + ' ...';
   }
 
+  renderSeenBy(names) {
+    const displayed = names.slice(0,3);
+    const rest = names.slice(3, -1);
+    let text = "seen by " + names.slice(0, 3).join(', ');
+    if (rest.length > 0) {
+      let otherText = rest.length === 1 ? "other" : "others"
+      text += " & " + rest.length + " " + otherText;
+    }
+
+    return(
+      <span>{text}</span>
+    )
+  }
+
   renderLoadingState() {
     return(
       <div>
@@ -95,7 +109,7 @@ class Share extends Component {
             "flash": this.mounted,
             "empty": !displayLink
           })}>
-            { displayLink ? this.truncate(currentLink.attributes.url) : "Share some Fire" }
+            { displayLink ? this.truncate(currentLink.attributes.url) : "Share some fire" }
           </span>
         </div>
         <div className={cx("share-border-left",  {"active": false})}></div>
@@ -126,6 +140,7 @@ class Share extends Component {
 
   renderLinkOrEditField() {
     const { publishingLink, currentLink } = this.props.share;
+    const seenBy = currentLink ? currentLink.attributes['seen-by'] : [];
 
     return(
       <div>
@@ -147,6 +162,11 @@ class Share extends Component {
         }
 
         <div className="share-footer">
+          { currentLink && !this.state.isEditing ?
+            <div className="seen-by">
+              { seenBy.length > 0 ? this.renderSeenBy(seenBy) : null }
+            </div>
+          : null }
           { !this.state.urlValid ?
             <div>
               <span className="link-error-msg"> Not a valid url </span>
