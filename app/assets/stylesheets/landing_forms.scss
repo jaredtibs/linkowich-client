@@ -137,16 +137,24 @@
   animation-fill-mode:forwards;
 }
 
-.forgot-pswd-link {
-  margin-left: 20px;
-  padding-top: 3px;
-  height: 10px;
+.forgot-pswd-login-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-size: 12px;
+  font-family: 'Colfax-Medium';
+  font-weight: 500;
+  margin-top: 50px;
 
-  a {
-    font-size: 10px;
-    text-decoration: none;
-    font-family: 'Colfax-Regular';
+  .forgot-pswd-text {
+    color: rgba(89, 89, 89, 0.8);
   }
+
+  .forgot-pswd-link {
+    color: #ff5f36;
+    padding-left: 4px;
+  }
+
 }
 
 @keyframes slide-in-keyframes {

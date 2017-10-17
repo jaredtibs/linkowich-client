@@ -10,7 +10,6 @@ import { ConnectedRouter } from 'react-router-redux';
 import {fetchUserSession}       from '../actions/user';
 import App                      from './App';
 import Landing                  from './Landing';
-import ForgotPasswordContainer  from './ForgotPasswordContainer';
 import HomeContainer            from './HomeContainer';
 import ProfileContainer         from './ProfileContainer';
 import SettingsContainer        from './SettingsContainer';
@@ -52,7 +51,6 @@ class Root extends Component {
               )}/>
               <Route path='/landing' component={Landing} />
               <Route path='/intro' component={Intro} onEnter={this.authenticated()} />
-              <Route path='/forgot-password' component={ForgotPasswordContainer} />
               <Route path='/home' component={HomeContainer} onEnter={this.authenticated()} />
               <Route path='/user/:id' component={ProfileContainer} onEnter={this.authenticated()} />
               <Route path='/settings' component={SettingsContainer} onEnter={this.authenticated()} />

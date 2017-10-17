@@ -146,10 +146,9 @@ class Login extends Component {
               />
             </div>
 
-            <div className="forgot-pswd-link">
-              <Link to={"/forgot-password"}>
-                <span>Forgot password ?</span>
-              </Link>
+            <div className="forgot-pswd-login-container">
+              <span className="forgot-pswd-text">Forgot something?</span>
+              <span className="forgot-pswd-link">Recover Here</span>
             </div>
           </div>
 
