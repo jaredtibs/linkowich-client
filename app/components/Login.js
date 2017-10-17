@@ -69,6 +69,10 @@ class Login extends Component {
     this.props.login(email, password);
   }
 
+  handleForgotPswdClick() {
+    this.props.contextSwitch("forgotPassword");
+  }
+
   onFocus(event) {
     switch(event.target.name) {
       case 'email':
@@ -148,7 +152,7 @@ class Login extends Component {
 
             <div className="forgot-pswd-login-container">
               <span className="forgot-pswd-text">Forgot something?</span>
-              <span className="forgot-pswd-link">Recover Here</span>
+              <span onClick={this.handleForgotPswdClick.bind(this)} className="forgot-pswd-link">Recover Here</span>
             </div>
           </div>
 
