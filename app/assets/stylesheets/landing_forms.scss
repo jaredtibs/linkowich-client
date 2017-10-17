@@ -16,6 +16,12 @@
   flex: 1;
 }
 
+#forgot-pswd-form {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
 .form-inputs {
   flex: 1;
 }
@@ -26,6 +32,10 @@
   margin-top: 15px;
   padding-left: 20px;
   padding-right: 20px;
+
+  &.forgot-pswd {
+    margin-top: 60px;
+  }
 }
 
 .label-helper {
@@ -78,6 +88,10 @@
     border-bottom-color: #f40731;
     border-bottom-width: 2px;
     color: #f40731;
+  }
+
+  &.forgot-pswd {
+    background-color: #ffffff;
   }
 }
 
