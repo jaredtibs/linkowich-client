@@ -7,14 +7,14 @@ import {
 } from 'react-router-dom';
 import { ConnectedRouter } from 'react-router-redux';
 
-import {fetchUserSession} from '../actions/user';
-import App                from './App';
-import Landing            from './Landing';
-import HomeContainer      from './HomeContainer';
-import ProfileContainer   from './ProfileContainer';
-import SettingsContainer  from './SettingsContainer';
-import FriendsContainer   from './FriendsContainer';
-import Intro              from '../components/Intro';
+import {fetchUserSession}       from '../actions/user';
+import App                      from './App';
+import Landing                  from './Landing';
+import HomeContainer            from './HomeContainer';
+import ProfileContainer         from './ProfileContainer';
+import SettingsContainer        from './SettingsContainer';
+import FriendsContainer         from './FriendsContainer';
+import Intro                    from '../components/Intro';
 
 import styles from '../assets/stylesheets/animations.scss';
 

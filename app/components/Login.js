@@ -69,6 +69,10 @@ class Login extends Component {
     this.props.login(email, password);
   }
 
+  handleForgotPswdClick() {
+    this.props.contextSwitch("forgotPassword");
+  }
+
   onFocus(event) {
     switch(event.target.name) {
       case 'email':
@@ -107,7 +111,6 @@ class Login extends Component {
     }
   }
 
-
   render() {
     const { loading } = this.props.user;
 
@@ -145,7 +148,13 @@ class Login extends Component {
                 onBlur={this.onBlur.bind(this)}
               />
             </div>
+
+            <div className="forgot-pswd-login-container">
+              <span className="forgot-pswd-text">Forgot something?</span>
+              <span onClick={this.handleForgotPswdClick.bind(this)} className="forgot-pswd-link">Recover Here</span>
+            </div>
           </div>
+
           <div className={cx("submit-btn-container", {"submit-ready": this.state.formValid})}>
             <button type="submit" className="submit-btn">
               { loading ? <SimpleSpinner color="white" /> : "LOGIN" }

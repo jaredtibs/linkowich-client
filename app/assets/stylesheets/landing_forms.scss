@@ -16,6 +16,12 @@
   flex: 1;
 }
 
+#forgot-pswd-form {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
 .form-inputs {
   flex: 1;
 }
@@ -26,6 +32,10 @@
   margin-top: 15px;
   padding-left: 20px;
   padding-right: 20px;
+
+  &.forgot-pswd {
+    margin-top: 18px;
+  }
 }
 
 .label-helper {
@@ -36,7 +46,7 @@
   opacity: 0;
   margin-bottom: -15px;
   padding-top: 3px;
-  padding-bottom: 3px;
+  padding-bottom: 8px;
   z-index: 1;
 
   &.active {
@@ -65,14 +75,16 @@
   border: 0;
   outline: none;
   flex: 1;
-  height: 35px;
-  padding-top: 3px;
+  height: 40px;
+  padding-top: 5px;
   padding-bottom: 3px;
   margin-bottom: 3px;
   font-family: 'Colfax-Medium';
-  font-size: 12px;
+  font-size: 14px;
+  color: #595959;
   border-bottom: solid 1px #474747;
   background-color: #f2f2f2;
+  box-sizing: border-box;
 
   &.error {
     border-bottom-color: #f40731;
@@ -95,6 +107,13 @@
 
 *:focus {
   outline: none;
+}
+
+.input-field::-webkit-input-placeholder {
+  font-family: 'Colfax-Medium';
+  font-size: 12px;
+  font-weight: 500;
+  color: #ababab;
 }
 
 .submit-btn-container {
@@ -121,6 +140,27 @@
 .submit-ready {
   animation: slide-in-keyframes 0.25s;
   animation-fill-mode:forwards;
+}
+
+.forgot-pswd-login-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-size: 12px;
+  font-family: 'Colfax-Medium';
+  font-weight: 500;
+  margin-top: 50px;
+
+  .forgot-pswd-text {
+    color: rgba(89, 89, 89, 0.8);
+  }
+
+  .forgot-pswd-link {
+    color: #ff5f36;
+    padding-left: 4px;
+    cursor: pointer;
+  }
+
 }
 
 @keyframes slide-in-keyframes {
