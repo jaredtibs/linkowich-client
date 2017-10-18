@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import {connect} from 'react-redux';
+import {resetPassword} from '../actions/user';
 import ForgotPassword from '../components/ForgotPassword';
 
 class ForgotPasswordContainer extends Component {
@@ -19,6 +20,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    resetPassword: () => {
+      dispatch(resetPassword())
+    }
   }
 };
 

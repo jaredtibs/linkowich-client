@@ -22,14 +22,10 @@ class ForgotPassword extends Component {
 
     if (!email) {
       this.setState({emailValid: false, emailValidationError: "Required"})
-    }
-
-    if (email && !this.validateEmail(email)) {
+    } else if (!this.validateEmail(email)) {
       this.setState({emailValid: false, emailValidationError: "Invalid Email"})
-    }
-
-    if (this.state.emailValid) {
-      console.log("initating api request")
+    } else {
+      this.props.resetPassword();
     }
   }
 
@@ -47,8 +43,8 @@ class ForgotPassword extends Component {
     this.setState({
       emailPlaceholder: '',
       emailValidationError: '',
-      emailValid: true,
-      emailFocused: true
+      emailFocused: true,
+      emailValid: true
     })
   }
 
@@ -60,12 +56,18 @@ class ForgotPassword extends Component {
   }
 
   render() {
+    const { user } = this.props;
+
     return(
       <div className="form-container">
         <form id="forgot-pswd-form" onSubmit={this.handleSubmit.bind(this)}>
           <div className="forgot-pswd-header-section">
-            <div className="forgot-pswd-header">
-              What is the email address associated with your account?
+            <div className={cx("forgot-pswd-header", {"sent": user.resetPasswordInitiated})}>
+              { user.resetPasswordInitiated === true ?
+                "An email was just sent to that address."
+                :
+                "What is the email address associated with your account?"
+              }
             </div>
           </div>
           <div className="input-container forgot-pswd" onClick={() => {this.email.focus()}}>
@@ -85,9 +87,10 @@ class ForgotPassword extends Component {
             />
           </div>
 
-          <div className="forgot-pswd-btns-container">
-            <button type="submit" className="reset-pswd-btn">
-              Reset
+          <div className={cx("forgot-pswd-btns-container", {"sent": user.resetPasswordInitiated})}>
+            <button type="submit"
+                    className={cx("reset-pswd-btn", {"sent": user.resetPasswordInitiated})}>
+              { user.resetPasswordInitiated === true ? "Resend" : "Recover" }
             </button>
           </div>
 

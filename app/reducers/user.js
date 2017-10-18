@@ -8,6 +8,7 @@ const initialState = {
   fieldErrors: {count: 0},
   isFetching: false,
   loading: false,
+  resetPasswordInitiated: false,
   score: 0
 };
 
@@ -51,7 +52,12 @@ export default function user(state=initialState, action) {
         ...state,
         loading: false,
         avatar: action.avatar
-      }
+      };
+    case 'RESET_PASSWORD_INITIATED':
+      return {
+        ...state,
+        resetPasswordInitiated: true
+      };
     case 'SERVER_FIELD_ERROR':
       return {
         ...state,
