@@ -52,13 +52,13 @@ class Landing extends Component {
               <li className={cx({"active" : this.state.context === "signup"})}>
                 <a href="#" onClick={(e) => {
                   e.preventDefault();
-                  this.setState({context: "signup"});
+                  this.handleContextSwitch("signup")
                 }}> Signup </a>
               </li>
               <li className={cx({"active" : this.state.context === "login"})}>
                 <a href="#" onClick={(e) => {
                   e.preventDefault();
-                  this.setState({context: "login"});
+                  this.handleContextSwitch("login")
                 }}> Login </a>
               </li>
             </ul>

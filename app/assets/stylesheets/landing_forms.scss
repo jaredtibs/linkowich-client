@@ -34,7 +34,7 @@
   padding-right: 20px;
 
   &.forgot-pswd {
-    margin-top: 60px;
+    margin-top: 30px;
   }
 }
 
@@ -46,7 +46,7 @@
   opacity: 0;
   margin-bottom: -15px;
   padding-top: 3px;
-  padding-bottom: 3px;
+  padding-bottom: 8px;
   z-index: 1;
 
   &.active {
@@ -75,23 +75,21 @@
   border: 0;
   outline: none;
   flex: 1;
-  height: 35px;
-  padding-top: 3px;
+  height: 40px;
+  padding-top: 5px;
   padding-bottom: 3px;
   margin-bottom: 3px;
   font-family: 'Colfax-Medium';
-  font-size: 12px;
+  font-size: 14px;
+  color: #595959;
   border-bottom: solid 1px #474747;
   background-color: #f2f2f2;
+  box-sizing: border-box;
 
   &.error {
     border-bottom-color: #f40731;
     border-bottom-width: 2px;
     color: #f40731;
-  }
-
-  &.forgot-pswd {
-    background-color: #ffffff;
   }
 }
 
@@ -109,6 +107,13 @@
 
 *:focus {
   outline: none;
+}
+
+.input-field::-webkit-input-placeholder {
+  font-family: 'Colfax-Medium';
+  font-size: 12px;
+  font-weight: 500;
+  color: #ababab;
 }
 
 .submit-btn-container {
