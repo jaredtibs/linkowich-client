@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import styles from '../assets/stylesheets/forgot_password.scss';
 import formStyles from '../assets/stylesheets/landing_forms.scss';
 import cx from 'classnames';
+import SimpleSpinner from './SimpleSpinner';
 
 class ForgotPassword extends Component {
   constructor(props) {
@@ -57,18 +58,23 @@ class ForgotPassword extends Component {
 
   render() {
     const { user } = this.props;
+    const loading = user.loading;
 
     return(
       <div className="form-container">
         <form id="forgot-pswd-form" onSubmit={this.handleSubmit.bind(this)}>
           <div className="forgot-pswd-header-section">
-            <div className={cx("forgot-pswd-header", {"sent": user.resetPasswordInitiated})}>
-              { user.resetPasswordInitiated === true ?
-                "An email was just sent to that address."
-                :
-                "What is the email address associated with your account?"
-              }
-            </div>
+            { loading ?
+              <SimpleSpinner color="#ffffff"/>
+              :
+              <div className={cx("forgot-pswd-header", {"sent": user.resetPasswordInitiated})}>
+                { user.resetPasswordInitiated === true ?
+                  "An email was just sent to that address."
+                  :
+                  "What is the email address associated with your account?"
+                }
+              </div>
+            }
           </div>
           <div className="input-container forgot-pswd" onClick={() => {this.email.focus()}}>
             <label className={cx("label-helper", {
@@ -90,7 +96,11 @@ class ForgotPassword extends Component {
           <div className={cx("forgot-pswd-btns-container", {"sent": user.resetPasswordInitiated})}>
             <button type="submit"
                     className={cx("reset-pswd-btn", {"sent": user.resetPasswordInitiated})}>
-              { user.resetPasswordInitiated === true ? "Resend" : "Recover" }
+                    { user.resetPasswordInitiated === true ?
+                      <div className="resend-container">
+                        <i className="material-icons">refresh</i> Resend
+                      </div>
+                      : "Recover" }
             </button>
           </div>
 

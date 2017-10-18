@@ -96,6 +96,13 @@ export function logout() {
 
 //TODO
 export function resetPassword() {
+  return dispatch => {
+    dispatch(submitting())
+    dispatch(passwordResetSent());
+  }
+}
+
+export function passwordResetSent() {
   return {
     type: "RESET_PASSWORD_INITIATED"
   }

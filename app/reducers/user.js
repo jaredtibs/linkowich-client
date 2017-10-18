@@ -56,6 +56,7 @@ export default function user(state=initialState, action) {
     case 'RESET_PASSWORD_INITIATED':
       return {
         ...state,
+        loading: false,
         resetPasswordInitiated: true
       };
     case 'SERVER_FIELD_ERROR':
