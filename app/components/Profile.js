@@ -35,7 +35,7 @@ class Profile extends Component {
 
   renderProfileInfo() {
     const { profile, mine } = this.props;
-    const avatarSrc = profile.avatar ? profile.avatar.large.url : defaultAvatar;
+    const avatarSrc = (profile.avatar && profile.avatar.large.url) ? profile.avatar.large.url : defaultAvatar;
 
     return(
       <div>
