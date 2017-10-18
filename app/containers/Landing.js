@@ -48,20 +48,28 @@ class Landing extends Component {
         </div>
         <div className="forms-container">
           <div className="form-tabs-container">
-            <ul className="tabs">
-              <li className={cx({"active" : this.state.context === "signup"})}>
-                <a href="#" onClick={(e) => {
-                  e.preventDefault();
-                  this.handleContextSwitch("signup")
-                }}> Signup </a>
-              </li>
-              <li className={cx({"active" : this.state.context === "login"})}>
-                <a href="#" onClick={(e) => {
-                  e.preventDefault();
-                  this.handleContextSwitch("login")
-                }}> Login </a>
-              </li>
-            </ul>
+            { this.state.context === "forgotPassword" ?
+              <ul className="tabs">
+                <li className="active">
+                  <a href="#"> Recover Password </a>
+                </li>
+              </ul>
+            :
+              <ul className="tabs">
+                <li className={cx({"active" : this.state.context === "signup"})}>
+                  <a href="#" onClick={(e) => {
+                    e.preventDefault();
+                    this.handleContextSwitch("signup")
+                  }}> Signup </a>
+                </li>
+                <li className={cx({"active" : this.state.context === "login"})}>
+                  <a href="#" onClick={(e) => {
+                    e.preventDefault();
+                    this.handleContextSwitch("login")
+                  }}> Login </a>
+                </li>
+              </ul>
+            }
           </div>
 
           { this.renderContext() }

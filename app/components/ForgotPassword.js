@@ -87,7 +87,7 @@ class ForgotPassword extends Component {
 
           <div className="forgot-pswd-btns-container">
             <button type="submit" className="reset-pswd-btn">
-              Reset Password
+              Reset
             </button>
           </div>
 
