@@ -76,7 +76,41 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-end;
+}
+
+.invitation-avatar-container {
+  width: 110px;
+  height: 110px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 150px;
+
+  .sender-avatar {
+    width: 110px;
+    height: 110px;
+    border-radius: 100%;
+  }
+}
+
+.invitation-info-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Colfax-Medium';
+  color: #ffffff;
+  letter-spacing: 0.9px;
+
+  .senderUsername {
+    font-size: 18px;
+    margin-top: 14px;
+  }
+
+  .senderDetail {
+    font-size: 14px;
+    margin-top: 14px;
+  }
 }
 
 .invitation-btns-container {
@@ -85,6 +119,30 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  .add-friend-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 240px;
+    height: 50px;
+    border: solid 3px #ffffff;
+  }
+
+  .invitation-skip-container {
+    margin-top: 32px;
+
+    .invitation-skip-text {
+      letter-spacing: 1px;
+      text-decoration: none;
+      cursor: pointer;
+      font-family: 'Colfax-Medium';
+      font-size: 14px;
+      font-weight: 500;
+      color: #ffffff;
+    }
+  }
 }
 
 @mixin buttonBorder {

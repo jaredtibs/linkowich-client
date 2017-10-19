@@ -9,6 +9,10 @@ class InvitationIntro extends Component {
     super(props)
   }
 
+  onSkip() {
+    console.log("skipping invitation!")
+  }
+
   render() {
     const avatarSrc = defaultAvatar;
     return(
@@ -18,11 +22,20 @@ class InvitationIntro extends Component {
             <img className="sender-avatar" src={avatarSrc} />
           </div>
           <div className="invitation-info-container">
-            <span> Username goes here </span>
-            <span>Added you as a friend. </span>
+            <div className="senderUsername">Jtibs</div>
+            <div className="senderDetail">Added you as a friend.</div>
           </div>
         </div>
+
         <div className="invitation-btns-container">
+          <div className="add-friend-btn">
+            <span className="copy-text"> ADD FRIEND </span>
+          </div>
+          <div className="invitation-skip-container">
+            <a href="#" className="invitation-skip-text" onClick={this.onSkip.bind(this)}>
+              SKIP
+            </a>
+          </div>
         </div>
       </div>
     )
