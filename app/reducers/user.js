@@ -4,6 +4,7 @@ const initialState = {
   email: '',
   avatar: {},
   pastLinks: [],
+  hasUnseenInvites: false,
   hasError: false,
   fieldErrors: {count: 0},
   isFetching: false,
@@ -27,6 +28,7 @@ export default function user(state=initialState, action) {
         email: action.data.email,
         avatar: action.data.avatar,
         score: action.data.upvotes,
+        hasUnseenInvites: action.data['unseen-invitations'],
         loading: false,
         hasError: false,
         loggedIn: true

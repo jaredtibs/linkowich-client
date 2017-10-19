@@ -128,14 +128,24 @@ class Intro extends Component {
     }
   }
 
-  onClick() {
-    if (this.state.introFinished) {
+  finishIntro() {
+    const { hasUnseenInvites } = this.props.user;
+
+    if (hasUnseenInvites === true) {
+      this.props.history.push("/invitation-intro");
+    } else {
       this.props.history.push("/home");
     }
   }
 
+  onClick() {
+    if (this.state.introFinished) {
+      this.finishIntro();
+    }
+  }
+
   onSkip() {
-    this.props.history.push("/home");
+    this.finishIntro();
   }
 
   render() {
