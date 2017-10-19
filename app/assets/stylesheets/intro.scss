@@ -71,6 +71,22 @@
   }
 }
 
+.invitation-header-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.invitation-btns-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 @mixin buttonBorder {
   position: absolute;
   background-color: white;

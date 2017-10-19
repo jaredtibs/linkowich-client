@@ -15,7 +15,7 @@ import ProfileContainer         from './ProfileContainer';
 import SettingsContainer        from './SettingsContainer';
 import FriendsContainer         from './FriendsContainer';
 import IntroContainer           from './IntroContainer';
-import InvitationIntro          from '../components/InvitationIntro';
+import InvitationIntroContainer from './InvitationIntroContainer';
 
 import styles from '../assets/stylesheets/animations.scss';
 
@@ -52,7 +52,7 @@ class Root extends Component {
               )}/>
               <Route path='/landing' component={Landing} />
               <Route path='/intro' component={IntroContainer} onEnter={this.authenticated()} />
-              <Route path='/invitation-intro' component={InvitationIntro} onEnter={this.authenticated()} />
+              <Route path='/invitation-intro' component={InvitationIntroContainer} onEnter={this.authenticated()} />
               <Route path='/home' component={HomeContainer} onEnter={this.authenticated()} />
               <Route path='/user/:id' component={ProfileContainer} onEnter={this.authenticated()} />
               <Route path='/settings' component={SettingsContainer} onEnter={this.authenticated()} />
