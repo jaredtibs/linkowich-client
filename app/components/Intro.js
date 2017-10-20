@@ -128,14 +128,24 @@ class Intro extends Component {
     }
   }
 
-  onClick() {
-    if (this.state.introFinished) {
+  finishIntro() {
+    const { hasUnseenInvites } = this.props.user;
+
+    if (hasUnseenInvites === true) {
+      this.props.history.push("/invitation-intro");
+    } else {
       this.props.history.push("/home");
     }
   }
 
+  onClick() {
+    if (this.state.introFinished) {
+      this.finishIntro();
+    }
+  }
+
   onSkip() {
-    this.props.history.push("/home");
+    this.finishIntro();
   }
 
   render() {
@@ -184,7 +194,10 @@ class Intro extends Component {
         <div className="skip-container">
           <a href="#"
               className={cx("skip-text", {"active": this.state.showSkip})}
-              onClick={this.onSkip.bind(this)}>
+              onClick={(e) => {
+                e.preventDefault();
+                this.onSkip();
+              }}>
               skip
           </a>
         </div>

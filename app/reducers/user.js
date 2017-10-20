@@ -4,6 +4,8 @@ const initialState = {
   email: '',
   avatar: {},
   pastLinks: [],
+  hasUnseenInvites: false,
+  invitations: [],
   hasError: false,
   fieldErrors: {count: 0},
   isFetching: false,
@@ -27,6 +29,7 @@ export default function user(state=initialState, action) {
         email: action.data.email,
         avatar: action.data.avatar,
         score: action.data.upvotes,
+        hasUnseenInvites: action.data['unseen-invitations'],
         loading: false,
         hasError: false,
         loggedIn: true
@@ -65,6 +68,17 @@ export default function user(state=initialState, action) {
         loading: false,
         hasError: true,
         fieldErrors: constructErrorObject(action.errors)
+      };
+    case 'FETCHING_INVITATIONS':
+      return {
+        ...state,
+        isFetching: true
+      };
+    case 'INVITATIONS_FETCHED':
+      return {
+        ...state,
+        isFetching: false,
+        invitations: action.data.data
       };
     default:
       return state;

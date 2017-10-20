@@ -6,6 +6,11 @@
   background-color: #ff5f36;
 }
 
+.intro-container.invitation.mounted {
+  animation: fadeInIntro;
+  animation-duration: 1s;
+}
+
 .content-container {
   display: flex;
   flex-direction: column;
@@ -53,6 +58,10 @@
   position: relative;
 }
 
+.copy-container.completed {
+  cursor: pointer;
+}
+
 .copy-text {
   cursor: default;
   font-family: 'Colfax-Medium';
@@ -68,6 +77,81 @@
 
   &.padded {
     padding-left: 8px;
+  }
+}
+
+.invitation-header-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  font-family: 'Colfax-Medium';
+  color: #ffffff;
+
+  .sender-username {
+    padding-top: 10px;
+    font-size: 18px;
+  }
+
+  .sender-msg {
+    padding-top: 14px;
+    font-size: 14px;
+  }
+}
+
+.sender-avatar-container {
+  width: 110px;
+  height: 110px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .sender-avatar {
+    width: 110px;
+    height: 110px;
+    border-radius: 100%;
+  }
+}
+
+.invitation-btns-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 60px;
+
+  .add-friend-btn {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 240px;
+    height: 50px;
+    border: solid 3px #ffffff;
+
+    span {
+      cursor: pointer;
+      font-family: 'Colfax-Medium';
+      font-size: 14px;
+      font-weight: 500;
+      color: #ffffff;
+    }
+  }
+
+  .invitation-skip-container {
+    margin-top: 32px;
+
+    .invitation-skip-text {
+      letter-spacing: 1px;
+      text-decoration: none;
+      cursor: pointer;
+      font-family: 'Colfax-Regular';
+      font-size: 11px;
+      color: #ffffff;
+    }
   }
 }
 
@@ -235,9 +319,6 @@
   animation-duration: .75s;
 }
 
-.copy-container.completed {
-  cursor: pointer;
-}
 
 @mixin flip-animation {
   animation-duration: .75s;
@@ -415,7 +496,6 @@
   animation: fadeInGreetThree;
   animation-duration: .75s;
 }
-
 
 .copy-text.greet-1 {
   text-align: center;
