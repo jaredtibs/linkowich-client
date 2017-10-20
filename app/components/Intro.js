@@ -88,7 +88,7 @@ class Intro extends Component {
       case 'fadeInIntro':
         this.setState({showSkip: true})
         break;
-      case 'fadeInFinish':
+      case 'pulseFinish':
         this.setState({introFinished: true, showSkip: false})
         break;
     }
@@ -181,7 +181,7 @@ class Intro extends Component {
               <span
                 ref={(text) => { this.buttonText = text; }}
                 className={cx("copy-text", {[`flip-${this.state.counter}`]: !this.state.borderAnimationCompleted}, {'animations-finished': this.state.borderAnimationCompleted})}>
-                { this.state.borderAnimationCompleted ? "COOL. LET ME IN" : this.state.blurbText }
+                { this.state.borderAnimationCompleted ? "SHARE SOME FIRE" : this.state.blurbText }
               </span>
               :
               <span
