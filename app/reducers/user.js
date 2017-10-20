@@ -50,12 +50,6 @@ export default function user(state=initialState, action) {
         avatar: action.data.avatar,
         score: action.data.upvotes
       };
-    case 'AVATAR_UPDATED':
-      return {
-        ...state,
-        loading: false,
-        avatar: action.avatar
-      };
     case 'RESET_PASSWORD_INITIATED':
       return {
         ...state,

@@ -6,11 +6,18 @@ const initialState = {
   score: 0,
   history: [],
   isFetchingInfo: false,
-  isFetchingHistory: false
+  isFetchingHistory: false,
+  isSubmitting: false
 }
 
 export default function profile(state=initialState, action) {
   switch (action.type) {
+    case 'AVATAR_UPDATED':
+      return {
+        ...state,
+        isSubmitting: false,
+        avatar: action.avatar
+      };
     case 'FETCHING_USER_PROFILE':
       return {
         ...state,
@@ -44,6 +51,11 @@ export default function profile(state=initialState, action) {
       return {
         ...state,
         history: updatedLinks
+      };
+    case 'SUBMITTING':
+      return {
+        ...state,
+        isSubmitting: true
       };
     default:
       return state;

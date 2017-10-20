@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import {connect} from 'react-redux';
-import {fetchUserProfile} from '../actions/profile';
-import {updateAvatar} from '../actions/user';
+import {fetchUserProfile, updateAvatar} from '../actions/profile';
 import {castVote} from '../actions/feed';
 import Profile from '../components/Profile';
 
