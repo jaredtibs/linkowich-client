@@ -41,7 +41,11 @@ class Profile extends Component {
       <div>
         <div className={cx("profile-avatar-container", {"mine": mine})}
              onClick={mine ? this.handleAvatarClick.bind(this) : null}>
-          { mine ? <div className="img__overlay">Edit</div> : null }
+          { mine ?
+            <div className="img__overlay">
+              <i className="material-icons edit-icon">mode_edit</i>
+            </div>
+            : null }
           <img className="profile-avatar" src={avatarSrc} />
         </div>
 
