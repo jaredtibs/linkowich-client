@@ -194,7 +194,10 @@ class Intro extends Component {
         <div className="skip-container">
           <a href="#"
               className={cx("skip-text", {"active": this.state.showSkip})}
-              onClick={this.onSkip.bind(this)}>
+              onClick={(e) => {
+                e.preventDefault();
+                this.onSkip();
+              }}>
               skip
           </a>
         </div>
