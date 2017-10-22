@@ -1,6 +1,6 @@
 'use strict';
 
-const { app, BrowserWindow, Menu, Tray, ipcMain, dialog } = require('electron');
+const { app, BrowserWindow, Menu, Tray, ipcMain, dialog, shell } = require('electron');
 const path = require('path');
 const url = require('url');
 const assetsDirectory = path.join(__dirname, '/app/assets');
@@ -94,7 +94,15 @@ function createWindow () {
 
 function createTray() {
   tray = new Tray(path.join(assetsDirectory, '/images/active_tray_icon.png'))
-  tray.on('right-click', toggleWindow)
+  tray.on('right-click', () => {
+    const contextMenu = Menu.buildFromTemplate([
+      {label: 'About', click () { shell.openExternal('https://linkowi.ch') }},
+      {type: 'separator'},
+      {label: 'Quit', click () { app.quit() }}
+    ])
+
+    tray.popUpContextMenu(contextMenu);
+  })
   tray.on('double-click', toggleWindow)
   tray.on('click', function (event) {
     toggleWindow()
