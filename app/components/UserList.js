@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 //TODO install and change import on all components + add checking
 //import PropTypes from 'prop-types'
-import defaultAvatar from "../assets/images/default_avatar.jpeg"
+const defaultAvatar = require("../assets/images/default_avatar_blue.svg")
 
 class UserList extends Component {
 

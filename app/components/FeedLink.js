@@ -1,9 +1,10 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router-dom';
 import styles from '../assets/stylesheets/link.scss';
-import defaultAvatar from "../assets/images/default_avatar.jpeg"
 import cx from 'classnames';
 import CopyToClipboard from 'react-copy-to-clipboard';
+
+const defaultAvatar = require("../assets/images/default_avatar_blue.svg")
 
 class FeedLink extends Component {
   constructor(props) {
