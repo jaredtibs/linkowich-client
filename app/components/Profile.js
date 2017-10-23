@@ -105,7 +105,6 @@ class Profile extends Component {
               <ul className="tabs">
                 <li className={cx({
                   "active" : this.state.context === "history",
-                  "single" : !mine
                 })}>
                   <a href="#" onClick={(e) => {
                     e.preventDefault();
