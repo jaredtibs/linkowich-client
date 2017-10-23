@@ -10,9 +10,14 @@ class Invite extends Component {
     this.defaultState = {
       inviteEmail: '',
       friendCode: '',
-      drawerOpened: false,
+      emailValid: true,
+      emailValidationError: '',
+      codeValid: true,
+      codeValidationError: '',
       codePlaceholder: "GOT A FRIEND'S CODE?",
-      emailPlaceholder: "SEND IT"
+      emailPlaceholder: "SEND IT",
+      codeSubheader: "Ask Around",
+      emailSubheader: "Email, duh..."
     }
 
     this.state = this.defaultState;
@@ -21,18 +26,41 @@ class Invite extends Component {
   handleSubmit(type, event) {
     event.preventDefault();
 
+    const { inviteEmail, friendCode } = this.state;
+
     if (type === 'invite') {
-      this.props.inviteUser(this.state.inviteEmail);
+      if (!this.validateEmail(inviteEmail)) {
+        this.setState({
+          emailValid: false,
+          emailSubheader: "Invalid Email"
+        })
+      } else {
+        this.props.inviteUser(inviteEmail);
+        this.setState(this.defaultState);
+      }
     } else {
-      this.props.addFriendByCode(this.state.friendCode);
+      if (!this.validateCode(friendCode)) {
+        this.setState({
+          codeValid: false,
+          codeSubheader: "Invalid Code"
+        })
+      } else {
+        this.props.addFriendByCode(friendCode);
+        this.setState(this.defaultState);
+      }
     }
 
-    this.setState(this.defaultState);
   }
 
   handleChange(event) {
     const name = event.target.name;
-    this.setState({[name]: event.target.value})
+    this.setState({
+      [name]: event.target.value,
+      emailValid: true,
+      codeValid: true,
+      codeSubheader: "Ask Around",
+      emailSubheader: "Email, duh..."
+    })
   }
 
 
@@ -40,7 +68,9 @@ class Invite extends Component {
     if (type === "code") {
       this.setState({codePlaceholder: "press enter to add friend"})
     } else {
-      this.setState({emailPlaceholder: "press enter to invite friend"})
+      this.setState({
+        emailPlaceholder: "press enter to invite friend"
+      })
     }
   }
 
@@ -52,6 +82,15 @@ class Invite extends Component {
     }
   }
 
+  validateEmail(email) {
+    const regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return regex.test(email);
+  }
+
+  validateCode(code) {
+    const regex = /^[\da-f]{10}$/i;
+    return regex.test(code);
+  }
 
   render() {
     const { user } = this.props;
@@ -59,7 +98,7 @@ class Invite extends Component {
     return(
       <div className="window-content">
         <div className="invite-container">
-          <SimpleHeaderNav title="Invite Friends" history={this.props.history} />
+          <SimpleHeaderNav title="Add Friends" history={this.props.history} />
 
           <div className="invite-upper-container">
             <div className="friend-actions-container">
@@ -67,7 +106,7 @@ class Invite extends Component {
               <div className="inner-container">
                 <form id="code-form" onSubmit={this.handleSubmit.bind(this, 'code')}>
                   <input
-                    className="invite-input"
+                    className={cx("invite-input", {"error": !this.state.codeValid})}
                     name="friendCode"
                     placeholder={this.state.codePlaceholder}
                     type="text"
@@ -77,13 +116,15 @@ class Invite extends Component {
                     onChange={this.handleChange.bind(this)}
                   />
                 </form>
-                <span className="input-subheader">Ask around</span>
+                <span className={cx("input-subheader", {"error": !this.state.codeValid})}>
+                  {this.state.codeSubheader}
+                </span>
               </div>
 
               <div className="inner-container">
                 <form id="invite-form" onSubmit={this.handleSubmit.bind(this, 'invite')}>
                   <input
-                    className="invite-input"
+                    className={cx("invite-input", {"error": !this.state.emailValid})}
                     name="inviteEmail"
                     placeholder={this.state.emailPlaceholder}
                     type="text"
@@ -93,7 +134,9 @@ class Invite extends Component {
                     onChange={this.handleChange.bind(this)}
                   />
                 </form>
-                <span className="input-subheader">Invite a friend</span>
+                <span className={cx("input-subheader", {"error": !this.state.emailValid})}>
+                  {this.state.emailSubheader}
+                </span>
               </div>
             </div>
 

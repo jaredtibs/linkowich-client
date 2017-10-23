@@ -43,6 +43,11 @@
       border-right: 0;
       border-bottom-width: 2px;
       border-bottom-color: #00d6d6;
+
+      &.error {
+        color: #f40731;
+        border-bottom-color: #f40731;
+      }
     }
   }
 
@@ -60,6 +65,10 @@
   font-family: 'Colfax-Regular';
   font-size: 12px;
   color: #595959;
+
+  &.error {
+    color: #f40731;
+  }
 }
 
 .code-icon-container {
