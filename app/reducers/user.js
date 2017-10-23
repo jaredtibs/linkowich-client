@@ -11,7 +11,8 @@ const initialState = {
   isFetching: false,
   loading: false,
   resetPasswordInitiated: false,
-  score: 0
+  score: null,
+  followCode: ''
 };
 
 export default function user(state=initialState, action) {
@@ -29,6 +30,7 @@ export default function user(state=initialState, action) {
         email: action.data.email,
         avatar: action.data.avatar,
         score: action.data.upvotes,
+        followCode: action.data['follow-code'],
         hasUnseenInvites: action.data['unseen-invitations'],
         loading: false,
         hasError: false,
@@ -48,7 +50,9 @@ export default function user(state=initialState, action) {
         email: action.data.email,
         username: action.data.username,
         avatar: action.data.avatar,
-        score: action.data.upvotes
+        score: action.data.upvotes,
+        followCode: action.data['follow-code'],
+        hasUnseenInvites: action.data['unseen-invitations']
       };
     case 'RESET_PASSWORD_INITIATED':
       return {

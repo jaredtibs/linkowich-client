@@ -11,7 +11,7 @@ class Invite extends Component {
       inviteEmail: '',
       friendCode: '',
       drawerOpened: false,
-      codePlaceholder: "WHERE'S THE CODE AT?",
+      codePlaceholder: "GOT A FRIEND'S CODE?",
       emailPlaceholder: "SEND IT"
     }
 
@@ -54,6 +54,8 @@ class Invite extends Component {
 
 
   render() {
+    const { user } = this.props;
+
     return(
       <div className="window-content">
         <div className="invite-container">
@@ -103,7 +105,7 @@ class Invite extends Component {
             </div>
             <div className="my-code-container">
               <div className="my-code-header">Your Code:</div>
-              <div className="my-code-value">xbiDrzTd8fEv=Hhy7JUinlu0</div>
+              <div className="my-code-value">{user.followCode}</div>
             </div>
           </div>
         </div>
