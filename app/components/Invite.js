@@ -76,7 +76,7 @@ class Invite extends Component {
 
   handleBlur(type) {
     if (type === "code") {
-      this.setState({codePlaceholder: "WHERE'S THE CODE AT?"})
+      this.setState({codePlaceholder: "GOT A FRIEND'S CODE?"})
     } else {
       this.setState({emailPlaceholder: "SEND IT"})
     }
