@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import ConnectedHeader from '../components/Header'
+import ConnectedNav from '../components/NavBar'
 import Footer from '../components/Footer'
 import styles from '../assets/stylesheets/app.scss';
 
@@ -13,7 +13,7 @@ class App extends Component {
       <div>
         <div className="header-arrow"></div>
         <div className="window">
-          <ConnectedHeader />
+          <ConnectedNav />
           {this.props.children}
           <Footer />
         </div>
