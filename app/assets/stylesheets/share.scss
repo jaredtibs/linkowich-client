@@ -80,7 +80,6 @@
 .share-header-inner-container {
   display: flex;
   flex-direction: row;
-  align-items: center;
 
   &.left {
     justify-content: flex-start;
@@ -91,17 +90,23 @@
   }
 }
 
-.my-vote-count {
-  font-size: 11px;
-  color: #ff5f36;
-  font-family: 'Colfax-Regular';
-}
+.my-vote-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 
-.my-vote-icon {
-  color: #ff5f36;
-  font-size: 18px !important;
-  padding-left: 1px;
-  padding-top: 1px;
+  .my-vote-count {
+    font-family: 'Colfax-Bold';
+    font-size: 12px;
+    color: #ff5f36;
+    align-self: flex-end;
+    padding-bottom: 1px;
+  }
+
+  .my-vote-icon {
+    color: #ff5f36;
+    font-size: 18px !important;
+  }
 }
 
 .link-timestamp {
@@ -210,7 +215,6 @@
   color: rgba(71, 71, 71, .70);
   line-height: 15px;
   letter-spacing: 0.1px;
-  padding-left: 5px;
 
   &.flash {
     animation: flashCurrentLink;
