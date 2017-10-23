@@ -168,15 +168,15 @@
   //basic grey underline:
   //border-bottom: 2px solid #b8b8b8
   //option 1 inset box:
-  box-shadow: 0px 0px 4px 0px #b8b8b8 inset;
+  //box-shadow: 0px 0px 4px 0px #b8b8b8 inset;
   //option 2 high spread light shadow box:
   //box-shadow: 0px 1px 10px 0px #c8c8c8;
   //option 3 clean minimal box:
   //box-shadow: 0px 1px 1px 0px #b8b8b8;
   //border-top: 1px solid #e8e8e8;
   //option 4 green simple outline
-  //border: solid 2px #00d5d6;
-  border-radius: 3px;
+  border: solid 3px #00d5d6;
+  //border-radius: 3px;
 }
 
 .my-link {
