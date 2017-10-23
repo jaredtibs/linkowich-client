@@ -12,6 +12,10 @@ class Profile extends Component {
   constructor(props) {
     super(props)
 
+    this.state = {
+      context: "history"
+    }
+
     ipcRenderer.on('open-finder-reply', (event, fileData) => {
       this.props.updateAvatar(fileData)
     });
@@ -75,7 +79,7 @@ class Profile extends Component {
       });
 
       return(
-        <div className="history-container"> {linkList} </div>
+        <div className="tab-container"> {linkList} </div>
       )
     } else {
       return(
@@ -97,8 +101,28 @@ class Profile extends Component {
             { isFetchingInfo ? <SimpleSpinner /> : this.renderProfileInfo() }
           </div>
           <div className="lower-container">
-            <div className="lower-container-header">
-              <span>History</span>
+            <div className="profile-tabs-container">
+              <ul className="tabs">
+                <li className={cx({"active" : this.state.context === "history"})}>
+                  <a href="#" onClick={(e) => {
+                    e.preventDefault();
+                    this.setState({context: "history"})
+                  }}>History</a>
+                </li>
+                <li className={cx({"active" : this.state.context === "followers"})}>
+                  <a href="#" onClick={(e) => {
+                    e.preventDefault();
+                    this.setState({context: "followers"})
+                  }}>Followers</a>
+                </li>
+                <li className={cx({"active" : this.state.context === "following"})}>
+                  <a href="#" onClick={(e) => {
+                    e.preventDefault();
+                    this.setState({context: "following"})
+                  }}>Following</a>
+                </li>
+              </ul>
+
             </div>
 
             { isFetchingHistory ? <ListLoader /> : this.renderHistory() }
