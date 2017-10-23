@@ -140,13 +140,14 @@ class Share extends Component {
 
   renderMyScore() {
     const { currentLink } = this.props.share;
+    const hasVotes = currentLink.attributes['vote-count'] > 0;
 
     return(
       <div className="my-vote-container">
-        <span className="my-vote-count">
+        <span className={cx("my-vote-count", {"voted-for": hasVotes})}>
           +{currentLink.attributes['upvote-count']}
         </span>
-        <i className="material-icons votes-icon">
+        <i className={cx("material-icons votes-icon", {"voted-for": hasVotes})}>
           whatshot
         </i>
       </div>
