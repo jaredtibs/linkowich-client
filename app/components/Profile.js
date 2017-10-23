@@ -15,6 +15,10 @@ class Profile extends Component {
     ipcRenderer.on('open-finder-reply', (event, fileData) => {
       this.props.updateAvatar(fileData)
     });
+
+    this.state = {
+      context: "history"
+    }
   }
 
   componentDidMount() {
@@ -86,9 +90,33 @@ class Profile extends Component {
     }
   }
 
+  renderFriendList() {
+    const { friends } = this.props.friends;
+    const { profileContext } = this.props.profile;
+
+    return(
+      <UserList
+        users={friends}
+        context={profileContext}
+        follow={this.props.followUser}
+        unfollow={this.props.unfollowUser}
+      />
+    )
+  }
+
+  renderContent() {
+    if (this.props.profileContext === "history") {
+      return this.renderHistory();
+    } else {
+      return this.renderUserList();
+    }
+  }
+
   render() {
-    const { profile, mine } = this.props;
-    const { isFetchingInfo, isFetchingHistory } = profile;
+    const { profile, mine, userId } = this.props;
+    const { isFetchingInfo,
+            isFetchingTabContent,
+            profileContext} = profile;
 
     return(
       <div className="window-content">
@@ -98,10 +126,29 @@ class Profile extends Component {
           </div>
           <div className="lower-container">
             <div className="lower-container-header">
-              <span>History</span>
+              <ul className="tabs">
+                <li className={cx({"active" : profileContext === 'history'})}>
+                  <a href="#" onClick={(e) => {
+                    e.preventDefault();
+                    this.props.toggleProfileContext("history", userId)
+                  }}> History </a>
+                </li>
+                <li className={cx({"active" : profileContext === 'followers'})}>
+                  <a href="#" onClick={(e) => {
+                    e.preventDefault();
+                    this.props.toggleProfileContext("followers", userId);
+                  }}> Followers </a>
+                </li>
+                <li className={cx({"active" : profileContext === 'following'})}>
+                  <a href="#" onClick={(e) => {
+                    e.preventDefault();
+                    this.props.toggleProfileContext("following", userId);
+                  }}> Following </a>
+                </li>
+              </ul>
             </div>
 
-            { isFetchingHistory ? <ListLoader /> : this.renderHistory() }
+            { isFetchingTabContent ? <ListLoader /> : this.renderContent() }
           </div>
         </div>
       </div>
