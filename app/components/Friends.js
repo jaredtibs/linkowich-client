@@ -4,6 +4,7 @@ import cx from 'classnames';
 import UserList from './UserList';
 import {Collapse} from 'react-collapse';
 import ListLoader from './ListLoader';
+import SimpleHeaderNav from '../components/SimpleHeaderNav';
 
 class Friends extends Component {
   constructor(props) {
@@ -70,20 +71,7 @@ class Friends extends Component {
     return(
       <div className="window-content">
         <div className="main-container">
-          <div className="header-nav">
-            <div className="header-section back"
-                 onClick={() => this.props.history.goBack()}>
-              <i className="material-icons arrow">arrow_back</i>
-            </div>
-            <div className="header-section title">
-              <span className="header-title"> Friends </span>
-            </div>
-            <div className="header-section invite">
-              <div className="invite-container" onClick={() => this._toggleInviteDrawer()}>
-                <i className="material-icons invite-icon">group_add</i>
-              </div>
-            </div>
-          </div>
+          <SimpleHeaderNav title="Friends" history={this.props.history} />
 
           <Collapse
             className="collapsed-container"

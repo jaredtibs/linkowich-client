@@ -42,13 +42,6 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(updateFollowRelationship(userId, 'unfollow'))
     },
 
-    inviteUser: (email) => {
-      dispatch(inviteUser(email))
-    },
-
-    addFriendByCode: (code, context) => {
-      dispatch(addFriendByCode(code, context))
-    }
   }
 };
 

@@ -1,0 +1,25 @@
+.simple-header-nav {
+  height: 60px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+}
+
+.simple-header-section {
+
+  &.left {
+    padding-left: 20px;
+  }
+
+  &.right {
+    padding-right: 30px;
+  }
+}
+
+.simple-header-title {
+  font-family: 'Colfax-Bold';
+  color: #474747;
+  font-size: 18px;
+}
