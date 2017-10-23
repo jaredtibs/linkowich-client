@@ -32,25 +32,6 @@
   font-size: 18px;
 }
 
-.invite-container {
-  display: flex;
-  flex-direction: column;
-  cursor: pointer;
-
-  span {
-    font-family: 'Colfax-Medium';
-    color: #00d5d6;
-    font-size: 12px;
-    font-weight: 500;
-  }
-
-  i {
-    color: #00d5d6;
-    font-size: 28px;
-    object-fit: contain;
-  }
-}
-
 .friends-container {
   display: flex;
   flex-direction: column;

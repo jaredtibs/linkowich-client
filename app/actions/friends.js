@@ -47,7 +47,7 @@ export function changeFollowContext(context) {
   }
 }
 
-export function addFriendByCode(code, context) {
+export function addFriendByCode(code) {
   return dispatch => {
     dispatch(isSubmitting());
     let url = `http://localhost:3000/api/v1/user/follow/${code}`
@@ -62,7 +62,6 @@ export function addFriendByCode(code, context) {
     .then((response) => response.json())
     .then((responseData) => {
       dispatch(friendAdded());
-      dispatch(fetchFriends(context));
     })
     .catch(error => console.log(error))
   }

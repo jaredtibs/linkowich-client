@@ -16,6 +16,7 @@ import SettingsContainer        from './SettingsContainer';
 import FriendsContainer         from './FriendsContainer';
 import IntroContainer           from './IntroContainer';
 import InvitationIntroContainer from './InvitationIntroContainer';
+import InviteContainer          from './InviteContainer';
 
 import styles from '../assets/stylesheets/animations.scss';
 
@@ -50,13 +51,14 @@ class Root extends Component {
                   <Redirect to="/landing"/>
                 )
               )}/>
-              <Route path='/landing' component={Landing} />
-              <Route path='/intro' component={IntroContainer} onEnter={this.authenticated()} />
+              <Route path='/landing'          component={Landing} />
+              <Route path='/intro'            component={IntroContainer} onEnter={this.authenticated()} />
               <Route path='/invitation-intro' component={InvitationIntroContainer} onEnter={this.authenticated()} />
-              <Route path='/home' component={HomeContainer} onEnter={this.authenticated()} />
-              <Route path='/user/:id' component={ProfileContainer} onEnter={this.authenticated()} />
+              <Route path='/home'     component={HomeContainer}     onEnter={this.authenticated()} />
+              <Route path='/user/:id' component={ProfileContainer}  onEnter={this.authenticated()} />
               <Route path='/settings' component={SettingsContainer} onEnter={this.authenticated()} />
-              <Route path='/friends' component={FriendsContainer} onEnter={this.authenticated()} />
+              <Route path='/friends'  component={FriendsContainer}  onEnter={this.authenticated()} />
+              <Route path='/invite'   component={InviteContainer}   onEnter={this.authenticated()} />
             </Switch>
           </App>
 
