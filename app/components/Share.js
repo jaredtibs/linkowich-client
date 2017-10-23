@@ -138,6 +138,21 @@ class Share extends Component {
     )
   }
 
+  renderMyScore() {
+    const { currentLink } = this.props.share;
+
+    return(
+      <div className="my-vote-container">
+        <span className="my-vote-count">
+          +{currentLink.attributes['upvote-count']}
+        </span>
+        <i className="material-icons votes-icon">
+          whatshot
+        </i>
+      </div>
+    )
+  }
+
   renderLinkOrEditField() {
     const { publishingLink, currentLink } = this.props.share;
     const seenBy = currentLink ? currentLink.attributes['seen-by'] : [];
@@ -156,16 +171,7 @@ class Share extends Component {
             </div>
           </div>
           <div className="share-header-inner-container right">
-            { !this.state.isEditing && currentLink ?
-              <div className="my-vote-container">
-                <span className="my-vote-count">
-                  +{currentLink.attributes['upvote-count']}
-                </span>
-                <i className="material-icons my-vote-icon">
-                  whatshot
-                </i>
-              </div>
-            : null }
+            { !this.state.isEditing && currentLink ? this.renderMyScore() : null }
           </div>
         </div>
 
