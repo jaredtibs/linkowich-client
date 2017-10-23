@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="80" height="80" viewBox="0 0 80 80">
+    <defs>
+        <circle id="a" cx="40" cy="40" r="40"/>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <mask id="b" fill="#fff">
+            <use xlink:href="#a"/>
+        </mask>
+        <use fill="#B336FF" xlink:href="#a"/>
+        <path stroke="#FFF" stroke-width="2" d="M49.102 29.609l-18.99-.575 1.853 17.952a4.5 4.5 0 0 0 4.476 4.038h6.371a4.5 4.5 0 0 0 4.476-4.033l1.814-17.382z" mask="url(#b)"/>
+        <path stroke="#FFF" stroke-linecap="square" stroke-width="2" d="M30 26h19.063" mask="url(#b)"/>
+        <path stroke="#FFF" stroke-linecap="round" stroke-width="2" d="M13.486 77c-1.066-7.284-.378-12.163 2.064-14.636 1.67-1.692 5.786-2.848 10.321-4.182C27.27 57.77 28.645 56.377 30 54" mask="url(#b)"/>
+        <path stroke="#FFF" stroke-linecap="round" stroke-width="2" d="M50.486 77c-1.066-7.284-.378-12.163 2.064-14.636 1.67-1.692 5.786-2.848 10.321-4.182C64.27 57.77 65.645 56.377 67 54" mask="url(#b)" transform="matrix(-1 0 0 1 117 0)"/>
+        <path stroke="#FFF" stroke-linecap="round" stroke-width="2" d="M48 22l5-4 5 4 2-1" mask="url(#b)"/>
+        <path stroke="#FFF" stroke-linecap="round" stroke-width="2" d="M38.132 21.59l.736-8.18 4 2v-8" mask="url(#b)" transform="rotate(22 40.5 14.5)"/>
+        <path stroke="#FFF" stroke-linecap="round" stroke-width="2" d="M29 21l-4-4-1 5-5 4" mask="url(#b)"/>
+    </g>
+</svg>

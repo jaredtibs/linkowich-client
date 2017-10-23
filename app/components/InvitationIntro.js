@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router-dom';
 import styles from '../assets/stylesheets/intro.scss';
 import cx from 'classnames';
-import defaultAvatar from '../assets/images/default_avatar.jpeg';
+const defaultAvatar = require("../assets/images/default_avatar_blue.svg")
 
 class InvitationIntro extends Component {
   constructor(props) {

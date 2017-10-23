@@ -5,6 +5,7 @@ import FeedLink from './FeedLink'
 import { Link } from 'react-router-dom'
 import styles from '../assets/stylesheets/feed.scss'
 import ListLoader from './ListLoader';
+import EmptyFeedCTA from './EmptyFeedCTA';
 
 class Feed extends Component {
   constructor(props) {
@@ -37,11 +38,7 @@ class Feed extends Component {
         <div className="feed-links-container"> {linkList} </div>
       )
     } else {
-      return(
-        <div className="empty-feed">
-          <div className="empty-text">Add friends to populate your feed!</div>
-        </div>
-      )
+      return <EmptyFeedCTA />
     }
   }
 
