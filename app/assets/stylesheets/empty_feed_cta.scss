@@ -33,7 +33,7 @@
       justify-content: center;
       width: 240px;
       height: 50px;
-      border: solid 3px #ff5f36;
+      border: solid 3px rgba(255, 95, 54, 0.6);
       margin-top: 25px;
 
       a {
@@ -42,7 +42,15 @@
         font-size: 14px;
         font-weight: 500;
         text-align: center;
-        color: #ff5f36;
+        color: rgba(255, 95, 54, 0.6);
+      }
+    }
+
+    .add-btn:hover {
+      border: solid 3px rgba(255, 95, 54, 1);
+
+      a {
+        color: rgba(255, 95, 54, 1);
       }
     }
   }
