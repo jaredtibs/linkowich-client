@@ -91,10 +91,24 @@
   }
 }
 
+.my-vote-count {
+  font-size: 11px;
+  color: #ff5f36;
+  font-family: 'Colfax-Regular';
+}
+
+.my-vote-icon {
+  color: #ff5f36;
+  font-size: 18px !important;
+  padding-left: 1px;
+  padding-top: 1px;
+}
+
 .link-timestamp {
   font-family: 'Colfax-Medium';
   font-size: 10px;
   color: #6f6f6f;
+  padding-left: 4px;
 }
 
 .my-link-input-container {
@@ -167,6 +181,7 @@
   position: relative;
   //basic grey underline:
   //border-bottom: 2px solid #b8b8b8
+  border-bottom: solid 1px #595959;
   //option 1 inset box:
   //box-shadow: 0px 0px 4px 0px #b8b8b8 inset;
   //option 2 high spread light shadow box:
@@ -175,7 +190,7 @@
   //box-shadow: 0px 1px 1px 0px #b8b8b8;
   //border-top: 1px solid #e8e8e8;
   //option 4 green simple outline
-  border: solid 3px #00d5d6;
+  //border: solid 3px #00d5d6;
   //border-radius: 3px;
 }
 

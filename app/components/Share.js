@@ -147,13 +147,17 @@ class Share extends Component {
         <div className="share-header">
           <div className="share-header-inner-container left">
             <span className="share-label">My Link</span>
-          </div>
-          <div className="share-header-inner-container right">
             { !this.state.isEditing ?
               <span className="link-timestamp">
                 {currentLink ? `${currentLink.attributes['published-ago']} ago` : null}
               </span>
             : null }
+          </div>
+          <div className="share-header-inner-container right">
+            { !this.state.isEditing && (currentLink && currentLink.attributes['upvote-count'] > 0) ?
+              <span className="my-vote-count">+{currentLink.attributes['upvote-count']}</span>
+            : null }
+            <i className="material-icons my-vote-icon">whatshot</i>
           </div>
         </div>
 
