@@ -1,5 +1,7 @@
 import { authToken } from './auth';
 
+//TODO do not show follower/following tabs on other profiles!
+//
 export function fetchFriends(context) {
   return dispatch => {
     dispatch(isFetching());
