@@ -9,7 +9,7 @@ class EmptyFeedCTA extends Component {
 
   render() {
     return(
-      <div className="empty-feed">
+      <div className="empty-feed" style={{paddingTop: (this.props.topPadding || 0)}} >
         <div className="add-icon-container">
           <i className="material-icons">group_add</i>
         </div>

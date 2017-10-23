@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-//TODO install and change import on all components + add checking
-//import PropTypes from 'prop-types'
+import EmptyFeedCTA from './EmptyFeedCTA';
 const defaultAvatar = require("../assets/images/default_avatar_blue.svg")
 
 class UserList extends Component {
@@ -43,19 +42,7 @@ class UserList extends Component {
         <div> {userList} </div>
       )
     } else {
-      if (context === "following") {
-        return(
-          <div className="empty-list-container">
-            <span> Bummer. You're not following anyone </span>
-          </div>
-        )
-      } else {
-        return(
-          <div className="empty-list-container">
-            <span>Shoot. You don't have any followers. Invite some friends above! </span>
-          </div>
-        )
-      }
+        return <EmptyFeedCTA topPadding={50}/>
     }
   }
 }
