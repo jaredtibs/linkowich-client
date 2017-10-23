@@ -103,19 +103,28 @@ class Profile extends Component {
           <div className="lower-container">
             <div className="profile-tabs-container">
               <ul className="tabs">
-                <li className={cx({"active" : this.state.context === "history"})}>
+                <li className={cx({
+                  "active" : this.state.context === "history",
+                  "single" : !mine
+                })}>
                   <a href="#" onClick={(e) => {
                     e.preventDefault();
                     this.setState({context: "history"})
                   }}>History</a>
                 </li>
-                <li className={cx({"active" : this.state.context === "followers"})}>
+                <li className={cx({
+                  "active" : this.state.context === "followers",
+                  "hidden" : !mine
+                })}>
                   <a href="#" onClick={(e) => {
                     e.preventDefault();
                     this.setState({context: "followers"})
                   }}>Followers</a>
                 </li>
-                <li className={cx({"active" : this.state.context === "following"})}>
+                <li className={cx({
+                  "active" : this.state.context === "following",
+                  "hidden" : !mine
+                })}>
                   <a href="#" onClick={(e) => {
                     e.preventDefault();
                     this.setState({context: "following"})
