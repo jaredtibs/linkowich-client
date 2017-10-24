@@ -96,7 +96,7 @@ function createTray() {
   tray = new Tray(path.join(assetsDirectory, '/images/active_tray_icon.png'))
   tray.on('right-click', () => {
     const contextMenu = Menu.buildFromTemplate([
-      {label: 'About', click () { shell.openExternal('https://linkowi.ch') }},
+      {label: 'About Linkowich', click () { shell.openExternal('https://linkowi.ch') }},
       {type: 'separator'},
       {label: 'Quit', click () { app.quit() }}
     ])
