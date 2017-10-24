@@ -5,6 +5,7 @@ import share   from '../reducers/share'
 import feed    from '../reducers/feed'
 import friends from '../reducers/friends'
 import profile from '../reducers/profile'
+import invite  from '../reducers/invite'
 
 const rootReducer = combineReducers({
   user,
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
   share,
   friends,
   profile,
+  invite,
   router
 })
 

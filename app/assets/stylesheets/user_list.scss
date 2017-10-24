@@ -1,68 +1,11 @@
-.main-container {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
-
-.header-nav {
-  height: 60px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #ffffff;
-  box-shadow: 0 1px 2px -2px grey;
-}
-
-.header-section {
-  display: flex;
-
-  &.back {
-    padding-left: 20px;
-  }
-
-  &.invite {
-    padding-right: 20px;
-  }
-}
-
-.header-title {
-  font-family: 'Colfax-Bold';
-  color: #474747;
-  font-size: 18px;
-}
-
-.friends-container {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
-
-.following-container {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.friends-header-container {
-  display: flex;
-  flex: 1;
-}
-
-.following-header-container {
-  flex-direction: row;
-  padding-top: 10px;
-  height: 47px;
-  background-color: white;
-}
-
 .user-row {
   display: flex;
   flex-direction: row;
   flex: 1;
   align-items: center;
   margin-bottom: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
 
   img {
     width: 40px;
@@ -82,13 +25,13 @@
 .user-info-container {
   align-items: center;
 }
+
 .user-action-container {
   justify-content: flex-end;
 }
 
 .user-avatar {
   display: flex;
-  padding-left:10px;
   align-items: center;
   justify-content: center;
 }

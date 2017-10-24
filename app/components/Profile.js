@@ -5,6 +5,7 @@ import styles from '../assets/stylesheets/profile.scss';
 import PastLink from './PastLink';
 import ListLoader from './ListLoader';
 import SimpleSpinner from './SimpleSpinner';
+import UserList from './UserList';
 import cx from 'classnames';
 const defaultAvatar = require("../assets/images/default_avatar_blue.svg")
 
@@ -90,9 +91,38 @@ class Profile extends Component {
     }
   }
 
+  renderFollowRelationships(context) {
+    const { friends } = this.props.profile;
+
+    return(
+      <div className="tab-container">
+        <UserList
+          users={friends}
+          context={context}
+          follow={this.props.followUser}
+          unfollow={this.props.unfollowUser}
+        />
+      </div>
+    )
+  }
+
+  renderTabContent() {
+    const { profileContext } = this.props.profile;
+
+    switch(profileContext) {
+      case 'history':
+        return this.renderHistory();
+        break;
+      default:
+        return this.renderFollowRelationships(profileContext);
+        break;
+    }
+  }
+
   render() {
-    const { profile, mine } = this.props;
-    const { isFetchingInfo, isFetchingHistory } = profile;
+    const { profile, mine, userId } = this.props;
+    const { isFetchingInfo, isFetchingTab, profileContext } = profile;
+    console.log(this.props.profile);
 
     return(
       <div className="window-content">
@@ -104,36 +134,36 @@ class Profile extends Component {
             <div className="profile-tabs-container">
               <ul className="tabs">
                 <li className={cx({
-                  "active" : this.state.context === "history",
+                  "active" : profileContext === "history",
                 })}>
                   <a href="#" onClick={(e) => {
                     e.preventDefault();
-                    this.setState({context: "history"})
+                    this.props.toggleProfileContext("history", userId);
                   }}>History</a>
                 </li>
                 <li className={cx({
-                  "active" : this.state.context === "followers",
+                  "active" : profileContext === "followers",
                   "hidden" : !mine
                 })}>
                   <a href="#" onClick={(e) => {
                     e.preventDefault();
-                    this.setState({context: "followers"})
+                    this.props.toggleProfileContext("followers");
                   }}>Followers</a>
                 </li>
                 <li className={cx({
-                  "active" : this.state.context === "following",
+                  "active" : profileContext === "following",
                   "hidden" : !mine
                 })}>
                   <a href="#" onClick={(e) => {
                     e.preventDefault();
-                    this.setState({context: "following"})
+                    this.props.toggleProfileContext("following");
                   }}>Following</a>
                 </li>
               </ul>
 
             </div>
 
-            { isFetchingHistory ? <ListLoader /> : this.renderHistory() }
+            { isFetchingTab ? <ListLoader /> : this.renderTabContent() }
           </div>
         </div>
       </div>

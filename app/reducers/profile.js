@@ -4,9 +4,11 @@ const initialState = {
   username: '',
   avatar: '',
   score: 0,
+  profileContext: 'history',
   history: [],
+  friends: [],
   isFetchingInfo: false,
-  isFetchingHistory: false,
+  isFetchingTab: false,
   isSubmitting: false
 }
 
@@ -31,31 +33,52 @@ export default function profile(state=initialState, action) {
         avatar: action.data.avatar,
         score: action.data.upvotes
       };
-    case 'FETCHING_HISTORICAL_LINKS':
+    case 'PROFILE_CONTEXT_TOGGLED':
       return {
         ...state,
-        isFetchingHistory: true
+        profileContext: action.data
+      };
+    case 'FRIENDS_FETCHED':
+      return {
+        ...state,
+        isFetchingTab: false,
+        friends: action.data.data
       };
     case 'HISTORICAL_LINKS_FETCHED':
       return {
         ...state,
-        isFetchingHistory: false,
+        isFetchingTab: false,
         history: action.data
       };
     case 'HISTORY_LINK_VOTED':
       const updatedLinks = state.history;
-      const index = updatedLinks.findIndex(
+      const historyIndex = updatedLinks.findIndex(
         item => item.id === action.data.id
       );
-      updatedLinks[index] = action.data
+      updatedLinks[historyIndex] = action.data
       return {
         ...state,
         history: updatedLinks
+      };
+    case 'USER_UPDATED':
+      const updatedFriends = state.friends;
+      const userIndex = updatedFriends.findIndex(
+        item => item.id === action.data.id
+      );
+      updatedFriends[userIndex] = action.data
+      return {
+        ...state,
+        friends: updatedFriends
       };
     case 'SUBMITTING':
       return {
         ...state,
         isSubmitting: true
+      };
+    case 'FETCHING_TAB_CONTENT':
+      return {
+        ...state,
+        isFetchingTab: true
       };
     default:
       return state;

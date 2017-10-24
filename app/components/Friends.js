@@ -1,5 +1,7 @@
+//TODO delete me
+
 import React, { Component, PropTypes } from 'react';
-import styles from '../assets/stylesheets/friends.scss';
+//import styles from '../assets/stylesheets/friends.scss';
 import cx from 'classnames';
 import UserList from './UserList';
 import {Collapse} from 'react-collapse';
