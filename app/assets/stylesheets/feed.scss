@@ -10,8 +10,8 @@
 
 .feed-header-container {
   padding-top: 25px;
-  padding-left: 25px;
-  padding-right: 25px;
+  padding-left: 20px;
+  padding-right: 15px;
   padding-bottom: 25px;
   margin-bottom: 10px;
   display: flex;
@@ -33,8 +33,25 @@
 }
 
 .refresh-feed-btn {
-  font-family: 'Colfax-Medium';
-  color: #00d5d6;
-  font-size: 12px;
-  text-decoration: none;
+  width: 76px;
+  height: 26px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  span {
+    font-family: 'Colfax-Medium';
+    font-size: 12px;
+    font-weight: 500;
+    color: #00d5d6;
+    padding-top: 2px;
+    padding-left: 1px;
+  }
+
+  i {
+    font-size: 16px;
+    color: #00d5d6;
+  }
 }
