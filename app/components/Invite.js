@@ -93,7 +93,6 @@ class Invite extends Component {
   }
 
   render() {
-    console.log(this.props)
     const { user } = this.props;
 
     return(

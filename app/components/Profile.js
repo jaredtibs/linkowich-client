@@ -13,10 +13,6 @@ class Profile extends Component {
   constructor(props) {
     super(props)
 
-    this.state = {
-      context: "history"
-    }
-
     ipcRenderer.on('open-finder-reply', (event, fileData) => {
       this.props.updateAvatar(fileData)
     });
@@ -122,7 +118,6 @@ class Profile extends Component {
   render() {
     const { profile, mine, userId } = this.props;
     const { isFetchingInfo, isFetchingTab, profileContext } = profile;
-    console.log(this.props.profile);
 
     return(
       <div className="window-content">
