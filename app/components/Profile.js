@@ -85,7 +85,7 @@ class Profile extends Component {
     } else {
       return(
         <div className="empty-profile-links">
-          <div className="empty-text"> You haven't shared any links yet! </div>
+          <div className="empty-text">Go share some links already! </div>
         </div>
       )
     }
