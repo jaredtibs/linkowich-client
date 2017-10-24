@@ -16,6 +16,10 @@
   }
 }
 
+.user-row:last-child {
+  padding-bottom: 20px;
+}
+
 .user-info-container, .user-action-container {
   display: flex;
   flex: 1;
