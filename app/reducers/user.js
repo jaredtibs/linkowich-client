@@ -3,7 +3,6 @@ const initialState = {
   username: '',
   email: '',
   avatar: {},
-  pastLinks: [],
   hasUnseenInvites: false,
   invitations: [],
   hasError: false,
@@ -11,7 +10,7 @@ const initialState = {
   isFetching: false,
   loading: false,
   resetPasswordInitiated: false,
-  score: null,
+  score: 0,
   followCode: ''
 };
 

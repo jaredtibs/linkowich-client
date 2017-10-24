@@ -19,29 +19,20 @@
   display: flex;
   flex: 2;
   flex-direction: column;
-  border-top: solid 1px #CECECE;
   background-color: #F2F2F2;
 }
 
-.lower-container-header {
+.profile-tabs-container {
   display: flex;
   flex-direction: row;
-  align-items: center;
-  padding-top: 5px;
-  margin-bottom: 10px;
-
-  span {
-    font-family: 'Colfax-Bold';
-    color: #474747;
-    padding-left: 23px;
-    padding-top: 10px
-  }
+  background-color: white;
 }
 
-.history-container {
+.tab-container {
   display: flex;
   flex: 1;
   flex-direction: column;
+  padding-top: 25px;
 }
 
 .profile-avatar-container {

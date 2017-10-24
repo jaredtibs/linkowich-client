@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import EmptyFeedCTA from './EmptyFeedCTA';
 const defaultAvatar = require("../assets/images/default_avatar_blue.svg")
+import styles from '../assets/stylesheets/user_list.scss';
 
 class UserList extends Component {
 
@@ -42,7 +43,7 @@ class UserList extends Component {
         <div> {userList} </div>
       )
     } else {
-        return <EmptyFeedCTA topPadding={50}/>
+        return <EmptyFeedCTA topPadding={10}/>
     }
   }
 }
