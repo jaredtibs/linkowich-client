@@ -31,7 +31,7 @@ class ForgotPassword extends Component {
   }
 
   handleChange(event) {
-    this.setState({[event.target.name]: event.target.value});
+    this.setState({email: event.target.value, emailValid: true});
   }
 
   validateEmail(email) {

@@ -1,0 +1,98 @@
+.user-row {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  align-items: center;
+  margin-bottom: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
+
+  img {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+  }
+}
+
+.user-row:last-child {
+  padding-bottom: 20px;
+}
+
+.user-info-container, .user-action-container {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+}
+
+.user-info-container {
+  align-items: center;
+}
+
+.user-action-container {
+  justify-content: flex-end;
+}
+
+.user-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-username {
+  font-family: 'Colfax-Bold';
+  color: #595959;
+  font-size: 14px;
+  padding-bottom: 10px;
+  padding-left:10px;
+}
+
+.unfollow {
+  font-size: 24px;
+  margin-right: 15px;
+}
+
+.users-container {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.action-btn {
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 8px;
+  width: 74px;
+  height: 26px;
+  border-radius: 4px;
+  cursor: pointer;
+  border: solid 1px #ff5f36;
+
+  &.follow {
+    background-color: white;
+  }
+
+  &.following {
+    background-color: #ff5f36;
+  }
+
+  span {
+    font-family: 'Colfax-Medium';
+    font-size: 12px;
+    font-weight: 500;
+    text-align: center;
+
+    &.follow-text {
+      color: #ff5f36;
+    }
+
+    &.following-text {
+      color: #f9f9f9;
+    }
+  }
+}

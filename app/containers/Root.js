@@ -13,7 +13,6 @@ import Landing                  from './Landing';
 import HomeContainer            from './HomeContainer';
 import ProfileContainer         from './ProfileContainer';
 import SettingsContainer        from './SettingsContainer';
-import FriendsContainer         from './FriendsContainer';
 import IntroContainer           from './IntroContainer';
 import InvitationIntroContainer from './InvitationIntroContainer';
 import InviteContainer          from './InviteContainer';
@@ -57,7 +56,6 @@ class Root extends Component {
               <Route path='/home'     component={HomeContainer}     onEnter={this.authenticated()} />
               <Route path='/user/:id' component={ProfileContainer}  onEnter={this.authenticated()} />
               <Route path='/settings' component={SettingsContainer} onEnter={this.authenticated()} />
-              <Route path='/friends'  component={FriendsContainer}  onEnter={this.authenticated()} />
               <Route path='/invite'   component={InviteContainer}   onEnter={this.authenticated()} />
             </Switch>
           </App>

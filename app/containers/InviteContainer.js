@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import {connect} from 'react-redux';
-import { inviteUser, addFriendByCode } from '../actions/friends';
+import { inviteUser, addFriendByCode } from '../actions/invite';
 import Invite from '../components/Invite';
 
 class InviteContainer extends Component {
@@ -12,10 +12,10 @@ class InviteContainer extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const { user, friends } = state;
+  const { user, invite } = state;
   return {
     user,
-    friends
+    invite
   }
 };
 

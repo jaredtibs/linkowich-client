@@ -1,7 +1,13 @@
 import React, { Component, PropTypes } from 'react';
 import {connect} from 'react-redux';
-import {fetchUserProfile, updateAvatar} from '../actions/profile';
-import {castVote} from '../actions/feed';
+import {
+  fetchUserProfile,
+  updateAvatar,
+  toggleProfileContext,
+  updateFollowRelationship,
+} from '../actions/profile';
+
+import { castVote } from '../actions/feed';
 import Profile from '../components/Profile';
 
 class ProfileContainer extends Component {
@@ -16,10 +22,11 @@ class ProfileContainer extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const { user, profile } = state;
+  const { user, profile, friends } = state;
   return {
     user,
-    profile
+    profile,
+    friends
   }
 };
 
@@ -35,6 +42,18 @@ const mapDispatchToProps = (dispatch) => {
 
     castVote: (linkId, type, context) => {
       dispatch(castVote(linkId, type, context))
+    },
+
+    toggleProfileContext: (context, userId) => {
+      dispatch(toggleProfileContext(context, userId))
+    },
+
+    followUser: (userId) => {
+      dispatch(updateFollowRelationship(userId, 'follow'))
+    },
+
+    unfollowUser: (userId) => {
+      dispatch(updateFollowRelationship(userId, 'unfollow'))
     }
   }
 };
