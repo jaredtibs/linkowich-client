@@ -17,11 +17,11 @@ class EmptyFeedCTA extends Component {
           <div className="add-header">
             LOOKS LIKE YOU NEED A BUDDY
           </div>
-          <div className="add-btn">
-            <Link to="/invite">
+          <Link className="invite-link-container" to="/invite">
+            <div className="add-btn">
               INVITE A FRIEND
-            </Link>
-          </div>
+            </div>
+          </Link>
         </div>
       </div>
     )
