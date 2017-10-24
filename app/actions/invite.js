@@ -1,3 +1,5 @@
+import { authToken } from './auth';
+
 export function addFriendByCode(code) {
   return dispatch => {
     dispatch(submitting());
