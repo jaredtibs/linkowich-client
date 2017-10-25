@@ -42,6 +42,10 @@ class Feed extends Component {
     }
   }
 
+  refreshFeed() {
+    this.props.fetchLinks();
+  }
+
   render() {
     const { links, isFetching } = this.props.feed;
 
@@ -51,7 +55,7 @@ class Feed extends Component {
           <div>
             <span className="feed-header"> Friendly Fire </span>
           </div>
-          <div className="refresh-feed-btn">
+          <div className="refresh-feed-btn" onClick={this.refreshFeed.bind(this)}>
             <i className="material-icons">refresh</i>
             <span>Refresh</span>
           </div>
