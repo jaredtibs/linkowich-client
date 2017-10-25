@@ -107,17 +107,20 @@
   .past-vote-icon {
     color: #fd7350;
     padding-bottom: 4px;
-    font-size: 13px;
+    font-size: 15px;
   }
 
   .past-vote-count {
+    font-family: 'Colfax-Bold';
+    font-size: 11px;
     color: #fd7350;
   }
 
   .vote-count {
+    font-family: 'Colfax-Bold';
     font-size: 11px;
     color: #8b8a8a;
-    font-family: 'Colfax-Regular';
+    padding-top: 1px;
 
     &.voted {
       color: #fd7350;
@@ -127,11 +130,10 @@
   .vote-icon {
     color: #737373;
     font-size: 16px !important;
-    padding-left: 1px;
     padding-top: 1px;
 
     &.profile {
-      padding-top: 2px;
+      padding-top: 3px;
       font-size: 14px !important;
     }
 

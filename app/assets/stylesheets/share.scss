@@ -96,19 +96,20 @@
   justify-content: center;
 
   .my-vote-count {
-    font-family: 'Colfax-Regular';
+    font-family: 'Colfax-Bold';
     font-size: 11px;
-    color: #737373;
-    padding-bottom: 1px;
+    color: #8b8a8a;
+    padding-top: 1px;
 
     &.voted-for {
-      color: #ff5f36;
+      color: #fd7350;
     }
   }
 
   .votes-icon {
     color: #737373;
     font-size: 16px !important;
+    padding-top: 1px;
 
     &.voted-for {
       color: #ff5f36;

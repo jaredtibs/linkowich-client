@@ -140,9 +140,7 @@ class Share extends Component {
 
   renderMyScore() {
     const { currentLink } = this.props.share;
-    const hasVotes = currentLink.attributes['vote-count'] > 0;
-    return null;
-    /*
+    const hasVotes = currentLink.attributes['upvote-count'] > 0;
     return(
       <div className="my-vote-container">
         <span className={cx("my-vote-count", {"voted-for": hasVotes})}>
@@ -153,7 +151,6 @@ class Share extends Component {
         </i>
       </div>
     )
-    */
   }
 
   renderLinkOrEditField() {
