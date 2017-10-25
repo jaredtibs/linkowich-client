@@ -39,9 +39,10 @@ class FeedLink extends Component {
   }
 
   renderSeenBy(names) {
-    const displayed = names.slice(0,3);
-    const rest = names.slice(3, -1);
-    let text = "seen by " + names.slice(0, 3).join(', ');
+    const displayed = names.slice(0, 2);
+    const rest = names.slice(1, -1);
+
+    let text = "seen by " + displayed.join(', ');
     if (rest.length > 0) {
       let otherText = rest.length === 1 ? "other" : "others"
       text += " & " + rest.length + " " + otherText;
