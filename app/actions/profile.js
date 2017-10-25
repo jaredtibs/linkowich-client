@@ -27,7 +27,7 @@ export function fetchUserProfile(id) {
     .then((response) => response.json())
     .then((responseData) => {
       dispatch(profileFetched(responseData.data))
-      dispatch(fetchHistoricalLinkData(id))
+      dispatch(toggleProfileContext("history", id))
     })
     .catch(error => console.log(error))
   }

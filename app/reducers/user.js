@@ -35,8 +35,9 @@ export default function user(state=initialState, action) {
         hasError: false,
         loggedIn: true
       };
-    case 'LOGGED_OUT':
-      return initialState;
+      //moved to root reducer
+      //case 'LOGGED_OUT':
+      //return initialState;
     case 'LOGIN_ERROR':
       return {
         ...state,

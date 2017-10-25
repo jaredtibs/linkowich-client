@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux'
 import styles from '../assets/stylesheets/landing.scss';
 import formStyles from '../assets/stylesheets/landing_forms.scss';
 import cx from 'classnames';
@@ -80,4 +81,8 @@ class Landing extends Component {
   }
 }
 
-export default Landing;
+const mapStateToProps = (state) => {
+  return state;
+};
+
+export default connect(mapStateToProps)(Landing);

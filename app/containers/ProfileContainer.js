@@ -12,10 +12,12 @@ import Profile from '../components/Profile';
 
 class ProfileContainer extends Component {
   render() {
+    const { match } = this.props;
+
     return(
       <Profile {...this.props }
-        userId={this.props.match.params.id}
-        mine={this.props.match.params.id === "me"}
+        userId={match.params.id}
+        mine={match.params.id === "me"}
       />
     )
   }
