@@ -17,7 +17,6 @@ const appReducer = combineReducers({
 
 const rootReducer = (state, action) => {
   if (action.type === 'LOGGED_OUT') {
-    console.log("in root reducer - wiping state")
     state = undefined
   }
 
