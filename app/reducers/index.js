@@ -6,7 +6,7 @@ import feed    from '../reducers/feed'
 import profile from '../reducers/profile'
 import invite  from '../reducers/invite'
 
-const rootReducer = combineReducers({
+const appReducer = combineReducers({
   user,
   feed,
   share,
@@ -15,4 +15,13 @@ const rootReducer = combineReducers({
   router
 })
 
-export default rootReducer
+const rootReducer = (state, action) => {
+  if (action.type === 'LOGGED_OUT') {
+    console.log("in root reducer - wiping state")
+    state = undefined
+  }
+
+  return appReducer(state, action)
+}
+
+export default rootReducer;

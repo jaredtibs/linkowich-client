@@ -50,8 +50,8 @@ class Root extends Component {
                   <Redirect to="/landing"/>
                 )
               )}/>
-              <Route path='/landing'          component={Landing} />
-              <Route path='/intro'            component={IntroContainer} onEnter={this.authenticated()} />
+              <Route path='/landing' component={Landing} />
+              <Route path='/intro'   component={IntroContainer} onEnter={this.authenticated()} />
               <Route path='/invitation-intro' component={InvitationIntroContainer} onEnter={this.authenticated()} />
               <Route path='/home'     component={HomeContainer}     onEnter={this.authenticated()} />
               <Route path='/user/:id' component={ProfileContainer}  onEnter={this.authenticated()} />

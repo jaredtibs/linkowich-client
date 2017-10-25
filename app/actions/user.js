@@ -86,15 +86,18 @@ export function handleError(errors) {
 
 export function logout() {
   return dispatch => {
-    localStorage.removeItem('userToken');
-    dispatch(replace("/login"))
-    return {
-      type: "LOGGED_OUT"
-    }
+    dispatch(logOutUser())
+    dispatch(replace("/landing"))
   }
 }
 
-//TODO
+export function logOutUser() {
+  localStorage.removeItem('userToken');
+  return {
+    type: "LOGGED_OUT"
+  }
+}
+
 export function resetPassword() {
   return dispatch => {
     dispatch(submitting())

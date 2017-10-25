@@ -36,11 +36,14 @@
 .refresh-feed-btn {
   width: 76px;
   height: 26px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
+
+  div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
 
   span {
     font-family: 'Colfax-Medium';

@@ -55,9 +55,14 @@ class Feed extends Component {
           <div>
             <span className="feed-header"> Friendly Fire </span>
           </div>
+
           <div className="refresh-feed-btn" onClick={this.refreshFeed.bind(this)}>
-            <i className="material-icons">refresh</i>
-            <span>Refresh</span>
+            { !isFetching && links.length > 0 ?
+              <div>
+                <i className="material-icons">refresh</i>
+                <span>Refresh</span>
+              </div>
+            : null }
           </div>
         </div>
 
