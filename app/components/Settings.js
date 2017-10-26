@@ -85,7 +85,7 @@ class Settings extends Component {
                 <a className="bottom-btn" href="#" onClick={() => this.props.logout() }>Logout</a>
               </div>
               <div className="settings-option">
-                <a className="bottom-btn" href="#" onClick={() => this.quitApp() }>Quit App</a>
+                <a className="bottom-btn" href="#" onClick={() => this.quitApp() }>Quit</a>
               </div>
             </div>
           </div>
