@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import styles from '../assets/stylesheets/settings.scss';
+const { app } = window.require('electron');
 
 class Settings extends Component {
   constructor(props) {
@@ -79,6 +80,9 @@ class Settings extends Component {
               <div className="settings-option">
                 <a className="bottom-btn" href="#" onClick={() => this.props.logout() }>Logout</a>
               </div>
+              <div className="settings-option">
+                <a className="bottom-btn" href="#" onClick={() => app.quit() }>Quit App</a>
+              </div>
             </div>
           </div>
         </div>
@@ -88,16 +92,3 @@ class Settings extends Component {
 }
 
 export default Settings;
-/*
- upgrade to premium
- change password
- blocked users
-
- FAQ
- Report a problem
-
- website
- Privacy Policy
- Terms
-
-*/
