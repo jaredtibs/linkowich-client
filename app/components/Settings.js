@@ -1,10 +1,14 @@
 import React, { Component, PropTypes } from 'react';
 import styles from '../assets/stylesheets/settings.scss';
-const { app } = window.require('electron');
+const { ipcRenderer } = window.require('electron');
 
 class Settings extends Component {
   constructor(props) {
     super(props)
+  }
+
+  quitApp() {
+    ipcRenderer.send('quit-app');
   }
 
   render() {
@@ -81,7 +85,7 @@ class Settings extends Component {
                 <a className="bottom-btn" href="#" onClick={() => this.props.logout() }>Logout</a>
               </div>
               <div className="settings-option">
-                <a className="bottom-btn" href="#" onClick={() => app.quit() }>Quit App</a>
+                <a className="bottom-btn" href="#" onClick={() => this.quitApp() }>Quit App</a>
               </div>
             </div>
           </div>

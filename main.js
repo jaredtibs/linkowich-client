@@ -159,3 +159,7 @@ ipcMain.on('show-window', () => {
 ipcMain.on('links-updated', (event, links) => {
   tray.setImage(path.join(assetsDirectory, '/images/active_tray_icon.png'))
 })
+
+ipcMain.on('quit-app', () => {
+  app.quit();
+})
