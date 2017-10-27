@@ -1,3 +1,5 @@
+const { ipcRenderer } = window.require('electron');
+
 import React, { Component, PropTypes } from 'react';
 import styles from '../assets/stylesheets/share.scss';
 import cx from 'classnames';
@@ -12,12 +14,16 @@ class Share extends Component {
       urlValid: true,
       isEditing: false,
       awaitingClearConfirmation: false,
-      shared: false
+      shared: false,
+      newUpvotes: false
     }
 
     this.state = this.defaultState;
     this.mounted = false;
-    this.successfulShare = false;
+
+    ipcRenderer.on('app-opened', () => {
+      this.props.fetchScore();
+    })
   }
 
   componentDidMount() {
@@ -29,10 +35,16 @@ class Share extends Component {
   componentDidUpdate(prevProps, prevState) {
     const { currentLink, publishingLink } = this.props.share;
     const prevPublishingLink = prevProps.share.publishingLink;
+    const prevLink = prevProps.share.currentLink;
 
     if (prevPublishingLink === true && publishingLink === false && currentLink) {
       this.setState({shared: true})
       setTimeout(() => this.setState({shared: false}), 2000)
+    }
+
+    if ((prevLink && currentLink) && prevLink.attributes['upvote-count'] < currentLink.attributes['upvote-count']) {
+      this.setState({newUpvotes: true})
+      setTimeout(() => this.setState({newUpvotes: false}), 2000)
     }
   }
 
@@ -142,9 +154,13 @@ class Share extends Component {
   renderMyScore() {
     const { currentLink } = this.props.share;
     const hasVotes = currentLink.attributes['upvote-count'] > 0;
+
     return(
-      <div className="my-vote-container">
-        <span className={cx("my-vote-count", {"voted-for": hasVotes})}>
+      <div className={cx("my-vote-container",{"new-upvotes": this.state.newUpvotes})}>
+        <span className={cx("my-vote-count", {
+          "voted-for": hasVotes,
+          "new-upvote-count": this.state.newUpvotes
+        })}>
           +{currentLink.attributes['upvote-count']}
         </span>
         <i className={cx("material-icons votes-icon", {"voted-for": hasVotes})}>

@@ -19,6 +19,25 @@ export function fetchCurrentLink() {
   }
 }
 
+export function fetchScore() {
+  return dispatch => {
+    return fetch("http://localhost:3000/api/v1/links/me", {
+      method: "GET",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Token ' + authToken()
+      }
+    })
+    .then((response) => response.json())
+    .then((responseData) => {
+      dispatch(linkFetched(responseData));
+    })
+    .catch(error => console.log(error))
+  }
+
+}
+
 export function fetchingLink() {
   return {
     type: "FETCHING_CURRENT_LINK"
