@@ -96,6 +96,12 @@
   justify-content: center;
   cursor: default;
 
+  &.new-upvotes {
+    animation: pulseNewUpvotes;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+  }
+
   .my-vote-count {
     font-family: 'Colfax-Bold';
     font-size: 11px;
@@ -114,10 +120,6 @@
 
     &.voted-for {
       color: #ff5f36;
-    }
-
-    &.new-vote {
-      animation: pulseNewVote;
     }
   }
 
@@ -277,8 +279,6 @@
 .share-border-bottom {
   position: absolute;
   box-shadow: 0px 1px 1px 0px #fd7350;
-  //for just the fire bottom
-  //box-shadow: 0px 1px 1px 1px #fd7350;
   top: 100%;
   bottom: 0%;
   right: 50%;
@@ -319,13 +319,13 @@
   }
 }
 
-@keyframes pulseNewVote {
+@keyframes pulseNewUpvotes {
   from {
     transform: scale3d(1, 1, 1);
   }
 
   50% {
-    transform: scale3d(1.05, 1.05, 1.05);
+    transform: scale3d(1.5, 1.5, 1.5);
   }
 
   to {

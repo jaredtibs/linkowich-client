@@ -131,6 +131,7 @@ function showWindow() {
   window.setPosition(position.x, position.y, false)
   window.show()
   window.focus()
+  window.webContents.send('app-opened')
   toggleTrayIcon()
 }
 

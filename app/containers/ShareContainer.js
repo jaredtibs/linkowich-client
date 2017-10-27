@@ -4,6 +4,7 @@ import Share from '../components/Share';
 import {
   publishLink,
   fetchCurrentLink,
+  fetchScore,
   clearLink } from '../actions/share';
 
 class ShareContainer extends Component {
@@ -30,6 +31,10 @@ const mapDispatchToProps = (dispatch) => {
 
     fetchCurrentLink: () => {
       dispatch(fetchCurrentLink())
+    },
+
+    fetchScore: () => {
+      dispatch(fetchScore())
     },
 
     clearLink: () => {
