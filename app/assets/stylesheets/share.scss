@@ -98,7 +98,7 @@
 
   &.new-upvotes {
     animation: pulseNewUpvotes;
-    animation-duration: 1.5s;
+    animation-duration: 2s;
     animation-fill-mode: both;
   }
 
@@ -114,7 +114,7 @@
 
     &.new-upvote-count {
       animation: flipInVoteCount;
-      animation-delay: .25s;
+      animation-delay: .5s;
       animation-duration: 1.5s;
     }
   }
