@@ -157,7 +157,10 @@ class Share extends Component {
 
     return(
       <div className={cx("my-vote-container",{"new-upvotes": this.state.newUpvotes})}>
-        <span className={cx("my-vote-count", {"voted-for": hasVotes})}>
+        <span className={cx("my-vote-count", {
+          "voted-for": hasVotes,
+          "new-upvote-count": this.state.newUpvotes
+        })}>
           +{currentLink.attributes['upvote-count']}
         </span>
         <i className={cx("material-icons votes-icon", {"voted-for": hasVotes})}>
