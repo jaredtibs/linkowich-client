@@ -1,4 +1,4 @@
-const { shell } = window.require('electron');
+const { shell, ipcRenderer } = window.require('electron');
 
 import React, { Component, PropTypes } from 'react';
 import FeedLink from './FeedLink'
@@ -10,10 +10,14 @@ import EmptyFeedCTA from './EmptyFeedCTA';
 class Feed extends Component {
   constructor(props) {
     super(props)
+
+    ipcRenderer.on('app-opened', () => {
+      this.props.fetchLinks(false);
+    })
   }
 
   componentDidMount() {
-    this.props.fetchLinks();
+    this.props.fetchLinks(true);
   }
 
   handleLinkClick(link) {
@@ -43,7 +47,7 @@ class Feed extends Component {
   }
 
   refreshFeed() {
-    this.props.fetchLinks();
+    this.props.fetchLinks(true);
   }
 
   render() {

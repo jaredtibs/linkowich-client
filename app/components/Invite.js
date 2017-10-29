@@ -15,7 +15,7 @@ class Invite extends Component {
       codeValid: true,
       codeValidationError: '',
       codePlaceholder: "GOT A FRIEND'S CODE?",
-      emailPlaceholder: "SEND IT",
+      emailPlaceholder: "INVITE A FRIEND",
       codeSubheader: "Ask Around",
       emailSubheader: "Email, duh..."
     }
@@ -78,7 +78,7 @@ class Invite extends Component {
     if (type === "code") {
       this.setState({codePlaceholder: "GOT A FRIEND'S CODE?"})
     } else {
-      this.setState({emailPlaceholder: "SEND IT"})
+      this.setState({emailPlaceholder: "INVITE A FRIEND"})
     }
   }
 

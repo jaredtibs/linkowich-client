@@ -1,8 +1,10 @@
 import { authToken } from './auth';
 
-export function fetchLinks() {
+export function fetchLinks(showLoader=true) {
   return dispatch => {
-    dispatch(fetchingLinks());
+    if (showLoader === true) {
+      dispatch(fetchingLinks());
+    }
     return fetch('http://localhost:3000/api/v1/links', {
       method: "GET",
       headers: {

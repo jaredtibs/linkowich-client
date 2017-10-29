@@ -25,8 +25,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchLinks: () => {
-      dispatch(fetchLinks())
+    fetchLinks: (showLoader) => {
+      dispatch(fetchLinks(showLoader))
     },
 
     markLinkSeen: (linkId) => {
