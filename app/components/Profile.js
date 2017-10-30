@@ -2,6 +2,7 @@ const { shell, ipcRenderer } = window.require('electron');
 
 import React, { Component, PropTypes } from 'react';
 import styles from '../assets/stylesheets/profile.scss';
+import AvatarEditor from 'react-avatar-editor'
 import PastLink from './PastLink';
 import ListLoader from './ListLoader';
 import SimpleSpinner from './SimpleSpinner';
@@ -13,8 +14,13 @@ class Profile extends Component {
   constructor(props) {
     super(props)
 
+    this.state = {
+      selectedImage: null
+    }
+
     ipcRenderer.on('open-finder-reply', (event, fileData) => {
-      this.props.updateAvatar(fileData)
+      //this.props.updateAvatar(fileData)
+      this.setState({selectedImage: fileData})
     });
   }
 
@@ -34,21 +40,40 @@ class Profile extends Component {
     this.props.castVote(postId, type, context)
   }
 
+  renderAvatarEditor() {
+    return(
+      <div className="profile-avatar-container">
+        <AvatarEditor
+          image="https://upload.wikimedia.org/wikipedia/en/b/b0/Avatar-Teaser-Poster.jpg"
+          width={120}
+          height={120}
+          borderRadius={110}
+          scale={1.2}
+          rotate={0}
+        />
+      </div>
+    )
+  }
+
   renderProfileInfo() {
     const { profile, mine } = this.props;
     const avatarSrc = (profile.avatar && profile.avatar.large.url) ? profile.avatar.large.url : defaultAvatar;
 
     return(
       <div>
-        <div className={cx("profile-avatar-container", {"mine": mine})}
-             onClick={mine ? this.handleAvatarClick.bind(this) : null}>
-          { mine ?
-            <div className="img__overlay">
-              <i className="material-icons edit-icon">mode_edit</i>
-            </div>
-            : null }
-          <img className="profile-avatar" src={avatarSrc} />
-        </div>
+        { this.state.selectedImage ?
+          this.renderAvatarEditor()
+          :
+          <div className={cx("profile-avatar-container", {"mine": mine})}
+              onClick={mine ? this.handleAvatarClick.bind(this) : null}>
+            { mine ?
+              <div className="img__overlay">
+                <i className="material-icons edit-icon">mode_edit</i>
+              </div>
+              : null }
+            <img className="profile-avatar" src={avatarSrc} />
+          </div>
+        }
 
         <input type="file" id="file" ref="fileUploader" style={{display: "none"}}/>
 

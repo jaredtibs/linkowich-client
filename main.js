@@ -87,8 +87,8 @@ function createWindow () {
   ipcMain.on('open-finder', function(event, arg) {
     let properties = { properties: ['openFile'], filters: [{name: 'Images', extensions: ['jpg', 'png', 'jpeg']}] }
     let filePath = dialog.showOpenDialog(window, properties);
-    let fileData = filePath ? getBase64(filePath[0]) : null
-    event.sender.send('open-finder-reply', fileData);
+    //let fileData = filePath ? getBase64(filePath[0]) : null
+    event.sender.send('open-finder-reply', filePath[0]);
   });
 }
 
