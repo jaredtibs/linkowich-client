@@ -4,8 +4,6 @@ import styles from '../assets/stylesheets/link.scss';
 import cx from 'classnames';
 import CopyToClipboard from 'react-copy-to-clipboard';
 
-const defaultAvatar = require("../assets/images/default_avatar_blue.svg")
-
 class FeedLink extends Component {
   constructor(props) {
     super(props)
