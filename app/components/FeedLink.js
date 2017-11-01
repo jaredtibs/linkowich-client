@@ -4,8 +4,6 @@ import styles from '../assets/stylesheets/link.scss';
 import cx from 'classnames';
 import CopyToClipboard from 'react-copy-to-clipboard';
 
-const defaultAvatar = require("../assets/images/default_avatar_blue.svg")
-
 class FeedLink extends Component {
   constructor(props) {
     super(props)
@@ -60,7 +58,8 @@ class FeedLink extends Component {
     const user = link.attributes.user.data;
     const userAttributes = user.attributes;
     const { avatar, username } = userAttributes;
-    const avatar_src = avatar.url ? avatar.url : defaultAvatar;
+    const defaultAvatarColor = user.attributes['default-avatar-color'];
+    const avatarSrc = avatar.url || require(`../assets/images/default_avatar_${defaultAvatarColor}.svg`);
 
     return(
       <div className='link-row'
@@ -71,7 +70,7 @@ class FeedLink extends Component {
           <div className="link-meta-container">
             <Link to={`/user/${user.id}`}>
               <div className="avatar">
-                <img src={avatar_src} width={30} height={30} />
+                <img src={avatarSrc} width={30} height={30} />
               </div>
             </Link>
             <div className="meta-text">

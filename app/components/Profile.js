@@ -7,7 +7,6 @@ import ListLoader from './ListLoader';
 import SimpleSpinner from './SimpleSpinner';
 import UserList from './UserList';
 import cx from 'classnames';
-const defaultAvatar = require("../assets/images/default_avatar_blue.svg")
 
 class Profile extends Component {
   constructor(props) {
@@ -36,7 +35,12 @@ class Profile extends Component {
 
   renderProfileInfo() {
     const { profile, mine } = this.props;
-    const avatarSrc = (profile.avatar && profile.avatar.large.url) ? profile.avatar.large.url : defaultAvatar;
+    let avatarSrc;
+    if (profile.avatar && profile.avatar.large.url) {
+      avatarSrc = profile.avatar.large.url
+    } else if (profile.defaultAvatarColor) {
+      avatarSrc = require(`../assets/images/default_avatar_${profile.defaultAvatarColor}.svg`)
+    }
 
     return(
       <div>
