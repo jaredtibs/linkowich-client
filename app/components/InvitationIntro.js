@@ -2,7 +2,6 @@ import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router-dom';
 import styles from '../assets/stylesheets/intro.scss';
 import cx from 'classnames';
-const defaultAvatar = require("../assets/images/default_avatar_blue.svg")
 
 class InvitationIntro extends Component {
   constructor(props) {
@@ -30,7 +29,8 @@ class InvitationIntro extends Component {
     const sender = invitation.attributes.sender.data;
     const senderAttributes = sender.attributes;
     const { avatar, username } = senderAttributes;
-    const avatarSrc = avatar.url ? avatar.url : defaultAvatar;
+    const defaultAvatarColor = sender.attributes['default-avatar-color'];
+    const avatarSrc = avatar.url || require(`../assets/images/default_avatar_${defaultAvatarColor}.svg`);
 
     return(
       <div className="invitation-header-container">

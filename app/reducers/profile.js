@@ -2,6 +2,7 @@
 //and friends profiles
 const initialState = {
   username: '',
+  defaultAvatarColor: '',
   avatar: '',
   score: 0,
   profileContext: 'history',
@@ -31,6 +32,7 @@ export default function profile(state=initialState, action) {
         isFetchingInfo: false,
         username: action.data.username,
         avatar: action.data.avatar,
+        defaultAvatarColor: action.data['default-avatar-color'],
         score: action.data.upvotes
       };
     case 'PROFILE_CONTEXT_TOGGLED':

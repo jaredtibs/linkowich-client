@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import EmptyFeedCTA from './EmptyFeedCTA';
-const defaultAvatar = require("../assets/images/default_avatar_blue.svg")
 import styles from '../assets/stylesheets/user_list.scss';
 
 class UserList extends Component {
@@ -15,13 +14,14 @@ class UserList extends Component {
     if (users.length > 0) {
       const userList = users.map((user, index) => {
         const { avatar, username } = user.attributes;
-        const avatar_src = avatar.url ? avatar.url : defaultAvatar;
+        const defaultAvatarColor = user.attributes['default-avatar-color'];
+        const avatarSrc = avatar.url || require(`../assets/images/default_avatar_${defaultAvatarColor}.svg`);
 
         return(
           <div key={user.id} className="user-row">
             <div className="user-info-container">
               <div className="user-avatar">
-                <img src={avatar_src} width={40} height={40} />
+                <img src={avatarSrc} width={40} height={40} />
               </div>
               <div className="user-username">{username}</div>
             </div>
