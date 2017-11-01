@@ -32,6 +32,10 @@ class Share extends Component {
     setTimeout(() => this.mounted = false, 2000);
   }
 
+  componentWillUnmount() {
+    //this.shareBorder.removeEventListener('animationend', this.handleAnimationEnd);
+  }
+
   componentDidUpdate(prevProps, prevState) {
     const { currentLink, publishingLink } = this.props.share;
     const prevPublishingLink = prevProps.share.publishingLink;
@@ -114,7 +118,6 @@ class Share extends Component {
   renderMyLink() {
     const { currentLink, fetchingLink } = this.props.share;
     const displayLink = (currentLink && currentLink.attributes.url)
-    console.log(this.state.shared)
 
     return(
       <div className="my-link-container" onClick={this.toggleEditing.bind(this)}>
@@ -126,7 +129,10 @@ class Share extends Component {
             { displayLink ? this.truncate(currentLink.attributes.url) : "Share some fire" }
           </span>
         </div>
-        <div className={cx("shared-border-bottom", {"active": this.state.shared})}></div>
+        <div
+          ref={(linkBorderBtm) => { this.shareBorder = linkBorderBtm; }}
+          className={cx("shared-border-bottom", {"active": this.state.shared})}>
+        </div>
       </div>
     )
   }

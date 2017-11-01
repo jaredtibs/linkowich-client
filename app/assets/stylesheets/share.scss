@@ -236,6 +236,11 @@
     animation-fill-mode: both;
   }
 
+  //&.shared {
+   // animation: shareSuccess;
+   // animation-fill-mode: both;
+  //}
+
   &.empty {
     color: rgba(71, 71, 71, .50);
   }
@@ -319,16 +324,33 @@
   }
 }
 
-//box-shadow: 1px 1px 1px 2px #fd7350;
 @keyframes sharedOutlineBottom {
   from {
     box-shadow: 0px 1px 0px 1px #fd7350;
     left: 0%;
     right: 100%;
   }
+
   to {
     box-shadow: 0px 1px 0px 1px #fd7350;
     left: 0%;
     right: 0%;
+  }
+}
+
+@keyframes shareSuccess {
+  from {
+    color: rgba(71, 71, 71, .70);
+    transform: scale3d(1, 1, 1);
+  }
+
+  50% {
+    color: #fd7350;
+    transform: scale3d(1.05, 1.05, 1.05);
+  }
+
+  to {
+    color: rgba(71, 71, 71, .70);
+    transform: scale3d(1, 1, 1);
   }
 }
