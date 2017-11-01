@@ -27,13 +27,14 @@ class Share extends Component {
   }
 
   componentDidMount() {
+    this.linkBtmBorder.addEventListener('animationend', this.handleAnimationEnd.bind(this));
     this.props.fetchCurrentLink();
     this.mounted = true;
     setTimeout(() => this.mounted = false, 2000);
   }
 
   componentWillUnmount() {
-    //this.shareBorder.removeEventListener('animationend', this.handleAnimationEnd);
+    this.linkBtmBorder.removeEventListener('animationend', this.handleAnimationEnd.bind(this));
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -43,13 +44,17 @@ class Share extends Component {
 
     if (prevPublishingLink === true && publishingLink === false && currentLink) {
       this.setState({shared: true})
-      setTimeout(() => this.setState({shared: false}), 2000)
+      setTimeout(() => this.setState({shared: false}), 1000)
     }
 
     if ((prevLink && currentLink) && prevLink.attributes['upvote-count'] < currentLink.attributes['upvote-count']) {
       this.setState({newUpvotes: true})
-      setTimeout(() => this.setState({newUpvotes: false}), 1000)
+      setTimeout(() => this.setState({newUpvotes: false}), 2000)
     }
+  }
+
+  handleAnimationEnd(event) {
+    console.log("in handle animation end")
   }
 
   handleChange(event) {
@@ -130,7 +135,7 @@ class Share extends Component {
           </span>
         </div>
         <div
-          ref={(linkBorderBtm) => { this.shareBorder = linkBorderBtm; }}
+          ref={(linkBorderBtm) => { this.linkBtmBorder = linkBorderBtm; }}
           className={cx("shared-border-bottom", {"active": this.state.shared})}>
         </div>
       </div>
