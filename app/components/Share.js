@@ -44,7 +44,7 @@ class Share extends Component {
 
     if ((prevLink && currentLink) && prevLink.attributes['upvote-count'] < currentLink.attributes['upvote-count']) {
       this.setState({newUpvotes: true})
-      setTimeout(() => this.setState({newUpvotes: false}), 2000)
+      setTimeout(() => this.setState({newUpvotes: false}), 1000)
     }
   }
 
@@ -114,6 +114,7 @@ class Share extends Component {
   renderMyLink() {
     const { currentLink, fetchingLink } = this.props.share;
     const displayLink = (currentLink && currentLink.attributes.url)
+    console.log(this.state.shared)
 
     return(
       <div className="my-link-container" onClick={this.toggleEditing.bind(this)}>
@@ -125,10 +126,7 @@ class Share extends Component {
             { displayLink ? this.truncate(currentLink.attributes.url) : "Share some fire" }
           </span>
         </div>
-        <div className={cx("share-border-left",  {"active": false})}></div>
-        <div className={cx("share-border-top",   {"active": false})}></div>
-        <div className={cx("share-border-right", {"active": false})}></div>
-        <div className={cx("share-border-bottom",{"active": false})}></div>
+        <div className={cx("shared-border-bottom", {"active": this.state.shared})}></div>
       </div>
     )
   }

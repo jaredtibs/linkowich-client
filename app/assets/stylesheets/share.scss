@@ -246,61 +246,18 @@
   font-size: 11px;
 }
 
-.share-border-left {
-  position: absolute;
-  box-shadow: 0px 1px 1px 0px #fd7350;
-  top: 50%;
-  bottom: 50%;
-  left: 0%;
-}
-
-.share-border-right {
-  position: absolute;
-  box-shadow: 0px 1px 1px 0px #fd7350;
-  top: 50%;
-  bottom: 50%;
-  right: 0%;
-}
-
-.share-border-top {
-  position: absolute;
-  box-shadow: 0px 1px 1px 0px #fd7350;
-  top: 0%;
-  bottom: 100%;
-  left: 50%;
-  right: 50%;
-}
-
-.share-border-bottom {
+.shared-border-bottom {
   position: absolute;
   box-shadow: 0px 1px 1px 0px #fd7350;
   top: 100%;
   bottom: 0%;
-  right: 50%;
-  left: 50%;
+  left: 0%;
+  right: 100%;
 }
 
-.share-border-left.active {
-  animation: shareOutlineLeft;
-  animation-duration: 0.5s;
-  animation-fill-mode: forwards;
-}
-
-.share-border-right.active {
-  animation: shareOutlineRight;
-  animation-duration: 0.5s;
-  animation-fill-mode: forwards;
-}
-
-.share-border-top.active {
-  animation: shareOutlineTop;
-  animation-duration: 0.25s;
-  animation-fill-mode: forwards;
-}
-
-.share-border-bottom.active {
-  animation: shareOutlineBottom;
-  animation-duration: 0.25s;
+.shared-border-bottom.active {
+  animation: sharedOutlineBottom;
+  animation-duration: 1s;
   animation-fill-mode: forwards;
 }
 
@@ -362,54 +319,16 @@
   }
 }
 
-@keyframes shareOutlineLeft {
+//box-shadow: 1px 1px 1px 2px #fd7350;
+@keyframes sharedOutlineBottom {
   from {
-    box-shadow: 0px 1px 1px 1px #fd7350;
-    top: 50%;
-    bottom: 50%
+    box-shadow: 0px 1px 0px 1px #fd7350;
+    left: 0%;
+    right: 100%;
   }
   to {
-    box-shadow: 0px 1px 1px 1px #fd7350;
-    top: 0%;
-    bottom: 0%
-  }
-}
-
-@keyframes shareOutlineRight {
-  from {
-    box-shadow: 0px 1px 1px 1px #fd7350;
-    top: 50%;
-    bottom: 50%
-  }
-  to {
-    box-shadow: 0px 1px 1px 1px #fd7350;
-    top: 0%;
-    bottom: 0%
-  }
-}
-
-@keyframes shareOutlineTop {
-  from {
-    box-shadow: 0px 1px 1px 1px #fd7350;
-    right: 50%;
-    left: 50%
-  }
-  to {
-    box-shadow: 0px 1px 1px 1px #fd7350;
+    box-shadow: 0px 1px 0px 1px #fd7350;
+    left: 0%;
     right: 0%;
-    left: 0%
-  }
-}
-
-@keyframes shareOutlineBottom {
-  from {
-    box-shadow: 0px 1px 1px 1px #fd7350;
-    right: 50%;
-    left: 50%
-  }
-  to {
-    box-shadow: 0px 1px 1px 1px #fd7350;
-    right: 0%;
-    left: 0%
   }
 }
