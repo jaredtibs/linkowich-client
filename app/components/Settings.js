@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import styles from '../assets/stylesheets/settings.scss';
-const { ipcRenderer } = window.require('electron');
+const { shell, ipcRenderer } = window.require('electron');
 
 class Settings extends Component {
   constructor(props) {
@@ -32,7 +32,10 @@ class Settings extends Component {
                 </a>
               </div>
               <div className="settings-option">
-                <a className="section-btn" href="#">
+                <a className="section-btn" href="#" onClick={(e) => {
+                  e.preventDefault();
+                  shell.openExternal("https://goo.gl/forms/sQ9DOgpZxwKxl3wU2");
+                }}>
                   Submit Feedback
                 </a>
               </div>
@@ -61,7 +64,10 @@ class Settings extends Component {
             </div>
             <div className="options-container">
               <div className="settings-option">
-                <a className="section-btn" href="#">
+                <a className="section-btn" href="#" onClick={(e) => {
+                  e.preventDefault();
+                  shell.openExternal("https://linkowi.ch");
+                }}>
                   Website
                 </a>
               </div>
@@ -80,13 +86,19 @@ class Settings extends Component {
           <div className="settings-section settings-logout">
             <div className="options-container bottom">
               <div className="settings-option">
-                <a className="bottom-btn disabled" href="#">Clear link history</a>
+                <a className="bottom-btn disabled" href="#" onClick={() => this.props.clearLinkHistory() }>
+                  Clear link history
+                </a>
               </div>
               <div className="settings-option">
-                <a className="bottom-btn" href="#" onClick={() => this.props.logout() }>Logout</a>
+                <a className="bottom-btn" href="#" onClick={() => this.props.logout() }>
+                  Logout
+                </a>
               </div>
               <div className="settings-option">
-                <a className="bottom-btn" href="#" onClick={() => this.quitApp() }>Quit</a>
+                <a className="bottom-btn" href="#" onClick={() => this.quitApp() }>
+                  Quit
+                </a>
               </div>
             </div>
           </div>

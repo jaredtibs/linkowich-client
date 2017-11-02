@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import {connect} from 'react-redux';
 import Settings from '../components/Settings';
-import {logout} from '../actions/user';
+import {logout, clearLinkHistory} from '../actions/user';
 
 class SettingsContainer extends Component {
   render() {
@@ -22,6 +22,10 @@ const mapDispatchToProps = (dispatch) => {
   return {
     logout: () => {
       dispatch(logout())
+    },
+
+    clearLinkHistory: () => {
+      dispatch(clearLinkHistory())
     }
   }
 };

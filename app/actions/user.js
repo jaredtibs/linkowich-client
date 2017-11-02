@@ -139,3 +139,20 @@ export function sessionFetched(data) {
     data: data.attributes
   }
 }
+
+export function clearLinkHistory() {
+  return dispatch => {
+    dispatch(clearingHistory());
+    return fetch("http://localhost:3000/api/v1/links", {
+      method: "DELETE",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Token ' + authToken()
+      }
+    })
+    .then((response) => response.json())
+    .then((responseData) => dispatch(historyCleared()))
+    .catch(error => console.log(error))
+  }
+}
