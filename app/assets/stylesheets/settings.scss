@@ -51,6 +51,14 @@
 
 }
 
+#coming-soon {
+  cursor: default;
+  font-family: 'Colfax-Regular';
+  font-size: 11px;
+  color: rgba(0, 213, 214, 0.8);
+  padding-right: 15px;
+}
+
 .settings-option {
   display: flex;
   flex: 1;
@@ -65,6 +73,11 @@
     font-family: 'Colfax-Regular';
     font-size: 13px;
     color: #474747;
+
+    &.disabled {
+      cursor: default;
+      color: rgba(71, 71, 71, 0.4)
+    }
   }
 
   .bottom-btn {

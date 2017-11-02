@@ -21,18 +21,19 @@ class Settings extends Component {
             </div>
             <div className="options-container">
               <div className="settings-option">
-                <a className="section-btn" href="#">
+                <a className="section-btn disabled">
                   Upgrade to premium
                 </a>
-              </div>
-              <div className="settings-option">
-                <a className="section-btn" href="#">
-                  Change password
-                </a>
+                <span id="coming-soon"> coming soon! </span>
               </div>
               <div className="settings-option">
                 <a className="section-btn" href="#">
                   Blocked users
+                </a>
+              </div>
+              <div className="settings-option">
+                <a className="section-btn" href="#">
+                  Submit Feedback
                 </a>
               </div>
             </div>
@@ -79,7 +80,7 @@ class Settings extends Component {
           <div className="settings-section settings-logout">
             <div className="options-container bottom">
               <div className="settings-option">
-                <a className="bottom-btn" href="#">Clear link history</a>
+                <a className="bottom-btn disabled" href="#">Clear link history</a>
               </div>
               <div className="settings-option">
                 <a className="bottom-btn" href="#" onClick={() => this.props.logout() }>Logout</a>
