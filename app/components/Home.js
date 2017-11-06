@@ -35,7 +35,7 @@ class Home extends Component {
     const { followingIds } = this.props.user;
 
     if ( followingIds.includes(message['user_id']) ) {
-      ipcRenderer.send('new-link-published');
+      ipcRenderer.send('links-updated');
     }
   }
 
