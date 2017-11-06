@@ -7,7 +7,7 @@ import {
   updateFollowRelationship,
 } from '../actions/profile';
 
-import { castVote } from '../actions/feed';
+import { castVote, markLinkSeen } from '../actions/feed';
 import Profile from '../components/Profile';
 
 class ProfileContainer extends Component {
@@ -44,6 +44,10 @@ const mapDispatchToProps = (dispatch) => {
 
     castVote: (linkId, type, context) => {
       dispatch(castVote(linkId, type, context))
+    },
+
+    markLinkSeen: (linkId) => {
+      dispatch(markLinkSeen(linkId))
     },
 
     toggleProfileContext: (context, userId) => {
