@@ -23,6 +23,7 @@ class Profile extends Component {
 
   handleLinkClick(link) {
     shell.openExternal(link.attributes.url);
+    this.props.markLinkSeen(link.id)
   }
 
   handleAvatarClick() {
