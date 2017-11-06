@@ -8,6 +8,8 @@ import Pusher from 'pusher-js';
 class Home extends Component {
   constructor(props) {
     super(props)
+
+    this.handleLinkPublished = this.handleLinkPublished.bind(this);
   }
 
   componentWillMount() {
@@ -30,8 +32,11 @@ class Home extends Component {
 
   handleLinkPublished(data) {
     const { message } = data;
-    console.log(message);
-    ipcRenderer.send('new-link-published');
+    const { followingIds } = this.props.user;
+
+    if ( followingIds.includes(message['user_id']) ) {
+      ipcRenderer.send('new-link-published');
+    }
   }
 
   render() {
