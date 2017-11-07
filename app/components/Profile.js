@@ -21,6 +21,12 @@ class Profile extends Component {
     this.props.fetchUserProfile(this.props.userId);
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.userId && prevProps.userId != this.props.userId) {
+      this.props.fetchUserProfile(this.props.userId);
+    }
+  }
+
   handleLinkClick(link) {
     shell.openExternal(link.attributes.url);
     this.props.markLinkSeen(link.id)

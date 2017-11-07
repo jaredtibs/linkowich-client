@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import EmptyFeedCTA from './EmptyFeedCTA';
 import styles from '../assets/stylesheets/user_list.scss';
+import { Link } from 'react-router-dom';
 
 class UserList extends Component {
 
@@ -20,10 +21,17 @@ class UserList extends Component {
         return(
           <div key={user.id} className="user-row">
             <div className="user-info-container">
-              <div className="user-avatar">
-                <img src={avatarSrc} width={40} height={40} />
-              </div>
-              <div className="user-username">{username}</div>
+              <Link to={`/user/${user.id}`} action="REPLACE" className="friend-profile-link">
+                <div className="user-avatar">
+                  <img src={avatarSrc} width={40} height={40} />
+                </div>
+              </Link>
+
+              <Link to={`/user/${user.id}`} action="REPLACE" className="friend-profile-link">
+                <div className="user-username">
+                  {username}
+                </div>
+              </Link>
             </div>
             <div className="user-action-container">
               { user.attributes['is-following'] ?
