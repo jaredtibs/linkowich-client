@@ -28,6 +28,10 @@
   }
 }
 
+.settings-section:first-child {
+  border-top: 0px;
+}
+
 .section-subheader {
   display: flex;
   flex-direction: row;
