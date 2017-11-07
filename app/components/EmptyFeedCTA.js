@@ -19,7 +19,7 @@ class EmptyFeedCTA extends Component {
           </div>
           <Link className="invite-link-container" to="/invite">
             <div className="add-btn">
-              INVITE A FRIEND
+              INVITE FRIENDS
             </div>
           </Link>
         </div>
