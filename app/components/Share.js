@@ -24,17 +24,19 @@ class Share extends Component {
     ipcRenderer.on('app-opened', () => {
       this.props.fetchScore();
     })
+
+    //this.handleAnimationEnd = this.handleAnimationEnd.bind(this);
   }
 
   componentDidMount() {
-    this.linkBorderBottom.addEventListener('animationend', this.handleAnimationEnd.bind(this));
+    //this.linkBorderBottom.addEventListener('animationend', this.handleAnimationEnd);
     this.props.fetchCurrentLink();
     this.mounted = true;
     setTimeout(() => this.mounted = false, 2000);
   }
 
   componentWillUnmount() {
-    this.linkBorderBottom.removeEventListener('animationend', this.handleAnimationEnd.bind(this));
+    //this.linkBorderBottom.removeEventListener('animationend', this.handleAnimationEnd);
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -44,7 +46,7 @@ class Share extends Component {
 
     if (prevPublishingLink === true && publishingLink === false && currentLink) {
       this.setState({shared: true})
-      setTimeout(() => this.setState({shared: false}), 3000)
+      setTimeout(() => this.setState({shared: false}), 2000)
     }
 
     if ((prevLink && currentLink) && prevLink.attributes['upvote-count'] < currentLink.attributes['upvote-count']) {
