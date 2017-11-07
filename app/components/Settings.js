@@ -1,17 +1,63 @@
 import React, { Component, PropTypes } from 'react';
 import styles from '../assets/stylesheets/settings.scss';
+import Modal from 'react-modal';
+import cx from 'classnames';
 const { shell, ipcRenderer } = window.require('electron');
+
+const modalStyles = {
+  overlay : {
+    position          : 'fixed',
+    top               : 150,
+    left              : 0,
+    right             : 0,
+    bottom            : 255,
+    backgroundColor   : 'rgba(255, 255, 255, 0.75)',
+    textAlign         : 'center'
+  },
+
+  content : {
+    position                   : 'absolute',
+    top                        : '40px',
+    left                       : '50px',
+    right                      : '50px',
+    bottom                     : '40px',
+    border                     : '1px solid #ccc',
+    background                 : '#fff',
+    overflow                   : 'auto',
+    WebkitOverflowScrolling    : 'touch',
+    borderRadius               : '4px',
+    outline                    : 'none',
+    padding                    : '20px',
+  }
+}
 
 class Settings extends Component {
   constructor(props) {
     super(props)
+
+    this.state = {
+      modalIsOpen: false
+    };
+
+    this.openModal = this.openModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
   }
 
   quitApp() {
     ipcRenderer.send('quit-app');
   }
 
+  openModal() {
+    this.setState({modalIsOpen: true});
+  }
+
+  closeModal() {
+    this.setState({modalIsOpen: false});
+  }
+
   render() {
+    const { linkCount } = this.props.user;
+
     return(
       <div className="window-content">
         <div className="settings-container">
@@ -86,7 +132,10 @@ class Settings extends Component {
           <div className="settings-section settings-logout">
             <div className="options-container bottom">
               <div className="settings-option">
-                <a className="bottom-btn disabled" href="#" onClick={() => this.props.clearLinkHistory() }>
+                <a className={cx("bottom-btn", {"disabled": (linkCount <= 0)})} href="#" onClick={(e) => {
+                  e.preventDefault();
+                  linkCount > 0 && this.openModal();
+                }}>
                   Clear link history
                 </a>
               </div>
@@ -102,6 +151,33 @@ class Settings extends Component {
               </div>
             </div>
           </div>
+
+          <Modal
+            isOpen={this.state.modalIsOpen}
+            style={modalStyles}
+            contentLabel="Clear History Confirmation"
+          >
+            <span className="clear-history-confirmation">
+              Are you sure you want to clear your entire link history?
+            </span>
+            <div className="clear-confirmation-btns">
+              <a className="confirm-link" href="#" onClick={(e) => {
+                e.preventDefault();
+                this.props.clearLinkHistory();
+                this.closeModal();
+              }}>
+                <span className="clear-yes">YES</span>
+              </a>
+
+              <a className="confirm-link" href="#" onClick={(e) => {
+                e.preventDefault();
+                this.closeModal();
+              }}>
+                <span className="clear-no">NO</span>
+              </a>
+            </div>
+          </Modal>
+
         </div>
       </div>
     )

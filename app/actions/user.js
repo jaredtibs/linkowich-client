@@ -142,7 +142,7 @@ export function sessionFetched(data) {
 
 export function clearLinkHistory() {
   return dispatch => {
-    dispatch(clearingHistory());
+    dispatch(submitting());
     return fetch("http://localhost:3000/api/v1/links", {
       method: "DELETE",
       headers: {
@@ -152,7 +152,13 @@ export function clearLinkHistory() {
       }
     })
     .then((response) => response.json())
-    .then((responseData) => dispatch(historyCleared()))
+    .then((responseData) => dispatch(linkHistoryCleared()))
     .catch(error => console.log(error))
+  }
+}
+
+export function linkHistoryCleared() {
+  return {
+    type: "LINK_HISTORY_CLEARED"
   }
 }

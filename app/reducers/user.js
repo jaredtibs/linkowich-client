@@ -3,6 +3,7 @@ const initialState = {
   username: '',
   email: '',
   avatar: {},
+  linkCount: 0,
   hasUnseenInvites: false,
   invitations: [],
   hasError: false,
@@ -29,6 +30,7 @@ export default function user(state=initialState, action) {
         username: action.data.username,
         email: action.data.email,
         avatar: action.data.avatar,
+        linkCount: action.data['link-count'],
         score: action.data.upvotes,
         followCode: action.data['follow-code'],
         followingIds: action.data['following-ids'],
@@ -37,9 +39,6 @@ export default function user(state=initialState, action) {
         hasError: false,
         loggedIn: true
       };
-      //moved to root reducer
-      //case 'LOGGED_OUT':
-      //return initialState;
     case 'LOGIN_ERROR':
       return {
         ...state,
@@ -52,6 +51,7 @@ export default function user(state=initialState, action) {
         email: action.data.email,
         username: action.data.username,
         avatar: action.data.avatar,
+        linkCount: action.data['link-count'],
         score: action.data.upvotes,
         followCode: action.data['follow-code'],
         followingIds: action.data['following-ids'],
@@ -80,6 +80,20 @@ export default function user(state=initialState, action) {
         ...state,
         isFetching: false,
         invitations: action.data.data
+      };
+    case 'LINK_HISTORY_CLEARED':
+      return {
+        ...state,
+        loading: false,
+        linkCount: 0
+      };
+    case 'LINK_PUBLISHED':
+      let currentLinkCount = state.linkCount;
+      let newLinkCount = currentLinkCount + 1;
+
+      return {
+        ...state,
+        linkCount: newLinkCount
       };
     default:
       return state;
