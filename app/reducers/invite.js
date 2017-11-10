@@ -18,7 +18,7 @@ export default function invite(state=initialState, action) {
         ...state,
         isSubmitting: false
       };
-    case 'USER_INVITED':
+    case 'INVITE_SENT':
       return {
         ...state,
         isSubmitting: false

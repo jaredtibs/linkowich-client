@@ -79,7 +79,7 @@ class Profile extends Component {
     const onClick = this.handleLinkClick.bind(this);
     const vote = this.vote.bind(this);
     const { history } = this.props.profile;
-    let { mine } = this.props;
+    let { mine, profile } = this.props;
 
     if (history.length > 0) {
       let linkList = history.map(function(link, i) {
@@ -92,7 +92,13 @@ class Profile extends Component {
     } else {
       return(
         <div className="empty-profile-links">
-          <div className="empty-text">Go share some links already! </div>
+          <div className="empty-text">
+            { mine ?
+              "Feeling a little chilly and quite here..."
+              :
+              `${profile.username} hasn't shared any links yet... lame.`
+            }
+          </div>
         </div>
       )
     }

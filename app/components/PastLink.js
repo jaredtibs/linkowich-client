@@ -80,7 +80,7 @@ class PastLink extends Component {
           {this.renderVoteContent(link)}
         </div>
 
-        <div className='link-container'
+        <div className={cx("link-container", {"current": link.attributes.current})}
              onMouseOver={this._handleHover.bind(this)}
              onMouseOut={this._handleHover.bind(this)}>
           <div className="url-text-container">

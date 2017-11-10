@@ -27,11 +27,30 @@ export function friendAdded() {
 }
 
 export function inviteUser(email) {
+  return dispatch => {
+    dispatch(submitting());
+    return fetch("http://localhost:3000/api/v1/invitations", {
+      method: "POST",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Token ' + authToken()
+      },
+      body: JSON.stringify({
+        email: email
+      })
+    })
+    .then((response) => response.json())
+    .then((responseData) => {
+      dispatch(inviteSent());
+    })
+    .catch(error => console.log(error))
+  }
 }
 
-export function userInvited() {
+export function inviteSent() {
   return {
-    type: 'USER_INVITED'
+    type: 'INVITE_SENT'
   }
 }
 
