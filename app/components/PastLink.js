@@ -67,9 +67,10 @@ class PastLink extends Component {
     const publishedAt = link.attributes['published-at'];
     const date = publishedAt.split('|')[0];
     const time = publishedAt.split('|')[1];
+    const hasFooterData = seenBy.length > 0 || link.attributes.current;
 
     return(
-      <div className={cx("link-row profile", {"with-footer": seenBy.length > 0})}>
+      <div className={cx("link-row profile", {"with-footer": hasFooterData})}>
         <div className='link-row-header-container'>
           <div className="link-meta-container profile">
             <div className="meta-text">
@@ -91,11 +92,17 @@ class PastLink extends Component {
         </div>
 
         <div className="link-footer-container profile">
-          { seenBy.length > 0 ?
             <div className="seen-by">
-              { this.renderSeenBy(seenBy) }
+              { seenBy.length > 0 ?
+                this.renderSeenBy(seenBy)
+              : null }
             </div>
-          : null }
+
+            <div className="past-link-current">
+              { link.attributes.current ?
+                <span>current</span>
+              : null }
+            </div>
         </div>
 
 
