@@ -1,14 +1,18 @@
 .link-row {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   padding-left: 20px;
   padding-right: 20px;
 
   &.profile {
     margin-bottom: 0px;
+  }
 
-    &.with-footer {
-      margin-bottom: 10px
-    }
+  &.profile.with-footer {
+    margin-bottom: 5px;
+  }
+
+  &.with-footer {
+    margin-bottom: 20px
   }
 }
 

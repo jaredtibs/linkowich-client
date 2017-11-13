@@ -60,9 +60,10 @@ class FeedLink extends Component {
     const { avatar, username } = userAttributes;
     const defaultAvatarColor = user.attributes['default-avatar-color'];
     const avatarSrc = avatar.url || require(`../assets/images/default_avatar_${defaultAvatarColor}.svg`);
+    const hasFooterData = seenBy.length > 0;
 
     return(
-      <div className='link-row'
+      <div className={cx("link-row", {"with-footer": hasFooterData})}
            onMouseOut={this._handleParentHover.bind(this)}
       >
         <div className='link-row-header-container'>
