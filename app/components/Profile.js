@@ -94,7 +94,7 @@ class Profile extends Component {
         <div className="empty-profile-links">
           <div className="empty-text">
             { mine ?
-              "Feeling a little chilly and quite here..."
+              "Feeling a little chilly and quiet here..."
               :
               `${profile.username} hasn't shared any links yet... lame.`
             }

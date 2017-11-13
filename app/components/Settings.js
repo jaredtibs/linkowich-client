@@ -7,20 +7,20 @@ const { shell, ipcRenderer } = window.require('electron');
 const modalStyles = {
   overlay : {
     position          : 'fixed',
-    top               : 150,
+    top               : 125,
     left              : 0,
     right             : 0,
-    bottom            : 255,
+    bottom            : 145,
     backgroundColor   : 'rgba(255, 255, 255, 0.75)',
     textAlign         : 'center'
   },
 
   content : {
     position                   : 'absolute',
-    top                        : '40px',
+    top                        : '76px',
     left                       : '50px',
     right                      : '50px',
-    bottom                     : '40px',
+    bottom                     : '138px',
     border                     : '1px solid #ccc',
     background                 : '#fff',
     overflow                   : 'auto',
