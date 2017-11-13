@@ -91,13 +91,12 @@ class Profile extends Component {
       )
     } else {
       return(
-        <div className="empty-profile-links">
-          <div className="empty-text">
-            { mine ?
-              "Feeling a little chilly and quiet here..."
-              :
-              `${profile.username} hasn't shared any links yet... lame.`
-            }
+        <div className="empty-history-container">
+          <div className="empty-history-icon">
+            <i className="material-icons">ac_unit</i>
+          </div>
+          <div className="empty-history-text">
+            IT'S FEELING A LITTLE CHILLY IN HERE
           </div>
         </div>
       )

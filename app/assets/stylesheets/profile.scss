@@ -113,17 +113,29 @@
   }
 }
 
-.empty-profile-links {
+.empty-history-container {
   display: flex;
   flex: 1;
   flex-direction: column;
   align-items: center;
-  margin-top: 100px;
 
-  .empty-text {
+  .empty-history-icon {
+    flex: 1;
+
+    i {
+      margin-top: 100px;
+      font-size: 50px;
+      color: #00d5d6;
+    }
+  }
+
+  .empty-history-text {
+    flex: 1;
+    font-family: Colfax;
+    font-weight: 500;
     text-align: center;
-    font-size:12px;
-    font-family: 'Colfax-Regular';
-    color: rgba(71, 71, 71, .50);
+    font-size: 10px;
+    font-family: 'Colfax-Medium';
+    color: #595959;
   }
 }
