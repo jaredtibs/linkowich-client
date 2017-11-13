@@ -3,33 +3,16 @@
   display: flex;
   flex: 1;
   flex-direction: column;
-  justify-content: center;
 }
 
 .settings-section {
   display: flex;
   flex-direction: column;
-  border-top: solid 1px #CECECE;
-
-  &.settings-account {
-    flex: 1;
-  }
-
-  &.settings-support {
-    flex: .75;
-  }
-
-  &.settings-about {
-    flex: .85;
-  }
-
-  &.settings-logout {
-    flex: 1;
-  }
+  margin-top: 10px;
 }
 
 .settings-section:first-child {
-  border-top: 0px;
+  margin-top: 0px;
 }
 
 .section-subheader {
@@ -42,24 +25,16 @@
     padding-bottom: 10px;
     padding-top: 10px;
     font-family: 'Colfax-Bold';
-    font-size: 12px;
+    font-size: 14px;
     color: #474747;
   }
 }
 
-.options-container {
-
-  &.bottom {
-    padding-top: 10px;
-  }
-
-}
-
 #coming-soon {
   cursor: default;
-  font-family: 'Colfax-Regular';
-  font-size: 11px;
-  color: rgba(0, 213, 214, 0.8);
+  font-family: 'Colfax-Medium';
+  font-size: 12px;
+  color: #00d5d6;
   padding-right: 15px;
 }
 
@@ -75,8 +50,8 @@
   .section-btn {
     text-decoration: none;
     font-family: 'Colfax-Regular';
-    font-size: 13px;
-    color: #474747;
+    font-size: 14px;
+    color: #595959;
 
     &.disabled {
       cursor: default;
@@ -87,8 +62,8 @@
   .bottom-btn {
     text-decoration: none;
     font-family: 'Colfax-Regular';
-    font-size: 12px;
-    color: #00d5d6;
+    font-size: 14px;
+    color: #595959;
 
     &.disabled {
       cursor: default;

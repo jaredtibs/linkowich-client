@@ -7,17 +7,17 @@ const { shell, ipcRenderer } = window.require('electron');
 const modalStyles = {
   overlay : {
     position          : 'fixed',
-    top               : 125,
+    top               : 130,
     left              : 0,
     right             : 0,
-    bottom            : 145,
+    bottom            : 136,
     backgroundColor   : 'rgba(255, 255, 255, 0.75)',
     textAlign         : 'center'
   },
 
   content : {
     position                   : 'absolute',
-    top                        : '76px',
+    top                        : '82px',
     left                       : '50px',
     right                      : '50px',
     bottom                     : '138px',
@@ -129,7 +129,10 @@ class Settings extends Component {
               </div>
             </div>
           </div>
-          <div className="settings-section settings-logout">
+          <div className="settings-section settings-app">
+            <div className="section-subheader">
+              <span>App</span>
+            </div>
             <div className="options-container bottom">
               <div className="settings-option">
                 <a className={cx("bottom-btn", {"disabled": (linkCount <= 0)})} href="#" onClick={(e) => {
