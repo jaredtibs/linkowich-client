@@ -7,13 +7,23 @@ class InAppNotification extends Component {
   constructor(props) {
     super(props)
 
-    this.state = {
-      dismiss: false
+    this.defaultState = {
+      dismiss: false,
+      show: false
     }
+
+    this.state = this.defaultState;
   }
 
   componentDidMount() {
     this.notification.addEventListener('animationend', this.handleAnimationEnd.bind(this));
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.show == false && this.props.show == true) {
+      this.setState(this.defaultState);
+      this.setState({show: true});
+    }
   }
 
   componentWillUnmount() {
@@ -31,8 +41,8 @@ class InAppNotification extends Component {
       <div
         ref={(notification) => { this.notification = notification; }}
         className={cx("notification-container", {
-          "shown": this.props.show,
-          "dismissed": this.state.dismiss
+          "show": this.state.show,
+          "dismiss": this.state.dismiss
         })}>
 
         <div className="icon-container">
