@@ -4,6 +4,7 @@ import React, { Component, PropTypes } from 'react';
 import styles from '../assets/stylesheets/share.scss';
 import cx from 'classnames';
 import SimpleSpinner from './SimpleSpinner';
+import InAppNotification from './InAppNotification';
 
 class Share extends Component {
   constructor(props) {
@@ -272,6 +273,11 @@ class Share extends Component {
           </div>
           : this.renderLinkOrEditField()
         }
+
+        <InAppNotification
+          msg="Your link was successfully published!"
+          show={this.state.shared}
+        />
       </div>
     )
   }

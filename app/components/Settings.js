@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import styles from '../assets/stylesheets/settings.scss';
 import Modal from 'react-modal';
 import cx from 'classnames';
+import InAppNotification from './InAppNotification';
 const { shell, ipcRenderer } = window.require('electron');
 
 const modalStyles = {
@@ -36,7 +37,8 @@ class Settings extends Component {
     super(props)
 
     this.state = {
-      modalIsOpen: false
+      modalIsOpen: false,
+      showNotification: false
     };
 
     this.openModal = this.openModal.bind(this);
@@ -53,6 +55,15 @@ class Settings extends Component {
 
   closeModal() {
     this.setState({modalIsOpen: false});
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const prevLinkCount = prevProps.user.linkCount;
+    const newLinkCount  = this.props.user.linkCount;
+
+    if (prevLinkCount > 0 && newLinkCount == 0) {
+      this.setState({showNotification: true})
+    }
   }
 
   render() {
@@ -182,6 +193,10 @@ class Settings extends Component {
           </Modal>
 
         </div>
+        <InAppNotification
+          msg="Your link history was cleared."
+          show={this.state.showNotification}
+        />
       </div>
     )
   }
