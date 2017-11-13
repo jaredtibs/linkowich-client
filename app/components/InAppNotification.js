@@ -32,7 +32,7 @@ class InAppNotification extends Component {
 
   handleAnimationEnd(event) {
     if (event.animationName == 'showNotification') {
-      setTimeout(() => this.setState({dismiss: true}), 3000);
+      setTimeout(() => this.setState({dismiss: true}), 2000);
     }
   }
 

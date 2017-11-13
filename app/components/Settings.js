@@ -194,7 +194,7 @@ class Settings extends Component {
 
         </div>
         <InAppNotification
-          msg="LINK HISTORY CLEARED"
+          msg="Your link history was cleared."
           show={this.state.showNotification}
         />
       </div>

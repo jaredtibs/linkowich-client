@@ -10,7 +10,8 @@
   display: flex;
   flex-direction: row;
   border-radius: 4px;
-  background-color: #00d5d6;
+  opacity: 0.8;
+  background-color: #ffffff;
   box-shadow: 0 6px 14px 0 rgba(0, 0, 0, 0.3);
   opacity: 1;
 
@@ -29,7 +30,8 @@
 
   .icon-container {
     width: 48px;
-    background-color: #ffffff;
+    background-color: #460037;
+    opacity: 0.8;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -52,7 +54,8 @@
     .msg-text {
       font-family: 'Colfax-Medium';
       font-size: 14px;
-      color: #ffffff;
+      color: #460037;
+      opacity: 0.8;
     }
   }
 }

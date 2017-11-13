@@ -1,6 +1,8 @@
 const initialState = {
   invitedUser: null,
   addedFriend: null,
+  emailAdded: false,
+  codeAdded: false,
   hasError: false,
   isSubmitting: false
 }
@@ -11,17 +13,21 @@ export default function invite(state=initialState, action) {
       return {
         ...state,
         isSubmitting: true,
-        hasError: false
+        hasError: false,
+        emailAdded: false,
+        codeAdded: false
       };
     case 'FRIEND_ADDED':
       return {
         ...state,
-        isSubmitting: false
+        isSubmitting: false,
+        codeAdded: true
       };
     case 'INVITE_SENT':
       return {
         ...state,
-        isSubmitting: false
+        isSubmitting: false,
+        emailAdded: true
       }
     default:
       return state;

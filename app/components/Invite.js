@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import styles from '../assets/stylesheets/invite.scss';
 import cx from 'classnames';
 import SimpleHeaderNav from '../components/SimpleHeaderNav';
+import InAppNotification from './InAppNotification';
 
 class Invite extends Component {
   constructor(props) {
@@ -17,10 +18,28 @@ class Invite extends Component {
       codePlaceholder: "GOT A FRIEND'S CODE?",
       emailPlaceholder: "INVITE A FRIEND",
       codeSubheader: "Ask Around",
-      emailSubheader: "Email, duh..."
+      emailSubheader: "Email, duh...",
+      codeSubmitted: false,
+      inviteSubmitted: false
     }
 
     this.state = this.defaultState;
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const prevEmailAdded = prevProps.invite.emailAdded;
+    const nextEmailAdded = this.props.invite.emailAdded;
+
+    const prevCodeAdded = prevProps.invite.codeAdded;
+    const nextCodeAdded = this.props.invite.codeAdded;
+
+    if (prevEmailAdded == false && nextEmailAdded == true) {
+      this.setState({inviteSubmitted: true})
+    }
+
+    if (prevCodeAdded == false && nextCodeAdded == true) {
+      this.setState({codeSubmitted: true})
+    }
   }
 
   handleSubmit(type, event) {
@@ -35,6 +54,7 @@ class Invite extends Component {
           emailSubheader: "Invalid Email"
         })
       } else {
+        // TODO this is failing on the api end right now - fix
         this.props.inviteUser(inviteEmail);
         this.setState(this.defaultState);
       }
@@ -152,6 +172,11 @@ class Invite extends Component {
             </div>
           </div>
         </div>
+
+        <InAppNotification
+          msg={this.state.inviteSubmitted ? "Your invite was sent!" : "You've added a new friend!"}
+          show={this.state.inviteSubmitted || this.state.codeSubmitted}
+        />
       </div>
     )
   }
