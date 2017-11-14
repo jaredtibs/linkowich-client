@@ -275,7 +275,7 @@ class Share extends Component {
         }
 
         <InAppNotification
-          msg="Nice - your link was successfully published!"
+          msg="Nice - link published!"
           show={this.state.shared}
         />
       </div>
