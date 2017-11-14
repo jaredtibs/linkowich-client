@@ -174,7 +174,7 @@ class Invite extends Component {
         </div>
 
         <InAppNotification
-          msg={this.state.inviteSubmitted ? "Your invite was sent!" : "You've added a new friend!"}
+          msg={this.state.inviteSubmitted ? "Trendsetter - your invite was sent." : "Popular - friend successfully added."}
           show={this.state.inviteSubmitted || this.state.codeSubmitted}
         />
       </div>
