@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import styles from '../assets/stylesheets/invite.scss';
 import cx from 'classnames';
 import SimpleHeaderNav from '../components/SimpleHeaderNav';
-import InAppNotification from './InAppNotification';
+import PopUpNotification from './PopUpNotification';
 
 class Invite extends Component {
   constructor(props) {
@@ -173,8 +173,8 @@ class Invite extends Component {
           </div>
         </div>
 
-        <InAppNotification
-          msg={this.state.inviteSubmitted ? "Trendsetter - your invite was sent." : "Popular - friend successfully added."}
+        <PopUpNotification
+          msg={this.state.inviteSubmitted ? "Trendsetter! Your invite sent." : "Popular! Your friend was added."}
           show={this.state.inviteSubmitted || this.state.codeSubmitted}
         />
       </div>

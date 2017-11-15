@@ -3,7 +3,7 @@ import styles from '../assets/stylesheets/in_app_notification.scss';
 import cx from 'classnames';
 const notificationIcon = require('../assets/images/notification_icon.svg');
 
-class InAppNotification extends Component {
+class PopUpNotification extends Component {
   constructor(props) {
     super(props)
 
@@ -57,4 +57,4 @@ class InAppNotification extends Component {
   }
 }
 
-export default InAppNotification;
+export default PopUpNotification;

@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import styles from '../assets/stylesheets/settings.scss';
 import Modal from 'react-modal';
 import cx from 'classnames';
-import InAppNotification from './InAppNotification';
+import PopUpNotification from './PopUpNotification';
 const { shell, ipcRenderer } = window.require('electron');
 
 const modalStyles = {
@@ -172,7 +172,7 @@ class Settings extends Component {
             contentLabel="Clear History Confirmation"
           >
             <span className="clear-history-confirmation">
-              Are you sure you want to clear your entire link history?
+              Are you sure you want to clear your entire link history? This will delete your score.
             </span>
             <div className="clear-confirmation-btns">
               <a className="confirm-link" href="#" onClick={(e) => {
@@ -193,8 +193,8 @@ class Settings extends Component {
           </Modal>
 
         </div>
-        <InAppNotification
-          msg="Finito - your link history was cleared."
+        <PopUpNotification
+          msg="Finito! Your link history was cleared."
           show={this.state.showNotification}
         />
       </div>
