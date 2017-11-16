@@ -172,7 +172,7 @@ class Settings extends Component {
             contentLabel="Clear History Confirmation"
           >
             <span className="clear-history-confirmation">
-              Are you sure you want to clear your entire link history? This will delete your score.
+              Are you sure you want to clear your entire link history?
             </span>
             <div className="clear-confirmation-btns">
               <a className="confirm-link" href="#" onClick={(e) => {
@@ -180,14 +180,14 @@ class Settings extends Component {
                 this.props.clearLinkHistory();
                 this.closeModal();
               }}>
-                <span className="clear-yes">YES</span>
+                <span className="clear-yes">Yup!</span>
               </a>
 
               <a className="confirm-link" href="#" onClick={(e) => {
                 e.preventDefault();
                 this.closeModal();
               }}>
-                <span className="clear-no">NO</span>
+                <span className="clear-no">Nevermind.</span>
               </a>
             </div>
           </Modal>

@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import styles from '../assets/stylesheets/in_app_notification.scss';
+import styles from '../assets/stylesheets/pop_up_notification.scss';
 import cx from 'classnames';
 const notificationIcon = require('../assets/images/notification_icon.svg');
 
