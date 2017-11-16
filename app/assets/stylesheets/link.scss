@@ -182,11 +182,11 @@
   cursor: pointer;
   overflow: hidden;
   font-family: 'Colfax-Regular';
-  letter-spacing: 0.6px;
+  letter-spacing: 0.3px;
   font-size: 12px;
+  font-weight: bold;
   text-align: left;
   color: #474747;
-
 
   &.active {
     color: #00d5d6;
