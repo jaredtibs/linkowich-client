@@ -26,18 +26,12 @@ class Share extends Component {
       this.props.fetchScore();
     })
 
-    //this.handleAnimationEnd = this.handleAnimationEnd.bind(this);
   }
 
   componentDidMount() {
-    //this.linkBorderBottom.addEventListener('animationend', this.handleAnimationEnd);
     this.props.fetchCurrentLink();
     this.mounted = true;
     setTimeout(() => this.mounted = false, 2000);
-  }
-
-  componentWillUnmount() {
-    //this.linkBorderBottom.removeEventListener('animationend', this.handleAnimationEnd);
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -54,10 +48,6 @@ class Share extends Component {
       this.setState({newUpvotes: true})
       setTimeout(() => this.setState({newUpvotes: false}), 2000)
     }
-  }
-
-  handleAnimationEnd(event) {
-    console.log(event)
   }
 
   handleChange(event) {
@@ -214,9 +204,9 @@ class Share extends Component {
               { seenBy.length > 0 ? this.renderSeenBy(seenBy) : null }
             </div>
           : null }
-          { !this.state.urlValid ?
+          { !this.state.urlValid && this.state.isEditing ?
             <div>
-              <span className="link-error-msg"> Not a valid url </span>
+              <span className="link-error-msg">Not a valid url</span>
             </div>
             : null }
           { this.renderClearButton() }

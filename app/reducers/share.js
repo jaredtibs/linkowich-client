@@ -3,7 +3,7 @@ const initialState = {
   publishingLink: false,
   fetchingLink: false,
   clearingLink: false,
-  shareErrors: {}
+  shareError: false
 }
 
 export default function share(state=initialState, action) {
@@ -44,6 +44,7 @@ export default function share(state=initialState, action) {
     case 'SHARE_ERROR':
       return {
         ...state,
+        publishingLink: false,
         shareError: true
       };
     default:

@@ -67,9 +67,16 @@ export function publishLink(url) {
     })
     .then((response) => response.json())
     .then((responseData) => {
-      dispatch(linkPublished(responseData));
+      if (responseData.errors) {
+        dispatch(handleError());
+      } else {
+        dispatch(linkPublished(responseData));
+      }
     })
-    .catch(error => console.log(error))
+    .catch((error) => {
+      console.log(error)
+      dispatch(handleError());
+    })
   }
 }
 
@@ -100,7 +107,7 @@ export function clearLink() {
     .then((response) => response.json())
     .then((responseData) => {
       if (responseData.errors) {
-        dispatch(handleError(responseData.errors))
+        dispatch(handleError())
       } else {
         dispatch(linkCleared())
       }
@@ -121,9 +128,8 @@ export function linkCleared() {
   }
 }
 
-export function handleError(errors) {
+export function handleError() {
   return {
-    type: "SHARE_ERROR",
-    errors: errors
+    type: "SHARE_ERROR"
   }
 }
