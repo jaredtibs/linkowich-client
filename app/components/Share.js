@@ -206,7 +206,7 @@ class Share extends Component {
                 <img src={avatarSrc} width={35} height={35} />
               </div>
             </Link>
-            <div className="meta-text">
+            <div className="meta-text-container">
               <Link to={`/user/me`} className="username-link">
                 <span className="username">{username}</span>
               </Link>

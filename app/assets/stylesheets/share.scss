@@ -37,8 +37,13 @@
     }
   }
 
-  .meta-text {
+  .meta-text-container {
+    padding-top: 6px;
     padding-left: 3px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
   }
 
   .username-link {
@@ -48,13 +53,14 @@
   .username {
     font-family: 'Colfax-Medium';
     color: #474747;
-    font-size: 14px;
+    font-size: 15px;
   }
 
   .published-ago {
     font-family: 'Colfax-Medium';
     font-size: 10px;
     color: #898989;
+    padding-top: 2px;
     padding-left: 6px;
   }
 }
