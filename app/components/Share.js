@@ -178,8 +178,6 @@ class Share extends Component {
     const { username, defaultAvatarColor, avatar } = user;
     const avatarSrc = avatar.url || require(`../assets/images/default_avatar_${defaultAvatarColor}.svg`);
 
-    console.log(this.props)
-
     const { publishingLink, currentLink } = this.props.share;
     const seenBy = currentLink ? currentLink.attributes['seen-by'] : [];
 
@@ -190,7 +188,7 @@ class Share extends Component {
           <div className="share-header-inner-container left">
             <Link to={`/user/me`}>
               <div className="avatar">
-                <img src={avatarSrc} width={30} height={30} />
+                <img src={avatarSrc} width={35} height={35} />
               </div>
             </Link>
             <div className="meta-text">

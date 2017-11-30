@@ -4,6 +4,7 @@
   padding-left: 25px;
   padding-right: 25px;
   padding-bottom: 15px;
+  padding-top: 15px;
 }
 
 .share-loading-container {
@@ -22,19 +23,23 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  //padding-top: 10px;
-  //padding-bottom: 3px;
+  padding-bottom: 5px;
 
   .avatar {
     display: flex;
     align-items: center;
     justify-content: center;
     padding-right: 8px;
+    margin-left: -4px;
 
     img {
-      border-radius: 15px;
+      border-radius: 100%;
     }
   }
+
+  //.meta-text {
+  //  padding-left: 3px;
+  //}
 
   .username-link {
     text-decoration: none;
@@ -113,6 +118,7 @@
 
   &.left {
     justify-content: flex-start;
+    align-items: center;
   }
 
   &.right {
@@ -163,15 +169,6 @@
     font-size: 18px !important;
   }
 }
-
-/*
-.link-timestamp {
-  font-family: 'Colfax-Medium';
-  font-size: 10px;
-  color: #6f6f6f;
-  padding-left: 6px;
-}
-*/
 
 .my-link-input-container {
   display: flex;
