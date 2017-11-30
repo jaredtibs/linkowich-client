@@ -1,6 +1,7 @@
 const { ipcRenderer } = window.require('electron');
 
 import React, { Component, PropTypes } from 'react';
+import { Link } from 'react-router-dom';
 import styles from '../assets/stylesheets/share.scss';
 import cx from 'classnames';
 import SimpleSpinner from './SimpleSpinner';
@@ -90,6 +91,21 @@ class Share extends Component {
     return url.slice(0, 40) + ' ...';
   }
 
+  renderPublishedAgo(currentLink) {
+    const publishedAgo = currentLink.attributes['published-ago'];
+    let publishedAgoText;
+
+    if (publishedAgo === "just now") {
+      publishedAgoText = publishedAgo;
+    } else {
+      publishedAgoText = `${currentLink.attributes['published-ago']} ago`
+    }
+
+    return(
+      <span className="published-ago"> { publishedAgoText } </span>
+    )
+  }
+
   renderSeenBy(names) {
     const displayed = names.slice(0, 2);
     const rest = names.slice(1, -1);
@@ -173,22 +189,31 @@ class Share extends Component {
   }
 
   renderLinkOrEditField() {
+    const { user } = this.props;
+    const { username, defaultAvatarColor, avatar } = user;
+    const avatarSrc = avatar.url || require(`../assets/images/default_avatar_${defaultAvatarColor}.svg`);
+
     const { publishingLink, currentLink } = this.props.share;
     const seenBy = currentLink ? currentLink.attributes['seen-by'] : [];
 
     return(
       <div>
         <div className="share-header">
+
           <div className="share-header-inner-container left">
-            <div>
-              <span className="share-label">My Link</span>
-              { !this.state.isEditing ?
-                <span className="link-timestamp">
-                  {currentLink ? `${currentLink.attributes['published-ago']} ago` : null}
-                </span>
-              : null }
+            <Link to={`/user/me`}>
+              <div className="avatar">
+                <img src={avatarSrc} width={35} height={35} />
+              </div>
+            </Link>
+            <div className="meta-text-container">
+              <Link to={`/user/me`} className="username-link">
+                <span className="username">{username}</span>
+              </Link>
+              { !this.state.isEditing && currentLink ? this.renderPublishedAgo(currentLink) : null }
             </div>
           </div>
+
           <div className="share-header-inner-container right">
             { !this.state.isEditing && currentLink ? this.renderMyScore() : null }
           </div>

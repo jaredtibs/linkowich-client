@@ -194,7 +194,7 @@ class Settings extends Component {
 
         </div>
         <PopUpNotification
-          msg="Finito! Your link history was cleared."
+          msg="Finito! Link history cleared."
           show={this.state.showNotification}
         />
       </div>

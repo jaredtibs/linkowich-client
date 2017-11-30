@@ -174,7 +174,7 @@ class Invite extends Component {
         </div>
 
         <PopUpNotification
-          msg={this.state.inviteSubmitted ? "Trendsetter! Your invite sent." : "Popular! Your friend was added."}
+          msg={this.state.inviteSubmitted ? "Trendsetter! Invitation sent." : "Popular! New friend added."}
           show={this.state.inviteSubmitted || this.state.codeSubmitted}
         />
       </div>
