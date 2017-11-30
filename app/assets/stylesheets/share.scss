@@ -113,7 +113,6 @@
 
 .share-header-inner-container {
   display: flex;
-  flex: 1;
   flex-direction: row;
 
   &.left {
@@ -131,6 +130,7 @@
   flex-direction: row;
   justify-content: center;
   cursor: default;
+  padding-top: 3px;
 
   &.new-upvotes {
     animation: pulseNewUpvotes;
