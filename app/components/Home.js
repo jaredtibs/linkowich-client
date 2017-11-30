@@ -40,11 +40,16 @@ class Home extends Component {
   }
 
   render() {
+    const { user } = this.props;
     return(
       <div className="window-content">
         <div className="home-container">
-          <ShareContainer />
-          <FeedContainer />
+          { user && user.loggedIn ?
+            <div>
+              <ShareContainer />
+              <FeedContainer />
+            </div>
+          : null }
         </div>
       </div>
     )
