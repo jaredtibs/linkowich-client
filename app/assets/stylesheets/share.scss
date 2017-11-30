@@ -21,8 +21,37 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding-top: 10px;
-  padding-bottom: 3px;
+  align-items: center;
+  //padding-top: 10px;
+  //padding-bottom: 3px;
+
+  .avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-right: 8px;
+
+    img {
+      border-radius: 15px;
+    }
+  }
+
+  .username-link {
+    text-decoration: none;
+  }
+
+  .username {
+    font-family: 'Colfax-Medium';
+    color: #474747;
+    font-size: 14px;
+  }
+
+  .published-ago {
+    font-family: 'Colfax-Medium';
+    font-size: 10px;
+    color: #6f6f6f;
+    padding-left: 6px;
+  }
 }
 
 .share-footer {
@@ -79,6 +108,7 @@
 
 .share-header-inner-container {
   display: flex;
+  flex: 1;
   flex-direction: row;
 
   &.left {
@@ -134,12 +164,14 @@
   }
 }
 
+/*
 .link-timestamp {
   font-family: 'Colfax-Medium';
   font-size: 10px;
   color: #6f6f6f;
   padding-left: 6px;
 }
+*/
 
 .my-link-input-container {
   display: flex;

@@ -1,6 +1,7 @@
 const { ipcRenderer } = window.require('electron');
 
 import React, { Component, PropTypes } from 'react';
+import { Link } from 'react-router-dom';
 import styles from '../assets/stylesheets/share.scss';
 import cx from 'classnames';
 import SimpleSpinner from './SimpleSpinner';
@@ -173,22 +174,37 @@ class Share extends Component {
   }
 
   renderLinkOrEditField() {
+    const { user } = this.props;
+    const { username, defaultAvatarColor, avatar } = user;
+    const avatarSrc = avatar.url || require(`../assets/images/default_avatar_${defaultAvatarColor}.svg`);
+
+    console.log(this.props)
+
     const { publishingLink, currentLink } = this.props.share;
     const seenBy = currentLink ? currentLink.attributes['seen-by'] : [];
 
     return(
       <div>
         <div className="share-header">
+
           <div className="share-header-inner-container left">
-            <div>
-              <span className="share-label">My Link</span>
+            <Link to={`/user/me`}>
+              <div className="avatar">
+                <img src={avatarSrc} width={30} height={30} />
+              </div>
+            </Link>
+            <div className="meta-text">
+              <Link to={`/user/me`} className="username-link">
+                <span className="username">{username}</span>
+              </Link>
               { !this.state.isEditing ?
-                <span className="link-timestamp">
+                <span className="published-ago">
                   {currentLink ? `${currentLink.attributes['published-ago']} ago` : null}
                 </span>
               : null }
             </div>
           </div>
+
           <div className="share-header-inner-container right">
             { !this.state.isEditing && currentLink ? this.renderMyScore() : null }
           </div>
