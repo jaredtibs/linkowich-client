@@ -3,8 +3,8 @@
   background-color: #ffffff;
   padding-left: 25px;
   padding-right: 25px;
-  padding-bottom: 15px;
-  padding-top: 15px;
+  padding-bottom: 20px;
+  padding-top: 10px;
 }
 
 .share-loading-container {
@@ -37,9 +37,9 @@
     }
   }
 
-  //.meta-text {
-  //  padding-left: 3px;
-  //}
+  .meta-text {
+    padding-left: 3px;
+  }
 
   .username-link {
     text-decoration: none;
@@ -54,7 +54,7 @@
   .published-ago {
     font-family: 'Colfax-Medium';
     font-size: 10px;
-    color: #6f6f6f;
+    color: #898989;
     padding-left: 6px;
   }
 }

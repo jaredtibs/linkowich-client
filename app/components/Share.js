@@ -91,6 +91,21 @@ class Share extends Component {
     return url.slice(0, 40) + ' ...';
   }
 
+  renderPublishedAgo(currentLink) {
+    const publishedAgo = currentLink.attributes['published-ago'];
+    let publishedAgoText;
+
+    if (publishedAgo === "just now") {
+      publishedAgoText = publishedAgo;
+    } else {
+      publishedAgoText = `${currentLink.attributes['published-ago']} ago`
+    }
+
+    return(
+      <span className="published-ago"> { publishedAgoText } </span>
+    )
+  }
+
   renderSeenBy(names) {
     const displayed = names.slice(0, 2);
     const rest = names.slice(1, -1);
@@ -195,11 +210,7 @@ class Share extends Component {
               <Link to={`/user/me`} className="username-link">
                 <span className="username">{username}</span>
               </Link>
-              { !this.state.isEditing ?
-                <span className="published-ago">
-                  {currentLink ? `${currentLink.attributes['published-ago']} ago` : null}
-                </span>
-              : null }
+              { !this.state.isEditing && currentLink ? this.renderPublishedAgo(currentLink) : null }
             </div>
           </div>
 
