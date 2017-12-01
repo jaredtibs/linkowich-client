@@ -49,7 +49,9 @@ class Home extends Component {
               <ShareContainer />
               <FeedContainer />
             </div>
-          : null }
+          :
+            null
+          }
         </div>
       </div>
     )
