@@ -191,7 +191,7 @@ class Share extends Component {
   renderLinkOrEditField() {
     const { user } = this.props;
     const { username, defaultAvatarColor, avatar } = user;
-    const avatarSrc = avatar.url || require(`../assets/images/default_avatar_${defaultAvatarColor}.svg`);
+    const avatarSrc = avatar && avatar.thumb.url || require(`../assets/images/default_avatar_${defaultAvatarColor}.svg`);
 
     const { publishingLink, currentLink } = this.props.share;
     const seenBy = currentLink ? currentLink.attributes['seen-by'] : [];

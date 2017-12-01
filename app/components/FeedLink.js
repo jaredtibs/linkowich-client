@@ -59,7 +59,7 @@ class FeedLink extends Component {
     const userAttributes = user.attributes;
     const { avatar, username } = userAttributes;
     const defaultAvatarColor = user.attributes['default-avatar-color'];
-    const avatarSrc = avatar.url || require(`../assets/images/default_avatar_${defaultAvatarColor}.svg`);
+    const avatarSrc = avatar && avatar.thumb.url || require(`../assets/images/default_avatar_${defaultAvatarColor}.svg`);
     const hasFooterData = seenBy.length > 0;
 
     return(

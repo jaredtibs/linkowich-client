@@ -42,12 +42,15 @@ class Profile extends Component {
 
   renderProfileInfo() {
     const { profile, mine } = this.props;
+    const { isSubmitting } = profile;
+
     let avatarSrc;
     if (profile.avatar && profile.avatar.large.url) {
       avatarSrc = profile.avatar.large.url
     } else if (profile.defaultAvatarColor) {
       avatarSrc = require(`../assets/images/default_avatar_${profile.defaultAvatarColor}.svg`)
     }
+
 
     return(
       <div>
@@ -58,7 +61,11 @@ class Profile extends Component {
               <i className="material-icons edit-icon">mode_edit</i>
             </div>
             : null }
-          <img className="profile-avatar" src={avatarSrc} />
+            { isSubmitting ?
+              <SimpleSpinner color="white" />
+              :
+              <img className="profile-avatar" src={avatarSrc} />
+            }
         </div>
 
         <input type="file" id="file" ref="fileUploader" style={{display: "none"}}/>
