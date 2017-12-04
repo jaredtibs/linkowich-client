@@ -42,6 +42,8 @@ class Profile extends Component {
 
   renderProfileInfo() {
     const { profile, mine } = this.props;
+    const { isSubmitting } = profile;
+
     let avatarSrc;
     if (profile.avatar && profile.avatar.large.url) {
       avatarSrc = profile.avatar.large.url
@@ -53,9 +55,13 @@ class Profile extends Component {
       <div>
         <div className={cx("profile-avatar-container", {"mine": mine})}
              onClick={mine ? this.handleAvatarClick.bind(this) : null}>
-          { mine ?
+          { mine || isSubmitting ?
             <div className="img__overlay">
-              <i className="material-icons edit-icon">mode_edit</i>
+              { isSubmitting ?
+                <SimpleSpinner />
+                :
+                <i className="material-icons edit-icon">mode_edit</i>
+              }
             </div>
             : null }
           <img className="profile-avatar" src={avatarSrc} />
