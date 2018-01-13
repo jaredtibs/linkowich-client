@@ -71,7 +71,7 @@ class ForgotPassword extends Component {
                 { user.resetPasswordInitiated === true ?
                   "An email was just sent to that address."
                   :
-                  "What is the email address associated with your account?"
+                  "What's the email address associated with your account?"
                 }
               </div>
             }
