@@ -133,8 +133,9 @@
   .empty-history-text {
     flex: 1;
     text-align: center;
-    font-size: 10px;
+    font-size: 12px;
     font-family: 'Colfax-Medium';
-    color: #595959;
+    color: rgba(71, 71, 71, .60);
+    //color: #595959;
   }
 }

@@ -102,7 +102,7 @@ class Profile extends Component {
             <i className="material-icons">ac_unit</i>
           </div>
           <div className="empty-history-text">
-            IT'S FEELING A LITTLE CHILLY IN HERE
+            It's feeling a little chilly in here...
           </div>
         </div>
       )
