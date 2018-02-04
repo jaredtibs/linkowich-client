@@ -9,7 +9,7 @@
 }
 
 .app-title {
-  padding-bottom: 5px
+  padding-bottom: 5px;
 }
 
 .app-title a {
@@ -29,7 +29,7 @@
 }
 
 .nav-icon {
-  opacity: 0.75;
+  //opacity: 0.75;
 }
 
 .nav-icon:hover {
@@ -38,6 +38,16 @@
 
 .invite-icon {
   color: #595959 !important;
+
+  &.small {
+    padding-right: 15px;
+    padding-bottom: 3px;
+    font-size: 20px;
+  }
+}
+
+.nav-section-right {
+  margin-left: -34px;
 }
 
 /* can be used to fade out nav icons but doesnt

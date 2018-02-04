@@ -26,9 +26,14 @@ class NavBar extends Component {
     switch(location) {
       case '/home':
         return(
-          <Link to={'/user/me'}>
-            <i className={cx("material-icons nav-icon", {"disabled": location === '/user/me'})}>face</i>
-          </Link>
+          <div className="nav-section-right">
+            <Link to={'/invite'}>
+              <i className="material-icons nav-icon invite-icon small">group_add</i>
+            </Link>
+            <Link to={'/user/me'}>
+              <i className={cx("material-icons nav-icon", {"disabled": location === '/user/me'})}>face</i>
+            </Link>
+          </div>
         )
         break;
       case '/user/me':
