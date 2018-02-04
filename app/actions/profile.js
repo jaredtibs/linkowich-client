@@ -15,7 +15,7 @@ export function fetchTabContent(context, userId=null) {
 export function fetchUserProfile(id) {
   return dispatch => {
     dispatch(fetchingUserProfile());
-    const url = `http://localhost:3000/api/v1/users/${id}`
+    const url = `https://linkowich-api.herokuapp.com/api/v1/users/${id}`
     return fetch(url, {
       method: "GET",
       headers: {
@@ -36,7 +36,7 @@ export function fetchUserProfile(id) {
 export function fetchFriends(context) {
   return dispatch => {
     dispatch(fetching());
-    let url = `http://localhost:3000/api/v1/user/${context}`
+    let url = `https://linkowich-api.herokuapp.com/api/v1/user/${context}`
     return fetch(url, {
       method: "GET",
       headers: {
@@ -56,7 +56,7 @@ export function fetchFriends(context) {
 export function fetchHistoricalLinkData(id) {
   return dispatch => {
     dispatch(fetching());
-    const url = `http://localhost:3000/api/v1/users/${id}/links`
+    const url = `https://linkowich-api.herokuapp.com/api/v1/users/${id}/links`
     return fetch(url, {
       method: "GET",
       headers: {
@@ -115,7 +115,7 @@ export function friendsFetched(data) {
 export function updateAvatar(fileData) {
   return dispatch => {
     dispatch(submitting());
-    return fetch("http://localhost:3000/api/v1/user/avatar", {
+    return fetch("https://linkowich-api.herokuapp.com/api/v1/user/avatar", {
       method: "POST",
       headers: {
         'Accept': 'application/json',
@@ -142,7 +142,7 @@ export function userAvatarUpdated(data) {
 
 export function updateFollowRelationship(userId, type) {
   return dispatch => {
-    let url = `http://localhost:3000/api/v1/users/${userId}/follow`
+    let url = `https://linkowich-api.herokuapp.com/api/v1/users/${userId}/follow`
     let method = type === "follow" ? "POST" : "DELETE"
     return fetch(url, {
       method: method,

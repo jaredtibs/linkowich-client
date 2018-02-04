@@ -5,7 +5,7 @@ export function fetchLinks(showLoader=true) {
     if (showLoader === true) {
       dispatch(fetchingLinks());
     }
-    return fetch('http://localhost:3000/api/v1/links', {
+    return fetch('https://linkowich-api.herokuapp.com/api/v1/links', {
       method: "GET",
       headers: {
         'Accept': 'application/json',
@@ -34,7 +34,7 @@ export function linksFetched(links) {
 
 export function markLinkSeen(linkId) {
   return dispatch => {
-    return fetch(`http://localhost:3000/api/v1/links/${linkId}/seen`, {
+    return fetch(`https://linkowich-api.herokuapp.com/api/v1/links/${linkId}/seen`, {
       method: "POST",
       headers: {
         'Accept': 'application/json',
@@ -49,7 +49,7 @@ export function markLinkSeen(linkId) {
 export function castVote(linkId, type, context="feed") {
   return dispatch => {
     let action = type === "upvote" ? "POST" : "DELETE";
-    return fetch(`http://localhost:3000/api/v1/links/${linkId}/vote`, {
+    return fetch(`https://linkowich-api.herokuapp.com/api/v1/links/${linkId}/vote`, {
       method: action,
       headers: {
         'Accept': 'application/json',
