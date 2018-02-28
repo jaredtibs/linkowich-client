@@ -151,14 +151,6 @@ class Profile extends Component {
             <div className="profile-tabs-container">
               <ul className="tabs">
                 <li className={cx({
-                  "active" : profileContext === "history",
-                })}>
-                  <a href="#" onClick={(e) => {
-                    e.preventDefault();
-                    this.props.toggleProfileContext("history", userId);
-                  }}>History</a>
-                </li>
-                <li className={cx({
                   "active" : profileContext === "followers",
                   "hidden" : !mine
                 })}>
@@ -175,6 +167,14 @@ class Profile extends Component {
                     e.preventDefault();
                     this.props.toggleProfileContext("following");
                   }}>Following</a>
+                </li>
+                <li className={cx({
+                  "active" : profileContext === "history",
+                })}>
+                  <a href="#" onClick={(e) => {
+                    e.preventDefault();
+                    this.props.toggleProfileContext("history", userId);
+                  }}>History</a>
                 </li>
               </ul>
 

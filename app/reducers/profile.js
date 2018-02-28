@@ -5,7 +5,7 @@ const initialState = {
   defaultAvatarColor: '',
   avatar: '',
   score: 0,
-  profileContext: 'history',
+  profileContext: 'followers',
   history: [],
   friends: [],
   isFetchingInfo: false,

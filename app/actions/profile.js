@@ -27,7 +27,7 @@ export function fetchUserProfile(id) {
     .then((response) => response.json())
     .then((responseData) => {
       dispatch(profileFetched(responseData.data))
-      dispatch(toggleProfileContext("history", id))
+      dispatch(toggleProfileContext("followers", id))
     })
     .catch(error => console.log(error))
   }
