@@ -4,7 +4,7 @@ import { push } from 'react-router-redux';
 export function fetchInvitations() {
   return dispatch => {
     dispatch(fetchingInvitations());
-    return fetch('http://localhost:3000/api/v1/invitations', {
+    return fetch('https://linkowich-api.herokuapp.com/api/v1/invitations', {
       method: "GET",
       headers: {
         'Accept': 'application/json',
@@ -33,7 +33,7 @@ export function invitationsFetched(data) {
 
 export function acceptInvite(inviteId) {
   return dispatch => {
-    let url = `http://localhost:3000/api/v1/invitations/${inviteId}/accept`
+    let url = `https://linkowich-api.herokuapp.com/api/v1/invitations/${inviteId}/accept`
     return fetch(url, {
       method: "POST",
       headers: {

@@ -3,7 +3,7 @@ import { authToken } from './auth';
 export function fetchCurrentLink() {
   return dispatch => {
     dispatch(fetchingLink());
-    return fetch("http://localhost:3000/api/v1/links/me", {
+    return fetch("https://linkowich-api.herokuapp.com/api/v1/links/me", {
       method: "GET",
       headers: {
         'Accept': 'application/json',
@@ -21,7 +21,7 @@ export function fetchCurrentLink() {
 
 export function fetchScore() {
   return dispatch => {
-    return fetch("http://localhost:3000/api/v1/links/me", {
+    return fetch("https://linkowich-api.herokuapp.com/api/v1/links/me", {
       method: "GET",
       headers: {
         'Accept': 'application/json',
@@ -54,7 +54,7 @@ export function linkFetched(link) {
 export function publishLink(url) {
   return dispatch => {
     dispatch(publishingLink());
-    return fetch("http://localhost:3000/api/v1/links", {
+    return fetch("https://linkowich-api.herokuapp.com/api/v1/links", {
       method: "POST",
       headers: {
         'Accept': 'application/json',
@@ -96,7 +96,7 @@ export function linkPublished(link) {
 export function clearLink() {
   return dispatch => {
     dispatch(clearingLink());
-    return fetch("http://localhost:3000/api/v1/links/me", {
+    return fetch("https://linkowich-api.herokuapp.com/api/v1/links/me", {
       method: "DELETE",
       headers: {
         'Accept': 'application/json',

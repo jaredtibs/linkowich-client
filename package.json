@@ -1,12 +1,16 @@
 {
-  "name": "lynx",
-  "version": "0.1.0",
+  "name": "linkowich",
+  "version": "0.0.1",
+  "author": "Jared Tibshraeny",
+  "license": "MIT",
+  "description": "Share links smarter.",
   "main": "main.js",
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-plugin-transform-es2015-destructuring": "^6.23.0",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babili-webpack-plugin": "^0.1.2",
     "css-loader": "^0.28.5",
     "devtron": "^1.4.0",
     "electron": "^1.6.11",

@@ -4,7 +4,7 @@ import { authToken } from './auth';
 export function login (email, password) {
   return dispatch => {
     dispatch(submitting());
-    return fetch("http://localhost:3000/api/v1/sessions", {
+    return fetch("https://linkowich-api.herokuapp.com/api/v1/sessions", {
       method: "POST",
       headers: {
         'Accept': 'application/json',
@@ -37,7 +37,7 @@ export function finishLogin(sessionData) {
 export function register (email, username, password) {
   return dispatch => {
     dispatch(submitting());
-    return fetch("http://localhost:3000/api/v1/registrations", {
+    return fetch("https://linkowich-api.herokuapp.com/api/v1/registrations", {
       method: "POST",
       headers: {
         'Accept': 'application/json',
@@ -119,7 +119,7 @@ export function submitting() {
 
 export function fetchUserSession() {
   return dispatch => {
-    return fetch("http://localhost:3000/api/v1/sessions", {
+    return fetch("https://linkowich-api.herokuapp.com/api/v1/sessions", {
       method: "GET",
       headers: {
         'Accept': 'application/json',
@@ -143,7 +143,7 @@ export function sessionFetched(data) {
 export function clearLinkHistory() {
   return dispatch => {
     dispatch(submitting());
-    return fetch("http://localhost:3000/api/v1/links", {
+    return fetch("https://linkowich-api.herokuapp.com/api/v1/links", {
       method: "DELETE",
       headers: {
         'Accept': 'application/json',

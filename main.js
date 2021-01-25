@@ -9,9 +9,6 @@ const Store = require('electron-store');
 const store = new Store();
 
 require('electron-debug')();
-require('electron-reload')(__dirname, {
-  electron: require('${__dirname}/../../node_modules/electron')
-})
 
 let tray;
 let window;
